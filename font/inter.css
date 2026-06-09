@@ -1,0 +1,26 @@
+@font-face {
+  font-family: 'Inter var';
+  font-weight: 100 900;
+  font-display: swap;
+  font-style: normal;
+  font-named-instance: 'Regular';
+  src: url('https://chanced.com/font/Inter-roman.var.woff2') format('woff2');
+}
+@font-face {
+  font-family: 'Inter var';
+  font-weight: 100 900;
+  font-display: swap;
+  font-style: italic;
+  font-named-instance: 'Italic';
+  src: url('https://chanced.com/font/Inter-italic.var.woff2') format('woff2');
+}
+@font-face {
+  font-family: 'Roboto';
+  font-display: swap;
+  src: url('https://chanced.com/font/Roboto-Medium.ttf') format('truetype');
+}
+@font-face {
+  font-family: 'Roboto Bold';
+  font-display: swap;
+  src: url('https://chanced.com/font/RobotoCondensed-Bold.ttf') format('truetype');
+}

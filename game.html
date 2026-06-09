@@ -1,0 +1,779 @@
+<!DOCTYPE html>
+<html lang="en" style="--scrollbar-width: 0px;">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport"/>
+<title>Vivid - Game</title>
+<meta content="#020617" name="theme-color"/>
+<link href="/vivid-casino/images/favicon/android-chrome-512x512.svg" rel="shortcut icon" sizes="196x196"/>
+<style>
+  .grecaptcha-badge { visibility: hidden; }
+  input::-webkit-outer-spin-button,
+  input::-webkit-inner-spin-button { -webkit-appearance: none; appearance: none; margin: 0; display: none; }
+  html { background-color: #020617; height: 100%; }
+  body { width: 100vw; height: 100vh; -webkit-overflow-scrolling: touch; margin: 0; padding: 0; }
+  body::-webkit-scrollbar { width: 0; }
+  input[type='number'] { -moz-appearance: textfield; -webkit-appearance: textfield; appearance: textfield; }
+  .overflow-x-scroll { -webkit-overflow-scrolling: touch; }
+  .home-casino-slider, .home-jackpot-slider, .no-scrollbar { -webkit-overflow-scrolling: touch; }
+  .h-dvh { height: 100dvh; }
+  .min-h-dvh { min-height: 100dvh; }
+  .max-h-dvh { max-height: 100dvh; }
+  .max-h-svh { max-height: 100svh; }
+  .max-h-lvh { max-height: 100lvh; }
+</style>
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+  tailwind.config = {
+    theme: {
+      extend: {
+        colors: {
+          base: {
+            background: '#020617',
+            foreground: '#f8fafc',
+            border: '#1e293b',
+            accent: '#1e293b',
+            'accent-foreground': '#f8fafc',
+            sidebar: {
+              background: '#0f172a',
+              foreground: '#94a3b8',
+              accent: '#1e293b',
+              'accent-foreground': '#f8fafc',
+              border: '#1e293b'
+            },
+            input: {
+              background: '#0f172a',
+              border: '#334155'
+            },
+            muted: { foreground: '#64748b' },
+            primary: '#3b82f6'
+          }
+        }
+      }
+    }
+  }
+</script>
+<style type="text/tailwindcss">
+  @layer base {
+    body { @apply bg-base-background text-base-foreground; }
+  }
+  @layer components {
+    
+    .btn-secondary { @apply bg-base-sidebar-accent hover:bg-base-border text-base-foreground font-semibold rounded-lg px-4 py-2 transition-all duration-200 border border-base-border; }
+  }
+</style>
+<link crossorigin="" href="/vivid-casino/assets/index-AVsnX6L1.css" rel="stylesheet"/>
+<link crossorigin="" href="/vivid-casino/assets/MaintenanceBanner-CZLbjAKp.css" rel="stylesheet"/>
+<link crossorigin="" href="/vivid-casino/assets/NotificationCenter-zh351f1i.css" rel="stylesheet"/>
+<link crossorigin="" href="/vivid-casino/assets/TopHeader-eiCE9kG4.css" rel="stylesheet"/>
+<style>
+  /* Fix: Tailwind CDN uses !important on .hidden, so compiled breakpoint classes must match */
+  @media (min-width: 350px) {
+    .xsm_m\:block { display: block !important; }
+    .xsm_m\:hidden { display: none !important; }
+  }
+  /* Header padding for desktop sidebar - prevents logo from being hidden behind sidebar */
+  @media (min-width: 768px) {
+    header.fixed {
+      padding-left: 256px !important;
+    }
+  }
+  /* Mobile sidebar toggle */
+  @media (max-width: 767px) {
+    aside.mobile-open {
+      display: flex !important;
+      position: fixed !important;
+      left: 0 !important;
+      top: 0 !important;
+      z-index: 99999 !important;
+    }
+  }
+    /* Mobile: force identical header positioning across all pages */
+  @media (max-width: 767px) {
+    header.fixed { left: 0 !important; right: 0 !important; top: 0 !important; }
+    header .top-header-inner { padding-left: 16px !important; padding-right: 16px !important; }
+    header a img[alt="Vivid"] { transform: translateY(6px) !important; }
+  }
+  /* Mobile bottom navigation bar */
+  @media (max-width: 767px) {
+    .mobile-bottom-nav {
+      display: flex !important;
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      z-index: 99998;
+      background: #0a0a0a;
+      border-top: 1px solid #1a1a1a;
+      padding: 8px 0;
+      justify-content: space-around;
+      align-items: center;
+    }
+    .mobile-bottom-nav a {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      color: #666;
+      text-decoration: none;
+      font-size: 10px;
+      gap: 4px;
+    }
+    .mobile-bottom-nav a.active {
+      color: #fff;
+    }
+    .mobile-bottom-nav a:nth-child(3) {
+      background: linear-gradient(135deg, #E91E63, #9C27B0);
+      border-radius: 12px;
+      padding: 6px 12px;
+      color: #fff;
+      margin-top: -20px;
+      box-shadow: 0 4px 12px rgba(233, 30, 99, 0.4);
+    }
+    .mobile-bottom-nav a:nth-child(3) svg {
+      stroke: #fff;
+    }
+    .mobile-bottom-nav a:nth-child(3).active {
+      color: #fff;
+    }
+    .mobile-bottom-nav svg {
+      width: 24px;
+      height: 24px;
+    }
+    /* Add padding to main content for bottom nav */
+    .main_games {
+      padding-bottom: 60px !important;
+    }
+  }
+  @media (min-width: 768px) {
+    .mobile-bottom-nav {
+      display: none !important;
+    }
+  }
+</style>
+</head>
+<body class="h-full w-full bg-base-background active">
+
+<div class="w-full md:h-screen md:overflow-hidden bg-base-background game_app" id="app">
+  <div data-v-18cb80d8="">
+    <div class="flex h-full w-full flex-row text-white" data-v-18cb80d8="">
+  <!-- Sidebar -->
+<div class="h-screen sticky top-0 left-0 max-[767px]:sticky max-[1024px]:absolute z-[99992]" data-v-386157ea=""><div class="md:w-[256px] group sticky top-0 hidden h-screen flex-col transition-transform duration-500 ease-in-out bg-base-sidebar-background md:flex border-r border-base-border" data-v-386157ea=""><div class="flex justify-between items-center px-2 md:py-4 py-[14px] border-b-[1px] border-base-border" data-v-386157ea=""><button class="p-2" data-v-386157ea=""><svg class="lucide lucide-arrow-left-to-line-icon lucide-arrow-left-to-line" data-v-386157ea="" fill="none" height="24" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg"><path d="M3 19V5"></path><path d="m13 6-6 6 6 6"></path><path d="M7 12h14"></path></svg></button></div><div class="overflow-y-auto flex-grow overflow-x-hidden" data-v-386157ea=""><aside class="flex flex-col h-full justify-start gap-2 p-2 pt-6" data-v-386157ea=""><div class="flex flex-col gap-1 duration-150 px-2" data-v-37ba0874=""><div class="promo_race_bg" data-v-37ba0874=""><a class="promo_race_link px-3 py-1 flex cursor-pointer flex-row items-center gap-2 text-sm transition-all duration-300 ease-linear" data-v-37ba0874="" href="/promo-race/6756"><div style="width: 24px; height: 24px; display: none; align-items: center; justify-content: center; border-radius: 4px;"></div><img class="flex-shrink-0" data-v-37ba0874="" height="24.000" src="https://jjakinn.github.io/vivid-casino/assets/coin-BoIwyi0V.png" style="width: 24px; height: 24px;" width="24.000"/><p class="w-full delay-150 transition-opacity duration-150 ease-in-out font-semibold truncate" data-v-37ba0874="">2,000 SC Race</p><div style="width: 24px; height: 24px; display: none; align-items: center; justify-content: center; border-radius: 4px;"></div><img class="ml-auto" data-v-37ba0874="" height="24.000" src="https://jjakinn.github.io/vivid-casino/assets/right-arrow-BlX0lG76.png" style="width: 24px; height: 24px;" width="24.000"/></a></div><div class="px-3 py-1 flex cursor-pointer flex-row items-center gap-2 rounded-md text-sm border border-transparent transition-all duration-300 ease-linear hover:bg-base-sidebar-accent text-base-sidebar-accent-foreground" data-v-37ba0874=""><div style="width: 24px; height: 24px; display: none; align-items: center; justify-content: center; border-radius: 4px;">
+
+</div><img alt="Icon" class="flex-shrink-0" data-v-37ba0874="" height="24.000" src="https://jjakinn.github.io/vivid-casino/assets/home-D5p8tSee.png" style="width: 24px; height: 24px;" width="24.000"/><p class="w-full delay-150 transition-opacity duration-150 ease-in-out font-normal whitespace-nowrap" data-v-37ba0874="">Home</p></div><div class="px-3 py-1 flex cursor-pointer flex-row items-center gap-2 rounded-md text-sm border border-transparent transition-all duration-300 ease-linear hover:bg-base-sidebar-accent text-base-sidebar-accent-foreground" data-v-37ba0874=""><div style="width: 24px; height: 24px; display: none; align-items: center; justify-content: center; border-radius: 4px;">
+
+</div><img alt="Icon" class="flex-shrink-0" data-v-37ba0874="" height="24.000" src="data:image/png;base64,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" style="width: 24px; height: 24px;" width="24.000"/><p class="w-full delay-150 transition-opacity duration-150 ease-in-out font-normal whitespace-nowrap" data-v-37ba0874="">Favorites</p></div><div class="px-3 py-1 flex cursor-pointer flex-row items-center gap-2 rounded-md text-sm border border-transparent transition-all duration-300 ease-linear hover:bg-base-sidebar-accent text-base-sidebar-accent-foreground" data-v-37ba0874=""><div style="width: 24px; height: 24px; display: none; align-items: center; justify-content: center; border-radius: 4px;">
+
+</div><img alt="Icon" class="flex-shrink-0" data-v-37ba0874="" height="24.000" src="https://jjakinn.github.io/vivid-casino/assets/recent-BKH2o4oI.png" style="width: 24px; height: 24px;" width="24.000"/><p class="w-full delay-150 transition-opacity duration-150 ease-in-out font-normal whitespace-nowrap" data-v-37ba0874="">Recently Played</p></div><div class="px-3 py-1 flex cursor-pointer flex-row items-center gap-2 rounded-md text-sm border border-transparent transition-all duration-300 ease-linear hover:bg-base-sidebar-accent text-base-sidebar-accent-foreground" data-v-37ba0874=""><div style="width: 24px; height: 24px; display: none; align-items: center; justify-content: center; border-radius: 4px;">
+
+</div><img alt="Icon" class="flex-shrink-0" data-v-37ba0874="" height="24.000" src="data:image/png;base64,UklGRrQKAABXRUJQVlA4WAoAAAAQAAAAaAAAaAAAQUxQSIwDAAABoEbb1iFJel9Eqti2bdvdY9u2bdu2bdtq27btLlcFvjfMeN8Xd/wnIiaA/hGtdvGXb3X6U+i3gJmLh+HLnLyRf7ulEF3mzO38u3oguNzzd/IfHozNubyI//hoaO7tHv+xPh5Z8gGPszkZWOrpgLM6LSbqt6byngg5u7NtcxsOOfH6x98bOXnqlPHfvnb/pYd1L1RCBe+FHOEiq2odcM+odUVVmrPUXtHakfce0tiJVv0TzVFutCex24ury1m4cu3Xl3RU2eW/oznygksP6ZxnQ7VzR5Wy0XDryCsbZJF8NmRB7e1a9v7V3V0zybNWs41Fz/VQv7dPGYvrYPRQZaDd55ot9b4coH5zJxst2VssccY2trjq3S6K6FUz/GVGqPbrAdvtf9JZvWdoSjWZdhPZ/k3nfmJGv5EW6b2M4xj6Zor2Icmuqxhv+XUpiWaLGG/p+SRZOJLxFl+elnCfZLzbzkyS5Pk+nnWHuyTZupThLhjukGT6Q4Y7rZci0TN9OKM6kGy7tYz2p8Ykq15jtB/kkHDfXWheTJCweoWx6sddkm63FYr/9r5JEj8zxHIiyed+wVjXtZfrsgYMf5Mndq5GE14g5bzJcDc0FqoxHQ8/r2Q6bARU0Vtm7ypAPNIROYsRByNEboTEnyqJxzFVtZV4CRNfL/EKqNkZgRdAlQwTeBiUvl/gelA8NR3tdFSb20fbzQdVcVi0tutB6ZujFUwBxW+rSOpFVJPdSHRiCGppfrS2W0FtrBctNQbU5ubR6BKNaWtbgQ5FoNoJJCZi2tJagM7wIW1qKlFrGaT1tSXoshDRwoxIjQWIflAidHoA6CGSzR2DJzhFiIb7cIraSjnvwBnnSlHj1WiuJvmDK7CUdjKgLtVQPnAMUPJtJHp/MtpyGZBlOWZot50w9Nlkev8iFNNcY+q4CgzhcDLvXhtAeItsTN/uA1jX0ApKXu3HzjuRLE1c6sXtk2q2kHNRcbwWdyZ7nUNm+jHatoeyiKj1y2Fsyg4ly6vfUxqT8vPI+sQh82NRck3aPqJqN+6yb+6BKYql0+dzzy49sodDcc0cNCO0qOrl5hTnamcvCG1Zeloexdwd/rVvQ8U9uQRQ9XhykzbkvdWWUOYe9vp6raX0hqc6EdRE3xs+X7QziKCrti187cA8ApzX7YS73xs3e9HKVatWLp4x+t37Th9YSxFuN12tXqPGDWtlXPpfLlZQOCACBwAAECIAnQEqaQBpAD6FNpRHpSMiITT2jpCgEIloAMwUsEef0nmn2X/D/ijirTDW7PQ35g36tdKnzMftv6w/pl9Az+xdUZ6GfS4eTlmqtp/HHYB3RWd4sX79uZtcSj2kedO07KjT+2x/n16a7DDH+kUG0hzbkHOXgT5t3/GRuKKkFe6bNW0SDPiEZQVluvgSQ673c4ucVXmT5c+o5cHlhcWbgkBTvzX1q5NamTYKgW53I3L14wY2vjvijKi2cKQOSLkyT7npdt+T6IukBKmc9z+5sYZNJXsAqw2kzIWtTBzAhAHhSTzmsdVQu2la8wYruSy1QQ6mFpCzFaehlYABsFXRxaD8Gge8jnZ4OjRPboX74sq0Fb3sssEuvAAA/vz4RY/8MS9J4RE3ajW6IN2+V5ZihRM6fi6N009xbk3YGL7aV/n856fgdXev86IsAUhqDP3Cfe9lrkIgd39/a8xHKR6pi+6V2QanTJzRG3mmsvqcvwtbGk3g33nL1U/gJXicndlbv24HnOdovA6Z1QEO9Ypt35np/lPzF6o4E+JhCmCatmppwtlSkc7wo9NpScQea6PunT18zhP2T0jqv+rFssNVA+eJTnGpmp9tf9Tl//vSD/96x//+9IzCTMn+XS2Nd2mKxP+bo4LHw35CfIqqjhTLOkxHShKypPjbruufQowhgzDJKdz77kkJ4OSB0AamRFoALBx/xHsnidG2fPxrYZPORbrQQFr7WC9PhRnYyh116KHH/Ryzpsfd2oV8ls/3yb3hGeGrTho37ve/G5YGQ7vim/cMjzzUtuFtHSXkB2au1fskwr7vcM/eHpupT2FT48SoxfhPygRWBcujsviJVXjM4ePggD8M26cKDsMyvSPYG1bEKYjP8S8neP7HlwbDHea8aPsSm/M79FTISJFuZsPI+3WSsvrkZG7vyaa1QaQfCja/Ncha6Sgde8tYFQjUWEwhsiFH6lJRTti15RqeUjm51K87eMw6ex2xAL895w2hc9oJSTniN8csx9+chtGo5GQWVoEbGDvFmpkAZUhUYsXVrhnWH5nXk+re3RFZVxIfy3/+WSHJORPpws5ilL9dq0VtiQsjl7q5RP5szq6zH/JXxRR5SrYyeOF386tt/83M2Vk2b0d8J7+si2AvYLIGbCnpHQzyAID2FXY6UQ83qNds0xPmGnifInm/lR2H2VTGM+hXflUPa0kU+W6WgEdsPDHsmt8l32xhn30t7/Qg5pS83WCINfSFG6qS0XW33Z4jnr707UdSaOYgpDWROB9J4Ej8gdJUY4QEWkbKg/jrZKPj4gBJIGq+iIw4Bf/lG+I4vQzRra7j3/aHQ9+I6uUXNq1cVqEtzzYPnuHYc9I5fKgcOYIgFVW9pflqw8M5cjwHuJ8QKm0ZlGQXOfrHWa/vk2Sbsw2hkccMznvhvl54Jxb0gbfYSymH8BfP1IxeY/a8Vnu39BPcG82Dnyze0gvCvl5SHBS5gMJ0bBg0TikxJzvOBe/k39uiRB5NoCvthnRfsf/3CMNpPsD0slNezc5o47BJr7EWsuaYaWXSQD9mSpsz5/7Q1zsVO480xDAw1Uuvk3gh72PG+dCWNdKb6YhnZVrPAJRlOAngExmc4fg3rtZ+gn4Kz8hwnFHaArxHUwOf/QdIWzOS4tJkWUySVY+GWqzn8h6jOYTq4rkhOmMVtdEwQvzr1SAODASQ+ljXIbCQUKOICkusYM23VphuKnCXKaocduQp7tMqqPs+JX2MzO2CkP/3KJ+kiJasbHBeBSziIn0YuO3nrbZkWk2HXHxHOugrgDVuIXL4AU2OMr4lnDvHOb2S6Gcq1pJ4gw/UccTxPxYy6Eu6EU+/UDmSidc0oABpxy2crrQeykPyC2TYh4iZebtmvzQj2smCQiFe+z8AhSo91PDYjosRKz0s0haxOFaT1CX88M73DqdW3SlNW5l4VQu35lopctODkBY+E6Xl0ycsItoXoCbGj5qVZYvqo7OglUrH37GagpRt8YabC1pEp6fAW7JJF9+vaOabgU6gIKZmaf5RAF3hVEYjiP+582P/OSXFmmWx6E0Uyxs3lZJuepwgSIUZtVPd85Gd8LtSPQVGa0B5Kd7CRntpqjvEmd/3ac8lrH+PFn2/cljqQH2mCvof7e8aW24tCHw2yhjBsuZPuTtl7p29ECU+V50J5OKP7hryBRSPoS6q1sLErhF3AP0dnGpSe0JsxhOq5dtuziBZPvkR/Ox2n2Z5YlHjUutD2R3+by/GHyKtNmfp2EcA02IuyuKxcfXsQc/VSlA0zU7scEq1kBM8htqz8cyVgxWiwgo0Nf/mJbr+l4G7N9VlZZcvJM0b/IWn0j2XCFEAAAhCFMuzGEKJEm+i/SsGtC38PzEuHPtCnxl8UC690fgFWwAA" style="width: 24px; height: 24px;" width="24.000"/><p class="w-full delay-150 transition-opacity duration-150 ease-in-out font-normal whitespace-nowrap" data-v-37ba0874="">Challenges</p></div><div class="px-3 py-1 flex cursor-pointer flex-row items-center gap-2 rounded-md text-sm border border-transparent transition-all duration-300 ease-linear hover:bg-base-sidebar-accent text-base-sidebar-accent-foreground" data-v-37ba0874=""><div style="width: 24px; height: 24px; display: none; align-items: center; justify-content: center; border-radius: 4px;">
+
+</div><img alt="Icon" class="flex-shrink-0" data-v-37ba0874="" height="24.000" src="data:image/png;base64,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" style="width: 24px; height: 24px;" width="24.000"/><p class="w-full delay-150 transition-opacity duration-150 ease-in-out font-normal whitespace-nowrap" data-v-37ba0874="">Refer A Friend</p></div><a class="px-3 py-1 flex cursor-pointer flex-row items-center gap-2 rounded-md text-sm border border-transparent transition-all duration-300 ease-linear hover:bg-base-sidebar-accent text-base-sidebar-accent-foreground" data-v-37ba0874="" href="/promotions"><div style="width: 24px; height: 24px; display: none; align-items: center; justify-content: center; border-radius: 4px;">
+
+</div><img alt="Promotions" class="flex-shrink-0" data-v-37ba0874="" height="24.000" src="https://jjakinn.github.io/vivid-casino/images/home/gift.png" style="width: 24px; height: 24px;" width="24.000"/><p class="w-full transition-opacity duration-150 delay-100 ease-in-out font-normal whitespace-nowrap" data-v-37ba0874="">Promotions </p></a><!-- --></div><!-- --><div data-v-37ba0874=""><div class="flex flex-row items-center justify-between p-2.5 opacity-70" data-v-37ba0874=""><p class="font-medium text-sm text-[#F4F4F5]" data-v-37ba0874="">Games</p></div><div class="overflow-hidden transition-all duration-300 ease-in-out duration-150 px-2" data-v-37ba0874="" style="max-height: 616px;"><div class="flex flex-col gap-1" data-v-37ba0874=""><a class="px-3 py-1 flex cursor-pointer flex-row items-center gap-2 rounded-md text-sm border border-transparent transition-all duration-300 ease-linear hover:bg-base-sidebar-accent text-base-sidebar-accent-foreground" data-v-37ba0874="" href="/casino/group/popgames"><div style="width: 24px; height: 24px; display: none; align-items: center; justify-content: center; border-radius: 4px;">
+
+</div><img alt="Icon" class="flex-shrink-0" data-fallback="https://d3ta80o5sbquaz.cloudfront.net/categories/default.webp" data-v-37ba0874="" height="24.000" src="https://d3ta80o5sbquaz.cloudfront.net/categories/popgames.webp" style="width: 24px; height: 24px;" width="24.000"/><p class="w-full transition-opacity duration-150 delay-100 ease-in-out font-normal whitespace-nowrap" data-v-37ba0874="">Popular Games</p></a><a class="px-3 py-1 flex cursor-pointer flex-row items-center gap-2 rounded-md text-sm border border-transparent transition-all duration-300 ease-linear hover:bg-base-sidebar-accent text-base-sidebar-accent-foreground" data-v-37ba0874="" href="/casino/group/new"><div style="width: 24px; height: 24px; display: none; align-items: center; justify-content: center; border-radius: 4px;">
+
+</div><img alt="Icon" class="flex-shrink-0" data-fallback="https://d3ta80o5sbquaz.cloudfront.net/categories/default.webp" data-v-37ba0874="" height="24.000" src="https://d3ta80o5sbquaz.cloudfront.net/categories/new.webp" style="width: 24px; height: 24px;" width="24.000"/><p class="w-full transition-opacity duration-150 delay-100 ease-in-out font-normal whitespace-nowrap" data-v-37ba0874="">New Releases</p></a><a class="px-3 py-1 flex cursor-pointer flex-row items-center gap-2 rounded-md text-sm border border-transparent transition-all duration-300 ease-linear hover:bg-base-sidebar-accent text-base-sidebar-accent-foreground" data-v-37ba0874="" href="/casino/group/Only-on-Chanced"><div style="width: 24px; height: 24px; display: none; align-items: center; justify-content: center; border-radius: 4px;">
+
+</div><img alt="Icon" class="flex-shrink-0" data-fallback="https://d3ta80o5sbquaz.cloudfront.net/categories/default.webp" data-v-37ba0874="" height="24.000" src="https://d3ta80o5sbquaz.cloudfront.net/categories/rubyplay-christmas.webp" style="width: 24px; height: 24px;" width="24.000"/><p class="w-full transition-opacity duration-150 delay-100 ease-in-out font-normal whitespace-nowrap" data-v-37ba0874="">Home of Exclusives</p></a><a class="px-3 py-1 flex cursor-pointer flex-row items-center gap-2 rounded-md text-sm border border-transparent transition-all duration-300 ease-linear hover:bg-base-sidebar-accent text-base-sidebar-accent-foreground" data-v-37ba0874="" href="/casino/group/playsonpowerchance"><div style="width: 24px; height: 24px; display: none; align-items: center; justify-content: center; border-radius: 4px;">
+
+</div><img alt="Icon" class="flex-shrink-0" data-fallback="https://d3ta80o5sbquaz.cloudfront.net/categories/default.webp" data-v-37ba0874="" height="24.000" src="https://d3ta80o5sbquaz.cloudfront.net/categories/playsonpowerchance.webp" style="width: 24px; height: 24px;" width="24.000"/><p class="w-full transition-opacity duration-150 delay-100 ease-in-out font-normal whitespace-nowrap" data-v-37ba0874="">Power Chance Jackpot</p></a><a class="px-3 py-1 flex cursor-pointer flex-row items-center gap-2 rounded-md text-sm border border-transparent transition-all duration-300 ease-linear hover:bg-base-sidebar-accent text-base-sidebar-accent-foreground" data-v-37ba0874="" href="/casino/group/enjoydrops"><div style="width: 24px; height: 24px; display: none; align-items: center; justify-content: center; border-radius: 4px;">
+
+</div><img alt="Icon" class="flex-shrink-0" data-fallback="https://d3ta80o5sbquaz.cloudfront.net/categories/default.webp" data-v-37ba0874="" height="24.000" src="https://d3ta80o5sbquaz.cloudfront.net/categories/enjoydrops.webp" style="width: 24px; height: 24px;" width="24.000"/><p class="w-full transition-opacity duration-150 delay-100 ease-in-out font-normal whitespace-nowrap" data-v-37ba0874="">Let's Enjoy Drops</p></a><a class="px-3 py-1 flex cursor-pointer flex-row items-center gap-2 rounded-md text-sm border border-transparent transition-all duration-300 ease-linear hover:bg-base-sidebar-accent text-base-sidebar-accent-foreground" data-v-37ba0874="" href="/casino/group/jackpothuntpk"><div style="width: 24px; height: 24px; display: none; align-items: center; justify-content: center; border-radius: 4px;">
+
+</div><img alt="Icon" class="flex-shrink-0" data-fallback="https://d3ta80o5sbquaz.cloudfront.net/categories/default.webp" data-v-37ba0874="" height="24.000" src="https://d3ta80o5sbquaz.cloudfront.net/categories/jackpothuntpk.webp" style="width: 24px; height: 24px;" width="24.000"/><p class="w-full transition-opacity duration-150 delay-100 ease-in-out font-normal whitespace-nowrap" data-v-37ba0874="">Jackpot Hunt</p></a><a class="px-3 py-1 flex cursor-pointer flex-row items-center gap-2 rounded-md text-sm border border-transparent transition-all duration-300 ease-linear hover:bg-base-sidebar-accent text-base-sidebar-accent-foreground" data-v-37ba0874="" href="/casino/group/providerofthemonth"><div style="width: 24px; height: 24px; display: none; align-items: center; justify-content: center; border-radius: 4px;">
+
+</div><img alt="Icon" class="flex-shrink-0" data-fallback="https://d3ta80o5sbquaz.cloudfront.net/categories/default.webp" data-v-37ba0874="" height="24.000" src="https://d3ta80o5sbquaz.cloudfront.net/categories/providerofthemonth.webp" style="width: 24px; height: 24px;" width="24.000"/><p class="w-full transition-opacity duration-150 delay-100 ease-in-out font-normal whitespace-nowrap" data-v-37ba0874="">Provider of the Month</p></a><a class="px-3 py-1 flex cursor-pointer flex-row items-center gap-2 rounded-md text-sm border border-transparent transition-all duration-300 ease-linear hover:bg-base-sidebar-accent text-base-sidebar-accent-foreground" data-v-37ba0874="" href="/casino/group/vmfavorites"><div style="width: 24px; height: 24px; display: none; align-items: center; justify-content: center; border-radius: 4px;">
+
+</div><img alt="Icon" class="flex-shrink-0" data-fallback="https://d3ta80o5sbquaz.cloudfront.net/categories/default.webp" data-v-37ba0874="" height="24.000" src="https://d3ta80o5sbquaz.cloudfront.net/categories/vmfavorites.webp" style="width: 24px; height: 24px;" width="24.000"/><p class="w-full transition-opacity duration-150 delay-100 ease-in-out font-normal whitespace-nowrap" data-v-37ba0874="">Vegas Matt's Favorites</p></a><a class="px-3 py-1 flex cursor-pointer flex-row items-center gap-2 rounded-md text-sm border border-transparent transition-all duration-300 ease-linear hover:bg-base-sidebar-accent text-base-sidebar-accent-foreground" data-v-37ba0874="" href="/casino/group/recently-added"><div style="width: 24px; height: 24px; display: none; align-items: center; justify-content: center; border-radius: 4px;">
+
+</div><img alt="Icon" class="flex-shrink-0" data-fallback="https://d3ta80o5sbquaz.cloudfront.net/categories/default.webp" data-v-37ba0874="" height="24.000" src="https://d3ta80o5sbquaz.cloudfront.net/categories/recent.webp" style="width: 24px; height: 24px;" width="24.000"/><p class="w-full transition-opacity duration-150 delay-100 ease-in-out font-normal whitespace-nowrap" data-v-37ba0874="">Recent Hits</p></a><a class="px-3 py-1 flex cursor-pointer flex-row items-center gap-2 rounded-md text-sm border border-transparent transition-all duration-300 ease-linear hover:bg-base-sidebar-accent text-base-sidebar-accent-foreground" data-v-37ba0874="" href="/casino/group/live"><div style="width: 24px; height: 24px; display: none; align-items: center; justify-content: center; border-radius: 4px;">
+
+</div><img alt="Icon" class="flex-shrink-0" data-fallback="https://d3ta80o5sbquaz.cloudfront.net/categories/default.webp" data-v-37ba0874="" height="24.000" src="https://d3ta80o5sbquaz.cloudfront.net/categories/live.webp" style="width: 24px; height: 24px;" width="24.000"/><p class="w-full transition-opacity duration-150 delay-100 ease-in-out font-normal whitespace-nowrap" data-v-37ba0874="">Live Dealers</p></a><a class="px-3 py-1 flex cursor-pointer flex-row items-center gap-2 rounded-md text-sm border border-transparent transition-all duration-300 ease-linear hover:bg-base-sidebar-accent text-base-sidebar-accent-foreground" data-v-37ba0874="" href="/casino/group/featured"><div style="width: 24px; height: 24px; display: none; align-items: center; justify-content: center; border-radius: 4px;">
+
+</div><img alt="Icon" class="flex-shrink-0" data-fallback="https://d3ta80o5sbquaz.cloudfront.net/categories/default.webp" data-v-37ba0874="" height="24.000" src="https://d3ta80o5sbquaz.cloudfront.net/categories/featured.webp" style="width: 24px; height: 24px;" width="24.000"/><p class="w-full transition-opacity duration-150 delay-100 ease-in-out font-normal whitespace-nowrap" data-v-37ba0874="">Chanced Showcase </p></a><a class="px-3 py-1 flex cursor-pointer flex-row items-center gap-2 rounded-md text-sm border border-transparent transition-all duration-300 ease-linear hover:bg-base-sidebar-accent text-base-sidebar-accent-foreground" data-v-37ba0874="" href="/casino/group/chanced-races"><div style="width: 24px; height: 24px; display: none; align-items: center; justify-content: center; border-radius: 4px;">
+
+</div><img alt="Icon" class="flex-shrink-0" data-fallback="https://d3ta80o5sbquaz.cloudfront.net/categories/default.webp" data-v-37ba0874="" height="24.000" src="https://d3ta80o5sbquaz.cloudfront.net/categories/chanced-races.webp" style="width: 24px; height: 24px;" width="24.000"/><p class="w-full transition-opacity duration-150 delay-100 ease-in-out font-normal whitespace-nowrap" data-v-37ba0874="">Chanced Races</p></a><a class="px-3 py-1 flex cursor-pointer flex-row items-center gap-2 rounded-md text-sm border border-transparent transition-all duration-300 ease-linear hover:bg-base-sidebar-accent text-base-sidebar-accent-foreground" data-v-37ba0874="" href="/casino/group/trending"><div style="width: 24px; height: 24px; display: none; align-items: center; justify-content: center; border-radius: 4px;">
+
+</div><img alt="Icon" class="flex-shrink-0" data-fallback="https://d3ta80o5sbquaz.cloudfront.net/categories/default.webp" data-v-37ba0874="" height="24.000" src="https://d3ta80o5sbquaz.cloudfront.net/categories/trending.webp" style="width: 24px; height: 24px;" width="24.000"/><p class="w-full transition-opacity duration-150 delay-100 ease-in-out font-normal whitespace-nowrap" data-v-37ba0874="">Trending</p></a><a class="px-3 py-1 flex cursor-pointer flex-row items-center gap-2 rounded-md text-sm border border-transparent transition-all duration-300 ease-linear hover:bg-base-sidebar-accent text-base-sidebar-accent-foreground" data-v-37ba0874="" href="/casino/group/slots"><div style="width: 24px; height: 24px; display: none; align-items: center; justify-content: center; border-radius: 4px;">
+
+</div><img alt="Icon" class="flex-shrink-0" data-fallback="https://d3ta80o5sbquaz.cloudfront.net/categories/default.webp" data-v-37ba0874="" height="24.000" src="https://d3ta80o5sbquaz.cloudfront.net/categories/slots.webp" style="width: 24px; height: 24px;" width="24.000"/><p class="w-full transition-opacity duration-150 delay-100 ease-in-out font-normal whitespace-nowrap" data-v-37ba0874="">Slot Games</p></a><a class="px-3 py-1 flex cursor-pointer flex-row items-center gap-2 rounded-md text-sm border border-transparent transition-all duration-300 ease-linear hover:bg-base-sidebar-accent text-base-sidebar-accent-foreground" data-v-37ba0874="" href="/casino/group/pgsoft"><div style="width: 24px; height: 24px; display: none; align-items: center; justify-content: center; border-radius: 4px;">
+
+</div><img alt="Icon" class="flex-shrink-0" data-fallback="https://d3ta80o5sbquaz.cloudfront.net/categories/default.webp" data-v-37ba0874="" height="24.000" src="https://d3ta80o5sbquaz.cloudfront.net/categories/avatarux.webp" style="width: 24px; height: 24px;" width="24.000"/><p class="w-full transition-opacity duration-150 delay-100 ease-in-out font-normal whitespace-nowrap" data-v-37ba0874="">PG Soft</p></a><a class="px-3 py-1 flex cursor-pointer flex-row items-center gap-2 rounded-md text-sm border border-transparent transition-all duration-300 ease-linear hover:bg-base-sidebar-accent text-base-sidebar-accent-foreground" data-v-37ba0874="" href="/casino/group/fptables"><div style="width: 24px; height: 24px; display: none; align-items: center; justify-content: center; border-radius: 4px;">
+
+</div><img alt="Icon" class="flex-shrink-0" data-fallback="https://d3ta80o5sbquaz.cloudfront.net/categories/default.webp" data-v-37ba0874="" height="24.000" src="https://d3ta80o5sbquaz.cloudfront.net/categories/fptables.webp" style="width: 24px; height: 24px;" width="24.000"/><p class="w-full transition-opacity duration-150 delay-100 ease-in-out font-normal whitespace-nowrap" data-v-37ba0874="">First Person Tables</p></a></div></div></div><div class="mt-auto pb-2 pt-4 duration-150 px-2" data-v-37ba0874=""><div class="px-3 py-1 flex cursor-pointer flex-row items-center gap-2 text-sm rounded-md border border-transparent transition-all duration-300 ease-linear hover:bg-base-sidebar-accent text-base-sidebar-accent-foreground" data-v-37ba0874=""><div style="width: 24px; height: 24px; display: none; align-items: center; justify-content: center; border-radius: 4px;">
+
+</div><img alt="Live support" class="flex-shrink-0" data-v-37ba0874="" height="24.000" src="data:image/png;base64,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" style="width: 24px; height: 24px;" width="24.000"/><p class="w-full transition-opacity duration-150 delay-100 ease-in-out font-normal whitespace-nowrap" data-v-37ba0874=""> Live Support </p></div></div></aside></div></div></div>
+  <!-- Main Content -->
+  <div class="flex flex-col h-screen w-full md:w-full max-[1024px]:pl-[48px] max-[767px]:pl-0 relative" data-v-18cb80d8="" style="">
+    <!-- Header -->
+    <header class="fixed top-0 left-0 right-0 min-h-[63px] md:min-h-[73px] z-[99991]" data-v-18cb80d8=""><div class="top-header-inner relative flex w-full h-full flex-row px-4 md:px-6 md:py-[12px] py-[7px] items-center justify-center border-solid bg-base-background border-b-[1px] border-base-border" data-v-18cb80d8=""><div class="relative flex w-full max-w-[1200px] justify-between"><div class="min-h-[40px] flex justify-between items-center relative"><a aria-current="page" class="router-link-active router-link-exact-active" href="/"><img alt="Vivid" class="xsm_m:block hidden lg:w-[180px] sm:w-[150px] sm_m:w-[120px] w-[100px] object-contain" src="/vivid-casino/images/home/vivid-logo.png?v=5" style="object-fit:contain;height:auto;max-height:50px;transform:translateY(6px);"/><img alt="Vivid" class="xsm_m:hidden block h-8 object-contain" src="/vivid-casino/images/home/vivid-logo.png?v=5" style="object-fit:contain;height:32px;width:auto;"/></a></div><div class="flex items-center md:gap-4 gap-3"><!-- --><div class="relative" data-headlessui-state=""><div><button aria-expanded="false" class="bg-base-background hover:bg-base-accent border border-base-input-border rounded-md text-base-foreground font-medium text-sm px-4 sm:py-2.5 py-2 flex items-center gap-2 outline-none" data-headlessui-state="" id="headlessui-popover-button-v-1-0" type="button"><div class="flex items-center gap-2"><img alt="icon" class="h-4 w-4" src="/vivid-casino/assets/gold-BB1k7Ztr.png"/><span class="sm_m:text-sm text-xs">0.00</span></div><div class=""><svg class="lucide w-5 h-5 lucide-chevron-down-icon lucide-chevron-down w-5 h-5" fill="none" height="24" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg"><path d="m6 9 6 6 6-6"></path></svg></div></button><!-- --></div><!-- --></div><div class="relative hidden max-h-full" data-headlessui-state=""><button aria-expanded="false" class="text-opacity-90 flex-inline flex items-center rounded-xl bg-secondary-light px-2 py-2 font-semibold transition delay-0 duration-150 ease-in-out hover:scale-105 md:h-12 md:px-4 md:py-3" data-headlessui-state="" id="headlessui-popover-button-v-1-5" type="button"><div class="flex flex-row items-center space-x-2 max-[575px]:space-x-1 text-slate-300"><span class="flex flex-row text-sm md:text-lg">0.00</span><img alt="icon" class="ml-2 h-5 w-5 max-[480px]:!ml-1 max-[480px]:w-4 max-[480px]:h-4"/><span class="h-full w-[1px] text-text-dim-color brightness-90 max-[400px]:hidden">|</span><img alt="icon" class="mx-2" src="data:image/svg+xml,%3csvg%20width='15'%20height='7'%20viewBox='0%200%2015%207'%20fill='none'%20xmlns='http://www.w3.org/2000/svg'%3e%3cpath%20d='M0.825544%201.02997C0.575544%201.07997%200.323545%201.20597%200.170545%201.43497C-0.135455%201.89296%20-0.00746468%202.53096%200.451535%202.83596L6.44253%206.82094C6.77753%207.04394%207.23054%207.04394%207.56554%206.82094L13.5566%202.83596C14.0156%202.53096%2014.1435%201.89296%2013.8375%201.43497C13.5315%200.976966%2012.8925%200.848968%2012.4335%201.15497L7.00354%204.76595L1.57454%201.15497C1.34554%201.00197%201.07654%200.979967%200.825544%201.02997Z'%20fill='%237EA0AD'/%3e%3c/svg%3e"/></div></button><!-- --><!-- --></div><button class="btn-primary py-[7px] px-5 md:flex hidden items-center justify-center gap-2"><img alt="icon" class="h-[26px]" src="/vivid-casino/assets/wallet-CtfedzaM.svg"/><span class="max-[575px]:hidden"> Wallet</span></button></div><div class="flex items-center md:gap-4"><div class="md:flex xl:w-64 lg:w-48 w-32 hidden items-center"><button class="w-full flex items-center gap-1 px-3 py-2 bg-base-input-background border border-base-input-border rounded-md text-base-muted-foreground placeholder-base-muted-foreground focus:outline-none"><svg class="lucide w-4 h-4 !text-base-muted-foreground lucide-search-icon lucide-search w-4 h-4 !text-base-muted-foreground" fill="none" height="24" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg"><path d="m21 21-4.34-4.34"></path><circle cx="11" cy="11" r="8"></circle></svg><span class="text-sm">Search</span></button></div><div data-headlessui-state=""><button aria-expanded="false" class="relative flex items-center outline-none md:px-0 p-3" data-headlessui-state="" id="headlessui-popover-button-v-1-10" type="button"><!-- --><!-- --><svg class="lucide size-6 lucide-bell-icon lucide-bell size-6" fill="none" height="24" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg"><path d="M10.268 21a2 2 0 0 0 3.464 0"></path><path d="M3.262 15.326A1 1 0 0 0 4 17h16a1 1 0 0 0 .74-1.673C19.41 13.956 18 12.499 18 8A6 6 0 0 0 6 8c0 4.499-1.411 5.956-2.738 7.326"></path></svg></button><!-- --><!-- --></div><div class="relative"><div><div class="relative" data-headlessui-state=""><div><button aria-expanded="false" class="flex items-center outline-none md:pl-0 pl-2 py-3" data-headlessui-state="" id="headlessui-popover-button-v-1-15" type="button"><span class="sr-only">Open user menu</span><svg class="lucide w-6 md:block hidden lucide-user-icon lucide-user w-6 md:block hidden" fill="none" height="24" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg"><path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg><svg class="lucide w-6 md:hidden lucide-circle-user-round-icon lucide-circle-user-round w-6 md:hidden" fill="none" height="24" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg"><path d="M18 20a6 6 0 0 0-12 0"></path><circle cx="12" cy="10" r="4"></circle><circle cx="12" cy="12" r="10"></circle></svg></button><!-- --></div><!-- --></div><!-- --></div></div></div></div></div></header>
+
+    <!-- Game Content -->
+    <div class="w-full flex-1 overflow-y-auto main_games" style="padding-top: 63px;">
+      <div class="!mt-0 md:mb-0 flex w-full grow touch-pan-y flex-col mb-[65px]">
+        <main class="p-4 md:p-6 w-full">
+          <div class="max-w-[1200px] w-full mx-auto">
+            <!-- Game Hero Section -->
+            <div class="flex flex-col lg:flex-row gap-6 mb-8">
+              <!-- Game Image -->
+              <div class="flex-shrink-0 mx-auto lg:mx-0">
+                <div class="relative rounded-xl overflow-hidden shadow-2xl" style="width: 280px; height: 392px;">
+                  <img id="gameImage" alt="Game" class="w-full h-full object-cover" src=""/>
+                </div>
+              </div>
+              
+              <!-- Game Info -->
+              <div class="flex-1 flex flex-col justify-center gap-4">
+                <div>
+                  <div class="text-sm text-blue-400 font-semibold mb-1" id="gameProvider">PROVIDER</div>
+                  <h1 class="text-3xl md:text-4xl font-bold text-white" id="gameTitle">Game Title</h1>
+                </div>
+                
+                <div class="flex flex-wrap gap-3">
+                  <span class="px-3 py-1 rounded-full bg-blue-600/20 text-blue-400 text-sm font-medium border border-blue-600/30">Slot</span>
+                  <span class="px-3 py-1 rounded-full bg-green-600/20 text-green-400 text-sm font-medium border border-green-600/30">RTP 96.5%</span>
+                  <span class="px-3 py-1 rounded-full bg-purple-600/20 text-purple-400 text-sm font-medium border border-purple-600/30">High Volatility</span>
+                </div>
+                
+                <p class="text-slate-400 text-sm leading-relaxed max-w-xl">
+                  Experience the thrill of this exciting slot game with stunning graphics, immersive gameplay, and the chance to win big. Features include free spins, bonus rounds, and progressive jackpots.
+                </p>
+                
+                <div class="flex gap-3 mt-2">
+                  <button class="btn-primary px-8 py-3 text-lg flex items-center gap-2" onclick="playGame()">
+                    <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24"><polygon points="5 3 19 12 5 21 5 3"></polygon></svg>
+                    Play Now
+                  </button>
+                  <button class="rounded-md border border-slate-600 bg-[#1e293b] px-8 py-3 text-lg font-semibold text-white flex items-center justify-center transition-all duration-200 hover:bg-[#334155]" onclick="demoGame()">
+                    Play Demo
+                  </button>
+                </div>
+              </div>
+            </div>
+            
+            <!-- Game Screen / Iframe Area -->
+            <div class="w-full bg-black rounded-xl overflow-hidden mb-8 relative" style="aspect-ratio: 16/9; max-height: 600px;">
+              <div id="gameFrameContainer" class="w-full h-full flex items-center justify-center">
+                <div class="text-center">
+                  <div class="w-16 h-16 border-4 border-blue-600 border-t-transparent rounded-full animate-spin mx-auto mb-4"></div>
+                  <p class="text-slate-400">Loading game...</p>
+                </div>
+              </div>
+              <iframe id="gameFrame" class="w-full h-full border-none hidden" allow="fullscreen; autoplay" allowfullscreen></iframe>
+            </div>
+            
+            <!-- Latest Winners -->
+            <div class="mb-8">
+              <div class="flex items-center gap-2 mb-4">
+                <svg class="w-6 h-6 text-yellow-500" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24"><path d="M6 9H4.5a2.5 2.5 0 0 1 0-5H6"></path><path d="M18 9h1.5a2.5 2.5 0 0 0 0-5H18"></path><path d="M4 22h16"></path><path d="M10 14.66V17c0 .55-.47.98-.97 1.21C7.85 18.75 7 19.8 7 21c0 1.66 1.34 3 3 3"></path><path d="M14 14.66V17c0 .55.47.98.97 1.21C16.15 18.75 17 19.8 17 21c0 1.66-1.34 3-3 3"></path><path d="M18 2H6v7a6 6 0 0 0 12 0V2Z"></path></svg>
+                <h2 class="text-xl font-bold text-white">Latest Winners</h2>
+              </div>
+              <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+                <div class="bg-base-sidebar-background rounded-lg p-4 border border-base-border">
+                  <div class="flex items-center gap-3 mb-2">
+                    <div class="w-8 h-8 rounded-full bg-blue-600 flex items-center justify-center text-sm font-bold">J</div>
+                    <span class="text-sm font-medium">Jake_99</span>
+                  </div>
+                  <div class="text-green-400 font-bold text-lg">$1,250.00</div>
+                  <div class="text-slate-500 text-xs mt-1">2 minutes ago</div>
+                </div>
+                <div class="bg-base-sidebar-background rounded-lg p-4 border border-base-border">
+                  <div class="flex items-center gap-3 mb-2">
+                    <div class="w-8 h-8 rounded-full bg-purple-600 flex items-center justify-center text-sm font-bold">S</div>
+                    <span class="text-sm font-medium">Sarah_Win</span>
+                  </div>
+                  <div class="text-green-400 font-bold text-lg">$3,400.00</div>
+                  <div class="text-slate-500 text-xs mt-1">5 minutes ago</div>
+                </div>
+                <div class="bg-base-sidebar-background rounded-lg p-4 border border-base-border">
+                  <div class="flex items-center gap-3 mb-2">
+                    <div class="w-8 h-8 rounded-full bg-yellow-600 flex items-center justify-center text-sm font-bold">M</div>
+                    <span class="text-sm font-medium">MikeHighRoller</span>
+                  </div>
+                  <div class="text-green-400 font-bold text-lg">$850.00</div>
+                  <div class="text-slate-500 text-xs mt-1">8 minutes ago</div>
+                </div>
+                <div class="bg-base-sidebar-background rounded-lg p-4 border border-base-border">
+                  <div class="flex items-center gap-3 mb-2">
+                    <div class="w-8 h-8 rounded-full bg-red-600 flex items-center justify-center text-sm font-bold">L</div>
+                    <span class="text-sm font-medium">Lucky_Luke</span>
+                  </div>
+                  <div class="text-green-400 font-bold text-lg">$5,200.00</div>
+                  <div class="text-slate-500 text-xs mt-1">12 minutes ago</div>
+                </div>
+              </div>
+            </div>
+            
+            <!-- Similar Games -->
+            <div class="mb-8">
+              <div class="flex items-center justify-between mb-4">
+                <h2 class="text-xl font-bold text-white">Similar Games</h2>
+                <a href="lobby.html" class="text-blue-400 text-sm hover:text-blue-300 transition">View All</a>
+              </div>
+              <div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-4">
+                <a href="game.html?game=sweetbonanza&provider=pragmatic&title=Sweet+Bonanza&src=https://d3ta80o5sbquaz.cloudfront.net/images/pragmatic/vs20fruitsw.webp" class="group">
+                  <div class="relative rounded-lg overflow-hidden aspect-[157/220] bg-base-sidebar-background">
+                    <img src="https://d3ta80o5sbquaz.cloudfront.net/images/pragmatic/vs20fruitsw.webp" alt="Sweet Bonanza" class="w-full h-full object-cover group-hover:scale-105 transition duration-300"/>
+                  </div>
+                  <p class="text-sm mt-2 text-slate-300 truncate">Sweet Bonanza</p>
+                </a>
+                <a href="game.html?game=gatesofolympus&provider=pragmatic&title=Gates+of+Olympus&src=https://d3ta80o5sbquaz.cloudfront.net/images/pragmatic/vs20olympgate.webp" class="group">
+                  <div class="relative rounded-lg overflow-hidden aspect-[157/220] bg-base-sidebar-background">
+                    <img src="https://d3ta80o5sbquaz.cloudfront.net/images/pragmatic/vs20olympgate.webp" alt="Gates of Olympus" class="w-full h-full object-cover group-hover:scale-105 transition duration-300"/>
+                  </div>
+                  <p class="text-sm mt-2 text-slate-300 truncate">Gates of Olympus</p>
+                </a>
+                <a href="game.html?game=bigbassbonanza&provider=pragmatic&title=Big+Bass+Bonanza&src=https://d3ta80o5sbquaz.cloudfront.net/images/pragmatic/vs10txbigbass.webp" class="group">
+                  <div class="relative rounded-lg overflow-hidden aspect-[157/220] bg-base-sidebar-background">
+                    <img src="https://d3ta80o5sbquaz.cloudfront.net/images/pragmatic/vs10txbigbass.webp" alt="Big Bass Bonanza" class="w-full h-full object-cover group-hover:scale-105 transition duration-300"/>
+                  </div>
+                  <p class="text-sm mt-2 text-slate-300 truncate">Big Bass Bonanza</p>
+                </a>
+                <a href="game.html?game=wolfgold&provider=pragmatic&title=Wolf+Gold&src=https://d3ta80o5sbquaz.cloudfront.net/images/pragmatic/vs25wolfgold.webp" class="group">
+                  <div class="relative rounded-lg overflow-hidden aspect-[157/220] bg-base-sidebar-background">
+                    <img src="https://d3ta80o5sbquaz.cloudfront.net/images/pragmatic/vs25wolfgold.webp" alt="Wolf Gold" class="w-full h-full object-cover group-hover:scale-105 transition duration-300"/>
+                  </div>
+                  <p class="text-sm mt-2 text-slate-300 truncate">Wolf Gold</p>
+                </a>
+                <a href="game.html?game=sugarrush&provider=pragmatic&title=Sugar+Rush&src=https://d3ta80o5sbquaz.cloudfront.net/images/pragmatic/vs20sugarrush.webp" class="group">
+                  <div class="relative rounded-lg overflow-hidden aspect-[157/220] bg-base-sidebar-background">
+                    <img src="https://d3ta80o5sbquaz.cloudfront.net/images/pragmatic/vs20sugarrush.webp" alt="Sugar Rush" class="w-full h-full object-cover group-hover:scale-105 transition duration-300"/>
+                  </div>
+                  <p class="text-sm mt-2 text-slate-300 truncate">Sugar Rush</p>
+                </a>
+                <a href="game.html?game=doghouse&provider=pragmatic&title=The+Dog+House&src=https://d3ta80o5sbquaz.cloudfront.net/images/pragmatic/vs20doghouse.webp" class="group">
+                  <div class="relative rounded-lg overflow-hidden aspect-[157/220] bg-base-sidebar-background">
+                    <img src="https://d3ta80o5sbquaz.cloudfront.net/images/pragmatic/vs20doghouse.webp" alt="The Dog House" class="w-full h-full object-cover group-hover:scale-105 transition duration-300"/>
+                  </div>
+                  <p class="text-sm mt-2 text-slate-300 truncate">The Dog House</p>
+                </a>
+              </div>
+            </div>
+          </div>
+        </main>
+      </div>
+    </div>
+  </div>
+</div>
+  </div>
+</div>
+
+<!-- Mobile Bottom Nav -->
+<div class="mobile-bottom-nav" id="mobile-bottom-nav">
+  <a href="#" onclick="toggleSidebar(); return false;">
+    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
+    Menu
+  </a>
+  <a href="lobby.html">
+    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"></circle><path d="m21 21-4.34-4.34"></path></svg>
+    Search
+  </a>
+  <a href="lobby.html?tab=bank" class="active">
+    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12V7H5a2 2 0 0 1 0-4h14v4"></path><path d="M3 5v14a2 2 0 0 0 2 2h16v-5"></path><path d="M18 12a2 2 0 0 0 0 4h4v-4Z"></path></svg>
+    Wallet
+  </a>
+  <a href="lobby.html">
+    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path><polyline points="9 22 9 12 15 12 15 22"></polyline></svg>
+    Home
+  </a>
+  <a href="lobby.html">
+    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect><line x1="8" y1="21" x2="16" y2="21"></line><line x1="12" y1="17" x2="12" y2="21"></line></svg>
+    Slots
+  </a>
+</div>
+
+<script>
+function toggleSidebar() {
+  const sidebar = document.querySelector('aside.flex-col');
+  if (sidebar) {
+    sidebar.classList.toggle('mobile-open');
+  }
+}
+(function() {
+  const params = new URLSearchParams(location.search);
+  const gameId = params.get('game') || 'piggybrickbonanza';
+  const provider = params.get('provider') || 'gametech';
+  const title = params.get('title') || 'Piggy Brick Bonanza';
+  const src = params.get('src') || 'https://d3ta80o5sbquaz.cloudfront.net/images/gametech/piggybrickbonanza.webp';
+
+  document.getElementById('gameTitle').textContent = title;
+  document.getElementById('gameProvider').textContent = provider.toUpperCase();
+  document.getElementById('gameImage').src = src;
+  document.title = 'Vivid - ' + title;
+
+  window.playGame = function() {
+    const container = document.getElementById('gameFrameContainer');
+    const frame = document.getElementById('gameFrame');
+    container.style.display = 'none';
+    frame.classList.remove('hidden');
+    frame.src = 'https://chanced.com/' + provider + '/casino/games/' + gameId;
+  };
+
+  window.demoGame = function() {
+    const demoUrl = (function(p, id) {
+      // Pragmatic Play — direct demo URL (confirmed working)
+      if (p === 'pragmatic') {
+        return 'https://demogamesfree.pragmaticplay.net/gs2c/openGame.do?gameSymbol=' + id + '&jurisdiction=99&lobbyUrl=https://www.pragmaticplay.com&currency=USD&language=en&returnUrl=https://www.pragmaticplay.com';
+      }
+
+      // Evolution Gaming & subsidiaries (all share the same freeplay site)
+      // NOTE: Evolution blocks iframe embedding, so these open in a popup
+      if (['evolution','netent','redtiger','bigtimegaming','nolimitcity','nolimit','ezugi','bigtime'].includes(p)) {
+        return 'https://games.evolution.com/';
+      }
+
+      // Nolimit City also has playin embeds
+      if (p === 'nolimitcity' || p === 'nolimit') {
+        return 'https://playin.com/embed/v1/demo/' + id;
+      }
+
+      // Hacksaw Gaming
+      if (p === 'hacksaw' || p === 'hacksawgaming') {
+        return 'https://hacksaw-gaming.com/';
+      }
+
+      // Play'n GO
+      if (p === 'playngo' || p === 'playngos') {
+        return 'https://www.playngo.com/games/';
+      }
+
+      // Relax Gaming
+      if (p === 'relax') {
+        return 'https://relax-gaming.com/';
+      }
+
+      // Wazdan
+      if (p === 'wazdan') {
+        return 'https://wazdan.com/';
+      }
+
+      // Softswiss
+      if (p === 'softswiss') {
+        return 'https://www.softswiss.com/games/';
+      }
+
+      // Gametech
+      if (p === 'gametech') {
+        return 'https://gametech.live/';
+      }
+
+      // Hub88
+      if (p === 'hub88') {
+        return 'https://hub88.io/';
+      }
+
+      // 3 Oaks
+      if (p === '3oaks') {
+        return 'https://3oaks.com/';
+      }
+
+      // PG Soft
+      if (p === 'pgsoft' || p === 'gametech') {
+        return 'https://pgsoft.com/';
+      }
+
+      // AvatarUX
+      if (p === 'avatarux') {
+        return 'https://avatarux.com/';
+      }
+
+      // Booongo
+      if (p === 'booongo') {
+        return 'https://booongo.com/';
+      }
+
+      // Platipus
+      if (p === 'platipus') {
+        return 'https://platipusgaming.com/';
+      }
+
+      // Tom Horn
+      if (p === 'tomhorn') {
+        return 'https://tomhorngaming.com/';
+      }
+
+      // BGaming
+      if (p === 'bgaming') {
+        return 'https://bgaming.com/';
+      }
+
+      // Mascot Gaming
+      if (p === 'mascot') {
+        return 'https://mascot.games/';
+      }
+
+      // RubyPlay
+      if (p === 'rubyplay') {
+        return 'https://rubyplay.com/';
+      }
+
+      // Spinomenal
+      if (p === 'spinomenal') {
+        return 'https://spinomenal.com/';
+      }
+
+      // GameArt
+      if (p === 'gameart') {
+        return 'https://gameart.net/';
+      }
+
+      // Belatra
+      if (p === 'belatra') {
+        return 'https://belatra.com/';
+      }
+
+      // MrSlotty
+      if (p === 'mrslotty') {
+        return 'https://mrslotty.com/';
+      }
+
+      // KA Gaming
+      if (p === 'kagaming' || p === 'ka') {
+        return 'https://kagaming.com/';
+      }
+
+      // Kalamba
+      if (p === 'kalamba') {
+        return 'https://kalambagames.com/';
+      }
+
+      // Fugaso
+      if (p === 'fugaso') {
+        return 'https://fugaso.com/';
+      }
+
+      // Swintt
+      if (p === 'swintt') {
+        return 'https://swintt.com/';
+      }
+
+      // SmartSoft
+      if (p === 'smartsoft') {
+        return 'https://smartsoftgaming.com/';
+      }
+
+      // Turbo Games
+      if (p === 'turbogames') {
+        return 'https://turbogames.com/';
+      }
+
+      // Evoplay
+      if (p === 'evoplay') {
+        return 'https://evoplay.games/';
+      }
+
+      // Four Leaf Gaming
+      if (p === 'fourleafgaming') {
+        return 'https://fourleafgaming.com/';
+      }
+
+      // Electric Elephant
+      if (p === 'electricelephant') {
+        return 'https://electricelephant.com/';
+      }
+
+      // Print Studios
+      if (p === 'printstudios') {
+        return 'https://printstudios.com/';
+      }
+
+      // Backseat Gaming
+      if (p === 'backseat') {
+        return 'https://backseatgaming.com/';
+      }
+
+      // ReelRiot
+      if (p === 'reelriot') {
+        return 'https://reelriot.com/';
+      }
+
+      // Revolver Gaming
+      if (p === 'revolver') {
+        return 'https://revolvergaming.com/';
+      }
+
+      // Rogue
+      if (p === 'rogue') {
+        return 'https://rogue.com/';
+      }
+
+      // 4ThePlayer
+      if (p === '4theplayer') {
+        return 'https://4theplayer.com/';
+      }
+
+      // Beter Live
+      if (p === 'beterlive') {
+        return 'https://beter.live/';
+      }
+
+      // Corps
+      if (p === 'corps') {
+        return 'https://corps.com/';
+      }
+
+      // ELA Games
+      if (p === 'ela') {
+        return 'https://elagames.com/';
+      }
+
+      // G Gaming
+      if (p === 'ggaming') {
+        return 'https://ggaming.com/';
+      }
+
+      // Win Gaming
+      if (p === 'wingaming') {
+        return 'https://wingaming.com/';
+      }
+
+      // Koala
+      if (p === 'koala') {
+        return 'https://koalagames.com/';
+      }
+
+      // Trigger
+      if (p === 'trigger') {
+        return 'https://trigger.com/';
+      }
+
+      // Novomatic
+      if (p === 'novomatic') {
+        return 'https://novomatic.com/';
+      }
+
+      // Endorphina
+      if (p === 'endorphina') {
+        return 'https://endorphina.com/';
+      }
+
+      // Slotmill
+      if (p === 'slotmill') {
+        return 'https://slotmill.com/';
+      }
+
+      // OneTouch
+      if (p === 'onetouch') {
+        return 'https://onetouch.io/';
+      }
+
+      // M2Play
+      if (p === 'm2play') {
+        return 'https://m2play.com/';
+      }
+
+      // Petersons
+      if (p === 'petersons') {
+        return 'https://petersons.com/';
+      }
+
+      // Gooming
+      if (p === 'gooming') {
+        return 'https://gooming.com/';
+      }
+
+      // Kendoo
+      if (p === 'kendoo') {
+        return 'https://kendoo.com/';
+      }
+
+      // Gamzix
+      if (p === 'gamzix') {
+        return 'https://gamzix.com/';
+      }
+
+      // Enjoy Gaming
+      if (p === 'enjoygaming') {
+        return 'https://enjoygaming.com/';
+      }
+
+      // NetGaming
+      if (p === 'netgaming') {
+        return 'https://netgaming.com/';
+      }
+
+      // Edge Labs
+      if (p === 'edgelabs') {
+        return 'https://edgelabs.com/';
+      }
+
+      // Origami
+      if (p === 'origami') {
+        return 'https://origami.com/';
+      }
+
+      // Max Win Gaming
+      if (p === 'maxwingaming') {
+        return 'https://maxwingaming.com/';
+      }
+
+      // Taparoo
+      if (p === 'taparoo') {
+        return 'https://taparoo.com/';
+      }
+
+      // Sneaky Slots
+      if (p === 'sneakyslots') {
+        return 'https://sneakyslots.com/';
+      }
+
+      // RuneBet
+      if (p === 'runebet') {
+        return 'https://runebet.com/';
+      }
+
+      // Penguin King
+      if (p === 'penguinking') {
+        return 'https://penguinking.com/';
+      }
+
+      // Originals
+      if (p === 'originals') {
+        return 'https://chanced.com/';
+      }
+
+      // Default fallback — show a helpful message in the iframe container
+      return null;
+    })(provider, gameId);
+
+    // Providers that block iframe embedding — redirect in same tab instead of popup
+    const iframeBlockedProviders = ['evolution','netent','redtiger','bigtimegaming','nolimitcity','nolimit','ezugi','bigtime','hacksaw','hacksawgaming','playngo','playngos','relax','wazdan','softswiss','gametech','hub88','3oaks','pgsoft','avatarux','booongo','platipus','tomhorn','bgaming','mascot','rubyplay','spinomenal','gameart','belatra','mrslotty','kagaming','ka','kalamba','fugaso','swintt','smartsoft','turbogames','evoplay','fourleafgaming','electricelephant','printstudios','backseat','reelriot','revolver','rogue','4theplayer','beterlive','corps','ela','ggaming','wingaming','koala','trigger','novomatic','endorphina','slotmill','onetouch','m2play','petersons','gooming','kendoo','gamzix','enjoygaming','netgaming','edgelabs','origami','maxwingaming','taparoo','sneakyslots','runebet','penguinking','originals'];
+    
+    // For iframe-blocked providers, redirect in same tab instead of popup
+    if (demoUrl && iframeBlockedProviders.includes(provider)) {
+      window.location.href = demoUrl;
+      return;
+    }
+
+    if (!demoUrl) {
+      const container = document.getElementById('gameFrameContainer');
+      const frame = document.getElementById('gameFrame');
+      container.style.display = 'none';
+      frame.classList.remove('hidden');
+      frame.src = 'about:blank';
+      // Show a message inside the iframe area
+      frame.onload = function() {
+        try {
+          const doc = frame.contentDocument || frame.contentWindow.document;
+          doc.open();
+          doc.write('<html><head><style>body{background:#0f172a;color:#fff;font-family:system-ui,sans-serif;display:flex;flex-direction:column;align-items:center;justify-content:center;height:100vh;margin:0;text-align:center;padding:20px;}h1{font-size:24px;margin-bottom:10px;}p{font-size:16px;color:#94a3b8;margin-bottom:20px;}a{color:#3b82f6;text-decoration:none;font-weight:600;}a:hover{text-decoration:underline;}</style></head><body><h1>🎰 Demo Coming Soon</h1><p>We don\'t have a demo link for <strong>' + provider + '</strong> yet.<br>Try the <strong>Play Now</strong> button to play with free SC.</p><p><a href="https://www.google.com/search?q=' + encodeURIComponent(provider + ' ' + gameId + ' demo') + '" target="_blank">Search for ' + provider + ' demo &rarr;</a></p></body></html>');
+          doc.close();
+        } catch(e) {
+          // cross-origin fallback
+        }
+      };
+      return;
+    }
+
+    const container = document.getElementById('gameFrameContainer');
+    const frame = document.getElementById('gameFrame');
+    container.style.display = 'none';
+    frame.classList.remove('hidden');
+    frame.src = demoUrl;
+  };
+})();
+</script>
+
+</body>
+</html>

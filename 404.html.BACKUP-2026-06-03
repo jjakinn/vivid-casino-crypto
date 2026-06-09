@@ -1,0 +1,903 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
+    <title>Chanced.com - The #1 Free to Play US Social Casino</title>
+    <meta name="theme-color" content="#020617" />
+    <meta
+      name="description"
+      content="Step into Chanced.com, the ultimate US social casino! Free to play with 2000+ thrilling games and Instant Redemptions. Vegas Matt plays here - why not you? No Purchase Necessary. " />
+
+    <!-- Open Graph for Social Media -->
+    <meta
+      property="og:title"
+      content="Chanced.com - The #1 Free to Play US Social Casino" />
+    <meta
+      property="og:description"
+      content="Step into Chanced.com, the ultimate US social casino! Free to play with 2000+ thrilling games and Instant Redemptions. Vegas Matt plays here - why not you? No Purchase Necessary." />
+    <meta property="og:image" content="images/chanced_social.png" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:url" content="index.html" />
+    <base href="/vivid-casino/">
+    <meta property="og:type" content="website" />
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary" />
+    <meta
+      name="twitter:title"
+      content="Chanced.com - The #1 Free to Play US Social Casino" />
+    <meta
+      name="twitter:description"
+      content="Step into Chanced.com, the ultimate US social casino! Free to play with 2000+ thrilling games and Instant Redemptions. Vegas Matt plays here - why not you? No Purchase Necessary." />
+    <meta name="twitter:image" content="images/chanced_social.png" />
+    <meta
+      name="msapplication-square310x310logo"
+      content="images/favicon/android-chrome-512x512.svg" />
+    <link
+      rel="shortcut icon"
+      sizes="196x196"
+      href="images/favicon/android-chrome-512x512.svg" />
+    <link
+      rel="apple-touch-icon"
+      sizes="57x57"
+      href="images/favicon/android-chrome-512x512.svg" />
+    <link
+      rel="apple-touch-icon"
+      sizes="60x60"
+      href="images/favicon/apple-icon-64x64.html" />
+    <link
+      rel="apple-touch-icon"
+      sizes="64x64"
+      href="images/favicon/apple-icon-64x64.html" />
+    <link
+      rel="apple-touch-icon"
+      sizes="72x72"
+      href="images/favicon/android-chrome-512x512.svg" />
+    <link
+      rel="apple-touch-icon"
+      sizes="76x76"
+      href="images/favicon/android-chrome-512x512.svg" />
+    <link
+      rel="apple-touch-icon"
+      sizes="114x114"
+      href="images/favicon/android-chrome-512x512.svg" />
+    <link
+      rel="apple-touch-icon"
+      sizes="120x120"
+      href="images/favicon/android-chrome-512x512.svg" />
+    <link
+      rel="apple-touch-icon"
+      sizes="144x144"
+      href="images/favicon/android-chrome-512x512.svg" />
+    <link
+      rel="apple-touch-icon"
+      sizes="152x152"
+      href="images/favicon/android-chrome-512x512.svg" />
+    <link
+      rel="apple-touch-icon"
+      sizes="180x180"
+      href="images/favicon/android-chrome-512x512.svg" />
+    <link rel="apple-touch-icon" href="images/favicon/chanced-icon-192.png" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="mobile-web-app-capable" content="yes" />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="192x192"
+      href="images/favicon/android-chrome-512x512.svg" />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="images/favicon/favicon-32x32.svg" />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="96x96"
+      href="images/favicon/android-chrome-512x512.svg" />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="16x16"
+      href="images/favicon/favicon-16x16.svg" />
+    <link rel="manifest" href="images/favicon/manifest.html" />
+    <meta name="msapplication-TileColor" content="#ffffff" />
+    <meta name="msapplication-TileImage" content="images/favicon/apple-icon-64x64.html" />
+    <script src="https://www.google.com/recaptcha/enterprise.js?render=6LcQG5goAAAAAIz_MSZ4X9tS6QPgoHtzUZoxpLnN" async defer type="text/javascript"></script>
+    <!-- Critical CSS inline to prevent render blocking -->
+    <style>
+      .grecaptcha-badge {
+        visibility: hidden;
+      }
+
+      input::-webkit-outer-spin-button,
+      input::-webkit-inner-spin-button {
+        -webkit-appearance: none;
+        appearance: none;
+        margin: 0;
+        display: none;
+      }
+
+      html {
+        background-color: #020617;
+      }
+
+      body {
+        width: 100vw;
+        height: 100vh;
+        -webkit-overflow-scrolling: touch;
+      }
+
+      body::-webkit-scrollbar {
+        width: 0;
+      }
+
+      /* Firefox */
+      input[type='number'] {
+        -moz-appearance: textfield;
+        -webkit-appearance: textfield;
+                appearance: textfield;
+      }
+
+      /* Critical loading states */
+      .loading {
+        opacity: 0;
+        transition: opacity 0.3s ease-in;
+      }
+
+      .loaded {
+        opacity: 1;
+      }
+    </style>
+
+    <!-- OneTrust Cookies Consent Notice start for www.chanced.com -->
+    <script type="text/javascript">
+      window.dataLayer = window.dataLayer || [];
+
+      // Defer OneTrust loading to improve CLS
+      function loadOneTrust() {
+        if (window.__chancedOneTrustLoaded) {
+          return;
+        }
+        window.__chancedOneTrustLoaded = true;
+
+        // Load OneTrust CSS first
+        const cssLink = document.createElement('link');
+        cssLink.rel = 'stylesheet';
+        cssLink.href = 'css/onetrust-banner.css';
+        cssLink.media = '(max-width: 767px)';
+        document.head.appendChild(cssLink);
+
+        // Load OneTrust script
+        const script = document.createElement('script');
+        script.src = 'https://cdn.cookielaw.org/scripttemplates/otSDKStub.js';
+        script.type = 'text/javascript';
+        script.async = true;
+        script.charset = 'UTF-8';
+        script.setAttribute('data-domain-script', '019745dc-1d8e-7380-b3cf-e61a07e2d7b0');
+        document.head.appendChild(script);
+      }
+
+      function OptanonWrapper() {
+        if (typeof OneTrust !== 'undefined' && OneTrust.IsAlertBoxClosedAndValid()) {
+          // Consent given, hide the banner
+          console.log('OneTrust: Consent given, hiding banner.');
+          const otBanner = document.getElementById('onetrust-consent-sdk');
+          if (otBanner) {
+            otBanner.style.display = 'none';
+          }
+        } else {
+          console.log('OneTrust: Consent not given or invalid, showing banner.');
+        }
+      }
+
+      // OneTrust is loaded only when the app requests it (postMessage listener).
+      window.addEventListener(
+        'message',
+        (event) => {
+          if (event?.data?.type !== 'LOAD_ONETRUST') {
+            return;
+          }
+          loadOneTrust();
+        },
+        false,
+      );
+    </script>
+    <!-- OneTrust Cookies Consent Notice end for www.chanced.com -->
+
+    <!-- Google Tag Manager - Deferred Loading -->
+    <script type="text/javascript">
+      // Defer GTM loading to improve CLS
+      function loadGTM() {
+        var w = window;
+        var d = document;
+        var s = 'script';
+        var l = 'dataLayer';
+        var i = 'GTM-5VQW5CTG';
+        w[l] = w[l] || [];
+        w[l].push({
+          'gtm.start': new Date().getTime(),
+          event: 'gtm.js',
+        });
+        var f = d.getElementsByTagName(s)[0],
+          j = d.createElement(s),
+          dl = l != 'dataLayer' ? '&l=' + l : '';
+        j.async = true;
+        j.src = 'https://www.googletagmanager.com/gtm.js?id=' + i + dl;
+        f.parentNode.insertBefore(j, f);
+      }
+
+      // Load GTM after page load and initial render
+      if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', () => {
+          // Add a small delay to ensure main content is rendered first
+          setTimeout(loadGTM, 3000);
+        });
+      } else {
+        // If DOM is already loaded, wait a bit then load
+        setTimeout(loadGTM, 3000);
+      }
+    </script>
+    <!-- End Google Tag Manager -->
+
+    <!-- DNS prefetch for external APIs -->
+    <link rel="dns-prefetch" href="https://api.ipify.org/" />
+    <link rel="dns-prefetch" href="https://www.googletagmanager.com/" />
+    <link rel="dns-prefetch" href="https://www.google.com/" />
+    <link rel="dns-prefetch" href="https://js.intercomcdn.com/" />
+    <link rel="dns-prefetch" href="https://cdn.cookielaw.org/" />
+
+    <!-- Preconnect to critical domains -->
+    <link rel="preconnect" href="https://fonts.googleapis.com/" />
+    <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin />
+
+    <!-- Preload critical resources -->
+    <link
+      rel="preload"
+      href="images/home/hero-girl.html"
+      as="image"
+      type="image/webp"
+      fetchpriority="high" />
+    <link
+      rel="preload"
+      href="images/home/home-1.webp"
+      as="image"
+      type="image/webp"
+      fetchpriority="high" />
+    <link
+      rel="preload"
+      href="images/home/vegasmatt-main-mobile.webp"
+      as="image"
+      type="image/webp"
+      fetchpriority="high" />
+    <link
+      rel="preload"
+      href="images/home/vegasmatt-main.webp"
+      as="image"
+      type="image/webp"
+      fetchpriority="high" />
+
+    <!-- Async font loading script -->
+    <script type="text/javascript">
+      // Async font loading to prevent render blocking
+      function loadFontsAsync() {
+        // Load Inter font CSS asynchronously
+        const interFontLink = document.createElement('link');
+        interFontLink.rel = 'stylesheet';
+        interFontLink.href = 'font/inter.css';
+        interFontLink.media = 'print';
+        interFontLink.onload = function () {
+          this.media = 'all';
+        };
+        document.head.appendChild(interFontLink);
+
+        // Load Google Fonts asynchronously with better error handling
+        const googleFontsLink = document.createElement('link');
+        googleFontsLink.rel = 'stylesheet';
+        googleFontsLink.href =
+          'https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,200..800;1,200..800&amp;display=swap';
+        googleFontsLink.media = 'print';
+        googleFontsLink.onload = function () {
+          this.media = 'all';
+        };
+        googleFontsLink.onerror = function () {
+          console.warn('Failed to load Plus Jakarta Sans font, using fallback');
+        };
+        document.head.appendChild(googleFontsLink);
+
+        // Load Merriweather font asynchronously
+        const merriweatherLink = document.createElement('link');
+        merriweatherLink.rel = 'stylesheet';
+        merriweatherLink.href =
+          'https://fonts.googleapis.com/css?family=Merriweather&amp;display=swap';
+        merriweatherLink.media = 'print';
+        merriweatherLink.onload = function () {
+          this.media = 'all';
+        };
+        merriweatherLink.onerror = function () {
+          console.warn('Failed to load Merriweather font, using fallback');
+        };
+        document.head.appendChild(merriweatherLink);
+
+        // Preload critical font files for better performance
+        const fontFiles = [
+          '/font/Inter-roman.var.woff2',
+          '/font/Roboto-Medium.ttf',
+          '/font/RobotoCondensed-Bold.ttf',
+        ];
+
+        fontFiles.forEach((fontUrl) => {
+          const link = document.createElement('link');
+          link.rel = 'preload';
+          link.as = 'font';
+          link.type = fontUrl.includes('.woff2') ? 'font/woff2' : 'font/ttf';
+          link.crossOrigin = 'anonymous';
+          link.href = fontUrl;
+          document.head.appendChild(link);
+        });
+      }
+
+      // Load fonts after critical content is rendered
+      if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', loadFontsAsync);
+      } else {
+        // If DOM is already loaded, load fonts immediately
+        loadFontsAsync();
+      }
+    </script>
+
+    <!-- Load sg.js asynchronously -->
+    <script type="text/javascript">
+      const domain = window.location.hostname;
+      const url = 'js/sg.js';
+      const script = document.createElement('script');
+      script.type = 'text/javascript';
+      script.src = url;
+      script.async = true;
+      document.head.appendChild(script);
+    </script>
+
+    <!-- Pixel ATHENA Tracking Code -->
+    <script type="text/javascript" defer>
+      (function () {
+        var e = function () {
+          var e = document.createElement('script');
+          ((e.src = 'https://media.athena-tech.eu/pixel.min.js'),
+            (e.type = 'text/javascript'),
+            (e.defer = !0),
+            document.body.appendChild(e));
+        };
+        'loading' == document.readyState
+          ? document.addEventListener('DOMContentLoaded', e)
+          : e();
+      })();
+    </script>
+    <!-- End Pixel ATHENA Code -->
+
+    <!-- Kubixo affiliate re-targeting script -->
+    <script type="text/javascript" src="https://pubads.g.doubleclick.uk.net/pixel/7bed16080114415" async></script>
+    <!-- End Kubixo affiliate re-targeting script-->
+    <script type="module" crossorigin src="assets/js/index-o__w0951.js"></script>
+    <link rel="modulepreload" crossorigin href="assets/js/sentry-B0a0DNj8.js">
+    <link rel="modulepreload" crossorigin href="assets/js/vue-core-DIXT5Uy0.js">
+    <link rel="modulepreload" crossorigin href="assets/js/pinia-CC-n2Gh7.js">
+    <link rel="modulepreload" crossorigin href="assets/js/utils-lodash-Cf4vrcdd.js">
+    <link rel="modulepreload" crossorigin href="assets/js/vendor-core-D6DgUea0.js">
+    <link rel="modulepreload" crossorigin href="assets/js/vue-router-4vhu_Q5d.js">
+    <link rel="modulepreload" crossorigin href="assets/js/pusher-CLhAf6YS.js">
+    <link rel="modulepreload" crossorigin href="assets/js/sweetalert-D9aUIy7h.js">
+    <link rel="modulepreload" crossorigin href="assets/js/network-CGPOZbv3.js">
+    <link rel="modulepreload" crossorigin href="assets/js/toast-Bsr_yl-U.js">
+    <link rel="modulepreload" crossorigin href="assets/js/vuex-C1OHm-yh.js">
+    <link rel="modulepreload" crossorigin href="assets/js/forms-OqPRXJ0f.js">
+    <link rel="modulepreload" crossorigin href="assets/js/vendor-misc-CK5eJXdp.js">
+    <link rel="modulepreload" crossorigin href="assets/js/vuelidate-DCrvhrIA.js">
+    <link rel="modulepreload" crossorigin href="assets/js/swiper-DLcJsdEI.js">
+    <link rel="modulepreload" crossorigin href="assets/js/scroll-p7Fj_rQ1.js">
+    <link rel="modulepreload" crossorigin href="assets/js/floating-vue-DCdBpB_o.js">
+    <link rel="modulepreload" crossorigin href="assets/js/swal-DjoNkAIm.js">
+    <link rel="modulepreload" crossorigin href="assets/js/datepicker-DNQYFld0.js">
+    <link rel="stylesheet" crossorigin href="assets/index-AVsnX6L1.css">
+  </head>
+
+  <body class="h-full w-full bg-base-background">
+    <!-- API Stub for mirror -->
+    <script src="api-stub.js?v=4"></script>
+
+    <!-- Static Fallback Overlay -->
+    <script>
+    (function() {
+      function showFallback() {
+        // Hide Vue's broken app
+        var app = document.getElementById('app');
+        if (app) app.style.display = 'none';
+
+        // Remove any existing fallback
+        var existing = document.getElementById('static-fallback');
+        if (existing) existing.remove();
+
+        // Create fixed overlay covering entire viewport
+        var fallback = document.createElement('div');
+        fallback.id = 'static-fallback';
+        fallback.style.cssText = 'position:fixed;top:0;left:0;width:100%;height:100%;overflow-y:auto;z-index:999999;background:#0a0a1a;color:#fff;font-family:system-ui,-apple-system,sans-serif;';
+        fallback.innerHTML = '<div style="display:flex;flex-direction:column;min-height:100%;">' +
+          // Header (exact from chanced.com Vue app)
+          '<header data-v-b2b8b7b2="" class="site-header section bg-transparent max-lg:pt-5 max-lg:pb-5">' +
+            '<div data-v-b2b8b7b2="" class="container m-auto">' +
+              '<div data-v-b2b8b7b2="" class="row flex justify-between items-center gap-4 max-[400px]:gap-2">' +
+                '<div data-v-b2b8b7b2="" class="flex gap-4 items-center w-full justify-center lg:w-auto">' +
+                  '<a data-v-b2b8b7b2="" aria-current="page" href="/vivid-casino/" class="router-link-active router-link-exact-active logo">' +
+                    '<span style="font-size:28px;font-weight:500;color:#D4E2FF;letter-spacing:1px;font-family:system-ui,-apple-system,sans-serif;text-transform:uppercase;filter:drop-shadow(0 0 4px rgba(212,226,255,0.55)) drop-shadow(0 0 8px rgba(212,226,255,0.39)) drop-shadow(0 0 16px rgba(212,226,255,0.27)) drop-shadow(0 0 30px rgba(212,226,255,0.19));">CHANCED</span>' +
+                  '</a>' +
+                '</div>' +
+                '<div data-v-b2b8b7b2="" class="max-lg:hidden">' +
+                  '<div data-v-b2b8b7b2="" class="menu-links">' +
+                    '<ul data-v-b2b8b7b2="" class="flex justify-between gap-[clamp(1.25rem,3.125vw_-_0.75rem,3rem)]">' +
+                      '<li data-v-b2b8b7b2=""><button data-v-b2b8b7b2="" class="text-base font-plusJakartaSans" href=""> FAQ </button></li>' +
+                      '<li data-v-b2b8b7b2=""><a data-v-b2b8b7b2="" class="text-base font-plusJakartaSans" href="https://chanced.com/docs/Terms-And-Conditions.pdf" target="_blank"> Terms of service </a></li>' +
+                      '<li data-v-b2b8b7b2=""><a data-v-b2b8b7b2="" class="text-base font-plusJakartaSans" href="https://www.chanced.com/privacy-policy"> Privacy policy </a></li>' +
+                    '</ul>' +
+                  '</div>' +
+                '</div>' +
+                '<div data-v-b2b8b7b2="" class="header-buttons lg:flex hidden">' +
+                  '<ul data-v-b2b8b7b2="" class="flex justify-between item-center">' +
+                    '<li data-v-b2b8b7b2="">' +
+                      '<button data-v-b2b8b7b2="" class="header-btn btn-singup ml-2 bg-[unset] text-white font-normal p-0 font-plusJakartaSans" style="background:linear-gradient(135deg,#6366f1,#8b5cf6);border:none;border-radius:8px;padding:8px 20px !important;" href="">' +
+                        'Sign up <span style="font-size:16px;margin-left:4px;">→</span>' +
+                      '</button>' +
+                    '</li>' +
+                    '<li data-v-b2b8b7b2="">' +
+                      '<button data-v-b2b8b7b2="" class="header-btn btn-login bg-[unset] text-sm font-semibold text-black flex items-center gap-x-2 px-[45px] py-[15px] font-plusJakartaSans" style="background:transparent;border:1px solid #4b5563;color:#fff !important;border-radius:8px;" href=""> Log in </button>' +
+                    '</li>' +
+                  '</ul>' +
+                '</div>' +
+              '</div>' +
+            '</div>' +
+          '</header>' +
+          // Hero (exact from chanced.com Vue app)
+          '<div data-v-d73864cb="" id="main" class="relative hero-section section" style="--screenHeight: 605px;">' +
+            '<div data-v-d73864cb="" class="container flex flex-col min-[993px]:flex-row items-center">' +
+              '<div data-v-d73864cb="" class="relative md:flex md:flex-col min-[993px]:w-2/5 md:flex-1 max-[1024px]:pt-[80px] max-lg:pt-[80px]">' +
+                '<div data-v-d73864cb="" class="z-40 w-full content-wrapper max-lg:mx-auto max-lg:text-center max-w-[677px]">' +
+                  '<div data-v-d73864cb="" class="title-wrapper lg:max-w-[640px] font-plusJakartaSans">' +
+                    '<h1 data-v-d73864cb="" class="title text-7xl font-semibold text-white leading-[76px] tracking-[-0.04em] mb-5 font-plusJakartaSans max-lg:text-5xl max-lg:leading-[51px] max-lg:max-w-[370px] mx-auto" style="content-visibility: auto; opacity:1 !important;">Get Extra Coins + 100 Free Spins</h1>' +
+                    '<div data-v-d73864cb="" class="btn-cta-wrapper">' +
+                      '<button data-v-d73864cb="" class="btn-start play-for-free-btn">' +
+                        '<div data-v-d73864cb="" class="flex gap-2 items-center justify-center">Claim Welcome Offer</div>' +
+                      '</button>' +
+                    '</div>' +
+                  '</div>' +
+                '</div>' +
+              '</div>' +
+            '</div>' +
+            '<div data-v-d73864cb="" class="bg flex justify-center">' +
+              '<div data-v-d73864cb="" class="image-wrapper max-lg:flex max-lg:items-baseline max-lg:mx-auto max-lg:my-0">' +
+                '<img data-v-d73864cb="" class="image-1 max-w-full" alt="hero image" src="images/home/vegasmatt-main.webp" loading="eager" fetchpriority="high" decoding="sync">' +
+                '<div data-v-d73864cb="" class="absolute font-plusJakartaSans z-20 bottom-0 lg:left-1/2 text-lg lg:text-3xl font-light flex w-full items-center justify-between gap-4 p-4" style="transform: translate(0px, 0px);"></div>' +
+              '</div>' +
+              '<div data-v-d73864cb="" id="register-btn-wrapper" class="btn-wrapper max-lg:bg-dark2 flex lg:hidden justify-center gap-x-1.5 py-4" style="bottom: 0px;">' +
+                '<button data-v-d73864cb="" class="mobile-btn rounded-[100px] bg-white text-xs font-semibold text-black flex items-center gap-x-2 px-[45px] py-[15px] font-ppMoriSemibold border-transparent shadow-[0px_0px_20px_rgba(255,255,255,0.5)] uppercase" href=""> Log in <span style="font-size:16px;margin-left:4px;">→</span></button>' +
+                '<button data-v-d73864cb="" class="mobile-btn rounded-[100px] bg-pinkLight text-xs font-semibold text-white flex items-center gap-x-2 px-[45px] py-[15px] font-ppMoriSemibold border-transparent shadow-[0px_0px_20px_rgba(255,255,255,0.5)] uppercase" href="">Sign up <span style="font-size:16px;margin-left:4px;">→</span></button>' +
+              '</div>' +
+            '</div>' +
+          '</div>' +
+          // Social Casino Section          // Social Casino Section
+          '<section style="background:#0a0a1a;padding:60px 24px;text-align:center;">' +
+            '<h2 style="color:#fff;font-size:40px;font-weight:400;margin:0 0 12px;filter: drop-shadow(0 0 4px rgba(255,255,255,0.43)) drop-shadow(0 0 8px rgba(255,255,255,0.29)) drop-shadow(0 0 16px rgba(255,255,255,0.22)) drop-shadow(0 0 30px rgba(255,255,255,0.17));">#1 Social Casino</h2>' +
+            '<img src="/vivid-casino/images/home/Stars.png" alt="5 Stars" style="max-width:250px;width:100%;margin:0 auto 12px;display:block;">' +
+            '<h2 style="color:#fff;font-size:40px;font-weight:400;margin:0 0 24px;filter: drop-shadow(0 0 4px rgba(255,255,255,0.43)) drop-shadow(0 0 8px rgba(255,255,255,0.29)) drop-shadow(0 0 16px rgba(255,255,255,0.22)) drop-shadow(0 0 30px rgba(255,255,255,0.17));">No Purchase Necessary</h2>' +
+            '<button style="background:#007AFF;border:none;color:#fff;padding:12px 48px;border-radius:9999px;font-size:16px;font-weight:500;cursor:pointer;box-shadow:0 4px 15px rgba(0,122,255,0.35);transition:transform 0.2s;" onmouseover="this.style.transform=\'scale(1.05)\'" onmouseout="this.style.transform=\'scale(1)\'">FREE TO PLAY</button>' +
+          '</section>' +
+          // Daily Rewards Section
+          '<section style="background:#0a0a1a;padding:60px 24px;">' +
+            '<h2 style="color:#fff;font-size:40px;font-weight:400;text-align:center;margin:0 0 40px;filter: drop-shadow(0 0 4px rgba(255,255,255,0.43)) drop-shadow(0 0 8px rgba(255,255,255,0.29)) drop-shadow(0 0 16px rgba(255,255,255,0.22)) drop-shadow(0 0 30px rgba(255,255,255,0.17));">Daily Rewards &amp; Exclusive Promotions</h2>' +
+            '<div style="display:flex;gap:24px;justify-content:center;flex-wrap:wrap;max-width:1120px;margin:0 auto;">' +
+              '<div style="background:#1e1e3a;border:1px solid #2d2d4a;border-radius:16px;padding:32px 24px;box-shadow:0 4px 20px rgba(0,0,0,0.3);flex:1;min-width:280px;max-width:352px;display:flex;flex-direction:column;align-items:flex-start;">' +
+                '<h3 style="color:#fff;font-size:28px;font-weight:500;margin:0 0 16px;filter: drop-shadow(0 0 4px rgba(255,255,255,0.43)) drop-shadow(0 0 8px rgba(255,255,255,0.29)) drop-shadow(0 0 16px rgba(255,255,255,0.22)) drop-shadow(0 0 30px rgba(255,255,255,0.17));">Free Daily Coins</h3>' +
+                '<img src="/vivid-casino/images/home/Ncoin.png" alt="" style="max-width:80px;margin-left:auto;display:block;">' +
+              '</div>' +
+              '<div style="background:#1e1e3a;border:1px solid #2d2d4a;border-radius:16px;padding:32px 24px;box-shadow:0 4px 20px rgba(0,0,0,0.3);flex:1;min-width:280px;max-width:352px;display:flex;flex-direction:column;align-items:flex-start;">' +
+                '<h3 style="color:#fff;font-size:28px;font-weight:500;margin:0 0 16px;filter: drop-shadow(0 0 4px rgba(255,255,255,0.43)) drop-shadow(0 0 8px rgba(255,255,255,0.29)) drop-shadow(0 0 16px rgba(255,255,255,0.22)) drop-shadow(0 0 30px rgba(255,255,255,0.17));">Exclusive Bonuses</h3>' +
+                '<img src="/vivid-casino/images/home/rocket.png" alt="" style="max-width:80px;margin-left:auto;display:block;">' +
+              '</div>' +
+              '<div style="background:#1e1e3a;border:1px solid #2d2d4a;border-radius:16px;padding:32px 24px;box-shadow:0 4px 20px rgba(0,0,0,0.3);flex:1;min-width:280px;max-width:352px;display:flex;flex-direction:column;align-items:flex-start;">' +
+                '<h3 style="color:#fff;font-size:28px;font-weight:500;margin:0 0 16px;filter: drop-shadow(0 0 4px rgba(255,255,255,0.43)) drop-shadow(0 0 8px rgba(255,255,255,0.29)) drop-shadow(0 0 16px rgba(255,255,255,0.22)) drop-shadow(0 0 30px rgba(255,255,255,0.17));">24/7 Giveaways</h3>' +
+                '<img src="/vivid-casino/images/home/gift.png" alt="" style="max-width:80px;margin-left:auto;display:block;">' +
+              '</div>' +
+            '</div>' +
+          '</section>' +
+          // Game section for carousel
+          '<div class="bg-fallback" style="background:#0a0a1a;padding:20px 0;">' +
+            '<h2 style="color:#fff;font-size:36px;font-weight:500;text-align:center;margin:0 0 35px;filter: drop-shadow(0 0 4px rgba(255,255,255,0.43)) drop-shadow(0 0 8px rgba(255,255,255,0.29)) drop-shadow(0 0 16px rgba(255,255,255,0.22)) drop-shadow(0 0 30px rgba(255,255,255,0.17));">Over 1,000 Games - Find Your Favorite!</h2>' +
+          '</div>' +
+          // VIP Section
+          '<section data-v-46a44c1a="" id="dailyreward" class="section-reward px-0 py-[90px] max-lg:py-[48px] bg-dark2 style1">' +
+            '<div data-v-46a44c1a="" class="container max-w-[1120px]">' +
+              '<div data-v-46a44c1a="" class="title-wrapper">' +
+                '<h2 data-v-46a44c1a="" class="sec-title text-center max-w-[540px] mt-0 lg:mb-[45px] mb-[48px] mx-auto max-lg:max-w-[335px] text-[32px] leading-[95%] md:text-[48px] md:leading-[105%]">Daily Rewards &amp; Exclusive Promotions</h2>' +
+              '</div>' +
+              '<div data-v-46a44c1a="" class="flex gap-x-8 max-lg:flex-col max-lg:gap-y-2 content-wrapper max-lg:px-3">' +
+                '<div data-v-46a44c1a="" class="cursor-pointer lg:w-1/3 w-full lg:max-w-[352px] bg-darkLight lg:pl-8 lg:pr-6 lg:pt-8 lg:py-7 py-2 px-[14px] rounded-2xl flex lg:flex-col lg:items-start items-center justify-between flex-row-reverse gap-2.5">' +
+                  '<h3 data-v-46a44c1a="" class="c-title w-full lg:text-[28px] text-[14px] font-bold text-white lg:leading-7 leading-4 font-plusJakartaSans max-w-[210px] max-lg:max-w-[100%]">Free Daily Coins</h3>' +
+                  '<div data-v-46a44c1a="" class="flex lg:w-full justify-end">' +
+                    '<img data-v-46a44c1a="" src="/vivid-casino/images/home/Ncoin.png" class="max-lg:max-w-[48px]" alt="" loading="lazy">' +
+                  '</div>' +
+                '</div>' +
+                '<div data-v-46a44c1a="" class="cursor-pointer lg:w-1/3 w-full lg:max-w-[352px] bg-darkLight lg:pl-8 lg:pr-6 lg:pt-8 lg:py-7 py-2 px-[14px] rounded-2xl flex lg:flex-col lg:items-start items-center justify-between flex-row-reverse gap-2.5">' +
+                  '<h3 data-v-46a44c1a="" class="c-title w-full lg:text-[28px] text-[14px] font-bold text-white lg:leading-7 leading-4 font-plusJakartaSans max-w-[210px] max-lg:max-w-[100%]">Exclusive Bonuses</h3>' +
+                  '<div data-v-46a44c1a="" class="flex lg:w-full justify-end">' +
+                    '<img data-v-46a44c1a="" src="/vivid-casino/images/home/rocket.png" class="max-lg:max-w-[48px]" alt="" loading="lazy">' +
+                  '</div>' +
+                '</div>' +
+                '<div data-v-46a44c1a="" class="cursor-pointer lg:w-1/3 w-full lg:max-w-[352px] bg-darkLight lg:pl-8 lg:pr-6 lg:pt-8 lg:py-7 py-2 px-[14px] rounded-2xl flex lg:flex-col lg:items-start items-center justify-between flex-row-reverse gap-2.5">' +
+                  '<h3 data-v-46a44c1a="" class="c-title w-full lg:text-[28px] text-[14px] font-bold text-white lg:leading-7 leading-4 font-plusJakartaSans max-w-[210px] max-lg:max-w-[100%]">24/7 Giveaways</h3>' +
+                  '<div data-v-46a44c1a="" class="flex lg:w-full justify-end">' +
+                    '<img data-v-46a44c1a="" src="/vivid-casino/images/home/gift.png" class="max-lg:max-w-[48px]" alt="" loading="lazy">' +
+                  '</div>' +
+                '</div>' +
+              '</div>' +
+              '<div data-v-46a44c1a="" class="payment-method gap-x-[50px] max-lg:gap-x-[30px] justify-center flex mt-[40px] max-lg:px-3">' +
+                '<div data-v-46a44c1a="" class="img-wrapper flex"></div>' +
+                '<div data-v-46a44c1a="" class="img-wrapper flex"></div>' +
+                '<div data-v-46a44c1a="" class="img-wrapper flex"></div>' +
+                '<div data-v-46a44c1a="" class="img-wrapper flex"></div>' +
+              '</div>' +
+            '</div>' +
+          '</section>' +
+          // FAQ Section
+          '<div id="faq" class="landing-faq md:py-[90px] py-[48px] bg-dark2">' +
+            '<div class="container">' +
+              '<div class="landing-faq-tabs max-w-[734px] mx-auto">' +
+                '<h2 class="sec-title md:mb-[45px] mb-[48px] text-center">FAQ</h2>' +
+                '<div class="accordian">' +
+                  '<h3 class="question" aria-expanded="false" aria-controls="collapse1">' +
+                    '<span>How do I create an account at Chanced?</span>' +
+                    '<div class="accor_toggle"><div class="top"></div><div class="bottom"></div></div>' +
+                  '</h3>' +
+                  '<div class="content" id="collapse1">' +
+                    '<p>Creating an account is quick and easy! Simply click the "<b>Sign Up</b>" button on our homepage and fill in the required details. You&apos;ll be ready to start playing in no time.</p>' +
+                  '</div>' +
+                '</div>' +
+                '<div class="accordian">' +
+                  '<h3 class="question" aria-expanded="false" aria-controls="collapse2">' +
+                    '<span>What bonuses and promotions are available for new players?</span>' +
+                    '<div class="accor_toggle"><div class="top"></div><div class="bottom"></div></div>' +
+                  '</h3>' +
+                  '<div class="content" id="collapse2">' +
+                    '<p>As a warm welcome, we <b>double your Gold Coins on your first purchase!</b> We also run <b>weekly giveaways and races</b>, giving you even more chances to win big. Don&apos;t forget to check our promotions page regularly for the latest offers and events..</p>' +
+                  '</div>' +
+                '</div>' +
+                '<div class="accordian">' +
+                  '<h3 class="question" aria-expanded="false" aria-controls="collapse3">' +
+                    '<span>What payment methods are supported?</span>' +
+                    '<div class="accor_toggle"><div class="top"></div><div class="bottom"></div></div>' +
+                  '</h3>' +
+                  '<div class="content" id="collapse3">' +
+                    '<p>We accept <b>all major credit and debit cards,</b> making it easy and secure for you to top up your account.</p>' +
+                  '</div>' +
+                '</div>' +
+                '<div class="accordian">' +
+                  '<h3 class="question" aria-expanded="false" aria-controls="collapse4">' +
+                    '<span>Can I play games on my mobile device?</span>' +
+                    '<div class="accor_toggle"><div class="top"></div><div class="bottom"></div></div>' +
+                  '</h3>' +
+                  '<div class="content" id="collapse4">' +
+                    '<p>Absolutely! Chanced is fully optimized for mobile play. You can enjoy all your favorite games from your smartphone or tablet, anytime and anywhere.</p>' +
+                  '</div>' +
+                '</div>' +
+                '<div class="accordian">' +
+                  '<h3 class="question" aria-expanded="false" aria-controls="collapse5">' +
+                    '<span>How can I contact Support?</span>' +
+                    '<div class="accor_toggle"><div class="top"></div><div class="bottom"></div></div>' +
+                  '</h3>' +
+                  '<div class="content" id="collapse5">' +
+                    'Our support team is here to help <b>24/7!</b> You can reach us via <b>live chat, email, and phone</b>. We aim to respond to all inquiries as quickly as possible.' +
+                  '</div>' +
+                '</div>' +
+              '</div>' +
+            '</div>' +
+          '</div>' +
+          // Footer
+          '<footer style="background:#0a0a1a;border-top:1px solid #1a1a2e;padding:48px 24px;margin-top:auto;">' +
+            '<div style="max-width:1400px;margin:0 auto;">' +
+              '<div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:32px;">' +
+                '<a href="/vivid-casino/" style="display:flex;align-items:center;gap:8px;text-decoration:none;color:#fff;">' +
+                  '<img src="/vivid-casino/images/favicon/chanced-icon-192.png" alt="Chanced" style="width:36px;height:36px;border-radius:6px;display:block;">' +
+                  '<span style="font-size:28px;font-weight:500;color:#D4E2FF;letter-spacing:1px;font-family:system-ui,-apple-system,sans-serif;text-transform:uppercase;filter: drop-shadow(0 0 4px rgba(212,226,255,0.55)) drop-shadow(0 0 8px rgba(212,226,255,0.39)) drop-shadow(0 0 16px rgba(212,226,255,0.27)) drop-shadow(0 0 30px rgba(212,226,255,0.19));">CHANCED</span>' +
+                '</a>' +
+              '</div>' +
+              '<p style="color:#9ca3af;font-size:14px;line-height:1.6;max-width:700px;margin-bottom:32px;">' +
+                'Chanced is the #1 Social Casino offering the best online slots, table games, and live dealer experiences. Play with Gold Coins for fun or Sweeps Coins for a chance to win real prizes.' +
+              '</p>' +
+              '<div style="display:grid;grid-template-columns:repeat(2,1fr);gap:24px;font-size:14px;">' +
+                '<div><h3 style="color:#fff;font-weight:400;margin-bottom:12px;">Games</h3><ul style="list-style:none;padding:0;margin:0;display:flex;flex-direction:column;gap:8px;"><li><a href="#" style="color:#9ca3af;text-decoration:none;">Slots</a></li><li><a href="#" style="color:#9ca3af;text-decoration:none;">Table Games</a></li><li><a href="#" style="color:#9ca3af;text-decoration:none;">Live Casino</a></li></ul></div>' +
+                '<div><h3 style="color:#fff;font-weight:400;margin-bottom:12px;">Support</h3><ul style="list-style:none;padding:0;margin:0;display:flex;flex-direction:column;gap:8px;"><li><a href="#faq" style="color:#9ca3af;text-decoration:none;">FAQ</a></li><li><a href="#" style="color:#9ca3af;text-decoration:none;">Contact Us</a></li></ul></div>' +
+                '<div><h3 style="color:#fff;font-weight:400;margin-bottom:12px;">Legal</h3><ul style="list-style:none;padding:0;margin:0;display:flex;flex-direction:column;gap:8px;"><li><a href="#" style="color:#9ca3af;text-decoration:none;">Terms of Service</a></li><li><a href="#" style="color:#9ca3af;text-decoration:none;">Privacy Policy</a></li></ul></div>' +
+                '<div><h3 style="color:#fff;font-weight:400;margin-bottom:12px;">Social</h3><ul style="list-style:none;padding:0;margin:0;display:flex;flex-direction:column;gap:8px;"><li><a href="#" style="color:#9ca3af;text-decoration:none;">Twitter</a></li><li><a href="#" style="color:#9ca3af;text-decoration:none;">Discord</a></li></ul></div>' +
+              '</div>' +
+              '<div style="margin-top:32px;padding-top:24px;border-top:1px solid #1a1a2e;color:#9ca3af;font-size:12px;">' +
+                '© 2025 Chanced Social Casino. All rights reserved. Play responsibly.' +
+              '</div>' +
+            '</div>' +
+          '</footer>' +
+        '</div>';
+
+        document.body.appendChild(fallback);
+      }
+
+      // Run immediately when DOM is ready, no detection needed
+      if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', function() { setTimeout(showFallback, 800); });
+      } else {
+        setTimeout(showFallback, 800);
+      }
+    })();
+    </script>
+
+    <script>
+    // Inline game grid injection - 2 conveyor belt rows
+    (function() {
+      const CDN = 'https://d3ta80o5sbquaz.cloudfront.net/images';
+
+      const PRAGMATIC = [
+        { title: 'Gates of Olympus', provider: 'pragmatic', id: 'vs20olympgate' },
+        { title: 'Sweet Bonanza', provider: 'pragmatic', id: 'vs20fruitsw' },
+        { title: 'Big Bass Bonanza', provider: 'pragmatic', id: 'vs10txbigbass' },
+        { title: 'Sugar Rush', provider: 'pragmatic', id: 'vs20sugarrush' },
+        { title: 'Wolf Gold', provider: 'pragmatic', id: 'vs25wolfgold' },
+        { title: 'Joker\'s Jewels', provider: 'pragmatic', id: 'vs5joker' },
+        { title: 'Egyptian Dreams', provider: 'pragmatic', id: 'vs25scarabqueen' },
+        { title: 'The Dog House', provider: 'pragmatic', id: 'vs20doghouse' },
+        { title: 'The Hand of Midas', provider: 'pragmatic', id: 'vs20midas' },
+      ];
+
+      const EVOLUTION = [
+        { title: 'Dream Catcher', provider: 'evolution', id: 'dreamcatcher' },
+        { title: 'Mega Ball', provider: 'evolution', id: 'megaball' },
+        { title: 'Speed Roulette', provider: 'evolution', id: 'speedroulette' },
+        { title: 'Sic Bo', provider: 'evolution', id: 'sicbo' },
+        { title: 'Craps', provider: 'evolution', id: 'craps' },
+      ];
+
+      function createTile(game) {
+        const tile = document.createElement('div');
+        tile.className = 'game-tile';
+        tile.style.cssText = 'position:relative;border-radius:12px;overflow:hidden;cursor:pointer;transition:transform 0.2s;aspect-ratio:0.71;background:#1a1a2e;flex:0 0 auto;width:200px;height:280px;';
+        tile.onmouseenter = () => tile.style.transform = 'scale(1.05)';
+        tile.onmouseleave = () => tile.style.transform = 'scale(1)';
+
+        const img = document.createElement('img');
+        img.src = `${CDN}/${game.provider}/${game.id}.webp`;
+        img.alt = game.title;
+        img.style.cssText = 'width:100%;height:100%;object-fit:cover;display:block;';
+        img.onerror = function() {
+          this.style.display = 'none';
+          const fallback = document.createElement('div');
+          fallback.style.cssText = 'width:100%;height:100%;display:flex;align-items:center;justify-content:center;background:#222;color:#aaa;font-size:12px;text-align:center;padding:8px;';
+          fallback.textContent = game.title;
+          tile.appendChild(fallback);
+        };
+
+        const label = document.createElement('div');
+        label.textContent = game.title;
+        label.style.cssText = 'position:absolute;bottom:0;left:0;right:0;padding:8px 12px;background:rgba(0,0,0,0.7);color:#fff;font-size:12px;font-weight:bold;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;';
+
+        tile.appendChild(img);
+        tile.appendChild(label);
+        return tile;
+      }
+
+      function createConveyorRow(games, direction) {
+        // Duplicate games for seamless loop
+        const allGames = [...games, ...games, ...games, ...games];
+
+        const track = document.createElement('div');
+        track.className = 'conveyor-track';
+        track.style.cssText = `display:flex;gap:16px;width:max-content;animation:conveyor-${direction} 30s linear infinite;`;
+
+        allGames.forEach(game => {
+          track.appendChild(createTile(game));
+        });
+
+        const wrapper = document.createElement('div');
+        wrapper.className = 'conveyor-wrapper';
+        wrapper.style.cssText = 'overflow:hidden;width:100%;padding:10px 0;';
+        wrapper.appendChild(track);
+
+        return wrapper;
+      }
+
+      function inject() {
+        const headings = document.querySelectorAll('h2');
+        let target = null;
+        for (const h of headings) {
+          if (h.textContent.includes('Games') || h.textContent.includes('Favorite')) {
+            target = h.closest('div[class*="bg-"]') || h.closest('div') || h.parentElement;
+            break;
+          }
+        }
+        if (!target) return;
+
+        // Nuke every child of target except the h2 heading itself
+        // This wipes all stale Vue loading rows and any previous injections
+        const children = Array.from(target.children);
+        for (const child of children) {
+          if (child.tagName !== 'H2') {
+            child.remove();
+          }
+        }
+
+        // Inject CSS animation keyframes once
+        if (!document.getElementById('conveyor-css')) {
+          const style = document.createElement('style');
+          style.id = 'conveyor-css';
+          style.textContent = `
+            @keyframes conveyor-left {
+              0% { transform: translateX(0); }
+              100% { transform: translateX(-50%); }
+            }
+            @keyframes conveyor-right {
+              0% { transform: translateX(-50%); }
+              100% { transform: translateX(0); }
+            }
+            .conveyor-wrapper:hover .conveyor-track {
+              animation-play-state: paused;
+            }
+          `;
+          document.head.appendChild(style);
+        }
+
+        // Row 1: Pragmatic - scrolls left
+        target.appendChild(createConveyorRow(PRAGMATIC, 'left'));
+
+        // Row 2: Evolution - scrolls right
+        target.appendChild(createConveyorRow(EVOLUTION, 'right'));
+      }
+
+      if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', () => setTimeout(inject, 2000));
+      } else {
+        setTimeout(inject, 2000);
+      }
+      setTimeout(inject, 5000);
+    })();
+    </script>
+    <noscript
+      ><iframe
+        src="https://www.googletagmanager.com/ns.html?id=GTM-5VQW5CTG"
+        height="0"
+        width="0"
+        style="display: none; visibility: hidden"></iframe
+    ></noscript>
+    <!-- End Google Tag Manager (noscript) -->
+    <input type="hidden" id="custom_ip" name="ip" value="" aria-hidden="true" />
+    <div
+      class="w-full md:h-screen md:overflow-hidden bg-base-background game_app"
+      id="app"></div>
+    <script type="text/javascript">
+      var global = global || window;
+    </script>
+
+
+    <script src="https://sec.sandbox.aptpay.com/flinks.js" async defer type="text/javascript"></script>
+    <script type="application/javascript">
+      (function () {
+        var plaidEnabled = 'false' === 'true';
+        if (!plaidEnabled) {
+          return;
+        }
+        var plaidScript = document.createElement('script');
+        plaidScript.src = 'https://cdn.plaid.com/link/v2/stable/link-initialize.js';
+        plaidScript.async = true;
+        plaidScript.defer = true;
+        document.head.appendChild(plaidScript);
+      })();
+    </script>
+    <script type="text/javascript" src="https://js.verygoodvault.com/vgs-collect/2.2.1/vgs-collect.js" async defer></script>
+    <div style="font-family: Roboto; visibility: hidden"></div>
+    <div style="font-family: Roboto Bold; visibility: hidden"></div>
+
+    <script type="application/javascript">
+      function getIP(json) {
+        var el = document.getElementById('custom_ip');
+        if (el) {
+          el.value = json.ip;
+          return;
+        }
+        var ip = document.createElement('input');
+        ip.setAttribute('type', 'hidden');
+        ip.setAttribute('name', 'ip');
+        ip.setAttribute('class', 'custom_ip');
+        ip.setAttribute('id', 'custom_ip');
+        ip.setAttribute('placeholder', 'Optional Field');
+        ip.setAttribute('value', json.ip);
+        document.body.appendChild(ip);
+      }
+    </script>
+
+    <script type="application/javascript" src="https://api.ipify.org/?format=jsonp&amp;callback=getIP" async defer></script>
+    <script src="https://www.chanced.com/js/imagesloaded/imagesloaded.pkgd.min.js" async defer type="text/javascript"></script>
+
+    <!-- OT cookie banner styling on mobile start -->
+    <script type="text/javascript">
+      function afterRemoveCookiePopup(elem) {
+        if (elem) {
+          elem.style.bottom = '0px';
+        }
+      }
+
+      function waitForOneTrustElements() {
+        const intervalId = setInterval(() => {
+          const policyText = document.querySelector('#onetrust-policy-text');
+          const buttonParentGroup = document.querySelector(
+            '#onetrust-button-group-parent',
+          );
+          const buttonGroup = document.querySelector('#onetrust-button-group');
+          const acceptButton = document.querySelector('#onetrust-accept-btn-handler');
+          const rejectButton = document.querySelector('#onetrust-reject-all-handler');
+          const settingsButton = document.querySelector('#onetrust-pc-btn-handler');
+          const registerBtnWrapper = document.getElementById('register-btn-wrapper');
+
+          policyText && (policyText.style.color = '#ccc');
+          if (
+            policyText &&
+            buttonParentGroup &&
+            buttonGroup &&
+            acceptButton &&
+            rejectButton &&
+            settingsButton
+          ) {
+            clearInterval(intervalId);
+            document
+              .getElementById('onetrust-close-btn-container')
+              .addEventListener('click', () =>
+                afterRemoveCookiePopup(registerBtnWrapper),
+              );
+            document
+              .getElementById('onetrust-accept-btn-handler')
+              .addEventListener('click', () =>
+                afterRemoveCookiePopup(registerBtnWrapper),
+              );
+            document
+              .getElementById('onetrust-reject-all-handler')
+              .addEventListener('click', () =>
+                afterRemoveCookiePopup(registerBtnWrapper),
+              );
+            if (window.innerWidth < 768) {
+              const settingsLink = document.createElement('a');
+              settingsLink.textContent = 'Cookie Settings';
+              settingsLink.style.marginLeft = '5px';
+              settingsLink.style.textDecoration = 'underline';
+              settingsLink.style.cursor = 'pointer';
+              settingsLink.addEventListener('click', (event) => {
+                event.preventDefault();
+                settingsButton.click();
+              });
+              policyText.appendChild(document.createTextNode(' '));
+              policyText.appendChild(settingsLink);
+              settingsLink.style.color = 'white';
+              buttonGroup.removeChild(settingsButton);
+              if (registerBtnWrapper) {
+                registerBtnWrapper.style.bottom = '122px';
+              }
+            } else {
+              settingsButton.style.border = 'none';
+              acceptButton.style.fontSize = '16px';
+              acceptButton.style.fontWeight = 'bold';
+              acceptButton.style.border = 'solid 1px #cd5bff';
+              acceptButton.style.color = '#cd5bff';
+            }
+          }
+        }, 300);
+      }
+
+      // Start waiting for OneTrust elements after a delay to account for deferred loading
+      setTimeout(waitForOneTrustElements, 2500);
+    </script>
+    <!-- OT cookie banner styling on mobile end -->
+</body>
+</html>

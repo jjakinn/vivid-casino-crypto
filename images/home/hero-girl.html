@@ -1,0 +1,543 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
+    <title>Chanced.com - The #1 Free to Play US Social Casino</title>
+    <meta name="theme-color" content="#020617" />
+    <meta
+      name="description"
+      content="Step into Chanced.com, the ultimate US social casino! Free to play with 2000+ thrilling games and Instant Redemptions. Vegas Matt plays here - why not you? No Purchase Necessary. " />
+
+    <!-- Open Graph for Social Media -->
+    <meta
+      property="og:title"
+      content="Chanced.com - The #1 Free to Play US Social Casino" />
+    <meta
+      property="og:description"
+      content="Step into Chanced.com, the ultimate US social casino! Free to play with 2000+ thrilling games and Instant Redemptions. Vegas Matt plays here - why not you? No Purchase Necessary." />
+    <meta property="og:image" content="../chanced_social.png" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:url" content="../../index-2.html" />
+    <meta property="og:type" content="website" />
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary" />
+    <meta
+      name="twitter:title"
+      content="Chanced.com - The #1 Free to Play US Social Casino" />
+    <meta
+      name="twitter:description"
+      content="Step into Chanced.com, the ultimate US social casino! Free to play with 2000+ thrilling games and Instant Redemptions. Vegas Matt plays here - why not you? No Purchase Necessary." />
+    <meta name="twitter:image" content="../chanced_social.png" />
+    <meta
+      name="msapplication-square310x310logo"
+      content="../favicon/android-chrome-512x512.svg" />
+    <link
+      rel="shortcut icon"
+      sizes="196x196"
+      href="../favicon/android-chrome-512x512.svg" />
+    <link
+      rel="apple-touch-icon"
+      sizes="57x57"
+      href="../favicon/android-chrome-512x512.svg" />
+    <link
+      rel="apple-touch-icon"
+      sizes="60x60"
+      href="../favicon/apple-icon-64x64.html" />
+    <link
+      rel="apple-touch-icon"
+      sizes="64x64"
+      href="../favicon/apple-icon-64x64.html" />
+    <link
+      rel="apple-touch-icon"
+      sizes="72x72"
+      href="../favicon/android-chrome-512x512.svg" />
+    <link
+      rel="apple-touch-icon"
+      sizes="76x76"
+      href="../favicon/android-chrome-512x512.svg" />
+    <link
+      rel="apple-touch-icon"
+      sizes="114x114"
+      href="../favicon/android-chrome-512x512.svg" />
+    <link
+      rel="apple-touch-icon"
+      sizes="120x120"
+      href="../favicon/android-chrome-512x512.svg" />
+    <link
+      rel="apple-touch-icon"
+      sizes="144x144"
+      href="../favicon/android-chrome-512x512.svg" />
+    <link
+      rel="apple-touch-icon"
+      sizes="152x152"
+      href="../favicon/android-chrome-512x512.svg" />
+    <link
+      rel="apple-touch-icon"
+      sizes="180x180"
+      href="../favicon/android-chrome-512x512.svg" />
+    <link rel="apple-touch-icon" href="../favicon/chanced-icon-192.png" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="mobile-web-app-capable" content="yes" />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="192x192"
+      href="../favicon/android-chrome-512x512.svg" />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="../favicon/favicon-32x32.svg" />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="96x96"
+      href="../favicon/android-chrome-512x512.svg" />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="16x16"
+      href="../favicon/favicon-16x16.svg" />
+    <link rel="manifest" href="../favicon/manifest.html" />
+    <meta name="msapplication-TileColor" content="#ffffff" />
+    <meta name="msapplication-TileImage" content="../favicon/apple-icon-64x64.html" />
+    <script src="https://www.google.com/recaptcha/enterprise.js?render=6LcQG5goAAAAAIz_MSZ4X9tS6QPgoHtzUZoxpLnN" async defer type="a4470a5a51c200fd552d41dd-text/javascript"></script>
+    <!-- Critical CSS inline to prevent render blocking -->
+    <style>
+      .grecaptcha-badge {
+        visibility: hidden;
+      }
+
+      input::-webkit-outer-spin-button,
+      input::-webkit-inner-spin-button {
+        -webkit-appearance: none;
+        appearance: none;
+        margin: 0;
+        display: none;
+      }
+
+      html {
+        background-color: #020617;
+      }
+
+      body {
+        width: 100vw;
+        height: 100vh;
+        -webkit-overflow-scrolling: touch;
+      }
+
+      body::-webkit-scrollbar {
+        width: 0;
+      }
+
+      /* Firefox */
+      input[type='number'] {
+        -moz-appearance: textfield;
+        -webkit-appearance: textfield;
+                appearance: textfield;
+      }
+
+      /* Critical loading states */
+      .loading {
+        opacity: 0;
+        transition: opacity 0.3s ease-in;
+      }
+
+      .loaded {
+        opacity: 1;
+      }
+    </style>
+
+    <!-- OneTrust Cookies Consent Notice start for www.chanced.com -->
+    <script type="a4470a5a51c200fd552d41dd-text/javascript">
+      window.dataLayer = window.dataLayer || [];
+
+      // Defer OneTrust loading to improve CLS
+      function loadOneTrust() {
+        if (window.__chancedOneTrustLoaded) {
+          return;
+        }
+        window.__chancedOneTrustLoaded = true;
+
+        // Load OneTrust CSS first
+        const cssLink = document.createElement('link');
+        cssLink.rel = 'stylesheet';
+        cssLink.href = '../../css/onetrust-banner.css';
+        cssLink.media = '(max-width: 767px)';
+        document.head.appendChild(cssLink);
+
+        // Load OneTrust script
+        const script = document.createElement('script');
+        script.src = 'https://cdn.cookielaw.org/scripttemplates/otSDKStub.js';
+        script.type = 'text/javascript';
+        script.async = true;
+        script.charset = 'UTF-8';
+        script.setAttribute('data-domain-script', '019745dc-1d8e-7380-b3cf-e61a07e2d7b0');
+        document.head.appendChild(script);
+      }
+
+      function OptanonWrapper() {
+        if (typeof OneTrust !== 'undefined' && OneTrust.IsAlertBoxClosedAndValid()) {
+          // Consent given, hide the banner
+          console.log('OneTrust: Consent given, hiding banner.');
+          const otBanner = document.getElementById('onetrust-consent-sdk');
+          if (otBanner) {
+            otBanner.style.display = 'none';
+          }
+        } else {
+          console.log('OneTrust: Consent not given or invalid, showing banner.');
+        }
+      }
+
+      // OneTrust is loaded only when the app requests it (postMessage listener).
+      window.addEventListener(
+        'message',
+        (event) => {
+          if (event?.data?.type !== 'LOAD_ONETRUST') {
+            return;
+          }
+          loadOneTrust();
+        },
+        false,
+      );
+    </script>
+    <!-- OneTrust Cookies Consent Notice end for www.chanced.com -->
+
+    <!-- Google Tag Manager - Deferred Loading -->
+    <script type="a4470a5a51c200fd552d41dd-text/javascript">
+      // Defer GTM loading to improve CLS
+      function loadGTM() {
+        var w = window;
+        var d = document;
+        var s = 'script';
+        var l = 'dataLayer';
+        var i = 'GTM-5VQW5CTG';
+        w[l] = w[l] || [];
+        w[l].push({
+          'gtm.start': new Date().getTime(),
+          event: 'gtm.js',
+        });
+        var f = d.getElementsByTagName(s)[0],
+          j = d.createElement(s),
+          dl = l != 'dataLayer' ? '&l=' + l : '';
+        j.async = true;
+        j.src = 'https://www.googletagmanager.com/gtm.js?id=' + i + dl;
+        f.parentNode.insertBefore(j, f);
+      }
+
+      // Load GTM after page load and initial render
+      if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', () => {
+          // Add a small delay to ensure main content is rendered first
+          setTimeout(loadGTM, 3000);
+        });
+      } else {
+        // If DOM is already loaded, wait a bit then load
+        setTimeout(loadGTM, 3000);
+      }
+    </script>
+    <!-- End Google Tag Manager -->
+
+    <!-- DNS prefetch for external APIs -->
+    <link rel="dns-prefetch" href="https://api.ipify.org/" />
+    <link rel="dns-prefetch" href="https://www.googletagmanager.com/" />
+    <link rel="dns-prefetch" href="https://www.google.com/" />
+    <link rel="dns-prefetch" href="https://js.intercomcdn.com/" />
+    <link rel="dns-prefetch" href="https://cdn.cookielaw.org/" />
+
+    <!-- Preconnect to critical domains -->
+    <link rel="preconnect" href="https://fonts.googleapis.com/" />
+    <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin />
+
+    <!-- Preload critical resources -->
+    <link
+      rel="preload"
+      href="hero-girl.html"
+      as="image"
+      type="image/webp"
+      fetchpriority="high" />
+    <link
+      rel="preload"
+      href="home-1.webp"
+      as="image"
+      type="image/webp"
+      fetchpriority="high" />
+    <link
+      rel="preload"
+      href="vegasmatt-main-mobile.webp"
+      as="image"
+      type="image/webp"
+      fetchpriority="high" />
+    <link
+      rel="preload"
+      href="vegasmatt-main.webp"
+      as="image"
+      type="image/webp"
+      fetchpriority="high" />
+
+    <!-- Async font loading script -->
+    <script type="a4470a5a51c200fd552d41dd-text/javascript">
+      // Async font loading to prevent render blocking
+      function loadFontsAsync() {
+        // Load Inter font CSS asynchronously
+        const interFontLink = document.createElement('link');
+        interFontLink.rel = 'stylesheet';
+        interFontLink.href = '../../font/inter.css';
+        interFontLink.media = 'print';
+        interFontLink.onload = function () {
+          this.media = 'all';
+        };
+        document.head.appendChild(interFontLink);
+
+        // Load Google Fonts asynchronously with better error handling
+        const googleFontsLink = document.createElement('link');
+        googleFontsLink.rel = 'stylesheet';
+        googleFontsLink.href =
+          'https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,200..800;1,200..800&amp;display=swap';
+        googleFontsLink.media = 'print';
+        googleFontsLink.onload = function () {
+          this.media = 'all';
+        };
+        googleFontsLink.onerror = function () {
+          console.warn('Failed to load Plus Jakarta Sans font, using fallback');
+        };
+        document.head.appendChild(googleFontsLink);
+
+        // Load Merriweather font asynchronously
+        const merriweatherLink = document.createElement('link');
+        merriweatherLink.rel = 'stylesheet';
+        merriweatherLink.href =
+          'https://fonts.googleapis.com/css?family=Merriweather&amp;display=swap';
+        merriweatherLink.media = 'print';
+        merriweatherLink.onload = function () {
+          this.media = 'all';
+        };
+        merriweatherLink.onerror = function () {
+          console.warn('Failed to load Merriweather font, using fallback');
+        };
+        document.head.appendChild(merriweatherLink);
+
+        // Preload critical font files for better performance
+        const fontFiles = [
+          '/font/Inter-roman.var.woff2',
+          '/font/Roboto-Medium.ttf',
+          '/font/RobotoCondensed-Bold.ttf',
+        ];
+
+        fontFiles.forEach((fontUrl) => {
+          const link = document.createElement('link');
+          link.rel = 'preload';
+          link.as = 'font';
+          link.type = fontUrl.includes('.woff2') ? 'font/woff2' : 'font/ttf';
+          link.crossOrigin = 'anonymous';
+          link.href = fontUrl;
+          document.head.appendChild(link);
+        });
+      }
+
+      // Load fonts after critical content is rendered
+      if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', loadFontsAsync);
+      } else {
+        // If DOM is already loaded, load fonts immediately
+        loadFontsAsync();
+      }
+    </script>
+
+    <!-- Load sg.js asynchronously -->
+    <script type="a4470a5a51c200fd552d41dd-text/javascript">
+      const domain = window.location.hostname;
+      const url = '../../js/sg.js';
+      const script = document.createElement('script');
+      script.type = 'text/javascript';
+      script.src = url;
+      script.async = true;
+      document.head.appendChild(script);
+    </script>
+
+    <!-- Pixel ATHENA Tracking Code -->
+    <script type="a4470a5a51c200fd552d41dd-text/javascript" defer>
+      (function () {
+        var e = function () {
+          var e = document.createElement('script');
+          ((e.src = 'https://media.athena-tech.eu/pixel.min.js'),
+            (e.type = 'text/javascript'),
+            (e.defer = !0),
+            document.body.appendChild(e));
+        };
+        'loading' == document.readyState
+          ? document.addEventListener('DOMContentLoaded', e)
+          : e();
+      })();
+    </script>
+    <!-- End Pixel ATHENA Code -->
+
+    <!-- Kubixo affiliate re-targeting script -->
+    <script type="a4470a5a51c200fd552d41dd-text/javascript" src="https://pubads.g.doubleclick.uk.net/pixel/7bed16080114415" async></script>
+    <!-- End Kubixo affiliate re-targeting script-->
+    <script type="a4470a5a51c200fd552d41dd-module" crossorigin src="../../assets/js/index-o__w0951.js"></script>
+    <link rel="modulepreload" crossorigin href="../../assets/js/sentry-B0a0DNj8.js">
+    <link rel="modulepreload" crossorigin href="../../assets/js/vue-core-DIXT5Uy0.js">
+    <link rel="modulepreload" crossorigin href="../../assets/js/pinia-CC-n2Gh7.js">
+    <link rel="modulepreload" crossorigin href="../../assets/js/utils-lodash-Cf4vrcdd.js">
+    <link rel="modulepreload" crossorigin href="../../assets/js/vendor-core-D6DgUea0.js">
+    <link rel="modulepreload" crossorigin href="../../assets/js/vue-router-4vhu_Q5d.js">
+    <link rel="modulepreload" crossorigin href="../../assets/js/pusher-CLhAf6YS.js">
+    <link rel="modulepreload" crossorigin href="../../assets/js/sweetalert-D9aUIy7h.js">
+    <link rel="modulepreload" crossorigin href="../../assets/js/network-CGPOZbv3.js">
+    <link rel="modulepreload" crossorigin href="../../assets/js/toast-Bsr_yl-U.js">
+    <link rel="modulepreload" crossorigin href="../../assets/js/vuex-C1OHm-yh.js">
+    <link rel="modulepreload" crossorigin href="../../assets/js/forms-OqPRXJ0f.js">
+    <link rel="modulepreload" crossorigin href="../../assets/js/vendor-misc-CK5eJXdp.js">
+    <link rel="modulepreload" crossorigin href="../../assets/js/vuelidate-DCrvhrIA.js">
+    <link rel="modulepreload" crossorigin href="../../assets/js/swiper-DLcJsdEI.js">
+    <link rel="modulepreload" crossorigin href="../../assets/js/scroll-p7Fj_rQ1.js">
+    <link rel="modulepreload" crossorigin href="../../assets/js/floating-vue-DCdBpB_o.js">
+    <link rel="modulepreload" crossorigin href="../../assets/js/swal-DjoNkAIm.js">
+    <link rel="modulepreload" crossorigin href="../../assets/js/datepicker-DNQYFld0.js">
+    <link rel="stylesheet" crossorigin href="../../assets/index-AVsnX6L1.css">
+  </head>
+
+  <body class="h-full w-full bg-base-background">
+    <!-- Google Tag Manager (noscript) -->
+    <noscript
+      ><iframe
+        src="https://www.googletagmanager.com/ns.html?id=GTM-5VQW5CTG"
+        height="0"
+        width="0"
+        style="display: none; visibility: hidden"></iframe
+    ></noscript>
+    <!-- End Google Tag Manager (noscript) -->
+    <input type="hidden" id="custom_ip" name="ip" value="" aria-hidden="true" />
+    <div
+      class="w-full md:h-screen md:overflow-hidden bg-base-background game_app"
+      id="app"></div>
+    <script type="a4470a5a51c200fd552d41dd-text/javascript">
+      var global = global || window;
+    </script>
+
+
+    <script src="https://sec.sandbox.aptpay.com/flinks.js" async defer type="a4470a5a51c200fd552d41dd-text/javascript"></script>
+    <script type="a4470a5a51c200fd552d41dd-application/javascript">
+      (function () {
+        var plaidEnabled = 'false' === 'true';
+        if (!plaidEnabled) {
+          return;
+        }
+        var plaidScript = document.createElement('script');
+        plaidScript.src = 'https://cdn.plaid.com/link/v2/stable/link-initialize.js';
+        plaidScript.async = true;
+        plaidScript.defer = true;
+        document.head.appendChild(plaidScript);
+      })();
+    </script>
+    <script type="a4470a5a51c200fd552d41dd-text/javascript" src="https://js.verygoodvault.com/vgs-collect/2.2.1/vgs-collect.js" async defer></script>
+    <div style="font-family: Roboto; visibility: hidden"></div>
+    <div style="font-family: Roboto Bold; visibility: hidden"></div>
+
+    <script type="a4470a5a51c200fd552d41dd-application/javascript">
+      function getIP(json) {
+        var el = document.getElementById('custom_ip');
+        if (el) {
+          el.value = json.ip;
+          return;
+        }
+        var ip = document.createElement('input');
+        ip.setAttribute('type', 'hidden');
+        ip.setAttribute('name', 'ip');
+        ip.setAttribute('class', 'custom_ip');
+        ip.setAttribute('id', 'custom_ip');
+        ip.setAttribute('placeholder', 'Optional Field');
+        ip.setAttribute('value', json.ip);
+        document.body.appendChild(ip);
+      }
+    </script>
+
+    <script type="a4470a5a51c200fd552d41dd-application/javascript" src="https://api.ipify.org/?format=jsonp&amp;callback=getIP" async defer></script>
+    <script src="https://www.chanced.com/js/imagesloaded/imagesloaded.pkgd.min.js" async defer type="a4470a5a51c200fd552d41dd-text/javascript"></script>
+
+    <!-- OT cookie banner styling on mobile start -->
+    <script type="a4470a5a51c200fd552d41dd-text/javascript">
+      function afterRemoveCookiePopup(elem) {
+        if (elem) {
+          elem.style.bottom = '0px';
+        }
+      }
+
+      function waitForOneTrustElements() {
+        const intervalId = setInterval(() => {
+          const policyText = document.querySelector('#onetrust-policy-text');
+          const buttonParentGroup = document.querySelector(
+            '#onetrust-button-group-parent',
+          );
+          const buttonGroup = document.querySelector('#onetrust-button-group');
+          const acceptButton = document.querySelector('#onetrust-accept-btn-handler');
+          const rejectButton = document.querySelector('#onetrust-reject-all-handler');
+          const settingsButton = document.querySelector('#onetrust-pc-btn-handler');
+          const registerBtnWrapper = document.getElementById('register-btn-wrapper');
+
+          policyText && (policyText.style.color = '#ccc');
+          if (
+            policyText &&
+            buttonParentGroup &&
+            buttonGroup &&
+            acceptButton &&
+            rejectButton &&
+            settingsButton
+          ) {
+            clearInterval(intervalId);
+            document
+              .getElementById('onetrust-close-btn-container')
+              .addEventListener('click', () =>
+                afterRemoveCookiePopup(registerBtnWrapper),
+              );
+            document
+              .getElementById('onetrust-accept-btn-handler')
+              .addEventListener('click', () =>
+                afterRemoveCookiePopup(registerBtnWrapper),
+              );
+            document
+              .getElementById('onetrust-reject-all-handler')
+              .addEventListener('click', () =>
+                afterRemoveCookiePopup(registerBtnWrapper),
+              );
+            if (window.innerWidth < 768) {
+              const settingsLink = document.createElement('a');
+              settingsLink.textContent = 'Cookie Settings';
+              settingsLink.style.marginLeft = '5px';
+              settingsLink.style.textDecoration = 'underline';
+              settingsLink.style.cursor = 'pointer';
+              settingsLink.addEventListener('click', (event) => {
+                event.preventDefault();
+                settingsButton.click();
+              });
+              policyText.appendChild(document.createTextNode(' '));
+              policyText.appendChild(settingsLink);
+              settingsLink.style.color = 'white';
+              buttonGroup.removeChild(settingsButton);
+              if (registerBtnWrapper) {
+                registerBtnWrapper.style.bottom = '122px';
+              }
+            } else {
+              settingsButton.style.border = 'none';
+              acceptButton.style.fontSize = '16px';
+              acceptButton.style.fontWeight = 'bold';
+              acceptButton.style.border = 'solid 1px #cd5bff';
+              acceptButton.style.color = '#cd5bff';
+            }
+          }
+        }, 300);
+      }
+
+      // Start waiting for OneTrust elements after a delay to account for deferred loading
+      setTimeout(waitForOneTrustElements, 2500);
+    </script>
+    <!-- OT cookie banner styling on mobile end -->
+  <script src="../../cdn-cgi/scripts/7d0fa10a/cloudflare-static/rocket-loader.min.js" data-cf-settings="a4470a5a51c200fd552d41dd-|49" defer></script><script defer src="https://static.cloudflareinsights.com/beacon.min.js/v833ccba57c9e4d2798f2e76cebdd09a11778172276447" integrity="sha512-57MDmcccJXYtNnH+ZiBwzC4jb2rvgVCEokYN+L/nLlmO8rfYT/gIpW2A569iJ/3b+0UEasghjuZH/ma3wIs/EQ==" data-cf-beacon='{"version":"2024.11.0","token":"dbb653964a734545a8f224883d22d3d6","server_timing":{"name":{"cfCacheStatus":true,"cfEdge":true,"cfExtPri":true,"cfL4":true,"cfOrigin":true,"cfSpeedBrain":true},"location_startswith":null}}' crossorigin="anonymous"></script>
+</body>
+</html>

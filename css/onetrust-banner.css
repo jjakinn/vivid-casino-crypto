@@ -1,0 +1,82 @@
+/* OneTrust banner and its elements styling on mobile */
+@media screen and (max-width: 767px) {
+  #onetrust-banner-sdk {
+    padding-top: 0 !important;
+    padding-bottom: 0 !important;
+    min-height: auto !important;
+  }
+  #onetrust-banner-sdk .ot-sdk-container {
+    padding-top: 0 !important;
+    padding-bottom: 0 !important;
+    bottom: 0 !important;
+  }
+
+  #onetrust-banner-sdk #onetrust-policy {
+    font-size: 0.75em !important;
+    line-height: 1 !important;
+    padding-bottom: 0 !important;
+  }
+
+  #onetrust-banner-sdk #onetrust-button-group-parent {
+    display: block !important;
+  }
+
+  #onetrust-banner-sdk #onetrust-button-group {
+    display: flex !important;
+    flex-direction: row !important;
+    justify-content: flex-start !important;
+    align-items: center !important;
+    width: 100% !important;
+    margin-top: 0 !important;
+    margin-bottom: 0 !important;
+  }
+
+  #onetrust-banner-sdk #onetrust-button-group > button#onetrust-pc-btn-handler,
+  #onetrust-banner-sdk #onetrust-button-group > button#onetrust-reject-all-handler,
+  #onetrust-banner-sdk #onetrust-button-group > button#onetrust-accept-btn-handler {
+    flex-grow: 1 !important;
+    flex-shrink: 1 !important;
+    flex-basis: auto !important;
+    padding: 4px 0 !important;
+    font-size: 0.7em !important;
+    white-space: nowrap !important;
+    text-align: center !important;
+  }
+
+  #onetrust-banner-sdk #onetrust-button-group > button#onetrust-pc-btn-handler {
+    margin-right: 1px !important;
+    margin-left: 0 !important;
+  }
+
+  #onetrust-banner-sdk #onetrust-button-group > button#onetrust-reject-all-handler {
+    color: white !important;
+    border: 1px solid white !important;
+    margin-right: 12px !important;
+    margin-left: 0 !important;
+  }
+
+  #onetrust-banner-sdk #onetrust-button-group > button#onetrust-accept-btn-handler {
+    background-color: green !important;
+    color: white !important;
+    border: 1px solid white !important;
+    margin-left: 12px !important;
+    margin-right: 0 !important;
+  }
+
+  #ot-sdk-btn-floating {
+    display: none !important;
+  }
+
+  #onetrust-close-btn-container {
+    top: 0 !important;
+    right: 0 !important;
+  }
+
+  #register-btn-wrapper {
+    position: fixed;
+    left: 0;
+    right: 0;
+    width: 100%;
+    z-index: 1111;
+  }
+}
