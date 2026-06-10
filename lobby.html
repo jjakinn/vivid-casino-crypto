@@ -176,14 +176,6 @@
       #sidebar-desktop.sidebar-collapsed div.px-3 > div:first-child {
         display: none !important;
       }
-      /* Hide unwanted promotion banners - keep only VIP, King of Streets, Cash Blitz */
-      .swiper-slide:has(img[src*="Drops_Races-Carousel"]),
-      .swiper-slide:has(img[src*="Live-Baccarat-Carousel"]),
-      .swiper-slide:has(img[src*="Weekly-Raffle"]),
-      .swiper-slide:has(img[src*="PiggyBrickBonanza"]),
-      .swiper-slide:has(img[src*="Free-SC"]) {
-        display: none !important;
-      }
       @media (min-width: 768px) {
         .sidebar-collapsed {
           width: 64px !important;
@@ -1763,5 +1755,23 @@ function toggleSportDropdown(el) {
     if (savedOpt) savedOpt.click();
   }
 })();
+<script>
+  // Remove unwanted promotion banners - keep only VIP, King of Streets, Cash Blitz
+  (function() {
+    var unwanted = ['Drops_Races-Carousel', 'Live-Baccarat-Carousel', 'Weekly-Raffle', 'PiggyBrickBonanza', 'Free-SC'];
+    var slides = document.querySelectorAll('.swiper-slide');
+    slides.forEach(function(slide) {
+      var img = slide.querySelector('img[src*="categories/banners/"]');
+      if (img) {
+        var src = img.getAttribute('src') || '';
+        for (var i = 0; i < unwanted.length; i++) {
+          if (src.indexOf(unwanted[i]) !== -1) {
+            slide.remove();
+            break;
+          }
+        }
+      }
+    });
+  })();
 </script>
 </body></html>
