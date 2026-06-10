@@ -1,0 +1,384 @@
+<div class="flex flex-col gap-6" id="sportsbook-content">
+  <style>
+    .sportsbook-card { background: #0f172a; border: 1px solid #1e293b; border-radius: 8px; overflow: hidden; }
+    .sportsbook-card:hover { border-color: #334155; }
+    .bet-box { background: #020617; border: 1px solid #1e293b; border-radius: 6px; padding: 8px 12px; cursor: pointer; transition: all 0.2s; text-align: center; }
+    .bet-box:hover { background: #1e293b; border-color: #475569; }
+    .bet-box .odds { color: #3b82f6; font-weight: 700; font-size: 14px; }
+    .live-badge { background: #dc2626; color: white; font-size: 10px; font-weight: 700; padding: 2px 8px; border-radius: 4px; text-transform: uppercase; }
+    .time-badge { background: #1e293b; color: #94a3b8; font-size: 11px; padding: 2px 8px; border-radius: 4px; }
+    .gallery-scroll { display: grid; grid-auto-flow: column; grid-auto-columns: calc((100% - 16px) / 3); gap: 8px; overflow-x: auto; scroll-snap-type: x mandatory; }
+    .gallery-scroll::-webkit-scrollbar { display: none; }
+    .sport-card-img { width: 100%; height: auto; max-height: 120px; object-fit: cover; display: block; }
+    .promo-img { width: 100%; height: 140px; object-fit: cover; }
+    .team-logo { width: 24px; height: 24px; border-radius: 50%; object-fit: cover; }
+    .flag { font-size: 20px; margin-right: 4px; }
+    .match-row { display: grid; grid-template-columns: 1fr auto 1fr; gap: 8px; align-items: center; padding: 8px 0; }
+    .score { font-size: 18px; font-weight: 700; color: white; text-align: center; }
+  </style>
+
+  <!-- Promotions Slider -->
+  <div>
+    <div class="flex items-center gap-2 mb-3">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" class="text-gray-400"><path fill="currentColor" d="M15.05 6.043c.94-.98 1.74-1.95 2.35-3.18.3-.61-.06-1.35-.73-1.46-3.08-.54-6.23-.54-9.32 0-.67.11-1.03.85-.73 1.46.61 1.23 1.41 2.2 2.35 3.18C4.93 7.353 2 11.333 2 15.873v1.02c0 3.37 2.69 6.11 6 6.11h8c3.31 0 6-2.73 6-6.11v-1.02c0-4.54-2.93-8.52-6.97-9.83z"/></svg>
+      <h2 class="text-xl font-bold text-white">Promotions</h2>
+    </div>
+    <div class="gallery-scroll">
+      <div class="sportsbook-card">
+        <img src="https://mediumrare.imgix.net/countdown-to-the-cup-en.png?w=400&h=200&fit=min&auto=format" alt="Countdown to the Cup" class="promo-img"/>
+        <div class="p-3">
+          <p class="text-sm font-bold text-white">Countdown to the Cup</p>
+          <p class="text-xs text-gray-400">Odds Boosts on Cup Winner</p>
+        </div>
+      </div>
+      <div class="sportsbook-card">
+        <img src="https://mediumrare.imgix.net/90th-minute-payout-en.png?w=400&h=200&fit=min&auto=format" alt="90th Minute Payout" class="promo-img"/>
+        <div class="p-3">
+          <p class="text-sm font-bold text-white">90th Minute Payout</p>
+          <p class="text-xs text-gray-400">World Football</p>
+        </div>
+      </div>
+      <div class="sportsbook-card">
+        <img src="https://mediumrare.imgix.net/odds-boosts-team-vitality-and-astralis-en.png?w=400&h=200&fit=min&auto=format" alt="IEM Cologne" class="promo-img"/>
+        <div class="p-3">
+          <p class="text-sm font-bold text-white">IEM Cologne 2026</p>
+          <p class="text-xs text-gray-400">Odds Boosts at IEM Cologne</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Top Matches -->
+  <div class="flex flex-col gap-3">
+    <div class="flex items-center gap-2">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" class="text-gray-400"><path fill="currentColor" d="M12 1C5.92 1 1 5.92 1 12s4.92 11 11 11 11-4.92 11-11S18.08 1 12 1"/></svg>
+      <h2 class="text-xl font-bold text-white">Top Matches</h2>
+    </div>
+    <div class="flex flex-row gap-2">
+      <button class="px-3 py-1 rounded bg-base-accent text-white text-sm font-medium">All</button>
+      <button class="px-3 py-1 rounded bg-transparent border border-base-border text-gray-400 text-sm hover:text-white transition-colors">Live</button>
+      <button class="px-3 py-1 rounded bg-transparent border border-base-border text-gray-400 text-sm hover:text-white transition-colors">Upcoming</button>
+    </div>
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+      <!-- Argentina vs Iceland -->
+      <div class="sportsbook-card">
+        <div class="flex items-center justify-between p-3 border-b border-gray-800">
+          <span class="time-badge">1h</span>
+          <span class="text-xs text-gray-400">11,028</span>
+        </div>
+        <div class="p-4">
+          <div class="flex items-center justify-center gap-3 mb-4">
+            <span class="flag">🇦🇷</span>
+            <span class="text-sm font-bold text-white">Argentina</span>
+            <span class="text-xs text-gray-400">vs</span>
+            <span class="text-sm font-bold text-white">Iceland</span>
+            <span class="flag">🇮🇸</span>
+          </div>
+          <p class="text-xs text-gray-400 mb-3">98% of 1x2 bets on Argentina</p>
+          <div class="grid grid-cols-3 gap-2">
+            <div class="bet-box">
+              <span class="text-xs text-white block">Argentina</span>
+              <span class="odds">1.17</span>
+            </div>
+            <div class="bet-box">
+              <span class="text-xs text-white block">Draw</span>
+              <span class="odds">6.20</span>
+            </div>
+            <div class="bet-box">
+              <span class="text-xs text-white block">Iceland</span>
+              <span class="odds">13.00</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Tennis: McCabe vs Bergs -->
+      <div class="sportsbook-card">
+        <div class="flex items-center justify-between p-3 border-b border-gray-800">
+          <span class="time-badge">9h</span>
+          <span class="text-xs text-gray-400">7,052</span>
+        </div>
+        <div class="p-4">
+          <div class="flex items-center justify-center gap-3 mb-4">
+            <span class="flag">🇦🇺</span>
+            <span class="text-sm font-bold text-white">James McCabe</span>
+            <span class="text-xs text-gray-400">vs</span>
+            <span class="text-sm font-bold text-white">Zizou Bergs</span>
+            <span class="flag">🇧🇪</span>
+          </div>
+          <p class="text-xs text-gray-400 mb-3">94% of match winner bets on Bergs</p>
+          <div class="grid grid-cols-2 gap-2">
+            <div class="bet-box">
+              <span class="text-xs text-white block">James McCabe</span>
+              <span class="odds">2.70</span>
+            </div>
+            <div class="bet-box">
+              <span class="text-xs text-white block">Zizou Bergs</span>
+              <span class="odds">1.42</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Tennis: Virtanen vs Majchrzak -->
+      <div class="sportsbook-card">
+        <div class="flex items-center justify-between p-3 border-b border-gray-800">
+          <span class="time-badge">9h</span>
+          <span class="text-xs text-gray-400">5,897</span>
+        </div>
+        <div class="p-4">
+          <div class="flex items-center justify-center gap-3 mb-4">
+            <span class="flag">🇫🇮</span>
+            <span class="text-sm font-bold text-white">Otto Virtanen</span>
+            <span class="text-xs text-gray-400">vs</span>
+            <span class="text-sm font-bold text-white">Kamil Majchrzak</span>
+            <span class="flag">🇵🇱</span>
+          </div>
+          <p class="text-xs text-gray-400 mb-3">56% of match winner bets on Virtanen</p>
+          <div class="grid grid-cols-2 gap-2">
+            <div class="bet-box">
+              <span class="text-xs text-white block">Otto Virtanen</span>
+              <span class="odds">1.71</span>
+            </div>
+            <div class="bet-box">
+              <span class="text-xs text-white block">Kamil Majchrzak</span>
+              <span class="odds">2.06</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- World Cup -->
+  <div class="flex flex-col gap-3">
+    <div class="flex items-center justify-between">
+      <h2 class="text-xl font-bold text-white">World Cup</h2>
+      <a href="/sports/outright/soccer/international/world-cup" class="text-sm text-blue-400 hover:text-white transition-colors">View All</a>
+    </div>
+    <p class="text-sm text-gray-400">World Cup Winner - 2026</p>
+    <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-2">
+      <div class="bet-box text-left">
+        <span class="text-xs text-white block">🇪🇸 Spain</span>
+        <span class="odds">5.50</span>
+      </div>
+      <div class="bet-box text-left">
+        <span class="text-xs text-white block">🇫🇷 France</span>
+        <span class="odds">6.00</span>
+      </div>
+      <div class="bet-box text-left">
+        <span class="text-xs text-white block">🏴󠁧󠁢󠁥󠁮󠁧󠁿 England</span>
+        <span class="odds">7.50</span>
+      </div>
+      <div class="bet-box text-left">
+        <span class="text-xs text-white block">🇦🇷 Argentina</span>
+        <span class="odds">9.00</span>
+      </div>
+      <div class="bet-box text-left">
+        <span class="text-xs text-white block">🇵🇹 Portugal</span>
+        <span class="odds">9.00</span>
+      </div>
+      <div class="bet-box text-left">
+        <span class="text-xs text-white block">🇧🇷 Brazil</span>
+        <span class="odds">10.00</span>
+      </div>
+      <div class="bet-box text-left">
+        <span class="text-xs text-white block">🇩🇪 Germany</span>
+        <span class="odds">13.00</span>
+      </div>
+      <div class="bet-box text-left">
+        <span class="text-xs text-white block">🇳🇱 Netherlands</span>
+        <span class="odds">18.00</span>
+      </div>
+      <div class="bet-box text-left">
+        <span class="text-xs text-white block">🇳🇴 Norway</span>
+        <span class="odds">31.00</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Top Sports -->
+  <div class="flex flex-col gap-3">
+    <div class="flex items-center justify-between">
+      <h2 class="text-xl font-bold text-white">Top Sports</h2>
+      <a href="/sports/all" class="text-sm text-blue-400 hover:text-white transition-colors">View All</a>
+    </div>
+    <div class="flex flex-row gap-3 overflow-x-auto pb-2" style="scrollbar-width: none;">
+      <a href="/sports/soccer" class="block flex-shrink-0 sportsbook-card hover:opacity-80 transition-opacity" style="width: 100px;">
+        <img src="https://mediumrare.imgix.net/soccer-en.png?w=180&h=236&fit=min&auto=format" alt="Soccer" class="sport-card-img" style="width: 100px; height: 131px; object-fit: cover; display: block; border-radius: 8px 8px 0 0;"/>
+        <div class="p-2">
+          <p class="text-sm font-bold text-white">Soccer</p>
+        </div>
+      </a>
+      <a href="/sports/basketball" class="block flex-shrink-0 sportsbook-card hover:opacity-80 transition-opacity" style="width: 100px;">
+        <img src="https://mediumrare.imgix.net/basketball-en.png?w=180&h=236&fit=min&auto=format" alt="Basketball" class="sport-card-img" style="width: 100px; height: 131px; object-fit: cover; display: block; border-radius: 8px 8px 0 0;"/>
+        <div class="p-2">
+          <p class="text-sm font-bold text-white">Basketball</p>
+        </div>
+      </a>
+      <a href="/sports/tennis" class="block flex-shrink-0 sportsbook-card hover:opacity-80 transition-opacity" style="width: 100px;">
+        <img src="https://mediumrare.imgix.net/tennis-en.png?w=180&h=236&fit=min&auto=format" alt="Tennis" class="sport-card-img" style="width: 100px; height: 131px; object-fit: cover; display: block; border-radius: 8px 8px 0 0;"/>
+        <div class="p-2">
+          <p class="text-sm font-bold text-white">Tennis</p>
+        </div>
+      </a>
+      <a href="/sports/baseball" class="block flex-shrink-0 sportsbook-card hover:opacity-80 transition-opacity" style="width: 100px;">
+        <img src="https://mediumrare.imgix.net/baseball-en.png?w=180&h=236&fit=min&auto=format" alt="Baseball" class="sport-card-img" style="width: 100px; height: 131px; object-fit: cover; display: block; border-radius: 8px 8px 0 0;"/>
+        <div class="p-2">
+          <p class="text-sm font-bold text-white">Baseball</p>
+        </div>
+      </a>
+      <a href="/sports/ice-hockey" class="block flex-shrink-0 sportsbook-card hover:opacity-80 transition-opacity" style="width: 100px;">
+        <img src="https://mediumrare.imgix.net/ice-hockey-en.png?w=180&h=236&fit=min&auto=format" alt="Ice Hockey" class="sport-card-img" style="width: 100px; height: 131px; object-fit: cover; display: block; border-radius: 8px 8px 0 0;"/>
+        <div class="p-2">
+          <p class="text-sm font-bold text-white">Ice Hockey</p>
+        </div>
+      </a>
+      <a href="/sports/counter-strike" class="block flex-shrink-0 sportsbook-card hover:opacity-80 transition-opacity" style="width: 100px;">
+        <img src="https://mediumrare.imgix.net/counter-strike-en.png?w=180&h=236&fit=min&auto=format" alt="CS2" class="sport-card-img" style="width: 100px; height: 131px; object-fit: cover; display: block; border-radius: 8px 8px 0 0;"/>
+        <div class="p-2">
+          <p class="text-sm font-bold text-white">CS2</p>
+        </div>
+      </a>
+      <a href="/sports/cricket" class="block flex-shrink-0 sportsbook-card hover:opacity-80 transition-opacity" style="width: 100px;">
+        <img src="https://mediumrare.imgix.net/cricket-en.png?w=180&h=236&fit=min&auto=format" alt="Cricket" class="sport-card-img" style="width: 100px; height: 131px; object-fit: cover; display: block; border-radius: 8px 8px 0 0;"/>
+        <div class="p-2">
+          <p class="text-sm font-bold text-white">Cricket</p>
+        </div>
+      </a>
+    </div>
+  </div>
+
+  <!-- Top Picks -->
+  <div class="flex flex-col gap-3">
+    <div class="flex items-center gap-2">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" class="text-gray-400"><path fill="currentColor" d="M15.05 6.043c.94-.98 1.74-1.95 2.35-3.18.3-.61-.06-1.35-.73-1.46-3.08-.54-6.23-.54-9.32 0-.67.11-1.03.85-.73 1.46.61 1.23 1.41 2.2 2.35 3.18C4.93 7.353 2 11.333 2 15.873v1.02c0 3.37 2.69 6.11 6 6.11h8c3.31 0 6-2.73 6-6.11v-1.02c0-4.54-2.93-8.52-6.97-9.83z"/></svg>
+      <h2 class="text-xl font-bold text-white">Top Picks</h2>
+    </div>
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+      <div class="sportsbook-card">
+        <div class="flex justify-between items-center p-3 border-b border-gray-800">
+          <span class="time-badge">1h</span>
+          <span class="text-xs text-gray-400">6,016</span>
+        </div>
+        <div class="p-4">
+          <p class="text-sm font-bold text-white mb-1">🇦🇷 Argentina</p>
+          <p class="text-xs text-gray-400 mb-1">Argentina - Iceland</p>
+          <p class="text-xs text-gray-400 mb-3">$184,565 Wagered</p>
+          <div class="bet-box">
+            <span class="text-xs text-white block">Argentina</span>
+            <span class="odds">1.17</span>
+          </div>
+        </div>
+      </div>
+      <div class="sportsbook-card">
+        <div class="flex justify-between items-center p-3 border-b border-gray-800">
+          <span class="time-badge">13m</span>
+          <span class="text-xs text-gray-400">954</span>
+        </div>
+        <div class="p-4">
+          <p class="text-sm font-bold text-white mb-1">Carolina Hurricanes</p>
+          <p class="text-xs text-gray-400 mb-1">Vegas - Carolina</p>
+          <p class="text-xs text-gray-400 mb-3">$169,212 Wagered</p>
+          <div class="bet-box">
+            <span class="text-xs text-white block">Carolina Hurricanes</span>
+            <span class="odds">1.91</span>
+          </div>
+        </div>
+      </div>
+      <div class="sportsbook-card">
+        <div class="flex justify-between items-center p-3 border-b border-gray-800">
+          <span class="time-badge">13m</span>
+          <span class="text-xs text-gray-400">1,044</span>
+        </div>
+        <div class="p-4">
+          <p class="text-sm font-bold text-white mb-1">Vegas Golden Knights</p>
+          <p class="text-xs text-gray-400 mb-1">Vegas - Carolina</p>
+          <p class="text-xs text-gray-400 mb-3">$139,801 Wagered</p>
+          <div class="bet-box">
+            <span class="text-xs text-white block">Vegas Golden Knights</span>
+            <span class="odds">1.93</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Popular Events / MLB -->
+  <div class="flex flex-col gap-3">
+    <div class="flex items-center gap-2 mb-2">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" class="text-gray-400"><path fill="currentColor" d="M12 1C5.92 1 1 5.92 1 12s4.92 11 11 11 11-4.92 11-11S18.08 1 12 1"/></svg>
+      <h2 class="text-xl font-bold text-white">Popular Events</h2>
+    </div>
+    <div class="sportsbook-card">
+      <div class="px-4 py-3 bg-base-sidebar-background flex items-center justify-between cursor-pointer border-b border-gray-800">
+        <span class="font-bold text-white">MLB</span>
+        <svg class="w-5 h-5 text-gray-400" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+      </div>
+      <div class="p-4">
+        <!-- Live Game 1 -->
+        <div class="mb-4 pb-4 border-b border-gray-800">
+          <div class="flex items-center justify-between mb-3">
+            <div class="flex items-center gap-2">
+              <span class="live-badge">Live</span>
+              <span class="text-xs text-gray-400">4th inning bottom</span>
+            </div>
+            <span class="text-xs text-gray-400">+32 markets</span>
+          </div>
+          <div class="match-row">
+            <div class="flex items-center gap-2">
+              <span class="flag">🇺🇸</span>
+              <span class="text-sm text-white">Baltimore Orioles</span>
+            </div>
+            <div class="score">1 - 3</div>
+            <div class="flex items-center gap-2 justify-end">
+              <span class="text-sm text-white">Seattle Mariners</span>
+              <span class="flag">🇺🇸</span>
+            </div>
+          </div>
+          <div class="grid grid-cols-2 gap-2 mt-3">
+            <div class="bet-box">
+              <span class="text-xs text-white block">Baltimore</span>
+              <span class="odds">1.50</span>
+            </div>
+            <div class="bet-box">
+              <span class="text-xs text-white block">Seattle</span>
+              <span class="odds">2.45</span>
+            </div>
+          </div>
+        </div>
+        <!-- Live Game 2 -->
+        <div>
+          <div class="flex items-center justify-between mb-3">
+            <div class="flex items-center gap-2">
+              <span class="live-badge">Live</span>
+              <span class="text-xs text-gray-400">5th inning top</span>
+            </div>
+            <span class="text-xs text-gray-400">+34 markets</span>
+          </div>
+          <div class="match-row">
+            <div class="flex items-center gap-2">
+              <span class="flag">🇺🇸</span>
+              <span class="text-sm text-white">Pittsburgh Pirates</span>
+            </div>
+            <div class="score">2 - 1</div>
+            <div class="flex items-center gap-2 justify-end">
+              <span class="text-sm text-white">LA Dodgers</span>
+              <span class="flag">🇺🇸</span>
+            </div>
+          </div>
+          <div class="grid grid-cols-2 gap-2 mt-3">
+            <div class="bet-box">
+              <span class="text-xs text-white block">Pittsburgh</span>
+              <span class="odds">1.65</span>
+            </div>
+            <div class="bet-box">
+              <span class="text-xs text-white block">LA Dodgers</span>
+              <span class="odds">2.20</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
