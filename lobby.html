@@ -225,7 +225,7 @@
           position: fixed !important;
           left: 0 !important;
           top: 0 !important;
-          z-index: 99999 !important;
+          z-index: 100000 !important;
           width: 80vw !important;
           max-width: 320px !important;
           height: 100vh !important;
@@ -233,8 +233,10 @@
           background-color: #0f172a !important;
           overflow-y: auto !important;
           -webkit-overflow-scrolling: touch !important;
+          touch-action: pan-y !important;
           opacity: 1 !important;
           pointer-events: auto !important;
+          transform: translateZ(0) !important;
         }
         #sidebar-desktop.mobile-open * {
           pointer-events: auto !important;
@@ -252,8 +254,12 @@
           position: fixed !important;
           inset: 0 !important;
           background: rgba(0,0,0,0.6) !important;
-          z-index: 99998 !important;
+          z-index: 99990 !important;
           pointer-events: auto !important;
+        }
+        /* Ensure parent stacking context is above backdrop */
+        #sidebar-desktop.mobile-open {
+          position: fixed !important;
         }
       }
       @media (min-width: 768px) {
@@ -407,16 +413,20 @@ function toggleSidebar() {
 function toggleMobileSidebar() {
   const sidebar = document.getElementById('sidebar-desktop');
   const backdrop = document.getElementById('mobile-sidebar-backdrop');
+  const parent = document.getElementById('sidebar-parent');
   if (!sidebar) return;
   const isOpen = sidebar.classList.toggle('mobile-open');
   if (backdrop) backdrop.classList.toggle('active', isOpen);
+  if (parent) parent.style.zIndex = isOpen ? '100001' : '';
   document.body.style.overflow = isOpen ? 'hidden' : '';
 }
 function closeMobileSidebar() {
   const sidebar = document.getElementById('sidebar-desktop');
   const backdrop = document.getElementById('mobile-sidebar-backdrop');
+  const parent = document.getElementById('sidebar-parent');
   if (sidebar) sidebar.classList.remove('mobile-open');
   if (backdrop) backdrop.classList.remove('active');
+  if (parent) parent.style.zIndex = '';
   document.body.style.overflow = '';
 }
 function switchSidebarMode(mode) {
@@ -461,7 +471,7 @@ function toggleSportDropdown(el) {
 <!-- Google Tag Manager (noscript) -->
 <!-- End Google Tag Manager (noscript) -->
 <input aria-hidden="true" id="custom_ip" name="ip" type="hidden" value="82.149.80.47"/>
-<div class="w-full md:h-screen md:overflow-hidden bg-base-background game_app" id="app"><!-- --><!-- --><!-- --><!-- --><!-- --><div data-v-18cb80d8=""><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --></div><div class="flex h-full w-full flex-row text-white" data-v-18cb80d8=""><!-- --><!-- --><!-- --><div class="h-screen sticky top-0 left-0 max-[767px]:sticky max-[1024px]:absolute z-[99992]" data-v-386157ea=""><div id="sidebar-desktop" class="md:w-[256px] group sticky top-0 hidden h-screen flex-col transition-all duration-300 ease-in-out bg-base-sidebar-background md:flex border-r border-base-border" data-v-386157ea=""><div class="flex justify-between items-center px-2 md:py-4 py-[14px] border-b-[1px] border-base-border gap-2" data-v-386157ea=""><button id="sidebar-toggle-btn" class="p-2" data-v-386157ea="" onclick="toggleSidebar()"><svg id="sidebar-toggle-icon" class="lucide lucide-arrow-left-to-line-icon lucide-arrow-left-to-line transition-transform duration-300" data-v-386157ea="" fill="none" height="24" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg"><path d="M3 19V5"></path><path d="m13 6-6 6 6 6"></path><path d="M7 12h14"></path></svg></button><div id="sidebar-mode-toggle" class="flex-1 flex bg-base-input-background rounded-lg p-1 border border-base-border max-w-[180px]"><button id="sidebar-tab-casino" class="flex-1 py-1.5 text-sm font-medium rounded-md transition-all duration-200 bg-base-sidebar-accent text-white shadow-sm" onclick="switchSidebarMode('casino')">Casino</button><button id="sidebar-tab-sports" class="flex-1 py-1.5 text-sm font-medium rounded-md transition-all duration-200 text-base-muted-foreground hover:text-white" onclick="switchSidebarMode('sports')">Sports</button></div></div><div class="overflow-y-auto flex-grow overflow-x-hidden" data-v-386157ea=""><aside id="sidebar-casino-content" class="flex flex-col h-full justify-start gap-2 p-2 pt-6" data-v-386157ea=""><div class="flex flex-col gap-1 duration-150 px-2" data-v-37ba0874=""><div class="promo_race_bg" data-v-37ba0874=""></div><div class="px-3 py-1 flex cursor-pointer flex-row items-center gap-2 rounded-md text-sm border border-transparent transition-all duration-300 ease-linear hover:bg-base-sidebar-accent text-base-sidebar-accent-foreground" data-v-37ba0874=""><div style="width: 24px; height: 24px; display: none; align-items: center; justify-content: center; border-radius: 4px;">
+<div class="w-full md:h-screen md:overflow-hidden bg-base-background game_app" id="app"><!-- --><!-- --><!-- --><!-- --><!-- --><div data-v-18cb80d8=""><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --><!-- --></div><div class="flex h-full w-full flex-row text-white" data-v-18cb80d8=""><!-- --><!-- --><!-- --><div id="sidebar-parent" class="h-screen sticky top-0 left-0 max-[767px]:sticky max-[1024px]:absolute z-[99992]" data-v-386157ea=""><div id="sidebar-desktop" class="md:w-[256px] group sticky top-0 hidden h-screen flex-col transition-all duration-300 ease-in-out bg-base-sidebar-background md:flex border-r border-base-border" data-v-386157ea=""><div class="flex justify-between items-center px-2 md:py-4 py-[14px] border-b-[1px] border-base-border gap-2" data-v-386157ea=""><button id="sidebar-toggle-btn" class="p-2" data-v-386157ea="" onclick="toggleSidebar()"><svg id="sidebar-toggle-icon" class="lucide lucide-arrow-left-to-line-icon lucide-arrow-left-to-line transition-transform duration-300" data-v-386157ea="" fill="none" height="24" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg"><path d="M3 19V5"></path><path d="m13 6-6 6 6 6"></path><path d="M7 12h14"></path></svg></button><div id="sidebar-mode-toggle" class="flex-1 flex bg-base-input-background rounded-lg p-1 border border-base-border max-w-[180px]"><button id="sidebar-tab-casino" class="flex-1 py-1.5 text-sm font-medium rounded-md transition-all duration-200 bg-base-sidebar-accent text-white shadow-sm" onclick="switchSidebarMode('casino')">Casino</button><button id="sidebar-tab-sports" class="flex-1 py-1.5 text-sm font-medium rounded-md transition-all duration-200 text-base-muted-foreground hover:text-white" onclick="switchSidebarMode('sports')">Sports</button></div></div><div class="overflow-y-auto flex-grow overflow-x-hidden" data-v-386157ea=""><aside id="sidebar-casino-content" class="flex flex-col h-full justify-start gap-2 p-2 pt-6" data-v-386157ea=""><div class="flex flex-col gap-1 duration-150 px-2" data-v-37ba0874=""><div class="promo_race_bg" data-v-37ba0874=""></div><div class="px-3 py-1 flex cursor-pointer flex-row items-center gap-2 rounded-md text-sm border border-transparent transition-all duration-300 ease-linear hover:bg-base-sidebar-accent text-base-sidebar-accent-foreground" data-v-37ba0874=""><div style="width: 24px; height: 24px; display: none; align-items: center; justify-content: center; border-radius: 4px;">
 
 </div><img alt="Icon" class="flex-shrink-0" data-v-37ba0874="" height="24.000" src="https://jjakinn.github.io/vivid-casino-crypto/assets/home-D5p8tSee.png" style="width: 24px; height: 24px;" width="24.000"/><p class="w-full delay-150 transition-opacity duration-150 ease-in-out font-normal whitespace-nowrap" data-v-37ba0874="">Home</p></div><div class="px-3 py-1 flex cursor-pointer flex-row items-center gap-2 rounded-md text-sm border border-transparent transition-all duration-300 ease-linear hover:bg-base-sidebar-accent text-base-sidebar-accent-foreground" data-v-37ba0874=""><div style="width: 24px; height: 24px; display: none; align-items: center; justify-content: center; border-radius: 4px;">
 
