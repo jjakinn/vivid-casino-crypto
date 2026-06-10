@@ -192,10 +192,15 @@
         padding-bottom: 0 !important;
       }
       /* Fix Chrome swiper height explosion — circular height:100% dependency */
-      #home_slider .swiper-wrapper,
+      #home_slider .swiper-wrapper {
+        height: auto !important;
+        min-height: unset !important;
+        align-items: flex-start !important;
+      }
       #home_slider .swiper-slide {
         height: auto !important;
         min-height: unset !important;
+        align-self: flex-start !important;
       }
       #home_slider .swiper-carousel-animate-opacity,
       #home_slider .swiper-slide img.bg-image {
