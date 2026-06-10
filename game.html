@@ -528,6 +528,12 @@ function toggleSidebar() {
   const sidebar = document.getElementById('sidebar-desktop');
   const toggleIcon = document.getElementById('sidebar-toggle-icon');
   if (!sidebar) return;
+  // On mobile, close the sidebar entirely
+  if (window.innerWidth < 768) {
+    closeMobileSidebar();
+    return;
+  }
+  // Desktop: toggle collapsed state
   const isCollapsed = sidebar.classList.toggle('sidebar-collapsed');
   if (toggleIcon) {
     toggleIcon.classList.toggle('sidebar-collapsed-arrow', isCollapsed);
