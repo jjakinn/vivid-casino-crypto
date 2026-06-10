@@ -176,6 +176,14 @@
       #sidebar-desktop.sidebar-collapsed div.px-3 > div:first-child {
         display: none !important;
       }
+      /* Hide unwanted promotion banners - keep only VIP, King of Streets, Cash Blitz */
+      .swiper-slide:has(img[src*="Drops_Races-Carousel"]),
+      .swiper-slide:has(img[src*="Live-Baccarat-Carousel"]),
+      .swiper-slide:has(img[src*="Weekly-Raffle"]),
+      .swiper-slide:has(img[src*="PiggyBrickBonanza"]),
+      .swiper-slide:has(img[src*="Free-SC"]) {
+        display: none !important;
+      }
       @media (min-width: 768px) {
         .sidebar-collapsed {
           width: 64px !important;
