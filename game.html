@@ -136,6 +136,19 @@
       max-width: 320px !important;
       height: 100vh !important;
       background: #0f172a !important;
+      background-color: #0f172a !important;
+      overflow-y: auto !important;
+      -webkit-overflow-scrolling: touch !important;
+      opacity: 1 !important;
+      pointer-events: auto !important;
+    }
+    #sidebar-desktop.mobile-open * {
+      pointer-events: auto !important;
+    }
+    #sidebar-desktop.mobile-open aside,
+    #sidebar-desktop.mobile-open #sidebar-sports-content {
+      height: auto !important;
+      min-height: 0 !important;
     }
     #mobile-sidebar-backdrop {
       display: none;
@@ -146,6 +159,7 @@
       inset: 0 !important;
       background: rgba(0,0,0,0.6) !important;
       z-index: 99998 !important;
+      pointer-events: auto !important;
     }
   }
   @media (min-width: 768px) {
