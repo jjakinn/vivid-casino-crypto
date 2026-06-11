@@ -610,7 +610,7 @@ var CATEGORY_DATA = [
   },
   {
     "category": "featured",
-    "name": "Chanced Showcase",
+    "name": "Vivid Showcase",
     "icon": "https://d3ta80o5sbquaz.cloudfront.net/categories/featured.webp",
     "games": [
       {
