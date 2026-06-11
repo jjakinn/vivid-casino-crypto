@@ -1,4 +1,4 @@
-const CATEGORY_DATA = [
+var CATEGORY_DATA = [
   {
     "category": "popgames",
     "name": "Popular Games",

@@ -108,8 +108,8 @@ function getCategoryParam() {
 }
 
 function getCategoryData(category) {
-  if (!window.CATEGORY_DATA) return null;
-  return window.CATEGORY_DATA.find(c => c.category === category) || null;
+  if (typeof CATEGORY_DATA === 'undefined') return null;
+  return CATEGORY_DATA.find(c => c.category === category) || null;
 }
 
 function renderGameGrid(categoryData) {
