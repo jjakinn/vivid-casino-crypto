@@ -716,6 +716,22 @@ function getCategoryData(category) {
   return CATEGORY_DATA.find(c => c.category === category) || null;
 }
 
+let ALL_GAMES = [];
+let CURRENT_FILTER = 'all';
+let CURRENT_SORT = 'default';
+let CURRENT_SEARCH = '';
+
+function getProviders(games) {
+  const providers = new Set();
+  games.forEach(g => {
+    if (g.href) {
+      const parts = g.href.replace(/^\//, '').split('/');
+      if (parts.length > 1) providers.add(parts[0]);
+    }
+  });
+  return Array.from(providers).sort();
+}
+
 function renderGameGrid(categoryData) {
   const main = document.getElementById('main-content');
   const isProviders = categoryData.category === 'providers';
@@ -728,6 +744,61 @@ function renderGameGrid(categoryData) {
       <span style="color:#94a3b8;font-size:14px;margin-left:auto;">${isProviders ? categoryData.providers.length : categoryData.games.length} ${isProviders ? 'providers' : 'games'}</span>
     </div>
   `;
+  
+  // Search & filter bar (only for game categories, not providers)
+  if (!isProviders) {
+    const providers = getProviders(categoryData.games);
+    ALL_GAMES = [...categoryData.games];
+    
+    html += `
+    <div class="search-filter-bar" style="display:flex;flex-wrap:wrap;gap:12px;margin-bottom:24px;align-items:center;">
+      <div style="flex:1;min-width:200px;position:relative;">
+        <input type="text" id="game-search" placeholder="Search in ${categoryData.name.toLowerCase()}..." 
+          style="width:100%;padding:10px 14px 10px 40px;background:#0f172a;border:1px solid #1e293b;border-radius:8px;color:#e2e8f0;font-size:14px;outline:none;box-sizing:border-box;"
+          oninput="handleSearch(this.value)"
+          onfocus="this.style.borderColor='#3b82f6'" onblur="this.style.borderColor='#1e293b'">
+        <svg style="position:absolute;left:12px;top:50%;transform:translateY(-50%);pointer-events:none;" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#64748b" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"></circle><path d="m21 21-4.34-4.34"></path></svg>
+      </div>
+      <div style="display:flex;gap:12px;flex-wrap:wrap;">
+        <div class="filter-dropdown" style="position:relative;">
+          <button id="provider-filter-btn" onclick="toggleFilterDropdown()" 
+            style="display:flex;align-items:center;gap:8px;padding:10px 14px;background:#0f172a;border:1px solid #1e293b;border-radius:8px;color:#e2e8f0;font-size:14px;cursor:pointer;white-space:nowrap;"
+            onmouseover="this.style.borderColor='#334155'" onmouseout="this.style.borderColor='#1e293b'">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#94a3b8" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="22 3 2 3 10 12.46 10 19 14 21 14 12.46 22 3"></polygon></svg>
+            Filter: <span id="current-provider">All</span>
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#94a3b8" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"></path></svg>
+          </button>
+          <div id="provider-dropdown" style="display:none;position:absolute;top:100%;right:0;margin-top:4px;min-width:180px;max-height:300px;overflow-y:auto;background:#0f172a;border:1px solid #1e293b;border-radius:8px;z-index:100;padding:6px 0;">
+            <div class="provider-option" onclick="setProviderFilter('all')" style="padding:8px 16px;cursor:pointer;color:#e2e8f0;font-size:14px;hover:background:#1e293b;" onmouseover="this.style.background='#1e293b'" onmouseout="this.style.background='transparent'">
+              All Providers
+            </div>
+            ${providers.map(p => `
+            <div class="provider-option" onclick="setProviderFilter('${p}')" style="padding:8px 16px;cursor:pointer;color:#e2e8f0;font-size:14px;" onmouseover="this.style.background='#1e293b'" onmouseout="this.style.background='transparent'">
+              ${p.charAt(0).toUpperCase() + p.slice(1)}
+            </div>
+            `).join('')}
+          </div>
+        </div>
+        <div class="sort-dropdown" style="position:relative;">
+          <button id="sort-btn" onclick="toggleSortDropdown()" 
+            style="display:flex;align-items:center;gap:8px;padding:10px 14px;background:#0f172a;border:1px solid #1e293b;border-radius:8px;color:#e2e8f0;font-size:14px;cursor:pointer;white-space:nowrap;"
+            onmouseover="this.style.borderColor='#334155'" onmouseout="this.style.borderColor='#1e293b'">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#94a3b8" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 5h10"></path><path d="M11 9h7"></path><path d="M11 13h4"></path><path d="m3 17 3 3 3-3"></path><path d="M6 18V4"></path></svg>
+            Sort: <span id="current-sort">Default</span>
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#94a3b8" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"></path></svg>
+          </button>
+          <div id="sort-dropdown" style="display:none;position:absolute;top:100%;right:0;margin-top:4px;min-width:160px;background:#0f172a;border:1px solid #1e293b;border-radius:8px;z-index:100;padding:6px 0;">
+            <div class="sort-option" onclick="setSort('default')" style="padding:8px 16px;cursor:pointer;color:#e2e8f0;font-size:14px;" onmouseover="this.style.background='#1e293b'" onmouseout="this.style.background='transparent'">Default</div>
+            <div class="sort-option" onclick="setSort('name-asc')" style="padding:8px 16px;cursor:pointer;color:#e2e8f0;font-size:14px;" onmouseover="this.style.background='#1e293b'" onmouseout="this.style.background='transparent'">Name (A-Z)</div>
+            <div class="sort-option" onclick="setSort('name-desc')" style="padding:8px 16px;cursor:pointer;color:#e2e8f0;font-size:14px;" onmouseover="this.style.background='#1e293b'" onmouseout="this.style.background='transparent'">Name (Z-A)</div>
+            <div class="sort-option" onclick="setSort('provider')" style="padding:8px 16px;cursor:pointer;color:#e2e8f0;font-size:14px;" onmouseover="this.style.background='#1e293b'" onmouseout="this.style.background='transparent'">Provider</div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div id="game-count" style="color:#94a3b8;font-size:13px;margin-bottom:12px;"></div>
+    `;
+  }
   
   if (isProviders) {
     html += '<div class="provider-grid" style="display:grid;grid-template-columns:repeat(auto-fill,minmax(120px,1fr));gap:12px;padding-bottom:40px;">';
@@ -742,12 +813,14 @@ function renderGameGrid(categoryData) {
   } else {
     html += '<div class="game-grid" style="display:grid;grid-template-columns:repeat(auto-fill,minmax(140px,1fr));gap:12px;padding-bottom:40px;">';
     let games = [...categoryData.games];
+    const countEl = document.getElementById('game-count');
+    if (countEl) countEl.textContent = games.length + ' game' + (games.length !== 1 ? 's' : '');
     while (games.length < 24) {
       games = games.concat(categoryData.games);
     }
     games.forEach(game => {
       html += `
-        <a href="${game.href}" style="display:block;text-decoration:none;border-radius:10px;overflow:hidden;transition:transform 0.2s ease,opacity 0.2s ease;">
+        <a href="${game.href}" class="game-tile" style="display:block;text-decoration:none;border-radius:10px;overflow:hidden;transition:transform 0.2s ease,opacity 0.2s ease;" onmouseover="this.style.transform='scale(1.05)';this.style.opacity='0.9'" onmouseout="this.style.transform='';this.style.opacity=''">
           <img src="${game.img}" alt="Game" loading="lazy" onerror="this.src='https://d3ta80o5sbquaz.cloudfront.net/images/default.webp'" style="width:100%;height:auto;aspect-ratio:158/221;object-fit:cover;border-radius:10px;display:block;"/>
         </a>
       `;
@@ -758,6 +831,122 @@ function renderGameGrid(categoryData) {
   html += '</div>';
   main.innerHTML = html;
 }
+
+function handleSearch(query) {
+  CURRENT_SEARCH = query.toLowerCase().trim();
+  refreshGameDisplay();
+}
+
+function toggleFilterDropdown() {
+  const dd = document.getElementById('provider-dropdown');
+  if (dd) dd.style.display = dd.style.display === 'block' ? 'none' : 'block';
+}
+
+function toggleSortDropdown() {
+  const dd = document.getElementById('sort-dropdown');
+  if (dd) dd.style.display = dd.style.display === 'block' ? 'none' : 'block';
+}
+
+function setProviderFilter(provider) {
+  CURRENT_FILTER = provider;
+  document.getElementById('current-provider').textContent = provider === 'all' ? 'All' : provider.charAt(0).toUpperCase() + provider.slice(1);
+  document.getElementById('provider-dropdown').style.display = 'none';
+  refreshGameDisplay();
+}
+
+function setSort(sort) {
+  CURRENT_SORT = sort;
+  const labels = { 'default': 'Default', 'name-asc': 'A-Z', 'name-desc': 'Z-A', 'provider': 'Provider' };
+  document.getElementById('current-sort').textContent = labels[sort] || 'Default';
+  document.getElementById('sort-dropdown').style.display = 'none';
+  refreshGameDisplay();
+}
+
+function getFilteredGames() {
+  let games = [...ALL_GAMES];
+  
+  // Search filter
+  if (CURRENT_SEARCH) {
+    games = games.filter(g => {
+      const title = (g.title || g.href || '').toLowerCase();
+      const provider = (g.href || '').split('/')[0] || '';
+      return title.includes(CURRENT_SEARCH) || provider.toLowerCase().includes(CURRENT_SEARCH);
+    });
+  }
+  
+  // Provider filter
+  if (CURRENT_FILTER !== 'all') {
+    games = games.filter(g => {
+      const provider = (g.href || '').replace(/^\//, '').split('/')[0];
+      return provider === CURRENT_FILTER;
+    });
+  }
+  
+  // Sort
+  if (CURRENT_SORT === 'name-asc') {
+    games.sort((a, b) => (a.title || a.href || '').localeCompare(b.title || b.href || ''));
+  } else if (CURRENT_SORT === 'name-desc') {
+    games.sort((a, b) => (b.title || b.href || '').localeCompare(a.title || a.href || ''));
+  } else if (CURRENT_SORT === 'provider') {
+    games.sort((a, b) => {
+      const pa = (a.href || '').split('/')[0] || '';
+      const pb = (b.href || '').split('/')[0] || '';
+      return pa.localeCompare(pb);
+    });
+  }
+  
+  return games;
+}
+
+function refreshGameDisplay() {
+  const grid = document.querySelector('.game-grid');
+  if (!grid) return;
+  
+  const games = getFilteredGames();
+  const countEl = document.getElementById('game-count');
+  if (countEl) countEl.textContent = games.length + ' game' + (games.length !== 1 ? 's' : '');
+  
+  if (games.length === 0) {
+    grid.innerHTML = `
+      <div style="grid-column:1/-1;text-align:center;padding:60px 20px;color:#64748b;"
+      <p style="font-size:16px;"
+        No games found matching your search.
+      </p
+    </div>`;
+    return;
+  }
+  
+  let html = '';
+  // Duplicate games if we have fewer than 24 to make the page look fuller
+  let displayGames = [...games];
+  while (displayGames.length < 24) {
+    displayGames = displayGames.concat(games);
+  }
+  
+  displayGames.forEach(game => {
+    html += `
+      <a href="${game.href}" class="game-tile" style="display:block;text-decoration:none;border-radius:10px;overflow:hidden;transition:transform 0.2s ease,opacity 0.2s ease;"
+        onmouseover="this.style.transform='scale(1.05)';this.style.opacity='0.9'" onmouseout="this.style.transform='';this.style.opacity=''"
+      >
+        <img src="${game.img}" alt="Game" loading="lazy" onerror="this.src='https://d3ta80o5sbquaz.cloudfront.net/images/default.webp'" style="width:100%;height:auto;aspect-ratio:158/221;object-fit:cover;border-radius:10px;display:block;"/>
+      </a>
+    `;
+  });
+  
+  grid.innerHTML = html;
+}
+
+// Close dropdowns when clicking outside
+document.addEventListener('click', function(e) {
+  if (!e.target.closest('.filter-dropdown')) {
+    const dd = document.getElementById('provider-dropdown');
+    if (dd) dd.style.display = 'none';
+  }
+  if (!e.target.closest('.sort-dropdown')) {
+    const dd = document.getElementById('sort-dropdown');
+    if (dd) dd.style.display = 'none';
+  }
+});
 
 function renderNotFound(category) {
   const main = document.getElementById('main-content');
