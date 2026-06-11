@@ -732,6 +732,43 @@ function getProviders(games) {
   return Array.from(providers).sort();
 }
 
+function getAllCategories() {
+  if (typeof CATEGORY_DATA === 'undefined') return [];
+  return CATEGORY_DATA.filter(c => c.category !== 'providers');
+}
+
+function renderCategoryTabs(activeCategory) {
+  const categories = getAllCategories();
+  const currentCat = activeCategory || getCategoryParam();
+  
+  let html = `
+    <div class="category-tabs" style="display:flex;gap:8px;overflow-x:auto;padding:0 0 16px;margin-bottom:8px;-webkit-overflow-scrolling:touch;scrollbar-width:none;"
+    onmouseover="this.style.scrollbarWidth='thin'" onmouseout="this.style.scrollbarWidth='none'"
+    >
+  `;
+  
+  categories.forEach(cat => {
+    const isActive = cat.category === currentCat;
+    html += `
+      <a href="view-all.html?category=${cat.category}" 
+        style="display:flex;align-items:center;gap:8px;padding:8px 16px;border-radius:20px;font-size:13px;font-weight:500;text-decoration:none;white-space:nowrap;transition:all 0.2s ease;flex-shrink:0;
+        background:${isActive ? '#3b82f6' : '#0f172a'};
+        color:${isActive ? '#fff' : '#94a3b8'};
+        border:1px solid ${isActive ? '#3b82f6' : '#1e293b'};
+        "
+        onmouseover="if(!this.style.background.includes('3b82f6')){this.style.background='#1e293b';this.style.color='#e2e8f0';this.style.borderColor='#334155';}"
+        onmouseout="if(!this.style.background.includes('3b82f6')){this.style.background='#0f172a';this.style.color='#94a3b8';this.style.borderColor='#1e293b';}"
+      >
+        <img src="${cat.icon}" alt="" onerror="this.style.display='none'" style="width:20px;height:20px;border-radius:4px;object-fit:cover;"/>
+        ${cat.name}
+      </a>
+    `;
+  });
+  
+  html += '</div>';
+  return html;
+}
+
 function renderGameGrid(categoryData) {
   const main = document.getElementById('main-content');
   const isProviders = categoryData.category === 'providers';
@@ -744,6 +781,9 @@ function renderGameGrid(categoryData) {
       <span style="color:#94a3b8;font-size:14px;margin-left:auto;">${isProviders ? categoryData.providers.length : categoryData.games.length} ${isProviders ? 'providers' : 'games'}</span>
     </div>
   `;
+  
+  // Category tabs (horizontal scrollable)
+  html += renderCategoryTabs(categoryData.category);
   
   // Search & filter bar (only for game categories, not providers)
   if (!isProviders) {
