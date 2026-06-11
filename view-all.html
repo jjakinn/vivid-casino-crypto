@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"/>
+<title>View All - Vivid Crypto Casino</title>
+<meta name="theme-color" content="#020617"/>
+<base href="/vivid-casino-crypto/">
+<link rel="shortcut icon" sizes="196x196" href="images/favicon/android-chrome-512x512.svg"/>
+<link rel="apple-touch-icon" href="images/favicon/android-chrome-512x512.svg"/>
+<meta name="apple-mobile-web-app-capable" content="yes"/>
+<meta name="mobile-web-app-capable" content="yes"/>
+<link rel="icon" sizes="192x192" type="image/png" href="images/favicon/android-chrome-512x512.svg"/>
+<script src="view-all-games.js"></script>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { background-color: #020617; height: 100%; }
+  body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; background-color: #020617; color: #fff; min-height: 100vh; }
+  
+  /* Header */
+  .header { position: fixed; top: 0; left: 0; right: 0; z-index: 99991; min-height: 63px; background: #020617; border-bottom: 1px solid #1e293b; display: flex; align-items: center; padding: 0 16px; }
+  @media (min-width: 768px) { .header { min-height: 73px; padding: 0 24px; } }
+  .header-inner { width: 100%; max-width: 1200px; margin: 0 auto; display: flex; align-items: center; justify-content: space-between; }
+  .header-logo { display: flex; align-items: center; gap: 12px; }
+  .header-logo img { height: 40px; object-fit: contain; }
+  .back-btn { display: flex; align-items: center; gap: 6px; color: #94a3b8; text-decoration: none; font-size: 14px; font-weight: 500; padding: 8px 14px; border-radius: 8px; border: 1px solid #334155; transition: all 0.2s; background: transparent; cursor: pointer; }
+  .back-btn:hover { color: #fff; border-color: #64748b; background: #1e293b; }
+  .back-btn svg { width: 18px; height: 18px; }
+  
+  /* Main content */
+  .main { padding-top: 63px; max-width: 1200px; margin: 0 auto; padding-left: 16px; padding-right: 16px; }
+  @media (min-width: 768px) { .main { padding-top: 73px; padding-left: 24px; padding-right: 24px; } }
+  
+  /* Category header */
+  .cat-header { display: flex; align-items: center; gap: 12px; padding: 24px 0 16px; }
+  .cat-header img { width: 40px; height: 40px; border-radius: 8px; }
+  .cat-header h1 { font-size: 24px; font-weight: 600; color: #f1f5f9; }
+  @media (min-width: 768px) { .cat-header h1 { font-size: 32px; } }
+  .cat-count { color: #94a3b8; font-size: 14px; margin-left: auto; }
+  
+  /* Game grid */
+  .game-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(140px, 1fr)); gap: 12px; padding-bottom: 40px; }
+  @media (min-width: 480px) { .game-grid { grid-template-columns: repeat(auto-fill, minmax(160px, 1fr)); gap: 16px; } }
+  @media (min-width: 768px) { .game-grid { grid-template-columns: repeat(auto-fill, minmax(180px, 1fr)); gap: 20px; } }
+  @media (min-width: 1024px) { .game-grid { grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 24px; } }
+  
+  .game-tile { display: block; text-decoration: none; border-radius: 10px; overflow: hidden; transition: transform 0.2s ease, opacity 0.2s ease; }
+  .game-tile:hover { transform: scale(1.05) rotate(1deg); opacity: 0.9; }
+  .game-tile img { width: 100%; height: auto; aspect-ratio: 158 / 221; object-fit: cover; border-radius: 10px; display: block; }
+  
+  /* Provider grid */
+  .provider-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(120px, 1fr)); gap: 12px; padding-bottom: 40px; }
+  @media (min-width: 768px) { .provider-grid { grid-template-columns: repeat(auto-fill, minmax(160px, 1fr)); gap: 16px; } }
+  .provider-tile { background: #0f1a2b; border-radius: 10px; padding: 16px; display: flex; align-items: center; justify-content: center; min-height: 80px; transition: transform 0.2s; cursor: pointer; }
+  .provider-tile:hover { transform: scale(1.05); }
+  .provider-tile img { max-width: 100%; max-height: 48px; object-fit: contain; }
+  @media (min-width: 768px) { .provider-tile img { max-height: 60px; } }
+  
+  /* Not found / empty */
+  .empty-state { text-align: center; padding: 60px 20px; color: #64748b; }
+  .empty-state h2 { color: #94a3b8; font-size: 20px; margin-bottom: 12px; }
+  
+  /* Footer */
+  .footer { border-top: 1px solid #1e293b; padding: 40px 16px; text-align: center; color: #64748b; font-size: 12px; }
+  .footer a { color: #94a3b8; text-decoration: none; }
+  .footer a:hover { color: #fff; }
+  
+  /* Loading */
+  .loading { text-align: center; padding: 60px; color: #64748b; }
+  .spinner { width: 32px; height: 32px; border: 3px solid #334155; border-top-color: #3b82f6; border-radius: 50%; animation: spin 1s linear infinite; margin: 0 auto 16px; }
+  @keyframes spin { to { transform: rotate(360deg); } }
+</style>
+</head>
+<body>
+
+<header class="header">
+  <div class="header-inner">
+    <div class="header-logo">
+      <a href="lobby.html">
+        <img src="images/home/vivid-logo.png?v=5" alt="Vivid" style="height:40px;object-fit:contain;"/>
+      </a>
+    </div>
+    <a href="lobby.html" class="back-btn">
+      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+        <path stroke-linecap="round" stroke-linejoin="round" d="M10.5 19.5L3 12m0 0l7.5-7.5M3 12h18"/>
+      </svg>
+      Back to Lobby
+    </a>
+  </div>
+</header>
+
+<main class="main" id="main-content">
+  <div class="loading" id="loading">
+    <div class="spinner"></div>
+    Loading games...
+  </div>
+</main>
+
+<footer class="footer">
+  <p>Copyright 2026 © Crypto Group LLC. | All Rights Reserved</p>
+  <p style="margin-top:8px;"><a href="lobby.html">Back to Lobby</a></p>
+</footer>
+
+<script>
+function getCategoryParam() {
+  const params = new URLSearchParams(window.location.search);
+  return params.get('category') || '';
+}
+
+function getCategoryData(category) {
+  if (!window.CATEGORY_DATA) return null;
+  return window.CATEGORY_DATA.find(c => c.category === category) || null;
+}
+
+function renderGameGrid(categoryData) {
+  const main = document.getElementById('main-content');
+  const isProviders = categoryData.category === 'providers';
+  
+  let html = `
+    <div class="cat-header">
+      <img src="${categoryData.icon}" alt="${categoryData.name}" onerror="this.src='https://d3ta80o5sbquaz.cloudfront.net/categories/default.webp'"/>
+      <h1>${categoryData.name}</h1>
+      <span class="cat-count">${isProviders ? categoryData.providers.length : categoryData.games.length} ${isProviders ? 'providers' : 'games'}</span>
+    </div>
+  `;
+  
+  if (isProviders) {
+    html += '<div class="provider-grid">';
+    categoryData.providers.forEach(img => {
+      html += `
+        <div class="provider-tile">
+          <img src="${img}" alt="provider" loading="lazy" onerror="this.style.opacity='0.5'"/>
+        </div>
+      `;
+    });
+    html += '</div>';
+  } else {
+    html += '<div class="game-grid">';
+    // Duplicate games if we have fewer than 24 to make the page look fuller
+    let games = [...categoryData.games];
+    while (games.length < 24) {
+      games = games.concat(categoryData.games);
+    }
+    games.forEach(game => {
+      html += `
+        <a href="${game.href}" class="game-tile">
+          <img src="${game.img}" alt="Game" loading="lazy" onerror="this.src='https://d3ta80o5sbquaz.cloudfront.net/images/default.webp'"/>
+        </a>
+      `;
+    });
+    html += '</div>';
+  }
+  
+  main.innerHTML = html;
+}
+
+function renderNotFound(category) {
+  const main = document.getElementById('main-content');
+  main.innerHTML = `
+    <div class="empty-state">
+      <h2>Category not found</h2>
+      <p>"${category}" doesn't exist or has no games yet.</p>
+      <a href="lobby.html" class="back-btn" style="margin-top:20px;display:inline-flex;">Back to Lobby</a>
+    </div>
+  `;
+}
+
+function init() {
+  const category = getCategoryParam();
+  if (!category) {
+    renderNotFound('(none)');
+    return;
+  }
+  
+  const data = getCategoryData(category);
+  if (!data) {
+    renderNotFound(category);
+    return;
+  }
+  
+  renderGameGrid(data);
+  document.title = data.name + ' - Vivid Crypto Casino';
+}
+
+// Wait for CATEGORY_DATA to load (it's in the external script)
+if (document.readyState === 'loading') {
+  document.addEventListener('DOMContentLoaded', init);
+} else {
+  init();
+}
+</script>
+
+</body>
+</html>
