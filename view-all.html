@@ -2,106 +2,710 @@
 <html lang="en">
 <head>
 <meta charset="utf-8"/>
-<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"/>
+<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport"/>
 <title>View All - Vivid Crypto Casino</title>
-<meta name="theme-color" content="#020617"/>
-<base href="/vivid-casino-crypto/">
-<link rel="shortcut icon" sizes="196x196" href="images/favicon/android-chrome-512x512.svg"/>
-<link rel="apple-touch-icon" href="images/favicon/android-chrome-512x512.svg"/>
-<meta name="apple-mobile-web-app-capable" content="yes"/>
-<meta name="mobile-web-app-capable" content="yes"/>
-<link rel="icon" sizes="192x192" type="image/png" href="images/favicon/android-chrome-512x512.svg"/>
-<script src="view-all-games.js?v=2"></script>
+<meta content="#020617" name="theme-color"/>
+<meta content="Step into Vivid, the ultimate crypto casino! Play with BTC, ETH, USDT and more. 2000+ thrilling games, instant deposits, and fast withdrawals. Vegas Matt plays here - why not you?" name="description"/>
+<!-- Open Graph for Social Media -->
+<meta content="Vivid - The #1 Crypto Casino" property="og:title"/>
+<meta content="Step into Vivid, the ultimate crypto casino! Play with BTC, ETH, USDT and more. 2000+ thrilling games, instant deposits, and fast withdrawals. Vegas Matt plays here - why not you?" property="og:description"/>
+<meta content="https://jjakinn.github.io/vivid-casino-crypto/images/home/vivid-logo.jpg" property="og:image"/>
+<meta content="1200" property="og:image:width"/>
+<meta content="630" property="og:image:height"/>
+<meta content="https://jjakinn.github.io/vivid-casino-crypto/lobby.html" property="og:url"/>
+<meta content="website" property="og:type"/>
+<!-- Twitter Card -->
+<meta content="summary" name="twitter:card"/>
+<meta content="Vivid - The #1 Crypto Casino" name="twitter:title"/>
+<meta content="Step into Vivid, the ultimate crypto casino! Play with BTC, ETH, USDT and more. 2000+ thrilling games, instant deposits, and fast withdrawals. Vegas Matt plays here - why not you?" name="twitter:description"/>
+<meta content="https://jjakinn.github.io/vivid-casino-crypto/images/home/vivid-logo.jpg" name="twitter:image"/>
+<meta content="/images/favicon/android-chrome-512x512.svg" name="msapplication-square310x310logo"/>
+<link href="/vivid-casino-crypto/images/favicon/android-chrome-512x512.svg" rel="shortcut icon" sizes="196x196"/>
+<link href="/vivid-casino-crypto/images/favicon/android-chrome-512x512.svg" rel="apple-touch-icon" sizes="57x57"/>
+<link href="/vivid-casino-crypto/images/favicon/apple-icon-64x64.svg" rel="apple-touch-icon" sizes="60x60"/>
+<link href="/vivid-casino-crypto/images/favicon/apple-icon-64x64.svg" rel="apple-touch-icon" sizes="64x64"/>
+<link href="/vivid-casino-crypto/images/favicon/android-chrome-512x512.svg" rel="apple-touch-icon" sizes="72x72"/>
+<link href="/vivid-casino-crypto/images/favicon/android-chrome-512x512.svg" rel="apple-touch-icon" sizes="76x76"/>
+<link href="/vivid-casino-crypto/images/favicon/android-chrome-512x512.svg" rel="apple-touch-icon" sizes="114x114"/>
+<link href="/vivid-casino-crypto/images/favicon/android-chrome-512x512.svg" rel="apple-touch-icon" sizes="120x120"/>
+<link href="/vivid-casino-crypto/images/favicon/android-chrome-512x512.svg" rel="apple-touch-icon" sizes="144x144"/>
+<link href="/vivid-casino-crypto/images/favicon/android-chrome-512x512.svg" rel="apple-touch-icon" sizes="152x152"/>
+<link href="/vivid-casino-crypto/images/favicon/android-chrome-512x512.svg" rel="apple-touch-icon" sizes="180x180"/>
+<link href="/vivid-casino-crypto/images/favicon/android-chrome-512x512.svg" rel="apple-touch-icon"/>
+<meta content="yes" name="apple-mobile-web-app-capable"/>
+<meta content="yes" name="mobile-web-app-capable"/>
+<link href="/vivid-casino-crypto/images/favicon/android-chrome-512x512.svg" rel="icon" sizes="192x192" type="image/png"/>
+<link href="/vivid-casino-crypto/images/favicon/favicon-32x32.svg" rel="icon" sizes="32x32" type="image/png"/>
+<link href="/vivid-casino-crypto/images/favicon/android-chrome-512x512.svg" rel="icon" sizes="96x96" type="image/png"/>
+<link href="/vivid-casino-crypto/images/favicon/favicon-16x16.svg" rel="icon" sizes="16x16" type="image/png"/>
+<link href="/vivid-casino-crypto/images/favicon/manifest.json" rel="manifest"/>
+<meta content="#ffffff" name="msapplication-TileColor"/>
+<meta content="/images/favicon/apple-icon-64x64.svg" name="msapplication-TileImage"/>
+<!-- Critical CSS inline to prevent render blocking -->
 <style>
-  * { margin: 0; padding: 0; box-sizing: border-box; }
-  html { background-color: #020617; height: 100%; }
-  body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; background-color: #020617; color: #fff; min-height: 100vh; }
-  
-  /* Header */
-  .header { position: fixed; top: 0; left: 0; right: 0; z-index: 99991; min-height: 63px; background: #020617; border-bottom: 1px solid #1e293b; display: flex; align-items: center; padding: 0 16px; }
-  @media (min-width: 768px) { .header { min-height: 73px; padding: 0 24px; } }
-  .header-inner { width: 100%; max-width: 1200px; margin: 0 auto; display: flex; align-items: center; justify-content: space-between; }
-  .header-logo { display: flex; align-items: center; gap: 12px; }
-  .header-logo img { height: 40px; object-fit: contain; }
-  .back-btn { display: flex; align-items: center; gap: 6px; color: #94a3b8; text-decoration: none; font-size: 14px; font-weight: 500; padding: 8px 14px; border-radius: 8px; border: 1px solid #334155; transition: all 0.2s; background: transparent; cursor: pointer; }
-  .back-btn:hover { color: #fff; border-color: #64748b; background: #1e293b; }
-  .back-btn svg { width: 18px; height: 18px; }
-  
-  /* Main content */
-  .main { padding-top: 63px; max-width: 1200px; margin: 0 auto; padding-left: 16px; padding-right: 16px; }
-  @media (min-width: 768px) { .main { padding-top: 73px; padding-left: 24px; padding-right: 24px; } }
-  
-  /* Category header */
-  .cat-header { display: flex; align-items: center; gap: 12px; padding: 24px 0 16px; }
-  .cat-header img { width: 40px; height: 40px; border-radius: 8px; }
-  .cat-header h1 { font-size: 24px; font-weight: 600; color: #f1f5f9; }
-  @media (min-width: 768px) { .cat-header h1 { font-size: 32px; } }
-  .cat-count { color: #94a3b8; font-size: 14px; margin-left: auto; }
-  
-  /* Game grid */
-  .game-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(140px, 1fr)); gap: 12px; padding-bottom: 40px; }
-  @media (min-width: 480px) { .game-grid { grid-template-columns: repeat(auto-fill, minmax(160px, 1fr)); gap: 16px; } }
-  @media (min-width: 768px) { .game-grid { grid-template-columns: repeat(auto-fill, minmax(180px, 1fr)); gap: 20px; } }
-  @media (min-width: 1024px) { .game-grid { grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 24px; } }
-  
-  .game-tile { display: block; text-decoration: none; border-radius: 10px; overflow: hidden; transition: transform 0.2s ease, opacity 0.2s ease; }
-  .game-tile:hover { transform: scale(1.05) rotate(1deg); opacity: 0.9; }
-  .game-tile img { width: 100%; height: auto; aspect-ratio: 158 / 221; object-fit: cover; border-radius: 10px; display: block; }
-  
-  /* Provider grid */
-  .provider-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(120px, 1fr)); gap: 12px; padding-bottom: 40px; }
-  @media (min-width: 768px) { .provider-grid { grid-template-columns: repeat(auto-fill, minmax(160px, 1fr)); gap: 16px; } }
-  .provider-tile { background: #0f1a2b; border-radius: 10px; padding: 16px; display: flex; align-items: center; justify-content: center; min-height: 80px; transition: transform 0.2s; cursor: pointer; }
-  .provider-tile:hover { transform: scale(1.05); }
-  .provider-tile img { max-width: 100%; max-height: 48px; object-fit: contain; }
-  @media (min-width: 768px) { .provider-tile img { max-height: 60px; } }
-  
-  /* Not found / empty */
-  .empty-state { text-align: center; padding: 60px 20px; color: #64748b; }
-  .empty-state h2 { color: #94a3b8; font-size: 20px; margin-bottom: 12px; }
-  
-  /* Footer */
-  .footer { border-top: 1px solid #1e293b; padding: 40px 16px; text-align: center; color: #64748b; font-size: 12px; }
-  .footer a { color: #94a3b8; text-decoration: none; }
-  .footer a:hover { color: #fff; }
-  
-  /* Loading */
-  .loading { text-align: center; padding: 60px; color: #64748b; }
-  .spinner { width: 32px; height: 32px; border: 3px solid #334155; border-top-color: #3b82f6; border-radius: 50%; animation: spin 1s linear infinite; margin: 0 auto 16px; }
-  @keyframes spin { to { transform: rotate(360deg); } }
-</style>
+      .grecaptcha-badge {
+        visibility: hidden;
+      }
+
+      input::-webkit-outer-spin-button,
+      input::-webkit-inner-spin-button {
+        -webkit-appearance: none;
+        appearance: none;
+        margin: 0;
+        display: none;
+      }
+
+      html {
+        background-color: #020617;
+        height: 100%;
+      }
+
+      body {
+        width: 100vw;
+        height: 100vh;
+        -webkit-overflow-scrolling: touch;
+      }
+
+      body::-webkit-scrollbar {
+        width: 0;
+      }
+
+      /* Firefox */
+      input[type='number'] {
+        -moz-appearance: textfield;
+        -webkit-appearance: textfield;
+                appearance: textfield;
+      }
+
+      /* Critical loading states */
+      .loading {
+        opacity: 0;
+        transition: opacity 0.3s ease-in;
+      }
+
+      .loaded {
+        opacity: 1;
+      }
+
+      /* Safari Fixes */
+      .overflow-x-scroll {
+        -webkit-overflow-scrolling: touch;
+      }
+
+      .home-casino-slider,
+      .home-jackpot-slider,
+      .no-scrollbar {
+        -webkit-overflow-scrolling: touch;
+      }
+
+      /* Safari flex height fix */
+      .h-dvh {
+        height: 100vh !important;
+      }
+
+      /* Safari sticky header fallback */
+      header.sticky {
+        position: -webkit-sticky;
+        position: sticky;
+      }
+
+      /* Safari padding for fixed header */
+      .main_games {
+        padding-top: 63px;
+      }
+      @media (min-width: 768px) {
+        .main_games {
+          padding-top: 73px;
+        }
+      }
+
+      /* Mobile: force identical header positioning across all pages */
+      @media (max-width: 767px) {
+        header.fixed { left: 0 !important; right: 0 !important; top: 0 !important; }
+        header .top-header-inner { padding-left: 16px !important; padding-right: 16px !important; }
+        header a img[alt="Vivid"] { transform: translateY(6px) !important; }
+      }
+
+      /* Header padding for desktop sidebar - prevents logo from being hidden behind sidebar */
+      @media (min-width: 768px) {
+        header.fixed {
+          padding-left: 256px !important;
+        }
+      }
+
+      /* Mobile: force identical header positioning across all pages */
+      @media (max-width: 767px) {
+        header.fixed { left: 0 !important; right: 0 !important; top: 0 !important; }
+        header .top-header-inner { padding-left: 16px !important; padding-right: 16px !important; }
+        header a img[alt="Vivid"] { transform: translateY(6px) !important; }
+      }
+
+      @media not all and (min-resolution: 0.001dpcm) {
+        @supports (-webkit-appearance: none) {
+          /* Safari-only rules */
+          .flex-col.h-dvh,
+          .flex-col.h-screen {
+            height: 100vh;
+            min-height: -webkit-fill-available;
+          }
+        }
+      }
+
+      #sidebar-desktop.sidebar-collapsed p,
+      .sidebar-collapsed #sidebar-mode-toggle {
+        opacity: 0 !important;
+        width: 0 !important;
+        overflow: hidden !important;
+        white-space: nowrap !important;
+        display: none !important;
+      }
+      #sidebar-desktop.sidebar-collapsed a,
+      #sidebar-desktop.sidebar-collapsed div.px-3 {
+        justify-content: center !important;
+        padding-left: 0.5rem !important;
+        padding-right: 0.5rem !important;
+        gap: 0 !important;
+      }
+      #sidebar-desktop.sidebar-collapsed img,
+      #sidebar-desktop.sidebar-collapsed svg {
+        flex-shrink: 0 !important;
+        min-width: 24px !important;
+        min-height: 24px !important;
+        width: 24px !important;
+        height: 24px !important;
+      }
+      #sidebar-desktop.sidebar-collapsed a > div:first-child,
+      #sidebar-desktop.sidebar-collapsed div.px-3 > div:first-child {
+        display: none !important;
+      }
+      /* Remove gap between promotion banners and game categories */
+      #home_slider,
+      .swiper_21,
+      .swiper {
+        margin-bottom: 0 !important;
+        padding-bottom: 0 !important;
+      }
+      .swiper-wrapper {
+        margin-bottom: 0 !important;
+        padding-bottom: 0 !important;
+      }
+      .swiper-slide {
+        margin-bottom: 0 !important;
+        padding-bottom: 0 !important;
+      }
+      /* Fix Chrome swiper height explosion — circular height:100% dependency */
+      #home_slider .swiper-wrapper {
+        height: auto !important;
+        min-height: unset !important;
+        align-items: flex-start !important;
+      }
+      #home_slider .swiper-slide {
+        height: auto !important;
+        min-height: unset !important;
+        align-self: flex-start !important;
+      }
+      #home_slider .swiper-carousel-animate-opacity,
+      #home_slider .swiper-slide img.bg-image {
+        height: auto !important;
+        max-height: 200px !important;
+      }
+      /* Desktop: 3 promo tiles fill full width evenly */
+      @media (min-width: 768px) {
+        #home_slider .swiper-wrapper {
+          display: flex !important;
+          justify-content: space-between !important;
+          gap: 12px !important;
+        }
+        #home_slider .swiper-slide {
+          width: calc(33.333% - 8px) !important;
+          flex: 0 0 calc(33.333% - 8px) !important;
+        }
+        #home_slider .swiper-slide img.bg-image {
+          width: 100% !important;
+          height: auto !important;
+          max-height: 220px !important;
+          object-fit: cover !important;
+        }
+      }
+      /* Fix Chrome gap between swiper and game categories */
+      .grid.grid-cols-1 {
+        gap: 0 !important;
+      }
+      .-mr-1\.5 {
+        margin-bottom: 0 !important;
+        padding-bottom: 0 !important;
+      }
+      .max-w-\[100\%\].py-2 {
+        padding-top: 0 !important;
+      }
+      /* Remove any margin/padding from the container after swiper */
+      #home_slider + div,
+      #home_slider ~ div {
+        margin-top: 0 !important;
+      }
+      /* Aggressive gap removal for Chrome */
+      .flex-col {
+        gap: 0 !important;
+      }
+      .grid {
+        gap: 0 !important;
+      }
+      #casino-main-content > div > div {
+        gap: 0 !important;
+      }
+      @media (min-width: 768px) {
+        .sidebar-collapsed {
+          width: 64px !important;
+          min-width: 64px !important;
+        }
+        body.sidebar-closed header.fixed {
+          padding-left: 64px !important;
+        }
+        /* Push Game Categories header down below banners on desktop */
+        #home_slider > div:nth-child(2) {
+          margin-top: 35px !important;
+        }
+      }
+      #sidebar-toggle-icon.sidebar-collapsed-arrow {
+        transform: rotate(180deg);
+      }
+      .sidebar-collapsed .sport-dropdown-content {
+        display: none !important;
+      }
+      .sidebar-collapsed .sport-dropdown svg {
+        display: none !important;
+      }
+      /* Safari fixes via JS detection class */
+      .safari .flex-col.h-dvh,
+      .safari .flex-col.h-screen {
+        height: 100vh !important;
+        min-height: -webkit-fill-available !important;
+      }
+
+      /* Safari: jackpot tile height fix - prevent vertical stretching */
+      .safari .home-jackpot-slider .slider-tile {
+        max-height: 220px !important;
+        height: 170px !important;
+        min-height: 170px !important;
+      }
+      .safari .home-jackpot-slider .slider-tile > a,
+      .safari .home-jackpot-slider .slider-tile > a > div {
+        max-height: 220px !important;
+        height: 170px !important;
+        min-height: 170px !important;
+      }
+      .safari .home-jackpot-slider .slider-tile img {
+        max-height: 220px !important;
+        height: auto !important;
+      }
+
+      /* Mobile sidebar toggle */
+      @media (max-width: 767px) {
+        #sidebar-desktop.mobile-open {
+          display: flex !important;
+          position: fixed !important;
+          left: 0 !important;
+          top: 0 !important;
+          z-index: 100000 !important;
+          width: 80vw !important;
+          max-width: 320px !important;
+          height: 100vh !important;
+          background: #0f172a !important;
+          background-color: #0f172a !important;
+          overflow-y: auto !important;
+          -webkit-overflow-scrolling: touch !important;
+          touch-action: pan-y !important;
+          opacity: 1 !important;
+          pointer-events: auto !important;
+          transform: translateZ(0) !important;
+        }
+        #sidebar-desktop.mobile-open * {
+          pointer-events: auto !important;
+        }
+        #sidebar-desktop.mobile-open aside,
+        #sidebar-desktop.mobile-open #sidebar-sports-content {
+          height: auto !important;
+          min-height: 0 !important;
+        }
+        #mobile-sidebar-backdrop {
+          display: none;
+        }
+        #mobile-sidebar-backdrop.active {
+          display: block !important;
+          position: fixed !important;
+          inset: 0 !important;
+          background: rgba(0,0,0,0.6) !important;
+          z-index: 99990 !important;
+          pointer-events: auto !important;
+        }
+        /* Ensure parent stacking context is above backdrop */
+        #sidebar-desktop.mobile-open {
+          position: fixed !important;
+        }
+      }
+      @media (min-width: 768px) {
+        #mobile-sidebar-backdrop {
+          display: none !important;
+        }
+      }
+
+      /* Mobile: keep horizontal scroll like chanced.com */
+      @media (max-width: 767px) {
+        .home-casino-slider,
+        .home-jackpot-slider {
+          display: flex !important;
+          flex-wrap: nowrap !important;
+          overflow-x: auto !important;
+          -webkit-overflow-scrolling: touch;
+          gap: 8px !important;
+          padding-left: 8px;
+          padding-right: 8px;
+        }
+        .home-casino-slider .slider-tile,
+        .home-jackpot-slider .slider-tile {
+          min-width: 140px !important;
+          width: 140px !important;
+          flex-shrink: 0 !important;
+        }
+        .home-casino-slider .slider-tile img,
+        .home-jackpot-slider .slider-tile img {
+          width: 140px !important;
+          height: auto !important;
+        }
+        /* SEE All tile sizing */
+        .home-casino-slider .slider-tile.see-all-button,
+        .home-jackpot-slider .slider-tile.see-all-button {
+          min-width: 100px !important;
+          width: 100px !important;
+        }
+      }
+
+      /* Mobile bottom navigation bar */
+      @media (max-width: 767px) {
+        .mobile-bottom-nav {
+          display: flex !important;
+          position: fixed;
+          bottom: 0;
+          left: 0;
+          right: 0;
+          z-index: 99998;
+          background: #0a0a0a;
+          border-top: 1px solid #1a1a1a;
+          padding: 8px 0;
+          justify-content: space-around;
+          align-items: center;
+        }
+        .mobile-bottom-nav a {
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          color: #666;
+          text-decoration: none;
+          font-size: 10px;
+          gap: 4px;
+        }
+        .mobile-bottom-nav a.active {
+          color: #fff;
+        }
+        .mobile-bottom-nav a:nth-child(3) {
+          background: linear-gradient(135deg, #E91E63, #9C27B0);
+          border-radius: 12px;
+          padding: 6px 12px;
+          color: #fff;
+          margin-top: -20px;
+          box-shadow: 0 4px 12px rgba(233, 30, 99, 0.4);
+        }
+        .mobile-bottom-nav a:nth-child(3) svg {
+          stroke: #fff;
+        }
+        .mobile-bottom-nav a:nth-child(3).active {
+          color: #fff;
+        }
+        .mobile-bottom-nav svg {
+          width: 24px;
+          height: 24px;
+        }
+        /* Add padding to main content for bottom nav */
+        .main_games {
+          padding-bottom: 60px !important;
+        }
+      }
+      @media (min-width: 768px) {
+        .mobile-bottom-nav {
+          display: none !important;
+        }
+      }
+      /* Game Categories horizontal scroll fix */
+      #h_navigator::-webkit-scrollbar {
+        display: none;
+      }
+      #h_navigator {
+        -ms-overflow-style: none;
+        scrollbar-width: none;
+      }
+      #h_navigator .grid.auto-cols-max {
+        display: flex !important;
+        flex-wrap: nowrap !important;
+        width: auto !important;
+      }
+      #h_navigator button {
+        flex-shrink: 0 !important;
+      }
+    </style>
+<!-- OneTrust Cookies Consent Notice start for www.jjakinn.github.io/vivid-casino -->
+
+<!-- OneTrust Cookies Consent Notice end for www.jjakinn.github.io/vivid-casino -->
+<!-- Google Tag Manager - Deferred Loading -->
+
+<!-- End Google Tag Manager -->
+<!-- DNS prefetch for external APIs -->
+<link href="https://api.ipify.org" rel="dns-prefetch"/>
+<link href="https://www.google.com" rel="dns-prefetch"/>
+<link href="https://cdn.cookielaw.org" rel="dns-prefetch"/>
+<!-- Preconnect to critical domains -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<!-- Preload critical resources -->
+<link as="image" fetchpriority="high" href="/vivid-casino-crypto/images/home/hero-girl.webp" rel="preload" type="image/webp"/>
+<link as="image" fetchpriority="high" href="/vivid-casino-crypto/images/home/home-1.webp" rel="preload" type="image/webp"/>
+<link as="image" fetchpriority="high" href="/vivid-casino-crypto/images/home/vegasmatt-main-mobile.webp" rel="preload" type="image/webp"/>
+<link as="image" fetchpriority="high" href="/vivid-casino-crypto/images/home/vegasmatt-main.webp" rel="preload" type="image/webp"/>
+<!-- Async font loading script -->
+
+<!-- Load sg.js asynchronously -->
+
+<!-- Pixel ATHENA Tracking Code -->
+
+<!-- End Pixel ATHENA Code -->
+<!-- Kubixo affiliate re-targeting script -->
+<div id="ma_414e390d65562c4e61808201b5c56e496a21f311f1c025.78130165" style="visibility: hidden; display: none; width: 0px; height: 0px;"><a href="https://pubads.g.doubleclick.uk.net/deliver/click/7bed16080114415/08398806d51cb06?uuid=1f6468ed-ac44d5f9-6a1df3d4-878f-66d5a819&amp;vid=ma_414e390d65562c4e61808201b5c56e496a21f311f1c025.78130165&amp;token=7bed16080114415" rel="nofollow" target="_blank">
+<img alt="" border="0" height="1" src="https://pubads.g.doubleclick.uk.net/images/delivery/0a78ab3b1cc5529c1b06.png" title="" width="1"/>
+</a></div>
+<!-- End Kubixo affiliate re-targeting script-->
+<link crossorigin="" href="/vivid-casino-crypto/assets/index-AVsnX6L1.css" rel="stylesheet"/>
+<link crossorigin="" href="/vivid-casino-crypto/assets/MaintenanceBanner-CZLbjAKp.css" rel="stylesheet"/><link crossorigin="" href="/vivid-casino-crypto/assets/NotificationCenter-zh351f1i.css" rel="stylesheet"/><link crossorigin="" href="/vivid-casino-crypto/assets/TopHeader-eiCE9kG4.css" rel="stylesheet"/><style id="loader-pulse-keyframes">
+        @keyframes pulse {
+          0%, 100% { opacity: 1; }
+          50% { opacity: 0.5; }
+        }
+      </style><link href="/vivid-casino-crypto/font/inter.css" media="all" rel="stylesheet"/><link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,200..800;1,200..800&amp;display=swap" media="all" rel="stylesheet"/><link href="https://fonts.googleapis.com/css?family=Merriweather&amp;display=swap" media="all" rel="stylesheet"/><link as="font" crossorigin="anonymous" href="/vivid-casino-crypto/font/Inter-roman.var.woff2" rel="preload" type="font/woff2"/><link as="font" crossorigin="anonymous" href="/vivid-casino-crypto/font/Roboto-Medium.ttf" rel="preload" type="font/ttf"/><link as="font" crossorigin="anonymous" href="/vivid-casino-crypto/font/RobotoCondensed-Bold.ttf" rel="preload" type="font/ttf"/><link href="/vivid-casino-crypto/css/onetrust-banner.css" media="(max-width: 767px)" rel="stylesheet"/><link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700;900&amp;amp;display=swap" rel="stylesheet"/><style>.kumulos-rating{display:flex;height:20px;font-size:16px;align-items:center;margin-top:3px}.kumulos-rating .kumulos-rating-star{position:relative}.kumulos-rating .kumulos-rating-star .kumulos-rating-halfstar{position:absolute;left:0;top:0;width:50%;overflow:hidden}.kumulos-rating .kumulos-rating-count{font-size:12px;margin-left:3px}</style><style>@keyframes kumulos-anim-shake{10%,90%{transform:translate3d(-1px, 0, 0)}20%,80%{transform:translate3d(2px, 0, 0)}30%,50%,70%{transform:translate3d(-2px, 0, 0)}40%,60%{transform:translate3d(2px, 0, 0)}}@keyframes kumulos-anim-fade-in{0%{opacity:0}100%{opacity:1}}@keyframes kumulos-reveal-left{0%{opacity:0;transform:translate(10px, -50%)}100%{opacity:1;transform:translate(0px, -50%)}}@keyframes kumulos-reveal-right{0%{opacity:0;transform:translate(-10px, -50%)}100%{opacity:1;transform:translate(0px, -50%)}}@keyframes kumulos-toast-in-out{0%{opacity:0;transform:translate3d(-50%, 100%, 0)}100%{opacity:1;transform:translate3d(-50%, 0, 0)}}@keyframes kumulos-slide-down{0%{transform:translate3d(0, -100%, 0)}100%{transform:translate3d(0, 0, 0)}}@keyframes kumulos-slide-up{0%{transform:translate3d(0, 100%, 0)}100%{transform:translate3d(0, 0, 0)}}.kumulos-tooltip-parent .kumulos-tooltip{display:none}.kumulos-tooltip-parent:hover .kumulos-tooltip{display:block}.kumulos-tooltip{background:#222;position:absolute;top:50%;padding:8px 12px;font:14px helvetica,sans-serif;color:#eee;border-radius:6px;white-space:nowrap;z-index:1100;pointer-events:none;transform:translateY(-50%);will-change:opacity,transform}.kumulos-tooltip:after{content:"";width:0;height:0;position:absolute;top:50%;right:100%;border:solid rgba(0,0,0,0);border-width:8px;margin-top:-8px}.kumulos-tooltip-right{left:calc(100% + 12px);animation:kumulos-reveal-right .2s cubic-bezier(0.23, 1, 0.32, 1)}.kumulos-tooltip-right:after{border-right-color:#222;right:100%}.kumulos-tooltip-left{right:calc(100% + 12px);animation:kumulos-reveal-left .2s cubic-bezier(0.23, 1, 0.32, 1)}.kumulos-tooltip-left:after{border-left-color:#222;left:100%}.kumulos-toast{display:inline-block;position:fixed;bottom:0;left:50%;transform:translateX(-50%);background:#222;z-index:1100;padding:12px;font-size:16px;font-family:helvetica,sans-serif;color:#eee;border-radius:8px 8px 0 0;animation:kumulos-toast-in-out .25s cubic-bezier(0.23, 1, 0.32, 1)}.kumulos-prompt{box-sizing:border-box;z-index:1000}.kumulos-prompt *,.kumulos-prompt *:before,.kumulos-prompt *:after{box-sizing:inherit}.kumulos-action-button{border:none;margin-left:10px;padding:7px 10px;min-width:100px;text-transform:uppercase;font-size:14px;font-weight:600}.kumulos-action-button:hover{cursor:pointer}.kumulos-action-button-cancel{background:none;color:#555}.kumulos-action-button-cancel:hover{background:#eee}.kumulos-action-button-confirm{border-radius:3px;box-shadow:1px 3px 3px rgba(0,0,0,.54);background:#4c88e0;color:#fff}.kumulos-action-button-confirm:hover{opacity:.8}.kumulos-checkbox-container{display:block;position:relative;padding-left:30px;margin-bottom:12px;cursor:pointer;user-select:none;line-height:20px;font-size:.9em;font-weight:bold}.kumulos-checkbox-container input{position:absolute;opacity:0;cursor:pointer;height:0;width:0}.kumulos-checkbox{box-sizing:border-box;position:absolute;top:0;left:0;height:20px;width:20px;border-radius:3px;border:1px solid #ddd}.kumulos-checkbox-container:hover input~.kumulos-checkbox{border-color:#aaa;display:block}.kumulos-checkbox-container:hover input~.kumulos-checkbox:after{display:block;border-color:#aaa;box-shadow:none}.kumulos-checkbox:after{content:"";position:absolute;display:none}.kumulos-checkbox-container input:checked~.kumulos-checkbox{border-color:#aaa}.kumulos-checkbox-container input:checked~.kumulos-checkbox:after{display:block;border-color:#222;box-shadow:2px 2px 2px 0px rgba(0,0,0,.3)}.kumulos-checkbox-container .kumulos-checkbox:after{left:10px;top:-7px;width:8px;height:20px;border:solid #000;border-width:0 3px 3px 0;transform:rotate(45deg)}.kumulos-banner-container{display:flex;flex-direction:row;flex-flow:wrap;position:fixed;left:0;width:100%;min-height:80px;padding:10px;font-family:helvetica,sans-serif;backface-visibility:hidden;box-shadow:0 0 3px 1px rgba(0,0,0,.54)}.kumulos-banner-container.kumulos-prompt-position-top{top:0;animation:kumulos-slide-down .4s ease}.kumulos-banner-container.kumulos-prompt-position-bottom{bottom:0;top:unset;animation:kumulos-slide-up .4s ease}@media only screen and (min-device-width: 480px){.kumulos-banner-container{flex-flow:initial}}.kumulos-banner-icon{width:65px;height:65px;margin-right:10px}.kumulos-banner-content{display:flex;flex-direction:column;flex:1}.kumulos-banner-header{display:flex;font-size:12px;line-height:14px}.kumulos-banner-header h1{font-size:inherit;font-weight:bold;margin:0 0 3px 0}@media only screen and (min-device-width: 480px){.kumulos-banner-header{font-size:18px}}.kumulos-banner-body{display:flex;flex-grow:2;align-items:flex-start;font-size:12px;line-height:14px;overflow:hidden;margin-top:10px}@media only screen and (min-device-width: 480px){.kumulos-banner-body{font-size:14px}}.kumulos-banner-actions{display:flex;align-self:center;justify-self:flex-end;width:100%;justify-content:flex-end;margin-top:10px}@media only screen and (min-device-width: 480px){.kumulos-banner-actions{width:auto;margin-top:0}}.kumulos-banner-compact .kumulos-banner-body{margin-top:0}.kumulos-banner-compact .kumulos-banner-actions{width:auto;margin-top:0}.kumulos-banner-compact .kumulos-banner-close{display:flex;justify-content:center;align-items:center;font-size:18px;font-weight:bold;margin-right:10px}@supports(padding: max(0px)){.kumulos-safe-area-inset-pad-left{padding-left:max(10px, env(safe-area-inset-left))}.kumulos-safe-area-inset-pad-right{padding-right:max(10px, env(safe-area-inset-right))}.kumulos-safe-area-inset-pad-top{padding-top:max(10px, env(safe-area-inset-top))}.kumulos-safe-area-inset-pad-bottom{padding-bottom:max(10px, env(safe-area-inset-bottom))}}.kumulos-bell-container{position:fixed}.kumulos-bell-container-bottom-left{bottom:15px;left:15px}.kumulos-bell-container-bottom-right{bottom:15px;right:15px}.kumulos-bell{transition:transform .2s cubic-bezier(0.23, 1, 0.32, 1),box-shadow .2s cubic-bezier(0.23, 1, 0.32, 1);border-radius:100%;border-color:#fff;background:#4c88e0;box-shadow:1px 2px 2px 0 rgba(0,0,0,.54);width:60px;height:60px;padding:10px;transform:scale(0.9);cursor:pointer;animation:kumulos-anim-fade-in .2s ease-in;backface-visibility:hidden}.kumulos-bell:hover{transform:scale(1);box-shadow:1px 2px 3px 1px rgba(0,0,0,.54)}.kumulos-bell:active{transform:scale(0.8);box-shadow:1px 2px 2px 0 rgba(0,0,0,.54)}.kumulos-bell svg{fill:#fff;animation:kumulos-anim-shake .4s cubic-bezier(0.36, 0.07, 0.19, 0.97) both;animation-delay:.3s}.kumulos-bell:before{content:"";display:block;width:85%;height:85%;border:solid 1px;border-radius:100%;border-color:inherit;position:absolute;top:0;left:0;margin:7.5% 0 0 7.5%}.kumulos-bell-inner{border-radius:100%}.kumulos-channel-dialog-container,.kumulos-alert-container{position:fixed;top:0;left:0;width:100%;height:auto;max-height:100%;padding:20px;display:flex;flex-direction:row;flex-wrap:wrap;font-family:helvetica,sans-serif;animation:kumulos-anim-fade-in .2s ease-in;backface-visibility:hidden;box-shadow:0 0 3px 1px rgba(0,0,0,.54)}.kumulos-channel-dialog-container.kumulos-prompt-position-top-center,.kumulos-alert-container.kumulos-prompt-position-top-center{border-radius:0 0 3px 3px}.kumulos-channel-dialog-container.kumulos-prompt-position-center,.kumulos-alert-container.kumulos-prompt-position-center{border-radius:3px}@media only screen and (min-width: 360px){.kumulos-channel-dialog-container,.kumulos-alert-container{width:90%;left:5%}}@media only screen and (min-width: 540px){.kumulos-channel-dialog-container,.kumulos-alert-container{left:50%;transform:translateX(-50%);width:500px;min-height:250px}.kumulos-channel-dialog-container.kumulos-prompt-position-center,.kumulos-alert-container.kumulos-prompt-position-center{top:120px}}.kumulos-channel-dialog-icon,.kumulos-alert-icon{order:2;width:60px;height:60px;align-self:flex-start}.kumulos-channel-dialog-content,.kumulos-alert-content{display:flex;order:1;flex-direction:column;flex:1;margin-right:10px}.kumulos-channel-dialog-header,.kumulos-alert-header{display:flex;font-size:18px;margin-bottom:20px}.kumulos-channel-dialog-header h1,.kumulos-alert-header h1{font-size:inherit;font-weight:400;margin:0}.kumulos-channel-dialog-body,.kumulos-alert-body{flex:1;white-space:pre-wrap;overflow-y:auto}.kumulos-channel-dialog-actions,.kumulos-alert-actions{display:flex;justify-content:flex-end;margin-top:20px;order:3;width:100%;height:30px;align-self:flex-end}.kumulos-channel-list-container{margin:20px 0}body.kumulos-background-mask-blur{overflow:hidden}.kumulos-background-mask-blur>*:not(.kumulos-prompt):not(.kumulos-overlay):not(.kumulos-background-mask){filter:blur(3px)}.kumulos-background-mask{position:fixed;top:0;left:0;height:100%;width:100%;z-index:900;background-color:rgba(0,0,0,.3);display:block}.kumulos-overlay-blur>*:not(.kumulos-overlay){filter:blur(3px)}.kumulos-overlay{box-sizing:border-box;z-index:2000}.kumulos-overlay *,.kumulos-overlay *:before,.kumulos-overlay *:after{box-sizing:inherit}.kumulos-overlay-strip{display:flex;box-shadow:0 0 6px 0 rgba(0,0,0,.8);min-height:150px}.kumulos-overlay-strip:before{display:block;content:"";width:calc(500px + 12%);max-width:660px}.kumulos-overlay-content-container{display:flex;max-width:38%;padding:1em;font-size:14px;font-family:helvetica,sans-serif}.kumulos-overlay-content-container *{margin:0}.kumulos-overlay-content-container svg{margin:55px 1.7em 0 0;stroke:none;fill:rgba(0,0,0,.8);flex-shrink:0}.kumulos-overlay-content-container img{width:55px;height:55px;flex-shrink:0}.kumulos-overlay-content-container h3,.kumulos-overlay-content-container p,.kumulos-overlay-content-container a{color:inherit}.kumulos-overlay-content-container h3{font-size:1.3em;font-weight:bold}.kumulos-overlay-content-container a{margin-right:.65em;opacity:.8;text-decoration:none}.kumulos-overlay .kumulos-overlay-content{margin-left:.75em}.kumulos-overlay .kumulos-overlay-content p{margin:.5em 0}.kumulos-overlay .kumulos-silent-overlay-indicator{position:absolute;left:0;top:0;z-index:1}.kumulos-overlay .kumulos-silent-overlay-content-text{max-width:500px;text-align:center;font-size:1.3em;font-family:helvetica,sans-serif}.kumulos-overlay-chrome .kumulos-overlay-strip:before{width:440px}.kumulos-overlay-edge .kumulos-overlay-strip:before{display:none}.kumulos-overlay-edge .kumulos-overlay-strip{position:absolute;bottom:0;width:100%;padding-bottom:60px;justify-content:center}.kumulos-overlay-edge .kumulos-overlay-content-container{min-width:675px}.kumulos-overlay-edge .kumulos-overlay-content-container svg{order:1;transform:rotate(-30deg)}.kumulos-overlay-safari .kumulos-overlay-strip:before{width:calc(50% + 212px);max-width:100%}@media(max-width: 900px){.kumulos-overlay{display:none}}</style>
+<!-- Freeze: prevent Vue error overlays -->
+
 </head>
-<body>
+<body class="h-full w-full bg-base-background active">
 
-<header class="header">
-  <div class="header-inner">
-    <div class="header-logo">
-      <a href="lobby.html">
-        <img src="images/home/vivid-logo.png?v=5" alt="Vivid" style="height:40px;object-fit:contain;"/>
-      </a>
+<div id="app" class="w-full md:h-screen md:overflow-hidden bg-base-background game_app">
+<div data-v-18cb80d8="">
+<div class="flex h-full w-full flex-row text-white" data-v-18cb80d8="">
+
+<div id="sidebar-parent" class="h-screen sticky top-0 left-0 max-[767px]:sticky max-[1024px]:absolute z-[99992]" data-v-386157ea=""><div id="sidebar-desktop" class="md:w-[256px] group sticky top-0 hidden h-screen flex-col transition-all duration-300 ease-in-out bg-base-sidebar-background md:flex border-r border-base-border" data-v-386157ea=""><div class="flex justify-between items-center px-2 md:py-4 py-[14px] border-b-[1px] border-base-border gap-2" data-v-386157ea=""><button id="sidebar-toggle-btn" class="p-2" data-v-386157ea="" onclick="toggleSidebar()"><svg id="sidebar-toggle-icon" class="lucide lucide-arrow-left-to-line-icon lucide-arrow-left-to-line transition-transform duration-300" data-v-386157ea="" fill="none" height="24" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg"><path d="M3 19V5"></path><path d="m13 6-6 6 6 6"></path><path d="M7 12h14"></path></svg></button><div id="sidebar-mode-toggle" class="flex-1 flex bg-base-input-background rounded-lg p-1 border border-base-border max-w-[180px]"><button id="sidebar-tab-casino" class="flex-1 py-1.5 text-sm font-medium rounded-md transition-all duration-200 bg-base-sidebar-accent text-white shadow-sm" onclick="switchSidebarMode('casino')">Casino</button><button id="sidebar-tab-sports" class="flex-1 py-1.5 text-sm font-medium rounded-md transition-all duration-200 text-base-muted-foreground hover:text-white" onclick="switchSidebarMode('sports')">Sports</button></div></div><div class="overflow-y-auto flex-grow overflow-x-hidden" data-v-386157ea=""><aside id="sidebar-casino-content" class="flex flex-col h-full justify-start gap-2 p-2 pt-6" data-v-386157ea=""><div class="flex flex-col gap-1 duration-150 px-2" data-v-37ba0874=""><div class="promo_race_bg" data-v-37ba0874=""></div><div class="px-3 py-1 flex cursor-pointer flex-row items-center gap-2 rounded-md text-sm border border-transparent transition-all duration-300 ease-linear hover:bg-base-sidebar-accent text-base-sidebar-accent-foreground" data-v-37ba0874=""><div style="width: 24px; height: 24px; display: none; align-items: center; justify-content: center; border-radius: 4px;">
+
+</div><img alt="Icon" class="flex-shrink-0" data-v-37ba0874="" height="24.000" src="https://jjakinn.github.io/vivid-casino-crypto/assets/home-D5p8tSee.png" style="width: 24px; height: 24px;" width="24.000"/><p class="w-full delay-150 transition-opacity duration-150 ease-in-out font-normal whitespace-nowrap" data-v-37ba0874="">Home</p></div><div class="px-3 py-1 flex cursor-pointer flex-row items-center gap-2 rounded-md text-sm border border-transparent transition-all duration-300 ease-linear hover:bg-base-sidebar-accent text-base-sidebar-accent-foreground" data-v-37ba0874=""><div style="width: 24px; height: 24px; display: none; align-items: center; justify-content: center; border-radius: 4px;">
+
+</div><img alt="Icon" class="flex-shrink-0" data-v-37ba0874="" height="24.000" src="data:image/png;base64,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" style="width: 24px; height: 24px;" width="24.000"/><p class="w-full delay-150 transition-opacity duration-150 ease-in-out font-normal whitespace-nowrap" data-v-37ba0874="">Favorites</p></div><div class="px-3 py-1 flex cursor-pointer flex-row items-center gap-2 rounded-md text-sm border border-transparent transition-all duration-300 ease-linear hover:bg-base-sidebar-accent text-base-sidebar-accent-foreground" data-v-37ba0874=""><div style="width: 24px; height: 24px; display: none; align-items: center; justify-content: center; border-radius: 4px;">
+
+</div><img alt="Icon" class="flex-shrink-0" data-v-37ba0874="" height="24.000" src="https://jjakinn.github.io/vivid-casino-crypto/assets/recent-BKH2o4oI.png" style="width: 24px; height: 24px;" width="24.000"/><p class="w-full delay-150 transition-opacity duration-150 ease-in-out font-normal whitespace-nowrap" data-v-37ba0874="">Recently Played</p></div><div class="px-3 py-1 flex cursor-pointer flex-row items-center gap-2 rounded-md text-sm border border-transparent transition-all duration-300 ease-linear hover:bg-base-sidebar-accent text-base-sidebar-accent-foreground" data-v-37ba0874=""><div style="width: 24px; height: 24px; display: none; align-items: center; justify-content: center; border-radius: 4px;">
+
+</div><img alt="Icon" class="flex-shrink-0" data-v-37ba0874="" height="24.000" src="data:image/png;base64,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" style="width: 24px; height: 24px;" width="24.000"/><p class="w-full delay-150 transition-opacity duration-150 ease-in-out font-normal whitespace-nowrap" data-v-37ba0874="">Challenges</p></div><div class="px-3 py-1 flex cursor-pointer flex-row items-center gap-2 rounded-md text-sm border border-transparent transition-all duration-300 ease-linear hover:bg-base-sidebar-accent text-base-sidebar-accent-foreground" data-v-37ba0874=""><div style="width: 24px; height: 24px; display: none; align-items: center; justify-content: center; border-radius: 4px;">
+
+</div><img alt="Icon" class="flex-shrink-0" data-v-37ba0874="" height="24.000" src="data:image/png;base64,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" style="width: 24px; height: 24px;" width="24.000"/><p class="w-full delay-150 transition-opacity duration-150 ease-in-out font-normal whitespace-nowrap" data-v-37ba0874="">Refer A Friend</p></div><a class="px-3 py-1 flex cursor-pointer flex-row items-center gap-2 rounded-md text-sm border border-transparent transition-all duration-300 ease-linear hover:bg-base-sidebar-accent text-base-sidebar-accent-foreground" data-v-37ba0874="" href="/promotions"><div style="width: 24px; height: 24px; display: none; align-items: center; justify-content: center; border-radius: 4px;">
+
+</div><img alt="Promotions" class="flex-shrink-0" data-v-37ba0874="" height="24.000" src="https://jjakinn.github.io/vivid-casino-crypto/images/home/gift.png" style="width: 24px; height: 24px;" width="24.000"/><p class="w-full transition-opacity duration-150 delay-100 ease-in-out font-normal whitespace-nowrap" data-v-37ba0874="">Promotions </p></a><!-- --></div><!-- --><div data-v-37ba0874=""><div class="flex flex-row items-center justify-between p-2.5 opacity-70" data-v-37ba0874=""><p class="font-medium text-sm text-[#F4F4F5]" data-v-37ba0874="">Games</p></div><div class="overflow-hidden transition-all duration-300 ease-in-out duration-150 px-2" data-v-37ba0874="" style="max-height: 616px;"><div class="flex flex-col gap-1" data-v-37ba0874="">
+<a class="px-3 py-1 flex cursor-pointer flex-row items-center gap-2 rounded-md text-sm border border-transparent transition-all duration-300 ease-linear hover:bg-base-sidebar-accent text-base-sidebar-accent-foreground" data-v-37ba0874="" href="view-all.html?category=popgames"><div style="width: 24px; height: 24px; display: none; align-items: center; justify-content: center; border-radius: 4px;">
+
+</div><img alt="Icon" class="flex-shrink-0" data-fallback="https://d3ta80o5sbquaz.cloudfront.net/categories/default.webp" data-v-37ba0874="" height="24.000" src="https://d3ta80o5sbquaz.cloudfront.net/categories/popgames.webp" style="width: 24px; height: 24px;" width="24.000"/><p class="w-full transition-opacity duration-150 delay-100 ease-in-out font-normal whitespace-nowrap" data-v-37ba0874="">Popular Games</p></a>
+<a class="px-3 py-1 flex cursor-pointer flex-row items-center gap-2 rounded-md text-sm border border-transparent transition-all duration-300 ease-linear hover:bg-base-sidebar-accent text-base-sidebar-accent-foreground" data-v-37ba0874="" href="view-all.html?category=new"><div style="width: 24px; height: 24px; display: none; align-items: center; justify-content: center; border-radius: 4px;">
+
+</div><img alt="Icon" class="flex-shrink-0" data-fallback="https://d3ta80o5sbquaz.cloudfront.net/categories/default.webp" data-v-37ba0874="" height="24.000" src="https://d3ta80o5sbquaz.cloudfront.net/categories/new.webp" style="width: 24px; height: 24px;" width="24.000"/><p class="w-full transition-opacity duration-150 delay-100 ease-in-out font-normal whitespace-nowrap" data-v-37ba0874="">New Releases</p></a>
+<a class="px-3 py-1 flex cursor-pointer flex-row items-center gap-2 rounded-md text-sm border border-transparent transition-all duration-300 ease-linear hover:bg-base-sidebar-accent text-base-sidebar-accent-foreground" data-v-37ba0874="" href="view-all.html?category=live"><div style="width: 24px; height: 24px; display: none; align-items: center; justify-content: center; border-radius: 4px;">
+
+</div><img alt="Icon" class="flex-shrink-0" data-fallback="https://d3ta80o5sbquaz.cloudfront.net/categories/default.webp" data-v-37ba0874="" height="24.000" src="https://d3ta80o5sbquaz.cloudfront.net/categories/live.webp" style="width: 24px; height: 24px;" width="24.000"/><p class="w-full transition-opacity duration-150 delay-100 ease-in-out font-normal whitespace-nowrap" data-v-37ba0874="">Live Dealers</p></a>
+<a class="px-3 py-1 flex cursor-pointer flex-row items-center gap-2 rounded-md text-sm border border-transparent transition-all duration-300 ease-linear hover:bg-base-sidebar-accent text-base-sidebar-accent-foreground" data-v-37ba0874="" href="view-all.html?category=fptables"><div style="width: 24px; height: 24px; display: none; align-items: center; justify-content: center; border-radius: 4px;">
+
+</div><img alt="Icon" class="flex-shrink-0" data-fallback="https://d3ta80o5sbquaz.cloudfront.net/categories/default.webp" data-v-37ba0874="" height="24.000" src="https://d3ta80o5sbquaz.cloudfront.net/categories/fptables.webp" style="width: 24px; height: 24px;" width="24.000"/><p class="w-full transition-opacity duration-150 delay-100 ease-in-out font-normal whitespace-nowrap" data-v-37ba0874="">First Person Tables</p></a>
+<a class="px-3 py-1 flex cursor-pointer flex-row items-center gap-2 rounded-md text-sm border border-transparent transition-all duration-300 ease-linear hover:bg-base-sidebar-accent text-base-sidebar-accent-foreground" data-v-37ba0874="" href="view-all.html?category=slots"><div style="width: 24px; height: 24px; display: none; align-items: center; justify-content: center; border-radius: 4px;">
+
+</div><img alt="Icon" class="flex-shrink-0" data-fallback="https://d3ta80o5sbquaz.cloudfront.net/categories/default.webp" data-v-37ba0874="" height="24.000" src="https://d3ta80o5sbquaz.cloudfront.net/categories/slots.webp" style="width: 24px; height: 24px;" width="24.000"/><p class="w-full transition-opacity duration-150 delay-100 ease-in-out font-normal whitespace-nowrap" data-v-37ba0874="">Slot Games</p></a>
+<a class="px-3 py-1 flex cursor-pointer flex-row items-center gap-2 rounded-md text-sm border border-transparent transition-all duration-300 ease-linear hover:bg-base-sidebar-accent text-base-sidebar-accent-foreground" data-v-37ba0874="" href="view-all.html?category=recently-added"><div style="width: 24px; height: 24px; display: none; align-items: center; justify-content: center; border-radius: 4px;">
+
+</div><img alt="Icon" class="flex-shrink-0" data-fallback="https://d3ta80o5sbquaz.cloudfront.net/categories/default.webp" data-v-37ba0874="" height="24.000" src="https://d3ta80o5sbquaz.cloudfront.net/categories/recent.webp" style="width: 24px; height: 24px;" width="24.000"/><p class="w-full transition-opacity duration-150 delay-100 ease-in-out font-normal whitespace-nowrap" data-v-37ba0874="">Recent Hits</p></a>
+<a class="px-3 py-1 flex cursor-pointer flex-row items-center gap-2 rounded-md text-sm border border-transparent transition-all duration-300 ease-linear hover:bg-base-sidebar-accent text-base-sidebar-accent-foreground" data-v-37ba0874="" href="view-all.html?category=trending"><div style="width: 24px; height: 24px; display: none; align-items: center; justify-content: center; border-radius: 4px;">
+
+</div><img alt="Icon" class="flex-shrink-0" data-fallback="https://d3ta80o5sbquaz.cloudfront.net/categories/default.webp" data-v-37ba0874="" height="24.000" src="https://d3ta80o5sbquaz.cloudfront.net/categories/trending.webp" style="width: 24px; height: 24px;" width="24.000"/><p class="w-full transition-opacity duration-150 delay-100 ease-in-out font-normal whitespace-nowrap" data-v-37ba0874="">Trending</p></a>
+<a class="px-3 py-1 flex cursor-pointer flex-row items-center gap-2 rounded-md text-sm border border-transparent transition-all duration-300 ease-linear hover:bg-base-sidebar-accent text-base-sidebar-accent-foreground" data-v-37ba0874="" href="view-all.html?category=featured"><div style="width: 24px; height: 24px; display: none; align-items: center; justify-content: center; border-radius: 4px;">
+
+</div><img alt="Icon" class="flex-shrink-0" data-fallback="https://d3ta80o5sbquaz.cloudfront.net/categories/default.webp" data-v-37ba0874="" height="24.000" src="https://d3ta80o5sbquaz.cloudfront.net/categories/featured.webp" style="width: 24px; height: 24px;" width="24.000"/><p class="w-full transition-opacity duration-150 delay-100 ease-in-out font-normal whitespace-nowrap" data-v-37ba0874="">Chanced Showcase </p></a>
+<a class="px-3 py-1 flex cursor-pointer flex-row items-center gap-2 rounded-md text-sm border border-transparent transition-all duration-300 ease-linear hover:bg-base-sidebar-accent text-base-sidebar-accent-foreground" data-v-37ba0874="" href="view-all.html?category=Only-on-Chanced"><div style="width: 24px; height: 24px; display: none; align-items: center; justify-content: center; border-radius: 4px;">
+
+</div><img alt="Icon" class="flex-shrink-0" data-fallback="https://d3ta80o5sbquaz.cloudfront.net/categories/default.webp" data-v-37ba0874="" height="24.000" src="https://d3ta80o5sbquaz.cloudfront.net/categories/rubyplay-christmas.webp" style="width: 24px; height: 24px;" width="24.000"/><p class="w-full transition-opacity duration-150 delay-100 ease-in-out font-normal whitespace-nowrap" data-v-37ba0874="">Home of Exclusives</p></a>
+<a class="px-3 py-1 flex cursor-pointer flex-row items-center gap-2 rounded-md text-sm border border-transparent transition-all duration-300 ease-linear hover:bg-base-sidebar-accent text-base-sidebar-accent-foreground" data-v-37ba0874="" href="view-all.html?category=providerofthemonth"><div style="width: 24px; height: 24px; display: none; align-items: center; justify-content: center; border-radius: 4px;">
+
+</div><img alt="Icon" class="flex-shrink-0" data-fallback="https://d3ta80o5sbquaz.cloudfront.net/categories/default.webp" data-v-37ba0874="" height="24.000" src="https://d3ta80o5sbquaz.cloudfront.net/categories/providerofthemonth.webp" style="width: 24px; height: 24px;" width="24.000"/><p class="w-full transition-opacity duration-150 delay-100 ease-in-out font-normal whitespace-nowrap" data-v-37ba0874="">Provider of the Month</p></a>
+<a class="px-3 py-1 flex cursor-pointer flex-row items-center gap-2 rounded-md text-sm border border-transparent transition-all duration-300 ease-linear hover:bg-base-sidebar-accent text-base-sidebar-accent-foreground" data-v-37ba0874="" href="view-all.html?category=pgsoft"><div style="width: 24px; height: 24px; display: none; align-items: center; justify-content: center; border-radius: 4px;">
+
+</div><img alt="Icon" class="flex-shrink-0" data-fallback="https://d3ta80o5sbquaz.cloudfront.net/categories/default.webp" data-v-37ba0874="" height="24.000" src="https://d3ta80o5sbquaz.cloudfront.net/categories/avatarux.webp" style="width: 24px; height: 24px;" width="24.000"/><p class="w-full transition-opacity duration-150 delay-100 ease-in-out font-normal whitespace-nowrap" data-v-37ba0874="">PG Soft</p></a>
+<a class="px-3 py-1 flex cursor-pointer flex-row items-center gap-2 rounded-md text-sm border border-transparent transition-all duration-300 ease-linear hover:bg-base-sidebar-accent text-base-sidebar-accent-foreground" data-v-37ba0874="" href="view-all.html?category=enjoydrops"><div style="width: 24px; height: 24px; display: none; align-items: center; justify-content: center; border-radius: 4px;">
+
+</div><img alt="Icon" class="flex-shrink-0" data-fallback="https://d3ta80o5sbquaz.cloudfront.net/categories/default.webp" data-v-37ba0874="" height="24.000" src="https://d3ta80o5sbquaz.cloudfront.net/categories/enjoydrops.webp" style="width: 24px; height: 24px;" width="24.000"/><p class="w-full transition-opacity duration-150 delay-100 ease-in-out font-normal whitespace-nowrap" data-v-37ba0874="">Let's Enjoy Drops</p></a>
+</div></div></div><div class="mt-auto pb-2 pt-4 duration-150 px-2" data-v-37ba0874=""><div class="px-3 py-1 flex cursor-pointer flex-row items-center gap-2 text-sm rounded-md border border-transparent transition-all duration-300 ease-linear hover:bg-base-sidebar-accent text-base-sidebar-accent-foreground" data-v-37ba0874=""><div style="width: 24px; height: 24px; display: none; align-items: center; justify-content: center; border-radius: 4px;">
+
+</div><img alt="Live support" class="flex-shrink-0" data-v-37ba0874="" height="24.000" src="data:image/png;base64,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" style="width: 24px; height: 24px;" width="24.000"/><p class="w-full transition-opacity duration-150 delay-100 ease-in-out font-normal whitespace-nowrap" data-v-37ba0874=""> Live Support </p></div></div></aside><div id="sidebar-sports-content" style="display:none" class="flex flex-col h-full justify-start gap-2 p-2 pt-6" data-v-386157ea=""><div data-v-37ba0874=""><div class="flex flex-row items-center justify-between p-2.5 opacity-70" data-v-37ba0874=""><p class="font-medium text-sm text-[#F4F4F5]" data-v-37ba0874="">Quick Links</p></div><div class="overflow-hidden transition-all duration-300 ease-in-out duration-150 px-2" data-v-37ba0874=""><div class="flex flex-col gap-1" data-v-37ba0874=""><a class="px-3 py-1 flex cursor-pointer flex-row items-center gap-2 rounded-md text-sm border border-transparent transition-all duration-300 ease-linear hover:bg-base-sidebar-accent text-base-sidebar-accent-foreground" href="/sports/live"><svg class="lucide lucide-radio-icon lucide-radio" fill="none" height="16" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24" width="16" xmlns="http://www.w3.org/2000/svg"><path d="M16.247 7.761a6 6 0 0 1 0 8.478"/><path d="M19.075 4.933a10 10 0 0 1 0 14.134"/><path d="M4.925 19.067a10 10 0 0 1 0-14.134"/><path d="M7.753 16.239a6 6 0 0 1 0-8.478"/><circle cx="12" cy="12" r="2"/></svg><p class="w-full font-normal whitespace-nowrap">Live Events</p></a><a class="px-3 py-1 flex cursor-pointer flex-row items-center gap-2 rounded-md text-sm border border-transparent transition-all duration-300 ease-linear hover:bg-base-sidebar-accent text-base-sidebar-accent-foreground" href="/sports/starting-soon"><svg class="lucide lucide-clock-icon lucide-clock" fill="none" height="16" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24" width="16" xmlns="http://www.w3.org/2000/svg"><path d="M12 6v6l4 2"/><circle cx="12" cy="12" r="10"/></svg><p class="w-full font-normal whitespace-nowrap">Starting Soon</p></a><a class="px-3 py-1 flex cursor-pointer flex-row items-center gap-2 rounded-md text-sm border border-transparent transition-all duration-300 ease-linear hover:bg-base-sidebar-accent text-base-sidebar-accent-foreground" href="/sports/all"><svg class="lucide lucide-layout-grid-icon lucide-layout-grid" fill="none" height="16" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24" width="16" xmlns="http://www.w3.org/2000/svg"><rect height="7" rx="1" width="7" x="3" y="3"/><rect height="7" rx="1" width="7" x="14" y="3"/><rect height="7" rx="1" width="7" x="14" y="14"/><rect height="7" rx="1" width="7" x="3" y="14"/></svg><p class="w-full font-normal whitespace-nowrap">All</p></a><a class="px-3 py-1 flex cursor-pointer flex-row items-center gap-2 rounded-md text-sm border border-transparent transition-all duration-300 ease-linear hover:bg-base-sidebar-accent text-base-sidebar-accent-foreground" href="/sports/my-bets"><svg class="lucide lucide-ticket-icon lucide-ticket" fill="none" height="16" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24" width="16" xmlns="http://www.w3.org/2000/svg"><path d="M2 9a3 3 0 0 1 0 6v2a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2v-2a3 3 0 0 1 0-6V7a2 2 0 0 0-2-2H4a2 2 0 0 0-2 2Z"/><path d="M13 5v2"/><path d="M13 17v2"/><path d="M13 11v2"/></svg><p class="w-full font-normal whitespace-nowrap">My Bets</p></a></div></div></div><div data-v-37ba0874=""><div class="flex flex-row items-center justify-between p-2.5 opacity-70" data-v-37ba0874=""><p class="font-medium text-sm text-[#F4F4F5]" data-v-37ba0874="">Top Sports</p></div><div class="overflow-hidden transition-all duration-300 ease-in-out duration-150 px-2" data-v-37ba0874=""><div class="flex flex-col gap-1" data-v-37ba0874=""><div class="sport-dropdown"><div class="px-3 py-1 flex cursor-pointer flex-row items-center gap-2 rounded-md text-sm border border-transparent transition-all duration-300 ease-linear hover:bg-base-sidebar-accent text-base-sidebar-accent-foreground" onclick="toggleSportDropdown(this)"><svg class="lucide lucide-chevron-down-icon lucide-chevron-down transition-transform duration-200" fill="none" height="16" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24" width="16" xmlns="http://www.w3.org/2000/svg"><path d="m6 9 6 6 6-6"/></svg><p class="w-full font-normal whitespace-nowrap">Soccer</p></div><div class="sport-dropdown-content hidden pl-6"><a class="px-3 py-1 flex cursor-pointer flex-row items-center gap-2 rounded-md text-sm border border-transparent transition-all duration-300 ease-linear hover:bg-base-sidebar-accent text-base-sidebar-accent-foreground" href="/sports/soccer/premier-league"><p class="w-full font-normal whitespace-nowrap">Premier League</p></a><a class="px-3 py-1 flex cursor-pointer flex-row items-center gap-2 rounded-md text-sm border border-transparent transition-all duration-300 ease-linear hover:bg-base-sidebar-accent text-base-sidebar-accent-foreground" href="/sports/soccer/la-liga"><p class="w-full font-normal whitespace-nowrap">La Liga</p></a><a class="px-3 py-1 flex cursor-pointer flex-row items-center gap-2 rounded-md text-sm border border-transparent transition-all duration-300 ease-linear hover:bg-base-sidebar-accent text-base-sidebar-accent-foreground" href="/sports/soccer/serie-a"><p class="w-full font-normal whitespace-nowrap">Serie A</p></a><a class="px-3 py-1 flex cursor-pointer flex-row items-center gap-2 rounded-md text-sm border border-transparent transition-all duration-300 ease-linear hover:bg-base-sidebar-accent text-base-sidebar-accent-foreground" href="/sports/soccer/bundesliga"><p class="w-full font-normal whitespace-nowrap">Bundesliga</p></a><a class="px-3 py-1 flex cursor-pointer flex-row items-center gap-2 rounded-md text-sm border border-transparent transition-all duration-300 ease-linear hover:bg-base-sidebar-accent text-base-sidebar-accent-foreground" href="/sports/soccer/ligue-1"><p class="w-full font-normal whitespace-nowrap">Ligue 1</p></a><a class="px-3 py-1 flex cursor-pointer flex-row items-center gap-2 rounded-md text-sm border border-transparent transition-all duration-300 ease-linear hover:bg-base-sidebar-accent text-base-sidebar-accent-foreground" href="/sports/soccer/champions-league"><p class="w-full font-normal whitespace-nowrap">Champions League</p></a></div></div><div class="sport-dropdown"><div class="px-3 py-1 flex cursor-pointer flex-row items-center gap-2 rounded-md text-sm border border-transparent transition-all duration-300 ease-linear hover:bg-base-sidebar-accent text-base-sidebar-accent-foreground" onclick="toggleSportDropdown(this)"><svg class="lucide lucide-chevron-down-icon lucide-chevron-down transition-transform duration-200" fill="none" height="16" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24" width="16" xmlns="http://www.w3.org/2000/svg"><path d="m6 9 6 6 6-6"/></svg><p class="w-full font-normal whitespace-nowrap">Baseball</p></div><div class="sport-dropdown-content hidden pl-6"><a class="px-3 py-1 flex cursor-pointer flex-row items-center gap-2 rounded-md text-sm border border-transparent transition-all duration-300 ease-linear hover:bg-base-sidebar-accent text-base-sidebar-accent-foreground" href="/sports/baseball/mlb"><p class="w-full font-normal whitespace-nowrap">MLB</p></a><a class="px-3 py-1 flex cursor-pointer flex-row items-center gap-2 rounded-md text-sm border border-transparent transition-all duration-300 ease-linear hover:bg-base-sidebar-accent text-base-sidebar-accent-foreground" href="/sports/baseball/npb"><p class="w-full font-normal whitespace-nowrap">NPB</p></a><a class="px-3 py-1 flex cursor-pointer flex-row items-center gap-2 rounded-md text-sm border border-transparent transition-all duration-300 ease-linear hover:bg-base-sidebar-accent text-base-sidebar-accent-foreground" href="/sports/baseball/kbo"><p class="w-full font-normal whitespace-nowrap">KBO</p></a></div></div><div class="sport-dropdown"><div class="px-3 py-1 flex cursor-pointer flex-row items-center gap-2 rounded-md text-sm border border-transparent transition-all duration-300 ease-linear hover:bg-base-sidebar-accent text-base-sidebar-accent-foreground" onclick="toggleSportDropdown(this)"><svg class="lucide lucide-chevron-down-icon lucide-chevron-down transition-transform duration-200" fill="none" height="16" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24" width="16" xmlns="http://www.w3.org/2000/svg"><path d="m6 9 6 6 6-6"/></svg><p class="w-full font-normal whitespace-nowrap">Tennis</p></div><div class="sport-dropdown-content hidden pl-6"><a class="px-3 py-1 flex cursor-pointer flex-row items-center gap-2 rounded-md text-sm border border-transparent transition-all duration-300 ease-linear hover:bg-base-sidebar-accent text-base-sidebar-accent-foreground" href="/sports/tennis/atp"><p class="w-full font-normal whitespace-nowrap">ATP</p></a><a class="px-3 py-1 flex cursor-pointer flex-row items-center gap-2 rounded-md text-sm border border-transparent transition-all duration-300 ease-linear hover:bg-base-sidebar-accent text-base-sidebar-accent-foreground" href="/sports/tennis/wta"><p class="w-full font-normal whitespace-nowrap">WTA</p></a><a class="px-3 py-1 flex cursor-pointer flex-row items-center gap-2 rounded-md text-sm border border-transparent transition-all duration-300 ease-linear hover:bg-base-sidebar-accent text-base-sidebar-accent-foreground" href="/sports/tennis/grand-slams"><p class="w-full font-normal whitespace-nowrap">Grand Slams</p></a></div></div><div class="sport-dropdown"><div class="px-3 py-1 flex cursor-pointer flex-row items-center gap-2 rounded-md text-sm border border-transparent transition-all duration-300 ease-linear hover:bg-base-sidebar-accent text-base-sidebar-accent-foreground" onclick="toggleSportDropdown(this)"><svg class="lucide lucide-chevron-down-icon lucide-chevron-down transition-transform duration-200" fill="none" height="16" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24" width="16" xmlns="http://www.w3.org/2000/svg"><path d="m6 9 6 6 6-6"/></svg><p class="w-full font-normal whitespace-nowrap">Basketball</p></div><div class="sport-dropdown-content hidden pl-6"><a class="px-3 py-1 flex cursor-pointer flex-row items-center gap-2 rounded-md text-sm border border-transparent transition-all duration-300 ease-linear hover:bg-base-sidebar-accent text-base-sidebar-accent-foreground" href="/sports/basketball/nba"><p class="w-full font-normal whitespace-nowrap">NBA</p></a><a class="px-3 py-1 flex cursor-pointer flex-row items-center gap-2 rounded-md text-sm border border-transparent transition-all duration-300 ease-linear hover:bg-base-sidebar-accent text-base-sidebar-accent-foreground" href="/sports/basketball/euroleague"><p class="w-full font-normal whitespace-nowrap">EuroLeague</p></a><a class="px-3 py-1 flex cursor-pointer flex-row items-center gap-2 rounded-md text-sm border border-transparent transition-all duration-300 ease-linear hover:bg-base-sidebar-accent text-base-sidebar-accent-foreground" href="/sports/basketball/ncaa"><p class="w-full font-normal whitespace-nowrap">NCAA</p></a></div></div><div class="sport-dropdown"><div class="px-3 py-1 flex cursor-pointer flex-row items-center gap-2 rounded-md text-sm border border-transparent transition-all duration-300 ease-linear hover:bg-base-sidebar-accent text-base-sidebar-accent-foreground" onclick="toggleSportDropdown(this)"><svg class="lucide lucide-chevron-down-icon lucide-chevron-down transition-transform duration-200" fill="none" height="16" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24" width="16" xmlns="http://www.w3.org/2000/svg"><path d="m6 9 6 6 6-6"/></svg><p class="w-full font-normal whitespace-nowrap">Ice Hockey</p></div><div class="sport-dropdown-content hidden pl-6"><a class="px-3 py-1 flex cursor-pointer flex-row items-center gap-2 rounded-md text-sm border border-transparent transition-all duration-300 ease-linear hover:bg-base-sidebar-accent text-base-sidebar-accent-foreground" href="/sports/ice-hockey/nhl"><p class="w-full font-normal whitespace-nowrap">NHL</p></a><a class="px-3 py-1 flex cursor-pointer flex-row items-center gap-2 rounded-md text-sm border border-transparent transition-all duration-300 ease-linear hover:bg-base-sidebar-accent text-base-sidebar-accent-foreground" href="/sports/ice-hockey/khl"><p class="w-full font-normal whitespace-nowrap">KHL</p></a><a class="px-3 py-1 flex cursor-pointer flex-row items-center gap-2 rounded-md text-sm border border-transparent transition-all duration-300 ease-linear hover:bg-base-sidebar-accent text-base-sidebar-accent-foreground" href="/sports/ice-hockey/liiga"><p class="w-full font-normal whitespace-nowrap">Liiga</p></a></div></div><div class="sport-dropdown"><div class="px-3 py-1 flex cursor-pointer flex-row items-center gap-2 rounded-md text-sm border border-transparent transition-all duration-300 ease-linear hover:bg-base-sidebar-accent text-base-sidebar-accent-foreground" onclick="toggleSportDropdown(this)"><svg class="lucide lucide-chevron-down-icon lucide-chevron-down transition-transform duration-200" fill="none" height="16" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24" width="16" xmlns="http://www.w3.org/2000/svg"><path d="m6 9 6 6 6-6"/></svg><p class="w-full font-normal whitespace-nowrap">CS2</p></div><div class="sport-dropdown-content hidden pl-6"><a class="px-3 py-1 flex cursor-pointer flex-row items-center gap-2 rounded-md text-sm border border-transparent transition-all duration-300 ease-linear hover:bg-base-sidebar-accent text-base-sidebar-accent-foreground" href="/sports/cs2/blast-premier"><p class="w-full font-normal whitespace-nowrap">BLAST Premier</p></a><a class="px-3 py-1 flex cursor-pointer flex-row items-center gap-2 rounded-md text-sm border border-transparent transition-all duration-300 ease-linear hover:bg-base-sidebar-accent text-base-sidebar-accent-foreground" href="/sports/cs2/pgl"><p class="w-full font-normal whitespace-nowrap">PGL</p></a><a class="px-3 py-1 flex cursor-pointer flex-row items-center gap-2 rounded-md text-sm border border-transparent transition-all duration-300 ease-linear hover:bg-base-sidebar-accent text-base-sidebar-accent-foreground" href="/sports/cs2/esl-pro-league"><p class="w-full font-normal whitespace-nowrap">ESL Pro League</p></a></div></div><div class="sport-dropdown"><div class="px-3 py-1 flex cursor-pointer flex-row items-center gap-2 rounded-md text-sm border border-transparent transition-all duration-300 ease-linear hover:bg-base-sidebar-accent text-base-sidebar-accent-foreground" onclick="toggleSportDropdown(this)"><svg class="lucide lucide-chevron-down-icon lucide-chevron-down transition-transform duration-200" fill="none" height="16" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24" width="16" xmlns="http://www.w3.org/2000/svg"><path d="m6 9 6 6 6-6"/></svg><p class="w-full font-normal whitespace-nowrap">Cricket</p></div><div class="sport-dropdown-content hidden pl-6"><a class="px-3 py-1 flex cursor-pointer flex-row items-center gap-2 rounded-md text-sm border border-transparent transition-all duration-300 ease-linear hover:bg-base-sidebar-accent text-base-sidebar-accent-foreground" href="/sports/cricket/ipl"><p class="w-full font-normal whitespace-nowrap">IPL</p></a><a class="px-3 py-1 flex cursor-pointer flex-row items-center gap-2 rounded-md text-sm border border-transparent transition-all duration-300 ease-linear hover:bg-base-sidebar-accent text-base-sidebar-accent-foreground" href="/sports/cricket/bbl"><p class="w-full font-normal whitespace-nowrap">BBL</p></a><a class="px-3 py-1 flex cursor-pointer flex-row items-center gap-2 rounded-md text-sm border border-transparent transition-all duration-300 ease-linear hover:bg-base-sidebar-accent text-base-sidebar-accent-foreground" href="/sports/cricket/international"><p class="w-full font-normal whitespace-nowrap">International</p></a></div></div><div class="sport-dropdown"><div class="px-3 py-1 flex cursor-pointer flex-row items-center gap-2 rounded-md text-sm border border-transparent transition-all duration-300 ease-linear hover:bg-base-sidebar-accent text-base-sidebar-accent-foreground" onclick="toggleSportDropdown(this)"><svg class="lucide lucide-chevron-down-icon lucide-chevron-down transition-transform duration-200" fill="none" height="16" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24" width="16" xmlns="http://www.w3.org/2000/svg"><path d="m6 9 6 6 6-6"/></svg><p class="w-full font-normal whitespace-nowrap">MMA</p></div><div class="sport-dropdown-content hidden pl-6"><a class="px-3 py-1 flex cursor-pointer flex-row items-center gap-2 rounded-md text-sm border border-transparent transition-all duration-300 ease-linear hover:bg-base-sidebar-accent text-base-sidebar-accent-foreground" href="/sports/mma/ufc"><p class="w-full font-normal whitespace-nowrap">UFC</p></a><a class="px-3 py-1 flex cursor-pointer flex-row items-center gap-2 rounded-md text-sm border border-transparent transition-all duration-300 ease-linear hover:bg-base-sidebar-accent text-base-sidebar-accent-foreground" href="/sports/mma/bellator"><p class="w-full font-normal whitespace-nowrap">Bellator</p></a><a class="px-3 py-1 flex cursor-pointer flex-row items-center gap-2 rounded-md text-sm border border-transparent transition-all duration-300 ease-linear hover:bg-base-sidebar-accent text-base-sidebar-accent-foreground" href="/sports/mma/one-championship"><p class="w-full font-normal whitespace-nowrap">ONE Championship</p></a></div></div><div class="sport-dropdown"><div class="px-3 py-1 flex cursor-pointer flex-row items-center gap-2 rounded-md text-sm border border-transparent transition-all duration-300 ease-linear hover:bg-base-sidebar-accent text-base-sidebar-accent-foreground" onclick="toggleSportDropdown(this)"><svg class="lucide lucide-chevron-down-icon lucide-chevron-down transition-transform duration-200" fill="none" height="16" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24" width="16" xmlns="http://www.w3.org/2000/svg"><path d="m6 9 6 6 6-6"/></svg><p class="w-full font-normal whitespace-nowrap">League of Legends</p></div><div class="sport-dropdown-content hidden pl-6"><a class="px-3 py-1 flex cursor-pointer flex-row items-center gap-2 rounded-md text-sm border border-transparent transition-all duration-300 ease-linear hover:bg-base-sidebar-accent text-base-sidebar-accent-foreground" href="/sports/lol/lck"><p class="w-full font-normal whitespace-nowrap">LCK</p></a><a class="px-3 py-1 flex cursor-pointer flex-row items-center gap-2 rounded-md text-sm border border-transparent transition-all duration-300 ease-linear hover:bg-base-sidebar-accent text-base-sidebar-accent-foreground" href="/sports/lol/lec"><p class="w-full font-normal whitespace-nowrap">LEC</p></a><a class="px-3 py-1 flex cursor-pointer flex-row items-center gap-2 rounded-md text-sm border border-transparent transition-all duration-300 ease-linear hover:bg-base-sidebar-accent text-base-sidebar-accent-foreground" href="/sports/lol/lcs"><p class="w-full font-normal whitespace-nowrap">LCS</p></a><a class="px-3 py-1 flex cursor-pointer flex-row items-center gap-2 rounded-md text-sm border border-transparent transition-all duration-300 ease-linear hover:bg-base-sidebar-accent text-base-sidebar-accent-foreground" href="/sports/lol/msi"><p class="w-full font-normal whitespace-nowrap">MSI</p></a><a class="px-3 py-1 flex cursor-pointer flex-row items-center gap-2 rounded-md text-sm border border-transparent transition-all duration-300 ease-linear hover:bg-base-sidebar-accent text-base-sidebar-accent-foreground" href="/sports/lol/worlds"><p class="w-full font-normal whitespace-nowrap">Worlds</p></a></div></div><div class="sport-dropdown"><div class="px-3 py-1 flex cursor-pointer flex-row items-center gap-2 rounded-md text-sm border border-transparent transition-all duration-300 ease-linear hover:bg-base-sidebar-accent text-base-sidebar-accent-foreground" onclick="toggleSportDropdown(this)"><svg class="lucide lucide-chevron-down-icon lucide-chevron-down transition-transform duration-200" fill="none" height="16" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24" width="16" xmlns="http://www.w3.org/2000/svg"><path d="m6 9 6 6 6-6"/></svg><p class="w-full font-normal whitespace-nowrap">Racing</p></div><div class="sport-dropdown-content hidden pl-6"><a class="px-3 py-1 flex cursor-pointer flex-row items-center gap-2 rounded-md text-sm border border-transparent transition-all duration-300 ease-linear hover:bg-base-sidebar-accent text-base-sidebar-accent-foreground" href="/sports/racing/formula-1"><p class="w-full font-normal whitespace-nowrap">Formula 1</p></a><a class="px-3 py-1 flex cursor-pointer flex-row items-center gap-2 rounded-md text-sm border border-transparent transition-all duration-300 ease-linear hover:bg-base-sidebar-accent text-base-sidebar-accent-foreground" href="/sports/racing/nascar"><p class="w-full font-normal whitespace-nowrap">NASCAR</p></a><a class="px-3 py-1 flex cursor-pointer flex-row items-center gap-2 rounded-md text-sm border border-transparent transition-all duration-300 ease-linear hover:bg-base-sidebar-accent text-base-sidebar-accent-foreground" href="/sports/racing/moto-gp"><p class="w-full font-normal whitespace-nowrap">Moto GP</p></a></div></div></div></div></div><div class="sport-dropdown" data-v-37ba0874=""><div class="px-3 py-1 flex cursor-pointer flex-row items-center gap-2 rounded-md text-sm border border-transparent transition-all duration-300 ease-linear hover:bg-base-sidebar-accent text-base-sidebar-accent-foreground" onclick="toggleSportDropdown(this)" data-v-37ba0874=""><svg class="lucide lucide-chevron-down-icon lucide-chevron-down transition-transform duration-200" fill="none" height="16" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24" width="16" xmlns="http://www.w3.org/2000/svg"><path d="m6 9 6 6 6-6"/></svg><p class="w-full font-normal whitespace-nowrap" data-v-37ba0874="">All Sports</p></div><div class="sport-dropdown-content hidden" data-v-37ba0874=""><div class="overflow-hidden transition-all duration-300 ease-in-out duration-150 px-2" data-v-37ba0874=""><div class="flex flex-col gap-1" data-v-37ba0874=""><a class="px-3 py-1 flex cursor-pointer flex-row items-center gap-2 rounded-md text-sm border border-transparent transition-all duration-300 ease-linear hover:bg-base-sidebar-accent text-base-sidebar-accent-foreground" href="/sports/american-football"><p class="w-full font-normal whitespace-nowrap">American Football</p></a><a class="px-3 py-1 flex cursor-pointer flex-row items-center gap-2 rounded-md text-sm border border-transparent transition-all duration-300 ease-linear hover:bg-base-sidebar-accent text-base-sidebar-accent-foreground" href="/sports/aussie-rules"><p class="w-full font-normal whitespace-nowrap">Aussie Rules</p></a><a class="px-3 py-1 flex cursor-pointer flex-row items-center gap-2 rounded-md text-sm border border-transparent transition-all duration-300 ease-linear hover:bg-base-sidebar-accent text-base-sidebar-accent-foreground" href="/sports/badminton"><p class="w-full font-normal whitespace-nowrap">Badminton</p></a><a class="px-3 py-1 flex cursor-pointer flex-row items-center gap-2 rounded-md text-sm border border-transparent transition-all duration-300 ease-linear hover:bg-base-sidebar-accent text-base-sidebar-accent-foreground" href="/sports/baseball"><p class="w-full font-normal whitespace-nowrap">Baseball</p></a><a class="px-3 py-1 flex cursor-pointer flex-row items-center gap-2 rounded-md text-sm border border-transparent transition-all duration-300 ease-linear hover:bg-base-sidebar-accent text-base-sidebar-accent-foreground" href="/sports/basketball"><p class="w-full font-normal whitespace-nowrap">Basketball</p></a><a class="px-3 py-1 flex cursor-pointer flex-row items-center gap-2 rounded-md text-sm border border-transparent transition-all duration-300 ease-linear hover:bg-base-sidebar-accent text-base-sidebar-accent-foreground" href="/sports/biathlon"><p class="w-full font-normal whitespace-nowrap">Biathlon</p></a><a class="px-3 py-1 flex cursor-pointer flex-row items-center gap-2 rounded-md text-sm border border-transparent transition-all duration-300 ease-linear hover:bg-base-sidebar-accent text-base-sidebar-accent-foreground" href="/sports/boxing"><p class="w-full font-normal whitespace-nowrap">Boxing</p></a><a class="px-3 py-1 flex cursor-pointer flex-row items-center gap-2 rounded-md text-sm border border-transparent transition-all duration-300 ease-linear hover:bg-base-sidebar-accent text-base-sidebar-accent-foreground" href="/sports/cricket"><p class="w-full font-normal whitespace-nowrap">Cricket</p></a><a class="px-3 py-1 flex cursor-pointer flex-row items-center gap-2 rounded-md text-sm border border-transparent transition-all duration-300 ease-linear hover:bg-base-sidebar-accent text-base-sidebar-accent-foreground" href="/sports/cross-country"><p class="w-full font-normal whitespace-nowrap">Cross-Country</p></a><a class="px-3 py-1 flex cursor-pointer flex-row items-center gap-2 rounded-md text-sm border border-transparent transition-all duration-300 ease-linear hover:bg-base-sidebar-accent text-base-sidebar-accent-foreground" href="/sports/cycling"><p class="w-full font-normal whitespace-nowrap">Cycling</p></a><a class="px-3 py-1 flex cursor-pointer flex-row items-center gap-2 rounded-md text-sm border border-transparent transition-all duration-300 ease-linear hover:bg-base-sidebar-accent text-base-sidebar-accent-foreground" href="/sports/darts"><p class="w-full font-normal whitespace-nowrap">Darts</p></a><a class="px-3 py-1 flex cursor-pointer flex-row items-center gap-2 rounded-md text-sm border border-transparent transition-all duration-300 ease-linear hover:bg-base-sidebar-accent text-base-sidebar-accent-foreground" href="/sports/formula-1"><p class="w-full font-normal whitespace-nowrap">Formula 1</p></a><a class="px-3 py-1 flex cursor-pointer flex-row items-center gap-2 rounded-md text-sm border border-transparent transition-all duration-300 ease-linear hover:bg-base-sidebar-accent text-base-sidebar-accent-foreground" href="/sports/futsal"><p class="w-full font-normal whitespace-nowrap">Futsal</p></a><a class="px-3 py-1 flex cursor-pointer flex-row items-center gap-2 rounded-md text-sm border border-transparent transition-all duration-300 ease-linear hover:bg-base-sidebar-accent text-base-sidebar-accent-foreground" href="/sports/gaelic-football"><p class="w-full font-normal whitespace-nowrap">Gaelic Football</p></a><a class="px-3 py-1 flex cursor-pointer flex-row items-center gap-2 rounded-md text-sm border border-transparent transition-all duration-300 ease-linear hover:bg-base-sidebar-accent text-base-sidebar-accent-foreground" href="/sports/golf"><p class="w-full font-normal whitespace-nowrap">Golf</p></a><a class="px-3 py-1 flex cursor-pointer flex-row items-center gap-2 rounded-md text-sm border border-transparent transition-all duration-300 ease-linear hover:bg-base-sidebar-accent text-base-sidebar-accent-foreground" href="/sports/handball"><p class="w-full font-normal whitespace-nowrap">Handball</p></a><a class="px-3 py-1 flex cursor-pointer flex-row items-center gap-2 rounded-md text-sm border border-transparent transition-all duration-300 ease-linear hover:bg-base-sidebar-accent text-base-sidebar-accent-foreground" href="/sports/ice-hockey"><p class="w-full font-normal whitespace-nowrap">Ice Hockey</p></a><a class="px-3 py-1 flex cursor-pointer flex-row items-center gap-2 rounded-md text-sm border border-transparent transition-all duration-300 ease-linear hover:bg-base-sidebar-accent text-base-sidebar-accent-foreground" href="/sports/indy-racing"><p class="w-full font-normal whitespace-nowrap">Indy Racing</p></a><a class="px-3 py-1 flex cursor-pointer flex-row items-center gap-2 rounded-md text-sm border border-transparent transition-all duration-300 ease-linear hover:bg-base-sidebar-accent text-base-sidebar-accent-foreground" href="/sports/lacrosse"><p class="w-full font-normal whitespace-nowrap">Lacrosse</p></a><a class="px-3 py-1 flex cursor-pointer flex-row items-center gap-2 rounded-md text-sm border border-transparent transition-all duration-300 ease-linear hover:bg-base-sidebar-accent text-base-sidebar-accent-foreground" href="/sports/mma"><p class="w-full font-normal whitespace-nowrap">MMA</p></a><a class="px-3 py-1 flex cursor-pointer flex-row items-center gap-2 rounded-md text-sm border border-transparent transition-all duration-300 ease-linear hover:bg-base-sidebar-accent text-base-sidebar-accent-foreground" href="/sports/motorcycle-racing"><p class="w-full font-normal whitespace-nowrap">Motorcycle Racing</p></a><a class="px-3 py-1 flex cursor-pointer flex-row items-center gap-2 rounded-md text-sm border border-transparent transition-all duration-300 ease-linear hover:bg-base-sidebar-accent text-base-sidebar-accent-foreground" href="/sports/padel"><p class="w-full font-normal whitespace-nowrap">Padel</p></a><a class="px-3 py-1 flex cursor-pointer flex-row items-center gap-2 rounded-md text-sm border border-transparent transition-all duration-300 ease-linear hover:bg-base-sidebar-accent text-base-sidebar-accent-foreground" href="/sports/rugby"><p class="w-full font-normal whitespace-nowrap">Rugby</p></a><a class="px-3 py-1 flex cursor-pointer flex-row items-center gap-2 rounded-md text-sm border border-transparent transition-all duration-300 ease-linear hover:bg-base-sidebar-accent text-base-sidebar-accent-foreground" href="/sports/ski-jumping"><p class="w-full font-normal whitespace-nowrap">Ski Jumping</p></a><a class="px-3 py-1 flex cursor-pointer flex-row items-center gap-2 rounded-md text-sm border border-transparent transition-all duration-300 ease-linear hover:bg-base-sidebar-accent text-base-sidebar-accent-foreground" href="/sports/snooker"><p class="w-full font-normal whitespace-nowrap">Snooker</p></a><a class="px-3 py-1 flex cursor-pointer flex-row items-center gap-2 rounded-md text-sm border border-transparent transition-all duration-300 ease-linear hover:bg-base-sidebar-accent text-base-sidebar-accent-foreground" href="/sports/soccer"><p class="w-full font-normal whitespace-nowrap">Soccer</p></a><a class="px-3 py-1 flex cursor-pointer flex-row items-center gap-2 rounded-md text-sm border border-transparent transition-all duration-300 ease-linear hover:bg-base-sidebar-accent text-base-sidebar-accent-foreground" href="/sports/specials"><p class="w-full font-normal whitespace-nowrap">Specials</p></a><a class="px-3 py-1 flex cursor-pointer flex-row items-center gap-2 rounded-md text-sm border border-transparent transition-all duration-300 ease-linear hover:bg-base-sidebar-accent text-base-sidebar-accent-foreground" href="/sports/stock-car-racing"><p class="w-full font-normal whitespace-nowrap">Stock Car Racing</p></a><a class="px-3 py-1 flex cursor-pointer flex-row items-center gap-2 rounded-md text-sm border border-transparent transition-all duration-300 ease-linear hover:bg-base-sidebar-accent text-base-sidebar-accent-foreground" href="/sports/table-tennis"><p class="w-full font-normal whitespace-nowrap">Table Tennis</p></a><a class="px-3 py-1 flex cursor-pointer flex-row items-center gap-2 rounded-md text-sm border border-transparent transition-all duration-300 ease-linear hover:bg-base-sidebar-accent text-base-sidebar-accent-foreground" href="/sports/tennis"><p class="w-full font-normal whitespace-nowrap">Tennis</p></a><a class="px-3 py-1 flex cursor-pointer flex-row items-center gap-2 rounded-md text-sm border border-transparent transition-all duration-300 ease-linear hover:bg-base-sidebar-accent text-base-sidebar-accent-foreground" href="/sports/volleyball"><p class="w-full font-normal whitespace-nowrap">Volleyball</p></a><a class="px-3 py-1 flex cursor-pointer flex-row items-center gap-2 rounded-md text-sm border border-transparent transition-all duration-300 ease-linear hover:bg-base-sidebar-accent text-base-sidebar-accent-foreground" href="/sports/waterpolo"><p class="w-full font-normal whitespace-nowrap">Waterpolo</p></a></div></div></div></div><div class="sport-dropdown" data-v-37ba0874=""><div class="px-3 py-1 flex cursor-pointer flex-row items-center gap-2 rounded-md text-sm border border-transparent transition-all duration-300 ease-linear hover:bg-base-sidebar-accent text-base-sidebar-accent-foreground" onclick="toggleSportDropdown(this)" data-v-37ba0874=""><svg class="lucide lucide-chevron-down-icon lucide-chevron-down transition-transform duration-200" fill="none" height="16" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24" width="16" xmlns="http://www.w3.org/2000/svg"><path d="m6 9 6 6 6-6"/></svg><p class="w-full font-normal whitespace-nowrap" data-v-37ba0874="">eSports</p></div><div class="sport-dropdown-content hidden" data-v-37ba0874=""><div class="overflow-hidden transition-all duration-300 ease-in-out duration-150 px-2" data-v-37ba0874=""><div class="flex flex-col gap-1" data-v-37ba0874=""><a class="px-3 py-1 flex cursor-pointer flex-row items-center gap-2 rounded-md text-sm border border-transparent transition-all duration-300 ease-linear hover:bg-base-sidebar-accent text-base-sidebar-accent-foreground" href="/sports/esports/crossfire"><p class="w-full font-normal whitespace-nowrap">Crossfire</p></a><a class="px-3 py-1 flex cursor-pointer flex-row items-center gap-2 rounded-md text-sm border border-transparent transition-all duration-300 ease-linear hover:bg-base-sidebar-accent text-base-sidebar-accent-foreground" href="/sports/esports/cs2"><p class="w-full font-normal whitespace-nowrap">CS2</p></a><a class="px-3 py-1 flex cursor-pointer flex-row items-center gap-2 rounded-md text-sm border border-transparent transition-all duration-300 ease-linear hover:bg-base-sidebar-accent text-base-sidebar-accent-foreground" href="/sports/esports/cs2-duels"><p class="w-full font-normal whitespace-nowrap">CS2 Duels</p></a><a class="px-3 py-1 flex cursor-pointer flex-row items-center gap-2 rounded-md text-sm border border-transparent transition-all duration-300 ease-linear hover:bg-base-sidebar-accent text-base-sidebar-accent-foreground" href="/sports/esports/dota-2"><p class="w-full font-normal whitespace-nowrap">Dota 2</p></a><a class="px-3 py-1 flex cursor-pointer flex-row items-center gap-2 rounded-md text-sm border border-transparent transition-all duration-300 ease-linear hover:bg-base-sidebar-accent text-base-sidebar-accent-foreground" href="/sports/esports/dota-2-duels"><p class="w-full font-normal whitespace-nowrap">Dota 2 Duels</p></a><a class="px-3 py-1 flex cursor-pointer flex-row items-center gap-2 rounded-md text-sm border border-transparent transition-all duration-300 ease-linear hover:bg-base-sidebar-accent text-base-sidebar-accent-foreground" href="/sports/esports/fifa"><p class="w-full font-normal whitespace-nowrap">FIFA</p></a><a class="px-3 py-1 flex cursor-pointer flex-row items-center gap-2 rounded-md text-sm border border-transparent transition-all duration-300 ease-linear hover:bg-base-sidebar-accent text-base-sidebar-accent-foreground" href="/sports/esports/fifa-bots"><p class="w-full font-normal whitespace-nowrap">FIFA Bots</p></a><a class="px-3 py-1 flex cursor-pointer flex-row items-center gap-2 rounded-md text-sm border border-transparent transition-all duration-300 ease-linear hover:bg-base-sidebar-accent text-base-sidebar-accent-foreground" href="/sports/esports/king-of-glory"><p class="w-full font-normal whitespace-nowrap">King of Glory</p></a><a class="px-3 py-1 flex cursor-pointer flex-row items-center gap-2 rounded-md text-sm border border-transparent transition-all duration-300 ease-linear hover:bg-base-sidebar-accent text-base-sidebar-accent-foreground" href="/sports/esports/league-of-legends"><p class="w-full font-normal whitespace-nowrap">League of Legends</p></a><a class="px-3 py-1 flex cursor-pointer flex-row items-center gap-2 rounded-md text-sm border border-transparent transition-all duration-300 ease-linear hover:bg-base-sidebar-accent text-base-sidebar-accent-foreground" href="/sports/esports/mobile-legends"><p class="w-full font-normal whitespace-nowrap">Mobile Legends</p></a><a class="px-3 py-1 flex cursor-pointer flex-row items-center gap-2 rounded-md text-sm border border-transparent transition-all duration-300 ease-linear hover:bg-base-sidebar-accent text-base-sidebar-accent-foreground" href="/sports/esports/nba2k"><p class="w-full font-normal whitespace-nowrap">NBA2K</p></a><a class="px-3 py-1 flex cursor-pointer flex-row items-center gap-2 rounded-md text-sm border border-transparent transition-all duration-300 ease-linear hover:bg-base-sidebar-accent text-base-sidebar-accent-foreground" href="/sports/esports/overwatch-2"><p class="w-full font-normal whitespace-nowrap">Overwatch 2</p></a><a class="px-3 py-1 flex cursor-pointer flex-row items-center gap-2 rounded-md text-sm border border-transparent transition-all duration-300 ease-linear hover:bg-base-sidebar-accent text-base-sidebar-accent-foreground" href="/sports/esports/rainbow-six"><p class="w-full font-normal whitespace-nowrap">Rainbow Six</p></a><a class="px-3 py-1 flex cursor-pointer flex-row items-center gap-2 rounded-md text-sm border border-transparent transition-all duration-300 ease-linear hover:bg-base-sidebar-accent text-base-sidebar-accent-foreground" href="/sports/esports/valorant"><p class="w-full font-normal whitespace-nowrap">Valorant</p></a></div></div></div></div><div class="sport-dropdown" data-v-37ba0874=""><div class="px-3 py-1 flex cursor-pointer flex-row items-center gap-2 rounded-md text-sm border border-transparent transition-all duration-300 ease-linear hover:bg-base-sidebar-accent text-base-sidebar-accent-foreground" onclick="toggleSportDropdown(this)" data-v-37ba0874=""><svg class="lucide lucide-chevron-down-icon lucide-chevron-down transition-transform duration-200" fill="none" height="16" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24" width="16" xmlns="http://www.w3.org/2000/svg"><path d="m6 9 6 6 6-6"/></svg><p class="w-full font-normal whitespace-nowrap" data-v-37ba0874="">Racing</p></div><div class="sport-dropdown-content hidden" data-v-37ba0874=""><div class="overflow-hidden transition-all duration-300 ease-in-out duration-150 px-2" data-v-37ba0874=""><div class="flex flex-col gap-1" data-v-37ba0874=""><a class="px-3 py-1 flex cursor-pointer flex-row items-center gap-2 rounded-md text-sm border border-transparent transition-all duration-300 ease-linear hover:bg-base-sidebar-accent text-base-sidebar-accent-foreground" href="/sports/racing/horse-racing"><p class="w-full font-normal whitespace-nowrap">Horse Racing</p></a><a class="px-3 py-1 flex cursor-pointer flex-row items-center gap-2 rounded-md text-sm border border-transparent transition-all duration-300 ease-linear hover:bg-base-sidebar-accent text-base-sidebar-accent-foreground" href="/sports/racing/harness-racing"><p class="w-full font-normal whitespace-nowrap">Harness Racing</p></a><a class="px-3 py-1 flex cursor-pointer flex-row items-center gap-2 rounded-md text-sm border border-transparent transition-all duration-300 ease-linear hover:bg-base-sidebar-accent text-base-sidebar-accent-foreground" href="/sports/racing/greyhounds"><p class="w-full font-normal whitespace-nowrap">Greyhounds</p></a></div></div></div></div><div class="mt-auto pb-2 pt-4 duration-150 px-2" data-v-37ba0874=""><div class="px-3 py-1 flex cursor-pointer flex-row items-center gap-2 text-sm rounded-md border border-transparent transition-all duration-300 ease-linear hover:bg-base-sidebar-accent text-base-sidebar-accent-foreground" data-v-37ba0874=""><p class="w-full font-normal whitespace-nowrap"> Live Support </p></div></div></div></div></div></div><div id="mobile-sidebar-backdrop" onclick="closeMobileSidebar()"></div>
+
+<div class="flex flex-col h-screen w-full md:w-full max-[1024px]:pl-[48px] max-[767px]:pl-0 relative" data-v-18cb80d8="">
+
+<header class="fixed top-0 left-0 right-0 min-h-[63px] md:min-h-[73px] z-[99991]" data-v-18cb80d8=""><div class="top-header-inner relative flex w-full h-full flex-row px-4 md:px-6 md:py-[12px] py-[7px] items-center justify-center border-solid bg-base-background border-b-[1px] border-base-border" data-v-18cb80d8=""><div class="relative flex w-full max-w-[1200px] justify-between"><div class="min-h-[40px] flex justify-between items-center relative"><a aria-current="page" class="router-link-active router-link-exact-active" href="/"><img alt="Vivid" class="xsm_m:block hidden lg:w-[180px] sm:w-[150px] sm_m:w-[120px] w-[100px] object-contain" src="/vivid-casino-crypto/images/home/vivid-logo.png?v=5" style="object-fit:contain;height:auto;max-height:50px;transform:translateY(6px);"/><img alt="Vivid" class="xsm_m:hidden block h-8 object-contain" src="/vivid-casino-crypto/images/home/vivid-logo.png?v=5" style="object-fit:contain;height:32px;width:auto;"/></a></div><div class="flex items-center md:gap-4 gap-3"><!-- --><div class="relative" data-headlessui-state=""><div><button aria-expanded="false" class="bg-base-background hover:bg-base-accent border border-base-input-border rounded-md text-base-foreground font-medium text-sm px-4 sm:py-2.5 py-2 flex items-center gap-2 outline-none" data-headlessui-state="" id="headlessui-popover-button-v-1-0" type="button"><div class="flex items-center gap-2"><img alt="BTC" class="h-5 w-5" src="/vivid-casino-crypto/assets/crypto-icons/btc.svg"/><span class="sm_m:text-sm text-xs font-semibold">BTC</span><span class="sm_m:text-sm text-xs">0.00</span></div><div class=""><svg class="lucide w-5 h-5 lucide-chevron-down-icon lucide-chevron-down w-5 h-5" fill="none" height="24" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg"><path d="m6 9 6 6 6-6"></path></svg></div></button><!-- --></div><div id="crypto-dropdown-panel" class="hidden absolute top-full right-0 mt-2 w-64 bg-base-background border border-base-border rounded-lg shadow-lg z-[99999] overflow-hidden" style="display:none;">
+  <div class="p-2">
+    <div class="text-xs text-base-muted-foreground px-2 py-1 font-semibold uppercase tracking-wider">Select Currency</div>
+    <div class="crypto-option flex items-center gap-3 px-3 py-2.5 rounded-md cursor-pointer hover:bg-base-accent transition-colors" data-currency="btc" data-balance="0.00000000">
+      <img src="/vivid-casino-crypto/assets/crypto-icons/btc.svg" alt="BTC" class="w-7 h-7"/>
+      <div class="flex-1">
+        <div class="text-sm font-semibold text-white">Bitcoin</div>
+        <div class="text-xs text-base-muted-foreground">BTC</div>
+      </div>
+      <div class="text-sm font-medium text-white">0.00000000</div>
     </div>
-    <a href="lobby.html" class="back-btn">
-      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-        <path stroke-linecap="round" stroke-linejoin="round" d="M10.5 19.5L3 12m0 0l7.5-7.5M3 12h18"/>
-      </svg>
-      Back to Lobby
-    </a>
+    <div class="crypto-option flex items-center gap-3 px-3 py-2.5 rounded-md cursor-pointer hover:bg-base-accent transition-colors" data-currency="eth" data-balance="0.00000000">
+      <img src="/vivid-casino-crypto/assets/crypto-icons/eth.svg" alt="ETH" class="w-7 h-7"/>
+      <div class="flex-1">
+        <div class="text-sm font-semibold text-white">Ethereum</div>
+        <div class="text-xs text-base-muted-foreground">ETH</div>
+      </div>
+      <div class="text-sm font-medium text-white">0.00000000</div>
+    </div>
+    <div class="crypto-option flex items-center gap-3 px-3 py-2.5 rounded-md cursor-pointer hover:bg-base-accent transition-colors" data-currency="usdt" data-balance="0.00">
+      <img src="/vivid-casino-crypto/assets/crypto-icons/usdt.svg" alt="USDT" class="w-7 h-7"/>
+      <div class="flex-1">
+        <div class="text-sm font-semibold text-white">Tether</div>
+        <div class="text-xs text-base-muted-foreground">USDT</div>
+      </div>
+      <div class="text-sm font-medium text-white">0.00</div>
+    </div>
+    <div class="crypto-option flex items-center gap-3 px-3 py-2.5 rounded-md cursor-pointer hover:bg-base-accent transition-colors" data-currency="ltc" data-balance="0.00000000">
+      <img src="/vivid-casino-crypto/assets/crypto-icons/ltc.svg" alt="LTC" class="w-7 h-7"/>
+      <div class="flex-1">
+        <div class="text-sm font-semibold text-white">Litecoin</div>
+        <div class="text-xs text-base-muted-foreground">LTC</div>
+      </div>
+      <div class="text-sm font-medium text-white">0.00000000</div>
+    </div>
+    <div class="crypto-option flex items-center gap-3 px-3 py-2.5 rounded-md cursor-pointer hover:bg-base-accent transition-colors" data-currency="doge" data-balance="0.00">
+      <img src="/vivid-casino-crypto/assets/crypto-icons/doge.svg" alt="DOGE" class="w-7 h-7"/>
+      <div class="flex-1">
+        <div class="text-sm font-semibold text-white">Dogecoin</div>
+        <div class="text-xs text-base-muted-foreground">DOGE</div>
+      </div>
+      <div class="text-sm font-medium text-white">0.00</div>
+    </div>
+    <div class="crypto-option flex items-center gap-3 px-3 py-2.5 rounded-md cursor-pointer hover:bg-base-accent transition-colors" data-currency="sol" data-balance="0.00000000">
+      <img src="/vivid-casino-crypto/assets/crypto-icons/sol.svg" alt="SOL" class="w-7 h-7"/>
+      <div class="flex-1">
+        <div class="text-sm font-semibold text-white">Solana</div>
+        <div class="text-xs text-base-muted-foreground">SOL</div>
+      </div>
+      <div class="text-sm font-medium text-white">0.00000000</div>
+    </div>
   </div>
-</header>
+</div><!-- --></div><div class="relative hidden max-h-full" data-headlessui-state=""><button aria-expanded="false" class="text-opacity-90 flex-inline flex items-center rounded-xl bg-secondary-light px-2 py-2 font-semibold transition delay-0 duration-150 ease-in-out hover:scale-105 md:h-12 md:px-4 md:py-3" data-headlessui-state="" id="headlessui-popover-button-v-1-5" type="button"><div class="flex flex-row items-center space-x-2 max-[575px]:space-x-1 text-slate-300"><span class="flex flex-row text-sm md:text-lg">0.00</span><img alt="icon" class="ml-2 h-5 w-5 max-[480px]:!ml-1 max-[480px]:w-4 max-[480px]:h-4"/><span class="h-full w-[1px] text-text-dim-color brightness-90 max-[400px]:hidden">|</span><img alt="icon" class="mx-2" src="data:image/svg+xml,%3csvg%20width='15'%20height='7'%20viewBox='0%200%2015%207'%20fill='none'%20xmlns='http://www.w3.org/2000/svg'%3e%3cpath%20d='M0.825544%201.02997C0.575544%201.07997%200.323545%201.20597%200.170545%201.43497C-0.135455%201.89296%20-0.00746468%202.53096%200.451535%202.83596L6.44253%206.82094C6.77753%207.04394%207.23054%207.04394%207.56554%206.82094L13.5566%202.83596C14.0156%202.53096%2014.1435%201.89296%2013.8375%201.43497C13.5315%200.976966%2012.8925%200.848968%2012.4335%201.15497L7.00354%204.76595L1.57454%201.15497C1.34554%201.00197%201.07654%200.979967%200.825544%201.02997Z'%20fill='%237EA0AD'/%3e%3c/svg%3e"/></div></button><!-- --><!-- --></div><button class="btn-primary py-[7px] px-5 md:flex hidden items-center justify-center gap-2"><img alt="icon" class="h-[26px]" src="/vivid-casino-crypto/assets/wallet-CtfedzaM.svg"/><span class="max-[575px]:hidden"> Wallet</span></button></div><div class="flex items-center md:gap-4"><div class="md:flex xl:w-64 lg:w-48 w-32 hidden items-center"><button onclick="openSearchModal()" class="w-full flex items-center gap-1 px-3 py-2 bg-base-input-background border border-base-input-border rounded-md text-base-muted-foreground placeholder-base-muted-foreground focus:outline-none cursor-pointer"><svg class="lucide w-4 h-4 !text-base-muted-foreground lucide-search-icon lucide-search w-4 h-4 !text-base-muted-foreground" fill="none" height="24" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg"><path d="m21 21-4.34-4.34"></path><circle cx="11" cy="11" r="8"></circle></svg><span class="text-sm">Search</span></button></div><div data-headlessui-state=""><button aria-expanded="false" class="relative flex items-center outline-none md:px-0 p-3" data-headlessui-state="" id="headlessui-popover-button-v-1-10" type="button"><!-- --><!-- --><svg class="lucide size-6 lucide-bell-icon lucide-bell size-6" fill="none" height="24" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg"><path d="M10.268 21a2 2 0 0 0 3.464 0"></path><path d="M3.262 15.326A1 1 0 0 0 4 17h16a1 1 0 0 0 .74-1.673C19.41 13.956 18 12.499 18 8A6 6 0 0 0 6 8c0 4.499-1.411 5.956-2.738 7.326"></path></svg></button><!-- --><!-- --></div><div class="relative"><div><div class="relative" data-headlessui-state=""><div><button aria-expanded="false" class="flex items-center outline-none md:pl-0 pl-2 py-3" data-headlessui-state="" id="headlessui-popover-button-v-1-15" type="button"><span class="sr-only">Open user menu</span><svg class="lucide w-6 md:block hidden lucide-user-icon lucide-user w-6 md:block hidden" fill="none" height="24" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg"><path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg><svg class="lucide w-6 md:hidden lucide-circle-user-round-icon lucide-circle-user-round w-6 md:hidden" fill="none" height="24" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg"><path d="M18 20a6 6 0 0 0-12 0"></path><circle cx="12" cy="10" r="4"></circle><circle cx="12" cy="12" r="10"></circle></svg></button><!-- --></div><!-- --></div><!-- --></div></div></div></div></div></header>
 
-<main class="main" id="main-content">
-  <div class="loading" id="loading">
-    <div class="spinner"></div>
+<main class="flex-1 overflow-y-auto" style="padding-top: 63px;" id="main-content">
+  <div id="loading" style="text-align:center;padding:60px;color:#64748b;">
+    <div style="width:32px;height:32px;border:3px solid #334155;border-top-color:#3b82f6;border-radius:50%;animation:spin 1s linear infinite;margin:0 auto 16px;"></div>
     Loading games...
   </div>
 </main>
 
-<footer class="footer">
-  <p>Copyright 2026 © Crypto Group LLC. | All Rights Reserved</p>
-  <p style="margin-top:8px;"><a href="lobby.html">Back to Lobby</a></p>
-</footer>
+</div>
+</div>
+</div>
+</div>
 
+<div class="mobile-bottom-nav" id="mobile-bottom-nav">
+  <a href="#" onclick="toggleMobileSidebar(); return false;">
+    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
+    Menu
+  </a>
+  <a href="#" onclick="openSearchModal(); return false;">
+    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"></circle><path d="m21 21-4.34-4.34"></path></svg>
+    Search
+  </a>
+  <a href="/?tab=bank" class="active">
+    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12V7H5a2 2 0 0 1 0-4h14v4"></path><path d="M3 5v14a2 2 0 0 0 2 2h16v-5"></path><path d="M18 12a2 2 0 0 0 0 4h4v-4Z"></path></svg>
+    Wallet
+  </a>
+  <a href="/">
+    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path><polyline points="9 22 9 12 15 12 15 22"></polyline></svg>
+    Home
+  </a>
+  <a href="view-all.html?category=slots">
+    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect><line x1="8" y1="21" x2="16" y2="21"></line><line x1="12" y1="17" x2="12" y2="21"></line></svg>
+    Slots
+  </a>
+</div>
+
+<script src="view-all-games.js?v=3"></script>
 <script>
+function toggleSidebar() {
+  const sidebar = document.getElementById('sidebar-desktop');
+  const toggleIcon = document.getElementById('sidebar-toggle-icon');
+  if (!sidebar) return;
+  const isCollapsed = sidebar.classList.toggle('sidebar-collapsed');
+  if (toggleIcon) {
+    toggleIcon.classList.toggle('sidebar-collapsed-arrow', isCollapsed);
+  }
+  if (window.innerWidth < 768) {
+    sidebar.classList.toggle('mobile-open', !isCollapsed);
+    const backdrop = document.getElementById('mobile-sidebar-backdrop');
+    if (backdrop) backdrop.classList.toggle('active', !isCollapsed);
+  }
+}
+
+function closeMobileSidebar() {
+  const sidebar = document.getElementById('sidebar-desktop');
+  if (sidebar) sidebar.classList.remove('mobile-open');
+  const backdrop = document.getElementById('mobile-sidebar-backdrop');
+  if (backdrop) backdrop.classList.remove('active');
+}
+
+function toggleMobileSidebar() {
+  const sidebar = document.getElementById('sidebar-desktop');
+  if (sidebar) {
+    sidebar.classList.toggle('mobile-open');
+    const backdrop = document.getElementById('mobile-sidebar-backdrop');
+    if (backdrop) backdrop.classList.toggle('active', sidebar.classList.contains('mobile-open'));
+  }
+}
+
+function switchSidebarMode(mode) {
+  const casino = document.getElementById('sidebar-casino-content');
+  const sports = document.getElementById('sidebar-sports-content');
+  const tabCasino = document.getElementById('sidebar-tab-casino');
+  const tabSports = document.getElementById('sidebar-tab-sports');
+  if (mode === 'casino') {
+    if (casino) casino.style.display = 'flex';
+    if (sports) sports.style.display = 'none';
+    if (tabCasino) { tabCasino.classList.add('bg-base-sidebar-accent','text-white','shadow-sm'); tabCasino.classList.remove('text-base-muted-foreground'); }
+    if (tabSports) { tabSports.classList.remove('bg-base-sidebar-accent','text-white','shadow-sm'); tabSports.classList.add('text-base-muted-foreground'); }
+  } else {
+    if (casino) casino.style.display = 'none';
+    if (sports) sports.style.display = 'flex';
+    if (tabCasino) { tabCasino.classList.remove('bg-base-sidebar-accent','text-white','shadow-sm'); tabCasino.classList.add('text-base-muted-foreground'); }
+    if (tabSports) { tabSports.classList.add('bg-base-sidebar-accent','text-white','shadow-sm'); tabSports.classList.remove('text-base-muted-foreground'); }
+  }
+}
+
+function toggleSportDropdown(el) {
+  const content = el.nextElementSibling;
+  if (!content) return;
+  const arrow = el.querySelector('svg');
+  if (content.classList.contains('hidden')) {
+    content.classList.remove('hidden');
+    if (arrow) arrow.style.transform = 'rotate(180deg)';
+  } else {
+    content.classList.add('hidden');
+    if (arrow) arrow.style.transform = 'rotate(0deg)';
+  }
+}
+
 function getCategoryParam() {
   const params = new URLSearchParams(window.location.search);
   return params.get('category') || '';
@@ -117,50 +721,51 @@ function renderGameGrid(categoryData) {
   const isProviders = categoryData.category === 'providers';
   
   let html = `
-    <div class="cat-header">
-      <img src="${categoryData.icon}" alt="${categoryData.name}" onerror="this.src='https://d3ta80o5sbquaz.cloudfront.net/categories/default.webp'"/>
-      <h1>${categoryData.name}</h1>
-      <span class="cat-count">${isProviders ? categoryData.providers.length : categoryData.games.length} ${isProviders ? 'providers' : 'games'}</span>
+    <div style="max-width:1200px;margin:0 auto;padding:0 16px;">
+    <div class="cat-header" style="display:flex;align-items:center;gap:12px;padding:24px 0 16px;">
+      <img src="${categoryData.icon}" alt="${categoryData.name}" onerror="this.src='https://d3ta80o5sbquaz.cloudfront.net/categories/default.webp'" style="width:40px;height:40px;border-radius:8px;"/>
+      <h1 style="font-size:24px;font-weight:600;color:#f1f5f9;">${categoryData.name}</h1>
+      <span style="color:#94a3b8;font-size:14px;margin-left:auto;">${isProviders ? categoryData.providers.length : categoryData.games.length} ${isProviders ? 'providers' : 'games'}</span>
     </div>
   `;
   
   if (isProviders) {
-    html += '<div class="provider-grid">';
+    html += '<div class="provider-grid" style="display:grid;grid-template-columns:repeat(auto-fill,minmax(120px,1fr));gap:12px;padding-bottom:40px;">';
     categoryData.providers.forEach(img => {
       html += `
-        <div class="provider-tile">
-          <img src="${img}" alt="provider" loading="lazy" onerror="this.style.opacity='0.5'"/>
+        <div style="background:#0f1a2b;border-radius:10px;padding:16px;display:flex;align-items:center;justify-content:center;min-height:80px;cursor:pointer;">
+          <img src="${img}" alt="provider" loading="lazy" onerror="this.style.opacity='0.5'" style="max-width:100%;max-height:48px;object-fit:contain;"/>
         </div>
       `;
     });
     html += '</div>';
   } else {
-    html += '<div class="game-grid">';
-    // Duplicate games if we have fewer than 24 to make the page look fuller
+    html += '<div class="game-grid" style="display:grid;grid-template-columns:repeat(auto-fill,minmax(140px,1fr));gap:12px;padding-bottom:40px;">';
     let games = [...categoryData.games];
     while (games.length < 24) {
       games = games.concat(categoryData.games);
     }
     games.forEach(game => {
       html += `
-        <a href="${game.href}" class="game-tile">
-          <img src="${game.img}" alt="Game" loading="lazy" onerror="this.src='https://d3ta80o5sbquaz.cloudfront.net/images/default.webp'"/>
+        <a href="${game.href}" style="display:block;text-decoration:none;border-radius:10px;overflow:hidden;transition:transform 0.2s ease,opacity 0.2s ease;">
+          <img src="${game.img}" alt="Game" loading="lazy" onerror="this.src='https://d3ta80o5sbquaz.cloudfront.net/images/default.webp'" style="width:100%;height:auto;aspect-ratio:158/221;object-fit:cover;border-radius:10px;display:block;"/>
         </a>
       `;
     });
     html += '</div>';
   }
   
+  html += '</div>';
   main.innerHTML = html;
 }
 
 function renderNotFound(category) {
   const main = document.getElementById('main-content');
   main.innerHTML = `
-    <div class="empty-state">
-      <h2>Category not found</h2>
+    <div style="text-align:center;padding:60px 20px;color:#64748b;">
+      <h2 style="color:#94a3b8;font-size:20px;margin-bottom:12px;">Category not found</h2>
       <p>"${category}" doesn't exist or has no games yet.</p>
-      <a href="lobby.html" class="back-btn" style="margin-top:20px;display:inline-flex;">Back to Lobby</a>
+      <a href="lobby.html" style="display:inline-flex;align-items:center;gap:6px;color:#94a3b8;text-decoration:none;font-size:14px;font-weight:500;padding:8px 14px;border-radius:8px;border:1px solid #334155;margin-top:20px;">Back to Lobby</a>
     </div>
   `;
 }
@@ -184,16 +789,29 @@ function init() {
   document.title = data.name + ' - Vivid Crypto Casino';
 }
 
-// Wait for CATEGORY_DATA to load (it's in the external script)
 if (document.readyState === 'loading') {
   document.addEventListener('DOMContentLoaded', function() {
-    // Wait a tick for external script to load
     setTimeout(init, 10);
   });
 } else {
   setTimeout(init, 10);
 }
 </script>
+
+<style>
+  @keyframes spin { to { transform: rotate(360deg); } }
+  @media (min-width: 768px) {
+    .game-grid { grid-template-columns: repeat(auto-fill, minmax(180px, 1fr)); gap: 20px; }
+    .provider-grid { grid-template-columns: repeat(auto-fill, minmax(160px, 1fr)); gap: 16px; }
+    .cat-header h1 { font-size: 32px !important; }
+  }
+  @media (min-width: 1024px) {
+    .game-grid { grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 24px; }
+  }
+  @media (min-width: 480px) {
+    .game-grid { grid-template-columns: repeat(auto-fill, minmax(160px, 1fr)); gap: 16px; }
+  }
+</style>
 
 </body>
 </html>
