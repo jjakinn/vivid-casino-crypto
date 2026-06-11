@@ -11,7 +11,7 @@
 <meta name="apple-mobile-web-app-capable" content="yes"/>
 <meta name="mobile-web-app-capable" content="yes"/>
 <link rel="icon" sizes="192x192" type="image/png" href="images/favicon/android-chrome-512x512.svg"/>
-<script src="view-all-games.js"></script>
+<script src="view-all-games.js?v=2"></script>
 <style>
   * { margin: 0; padding: 0; box-sizing: border-box; }
   html { background-color: #020617; height: 100%; }
@@ -166,27 +166,32 @@ function renderNotFound(category) {
 }
 
 function init() {
+  if (typeof CATEGORY_DATA === 'undefined') {
+    setTimeout(init, 50);
+    return;
+  }
   const category = getCategoryParam();
   if (!category) {
     renderNotFound('(none)');
     return;
   }
-  
   const data = getCategoryData(category);
   if (!data) {
     renderNotFound(category);
     return;
   }
-  
   renderGameGrid(data);
   document.title = data.name + ' - Vivid Crypto Casino';
 }
 
 // Wait for CATEGORY_DATA to load (it's in the external script)
 if (document.readyState === 'loading') {
-  document.addEventListener('DOMContentLoaded', init);
+  document.addEventListener('DOMContentLoaded', function() {
+    // Wait a tick for external script to load
+    setTimeout(init, 10);
+  });
 } else {
-  init();
+  setTimeout(init, 10);
 }
 </script>
 
