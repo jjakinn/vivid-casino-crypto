@@ -10,11 +10,11 @@ var CATEGORY_DATA = [
       },
       {
         "href": "/casino/blackjack",
-        "img": "/vivid-casino-crypto/assets/orgam_blackjack.webp"
+        "img": "/assets/orgam_blackjack.webp"
       },
       {
         "href": "/casino/plinko",
-        "img": "/vivid-casino-crypto/images/plinko-custom.png"
+        "img": "/images/plinko-custom.png"
       },
       {
         "href": "/casino/games/beterlive-launch_main_rol_01",
@@ -22,7 +22,7 @@ var CATEGORY_DATA = [
       },
       {
         "href": "/casino/chicken",
-        "img": "/vivid-casino-crypto/assets/launch_instant_chicken_run.webp"
+        "img": "/assets/launch_instant_chicken_run.webp"
       },
       {
         "href": "/casino/games/zoomania",
@@ -54,7 +54,7 @@ var CATEGORY_DATA = [
       },
       {
         "href": "/gametech/casino/games/crackandsmashthepiggybank",
-        "img": "/vivid-casino-crypto/assets/cash-Bv307SmK.png"
+        "img": "/assets/cash-Bv307SmK.png"
       },
       {
         "href": "/infingame/casino/games/kendoo-locomotoro",
@@ -74,7 +74,7 @@ var CATEGORY_DATA = [
       },
       {
         "href": "/gametech/casino/games/crackmorepiggybanks",
-        "img": "/vivid-casino-crypto/assets/cash-Bv307SmK.png"
+        "img": "/assets/cash-Bv307SmK.png"
       },
       {
         "href": "/gametech/casino/games/lebunny",
@@ -762,7 +762,7 @@ var CATEGORY_DATA = [
       },
       {
         "href": "/gametech/casino/games/breakthepiggybank",
-        "img": "/vivid-casino-crypto/assets/cash-Bv307SmK.png"
+        "img": "/assets/cash-Bv307SmK.png"
       },
       {
         "href": "/casino/games/koala-20waysbuffalolights",
