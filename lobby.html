@@ -449,6 +449,23 @@
       #h_navigator button {
         flex-shrink: 0 !important;
       }
+      /* === LARGE SCREEN SCALING FIXES === */
+      @media (min-width: 1440px) {
+        .max-w-\[1200px\] { max-width: 1350px !important; }
+        .slider-tile, .slider-tile img { min-width: 175px !important; width: 175px !important; }
+      }
+      @media (min-width: 1920px) {
+        .max-w-\[1200px\] { max-width: 1700px !important; }
+        .slider-tile, .slider-tile img { min-width: 195px !important; width: 195px !important; }
+        .home-casino-slider .slider-tile, .home-jackpot-slider .slider-tile { min-width: 195px !important; width: 195px !important; }
+        .home-casino-slider .slider-tile img, .home-jackpot-slider .slider-tile img { width: 195px !important; height: auto !important; }
+      }
+      @media (min-width: 2560px) {
+        .max-w-\[1200px\] { max-width: 2200px !important; }
+        .slider-tile, .slider-tile img { min-width: 220px !important; width: 220px !important; }
+        .home-casino-slider .slider-tile, .home-jackpot-slider .slider-tile { min-width: 220px !important; width: 220px !important; }
+        .home-casino-slider .slider-tile img, .home-jackpot-slider .slider-tile img { width: 220px !important; height: auto !important; }
+      }
     </style>
 <!-- OneTrust Cookies Consent Notice start for www.jjakinn.github.io/vivid-casino -->
 

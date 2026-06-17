@@ -1037,6 +1037,21 @@ if (document.readyState === 'loading') {
   @media (min-width: 1024px) {
     .game-grid { grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 24px; }
   }
+  @media (min-width: 1440px) {
+    .game-grid { grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 28px; }
+    .provider-grid { grid-template-columns: repeat(auto-fill, minmax(180px, 1fr)); gap: 20px; }
+    #main-content > div { max-width: 1350px !important; }
+  }
+  @media (min-width: 1920px) {
+    .game-grid { grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 32px; }
+    .provider-grid { grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 24px; }
+    #main-content > div { max-width: 1700px !important; }
+  }
+  @media (min-width: 2560px) {
+    .game-grid { grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 36px; }
+    .provider-grid { grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 28px; }
+    #main-content > div { max-width: 2200px !important; }
+  }
   @media (min-width: 480px) {
     .game-grid { grid-template-columns: repeat(auto-fill, minmax(160px, 1fr)); gap: 16px; }
   }

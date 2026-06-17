@@ -152,6 +152,30 @@
       .loaded {
         opacity: 1;
       }
+
+      /* === LARGE SCREEN SCALING FIXES === */
+      @media (min-width: 1440px) {
+        #static-fallback .container,
+        #static-fallback .max-w-677px,
+        #static-fallback section > div { max-width: 1300px !important; margin-left: auto !important; margin-right: auto !important; }
+        #static-fallback h1 { font-size: 80px !important; line-height: 88px !important; }
+        #static-fallback h2 { font-size: 48px !important; }
+        #static-fallback .image-1 { max-width: 100% !important; height: auto !important; }
+      }
+      @media (min-width: 1920px) {
+        #static-fallback .container,
+        #static-fallback .max-w-677px,
+        #static-fallback section > div { max-width: 1600px !important; }
+        #static-fallback h1 { font-size: 96px !important; line-height: 104px !important; }
+        #static-fallback h2 { font-size: 56px !important; }
+      }
+      @media (min-width: 2560px) {
+        #static-fallback .container,
+        #static-fallback .max-w-677px,
+        #static-fallback section > div { max-width: 2000px !important; }
+        #static-fallback h1 { font-size: 120px !important; line-height: 128px !important; }
+        #static-fallback h2 { font-size: 64px !important; }
+      }
     </style>
 
     <!-- OneTrust Cookies Consent Notice start for www.vivid.com -->
