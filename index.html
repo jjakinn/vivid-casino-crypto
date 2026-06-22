@@ -1149,5 +1149,32 @@
       }
     })();
     </script>
+
+<script>
+(function() {
+  function fixGameLinks() {
+    document.querySelectorAll('.slider-tile:not(.see-all-button) a[href^="/"]').forEach(function(link) {
+      var href = link.getAttribute('href');
+      if (href.includes('/casino/group/')) return;
+      if (href.includes('/promo-race/')) return;
+      if (href.includes('/search')) return;
+      if (href.startsWith('http')) return;
+      var parts = href.replace(/^\//, '').split('/');
+      var provider = parts[0] || 'unknown';
+      var gameId = parts[parts.length - 1] || 'game';
+      var img = link.querySelector('img[alt="Game Tile"]');
+      var src = img ? img.getAttribute('src') : '';
+      var title = gameId.replace(/-/g, ' ').replace(/_/g, ' ').replace(/\b\w/g, function(c) { return c.toUpperCase(); });
+      link.setAttribute('href', 'game.html?game=' + encodeURIComponent(gameId) + '&provider=' + encodeURIComponent(provider) + '&title=' + encodeURIComponent(title) + '&src=' + encodeURIComponent(src));
+    });
+  }
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', fixGameLinks);
+  } else {
+    fixGameLinks();
+  }
+})();
+</script>
+
 </body>
 </html>
