@@ -945,7 +945,7 @@ function toggleSportDropdown(el) {
         try {
           const doc = frame.contentDocument || frame.contentWindow.document;
           doc.open();
-          doc.write('<html><head><style>body{background:#0f172a;color:#fff;font-family:system-ui,sans-serif;display:flex;flex-direction:column;align-items:center;justify-content:center;height:100vh;margin:0;text-align:center;padding:20px;}h1{font-size:24px;margin-bottom:10px;}p{font-size:16px;color:#94a3b8;margin-bottom:20px;}a{color:#3b82f6;text-decoration:none;font-weight:600;}a:hover{text-decoration:underline;}</style></head><body><h1>🎰 Demo Coming Soon</h1><p>We don\'t have a demo link for <strong>' + provider + '</strong> yet.<br>Try the <strong>Play Now</strong> button to play with free SC.</p><p><a href="https://www.google.com/search?q=' + encodeURIComponent(provider + ' ' + gameId + ' demo') + '" target="_blank">Search for ' + provider + ' demo &rarr;</a></p></body></html>');
+          doc.write('<html><head><style>body{background:#0f172a;color:#fff;font-family:system-ui,sans-serif;display:flex;flex-direction:column;align-items:center;justify-content:center;height:100vh;margin:0;text-align:center;padding:20px;}h1{font-size:24px;margin-bottom:10px;}</style></head><body><h1>Demo Coming Soon</h1></body></html>');
           doc.close();
         } catch(e) {
           // cross-origin fallback
