@@ -599,10 +599,15 @@ function toggleSportDropdown(el) {
   };
 
   window.demoGame = function() {
-    const demoUrl = (function(p, id) {
-      // Pragmatic Play — direct demo URL (confirmed working)
+    const demoUrl = (function(p, id, srcUrl) {
+      // Pragmatic Play — extract gameSymbol from image filename (e.g., vs20olympgate from src URL)
       if (p === 'pragmatic') {
-        return 'https://demogamesfree.pragmaticplay.net/gs2c/openGame.do?gameSymbol=' + id + '&jurisdiction=99&lobbyUrl=https://www.pragmaticplay.com&currency=USD&language=en&returnUrl=https://www.pragmaticplay.com';
+        var ppSymbol = id;
+        try {
+          var ppFilename = srcUrl.substring(srcUrl.lastIndexOf('/') + 1);
+          ppSymbol = ppFilename.replace(/\.webp$/, '').replace(/\.png$/, '').replace(/\.jpg$/, '');
+        } catch(e) {}
+        return 'https://demogamesfree.pragmaticplay.net/gs2c/openGame.do?gameSymbol=' + ppSymbol + '&jurisdiction=99&lobbyUrl=https://www.pragmaticplay.com&currency=USD&language=en&returnUrl=https://www.pragmaticplay.com';
       }
 
       // Evolution Gaming & subsidiaries (all share the same freeplay site)
@@ -923,7 +928,7 @@ function toggleSportDropdown(el) {
 
       // Default fallback — show a helpful message in the iframe container
       return null;
-    })(provider, gameId);
+    })(provider, gameId, src);
 
     // Providers that block iframe embedding — redirect in same tab instead of popup
     const iframeBlockedProviders = ['evolution','netent','redtiger','bigtimegaming','nolimitcity','nolimit','ezugi','bigtime','hacksaw','hacksawgaming','playngo','playngos','relax','wazdan','softswiss','gametech','hub88','3oaks','pgsoft','avatarux','booongo','platipus','tomhorn','bgaming','mascot','rubyplay','spinomenal','gameart','belatra','mrslotty','kagaming','ka','kalamba','fugaso','swintt','smartsoft','turbogames','evoplay','fourleafgaming','electricelephant','printstudios','backseat','reelriot','revolver','rogue','4theplayer','beterlive','corps','ela','ggaming','wingaming','koala','trigger','novomatic','endorphina','slotmill','onetouch','m2play','petersons','gooming','kendoo','gamzix','enjoygaming','netgaming','edgelabs','origami','maxwingaming','taparoo','sneakyslots','runebet','penguinking','originals'];
