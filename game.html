@@ -251,37 +251,33 @@
     #game-screen-wrapper {
       aspect-ratio: auto !important;
       max-height: none !important;
-      height: calc(100dvh - 63px) !important;
-      min-height: calc(100dvh - 63px) !important;
+      height: 100dvh !important;
+      min-height: 100dvh !important;
       border-radius: 0 !important;
       position: fixed !important;
-      top: 63px !important;
+      top: 0 !important;
       left: 0 !important;
       right: 0 !important;
+      bottom: 0 !important;
       width: 100vw !important;
-      z-index: 1 !important;
+      z-index: 0 !important;
     }
     #gameFrameContainer,
     #gameFrame {
       height: 100% !important;
       width: 100% !important;
-    }
-    #gameFrame {
-      overflow-y: auto !important;
-      -webkit-overflow-scrolling: touch !important;
-    }
-    #game-info-section {
-      margin-top: calc(100dvh - 63px) !important;
-      padding-top: 1rem !important;
-    }
-    .main_games {
-      padding-bottom: 0 !important;
+      border: none !important;
     }
     #mobile-back-btn {
       display: flex !important;
+      top: 70px !important;
+      z-index: 99992 !important;
     }
     #game-info-section {
       display: none !important;
+    }
+    .main_games {
+      padding-bottom: 0 !important;
     }
   }
   @media (min-width: 768px) {
