@@ -260,29 +260,15 @@
       right: 0 !important;
       width: 100vw !important;
       z-index: 1 !important;
-      overflow: hidden !important;
-      display: flex !important;
-      align-items: center !important;
-      justify-content: center !important;
     }
     #gameFrameContainer,
     #gameFrame {
       height: 100% !important;
       width: 100% !important;
-      border: none !important;
-      overflow: hidden !important;
     }
-    /* Scale desktop game to fit mobile viewport */
     #gameFrame {
-      width: 1280px !important;
-      height: 720px !important;
-      max-width: 1280px !important;
-      max-height: 720px !important;
-      position: absolute !important;
-      top: 50% !important;
-      left: 50% !important;
-      transform: translate(-50%, -50%) scale(var(--game-scale, 1)) !important;
-      transform-origin: center center !important;
+      overflow-y: auto !important;
+      -webkit-overflow-scrolling: touch !important;
     }
     #game-info-section {
       margin-top: calc(100dvh - 63px) !important;
@@ -455,7 +441,7 @@
                   <p class="text-slate-400">Loading game...</p>
                 </div>
               </div>
-              <iframe id="gameFrame" class="w-full h-full border-none hidden" allow="fullscreen; autoplay" allowfullscreen scrolling="no"></iframe>
+              <iframe id="gameFrame" class="w-full h-full border-none hidden" allow="fullscreen; autoplay" allowfullscreen></iframe>
             </div>
 
             <!-- Game Info Below -->
@@ -988,27 +974,6 @@ function toggleSportDropdown(el) {
   setTimeout(function() {
     window.demoGame();
   }, 500);
-
-  // Mobile game scale: scale desktop game (1280x720) to fit viewport
-  function updateGameScale() {
-    var vw = window.innerWidth;
-    var vh = window.innerHeight;
-    if (vw >= 768) {
-      document.getElementById('game-screen-wrapper').style.removeProperty('--game-scale');
-      return;
-    }
-    var gameW = 1280;
-    var gameH = 720;
-    // Account for header (63px)
-    var availH = vh - 63;
-    var scaleW = vw / gameW;
-    var scaleH = availH / gameH;
-    var scale = Math.min(scaleW, scaleH);
-    document.getElementById('game-screen-wrapper').style.setProperty('--game-scale', scale.toFixed(4));
-  }
-  window.addEventListener('resize', updateGameScale);
-  window.addEventListener('orientationchange', updateGameScale);
-  updateGameScale();
 })();
 </script>
 
