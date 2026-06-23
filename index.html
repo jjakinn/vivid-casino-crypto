@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta
       name="viewport"
-      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
+      content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no" />
     <title>Vivid - The #1 Crypto Casino</title>
     <meta name="theme-color" content="#020617" />
     <meta
@@ -124,12 +124,15 @@
 
       html {
         background-color: #020617;
+        -webkit-text-size-adjust: 100%;
+        text-size-adjust: 100%;
       }
 
       body {
-        width: 100vw;
+        width: 100%;
         height: 100vh;
         -webkit-overflow-scrolling: touch;
+        overflow-x: hidden;
       }
 
       body::-webkit-scrollbar {
@@ -884,7 +887,7 @@
         const img = document.createElement('img');
         img.src = `${CDN}/${game.provider}/${game.id}.webp`;
         img.alt = game.title;
-        img.style.cssText = 'width:100%;height:100%;object-fit:cover;display:block;';
+        img.style.cssText = 'width:100%;height:100%;object-fit:cover;display:block;border-radius:12px;';
         img.onerror = function() {
           this.style.display = 'none';
           const fallback = document.createElement('div');
@@ -895,7 +898,7 @@
 
         const label = document.createElement('div');
         label.textContent = game.title;
-        label.style.cssText = 'position:absolute;bottom:0;left:0;right:0;padding:8px 12px;background:rgba(0,0,0,0.7);color:#fff;font-size:12px;font-weight:bold;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;';
+        label.style.cssText = 'position:absolute;bottom:0;left:0;right:0;padding:8px 12px;background:rgba(0,0,0,0.7);color:#fff;font-size:12px;font-weight:bold;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;border-radius:0 0 12px 12px;';
 
         tile.appendChild(img);
         tile.appendChild(label);
