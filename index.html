@@ -153,6 +153,13 @@
         opacity: 1;
       }
 
+      /* Hero image sizing fix — Chrome/Safari consistency */
+      .image-1 {
+        max-width: 100% !important;
+        height: auto !important;
+        display: block;
+      }
+
       /* === LARGE SCREEN SCALING FIXES === */
       @media (min-width: 1440px) {
         #static-fallback .container,
@@ -489,7 +496,7 @@
             '</div>' +
             '<div data-v-d73864cb="" class="bg flex justify-center">' +
               '<div data-v-d73864cb="" class="image-wrapper max-lg:flex max-lg:items-baseline max-lg:mx-auto max-lg:my-0">' +
-                '<img data-v-d73864cb="" class="image-1 max-w-full" alt="hero image" src="images/home/hero-main.png" loading="eager" fetchpriority="high" decoding="sync">' +
+                '<img data-v-d73864cb="" class="image-1 max-w-full" alt="hero image" src="images/home/hero-main.png" loading="eager" fetchpriority="high" decoding="sync" style="max-width:100%;height:auto;display:block;">' +
                 '<div data-v-d73864cb="" class="absolute font-plusJakartaSans z-20 bottom-0 lg:left-1/2 text-lg lg:text-3xl font-light flex w-full items-center justify-between gap-4 p-4" style="transform: translate(0px, 0px);"></div>' +
               '</div>' +
               '<div data-v-d73864cb="" id="register-btn-wrapper" class="btn-wrapper max-lg:bg-dark2 flex lg:hidden justify-center gap-x-1.5 py-4" style="bottom: 0px;">' +
