@@ -309,12 +309,11 @@
           z-index: 100000 !important;
           width: 80vw !important;
           max-width: 320px !important;
-          height: 100vh !important;
+          height: 100dvh !important;
+          max-height: 100dvh !important;
           background: #0f172a !important;
           background-color: #0f172a !important;
-          overflow-y: auto !important;
-          -webkit-overflow-scrolling: touch !important;
-          touch-action: pan-y !important;
+          overflow: hidden !important;
           opacity: 1 !important;
           pointer-events: auto !important;
           transform: translateZ(0) !important;
@@ -322,10 +321,20 @@
         #sidebar-desktop.mobile-open * {
           pointer-events: auto !important;
         }
+        /* Inner scrollable container is the ONLY scroller */
+        #sidebar-desktop.mobile-open > div.overflow-y-auto {
+          overflow-y: auto !important;
+          overflow-x: hidden !important;
+          -webkit-overflow-scrolling: touch !important;
+          height: 100% !important;
+          max-height: 100% !important;
+          flex-grow: 1 !important;
+        }
         #sidebar-desktop.mobile-open aside,
         #sidebar-desktop.mobile-open #sidebar-sports-content {
           height: auto !important;
-          min-height: 0 !important;
+          min-height: min-content !important;
+          padding-bottom: 80px !important;
         }
         #mobile-sidebar-backdrop {
           display: none;
