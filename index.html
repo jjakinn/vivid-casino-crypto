@@ -902,6 +902,9 @@
 
         tile.appendChild(img);
         tile.appendChild(label);
+        tile.onclick = () => {
+          window.location.href = 'game.html?game=' + encodeURIComponent(game.id) + '&provider=' + encodeURIComponent(game.provider) + '&title=' + encodeURIComponent(game.title);
+        };
         return tile;
       }
 
