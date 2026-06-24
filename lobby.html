@@ -283,8 +283,15 @@
         #home_slider .swiper-slide {
           overflow: hidden !important;
         }
+        #home_slider .swiper-slide:not(.swiper-slide-active) {
+          pointer-events: none !important;
+        }
         #home_slider .swiper-slide img.bg-image {
           max-width: 100% !important;
+        }
+        .home-casino-slider .slider-tile,
+        .home-jackpot-slider .slider-tile {
+          touch-action: pan-x;
         }
       }
       /* Desktop: 3 promo tiles fill full width evenly */
@@ -2159,12 +2166,14 @@ function toggleSportDropdown(el) {
   }
 
   function onTouchStart(e) {
+    e.stopPropagation();
     startX = e.touches[0].clientX;
     isDragging = true;
     stopAutoAdvance();
   }
 
   function onTouchEnd(e) {
+    e.stopPropagation();
     if (!isDragging) return;
     isDragging = false;
     var diff = e.changedTouches[0].clientX - startX;
