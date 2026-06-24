@@ -273,8 +273,12 @@
       }
       /* Mobile: force overflow hidden on swiper to prevent page-level horizontal scroll */
       @media (max-width: 767px) {
-        #home_slider.swiper,
-        #home_slider .swiper-wrapper,
+        #home_slider.swiper {
+          overflow: hidden !important;
+        }
+        #home_slider .swiper-wrapper {
+          overflow: visible !important;
+        }
         #home_slider .swiper-slide {
           overflow: hidden !important;
         }
