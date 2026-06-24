@@ -122,6 +122,12 @@
         -webkit-overflow-scrolling: touch;
       }
 
+      /* Allow vertical scroll to start on game tiles without link/tap ambiguity */
+      .slider-tile a,
+      .see-all-button a {
+        touch-action: manipulation;
+      }
+
       /* Mobile: promo banner - one slide at a time, no overflow */
       @media (max-width: 767px) {
         html, body {
