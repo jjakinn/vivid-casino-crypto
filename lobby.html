@@ -107,6 +107,16 @@
         position: sticky;
       }
 
+      /* Mobile: promo banner carousel - show one slide at a time */
+      @media (max-width: 767px) {
+        .swiper .swiper-slide {
+          width: 100% !important;
+        }
+        .swiper .swiper-wrapper {
+          width: 100% !important;
+        }
+      }
+
       /* Safari padding for fixed header */
       .main_games {
         padding-top: 63px;
@@ -498,39 +508,41 @@
         }
       }
       /* SEE All button - desktop base (exact game tile image size) */
-      .home-casino-slider .slider-tile.see-all-button,
-      .home-jackpot-slider .slider-tile.see-all-button {
-        min-width: 157.667px !important;
-        width: 157.667px !important;
-        height: 220.822px !important;
-        flex-shrink: 0 !important;
-        overflow: hidden !important;
-        box-sizing: border-box !important;
-      }
-      .home-casino-slider .slider-tile.see-all-button > a,
-      .home-jackpot-slider .slider-tile.see-all-button > a {
-        height: 100% !important;
-        width: 100% !important;
-        display: flex !important;
-        flex-direction: column !important;
-        align-items: center !important;
-        justify-content: center !important;
-        padding: 8px !important;
-        box-sizing: border-box !important;
-      }
-      .home-casino-slider .slider-tile.see-all-button img,
-      .home-jackpot-slider .slider-tile.see-all-button img {
-        max-width: 45% !important;
-        max-height: 35% !important;
-        width: auto !important;
-        height: auto !important;
-      }
-      .home-casino-slider .slider-tile.see-all-button p,
-      .home-jackpot-slider .slider-tile.see-all-button p {
-        font-size: 16px !important;
-        margin-top: 4px !important;
-        line-height: 1.2 !important;
-        text-align: center !important;
+      @media (min-width: 768px) {
+        .home-casino-slider .slider-tile.see-all-button,
+        .home-jackpot-slider .slider-tile.see-all-button {
+          min-width: 157.667px !important;
+          width: 157.667px !important;
+          height: 220.822px !important;
+          flex-shrink: 0 !important;
+          overflow: hidden !important;
+          box-sizing: border-box !important;
+        }
+        .home-casino-slider .slider-tile.see-all-button > a,
+        .home-jackpot-slider .slider-tile.see-all-button > a {
+          height: 100% !important;
+          width: 100% !important;
+          display: flex !important;
+          flex-direction: column !important;
+          align-items: center !important;
+          justify-content: center !important;
+          padding: 8px !important;
+          box-sizing: border-box !important;
+        }
+        .home-casino-slider .slider-tile.see-all-button img,
+        .home-jackpot-slider .slider-tile.see-all-button img {
+          max-width: 45% !important;
+          max-height: 35% !important;
+          width: auto !important;
+          height: auto !important;
+        }
+        .home-casino-slider .slider-tile.see-all-button p,
+        .home-jackpot-slider .slider-tile.see-all-button p {
+          font-size: 16px !important;
+          margin-top: 4px !important;
+          line-height: 1.2 !important;
+          text-align: center !important;
+        }
       }
       /* Game Categories horizontal scroll fix */
       #h_navigator::-webkit-scrollbar {
