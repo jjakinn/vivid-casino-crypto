@@ -2060,10 +2060,20 @@ function toggleSportDropdown(el) {
 </script>
 <script>
 (function() {
-  function fixPromoImages() {
-    var slider = document.getElementById('home_slider');
+  var slider, wrapper, slides, dotsContainer;
+  var currentSlide = 0;
+  var startX = 0;
+  var isDragging = false;
+  var autoAdvanceTimer;
+
+  function initPromoBanner() {
+    slider = document.getElementById('home_slider');
     if (!slider) return;
-    // Remove fixed inline dimensions so CSS aspect-ratio can take over
+    wrapper = slider.querySelector('.swiper-wrapper');
+    slides = slider.querySelectorAll('.swiper-slide');
+    if (!wrapper || slides.length === 0) return;
+
+    // Remove fixed inline dimensions from images
     var images = slider.querySelectorAll('img.bg-image');
     images.forEach(function(img) {
       img.removeAttribute('width');
@@ -2072,24 +2082,100 @@ function toggleSportDropdown(el) {
       img.style.removeProperty('height');
       img.style.removeProperty('max-height');
     });
-    // Also force the swiper containers to never clip (desktop only)
+
     if (window.innerWidth >= 768) {
+      // Desktop: show all, overflow visible
       slider.style.overflow = 'visible';
-      var wrapper = slider.querySelector('.swiper-wrapper');
-      if (wrapper) wrapper.style.overflow = 'visible';
-      var slides = slider.querySelectorAll('.swiper-slide');
+      wrapper.style.overflow = 'visible';
       slides.forEach(function(s) { s.style.overflow = 'visible'; });
+      return;
     }
+
+    // Mobile: init touch carousel
+    wrapper.style.display = 'flex';
+    wrapper.style.transition = 'transform 0.3s ease';
+    slides.forEach(function(s, i) {
+      s.style.width = '100%';
+      s.style.minWidth = '100%';
+      s.style.flexShrink = '0';
+      s.style.overflow = 'hidden';
+    });
+    goToSlide(0);
+
+    // Touch events
+    slider.addEventListener('touchstart', onTouchStart, {passive: true});
+    slider.addEventListener('touchend', onTouchEnd, {passive: true});
+
+    // Dot indicators
+    createDots();
+
+    // Auto-advance
+    startAutoAdvance();
+  }
+
+  function goToSlide(index) {
+    if (index < 0) index = slides.length - 1;
+    if (index >= slides.length) index = 0;
+    currentSlide = index;
+    wrapper.style.transform = 'translate3d(-' + (index * 100) + '%, 0, 0)';
+    updateDots();
+  }
+
+  function onTouchStart(e) {
+    startX = e.touches[0].clientX;
+    isDragging = true;
+    stopAutoAdvance();
+  }
+
+  function onTouchEnd(e) {
+    if (!isDragging) return;
+    isDragging = false;
+    var diff = e.changedTouches[0].clientX - startX;
+    if (Math.abs(diff) > 40) {
+      if (diff > 0) goToSlide(currentSlide - 1);
+      else goToSlide(currentSlide + 1);
+    }
+    startAutoAdvance();
+  }
+
+  function createDots() {
+    if (dotsContainer) dotsContainer.remove();
+    dotsContainer = document.createElement('div');
+    dotsContainer.style.cssText = 'display:flex;justify-content:center;gap:6px;margin-top:8px;';
+    slides.forEach(function(_, i) {
+      var dot = document.createElement('span');
+      dot.style.cssText = 'width:8px;height:8px;border-radius:50%;background:' + (i === 0 ? '#fff' : '#555') + ';transition:background 0.2s;';
+      dot.dataset.index = i;
+      dotsContainer.appendChild(dot);
+    });
+    slider.parentNode.insertBefore(dotsContainer, slider.nextSibling);
+  }
+
+  function updateDots() {
+    if (!dotsContainer) return;
+    Array.from(dotsContainer.children).forEach(function(dot, i) {
+      dot.style.background = (i === currentSlide ? '#fff' : '#555');
+    });
+  }
+
+  function startAutoAdvance() {
+    stopAutoAdvance();
+    autoAdvanceTimer = setInterval(function() {
+      goToSlide(currentSlide + 1);
+    }, 5000);
+  }
+
+  function stopAutoAdvance() {
+    if (autoAdvanceTimer) clearInterval(autoAdvanceTimer);
   }
 
   if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', fixPromoImages);
+    document.addEventListener('DOMContentLoaded', initPromoBanner);
   } else {
-    fixPromoImages();
+    initPromoBanner();
   }
   window.addEventListener('load', function() {
-    setTimeout(fixPromoImages, 100);
-    setTimeout(fixPromoImages, 500);
+    setTimeout(initPromoBanner, 100);
   });
 })();
 </script>
