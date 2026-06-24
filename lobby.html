@@ -120,16 +120,12 @@
       #h_navigator {
         overscroll-behavior-x: contain;
         -webkit-overflow-scrolling: touch;
-        touch-action: pan-x;
       }
 
       /* Mobile: promo banner - one slide at a time, no overflow */
       @media (max-width: 767px) {
         html, body {
-          overflow-x: hidden !important;
-        }
-        body {
-          touch-action: pan-y;
+          overflow-x: hidden;
         }
         #home_slider.swiper {
           touch-action: pan-y !important;
@@ -2254,17 +2250,7 @@ function toggleSportDropdown(el) {
 
   // Isolate game row touch events from promo banner
   function initGameRowIsolation() {
-    document.querySelectorAll('.home-casino-slider').forEach(function(row) {
-      row.addEventListener('touchstart', function(e) {
-        e.stopPropagation();
-      }, {passive: true, capture: true});
-      row.addEventListener('touchmove', function(e) {
-        e.stopPropagation();
-      }, {passive: true, capture: true});
-      row.addEventListener('touchend', function(e) {
-        e.stopPropagation();
-      }, {passive: true, capture: true});
-    });
+    // Disabled: touch event propagation was breaking vertical scroll on mobile
   }
 })();
 </script>
