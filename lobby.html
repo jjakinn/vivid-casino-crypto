@@ -107,13 +107,23 @@
         position: sticky;
       }
 
-      /* Mobile: promo banner carousel - show one slide at a time */
+      /* Mobile: promo banner - one slide at a time, no overflow */
       @media (max-width: 767px) {
-        .swiper .swiper-slide {
-          width: 100% !important;
+        #home_slider.swiper,
+        #home_slider .swiper-wrapper,
+        #home_slider .swiper-slide {
+          overflow: hidden !important;
         }
-        .swiper .swiper-wrapper {
+        #home_slider .swiper-slide {
           width: 100% !important;
+          min-width: 100% !important;
+          max-width: 100% !important;
+          flex-shrink: 0 !important;
+        }
+        #home_slider .swiper-slide img.bg-image {
+          width: 100% !important;
+          height: auto !important;
+          display: block !important;
         }
       }
 
@@ -2062,12 +2072,14 @@ function toggleSportDropdown(el) {
       img.style.removeProperty('height');
       img.style.removeProperty('max-height');
     });
-    // Also force the swiper containers to never clip
-    slider.style.overflow = 'visible';
-    var wrapper = slider.querySelector('.swiper-wrapper');
-    if (wrapper) wrapper.style.overflow = 'visible';
-    var slides = slider.querySelectorAll('.swiper-slide');
-    slides.forEach(function(s) { s.style.overflow = 'visible'; });
+    // Also force the swiper containers to never clip (desktop only)
+    if (window.innerWidth >= 768) {
+      slider.style.overflow = 'visible';
+      var wrapper = slider.querySelector('.swiper-wrapper');
+      if (wrapper) wrapper.style.overflow = 'visible';
+      var slides = slider.querySelectorAll('.swiper-slide');
+      slides.forEach(function(s) { s.style.overflow = 'visible'; });
+    }
   }
 
   if (document.readyState === 'loading') {
