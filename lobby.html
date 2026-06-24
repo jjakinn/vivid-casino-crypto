@@ -2256,7 +2256,11 @@ function toggleSportDropdown(el) {
 
   // Isolate game row touch events from promo banner
   function initGameRowIsolation() {
-    // Disabled: touch event propagation was breaking vertical scroll on mobile
+    document.querySelectorAll('.home-casino-slider').forEach(function(row) {
+      row.addEventListener('touchstart', function(e) {
+        e.stopPropagation();
+      }, {passive: true, capture: true});
+    });
   }
 })();
 </script>
