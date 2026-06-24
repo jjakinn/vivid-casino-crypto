@@ -405,25 +405,40 @@
           width: 140px !important;
           height: auto !important;
         }
-        /* SEE All tile sizing - match game tiles exactly */
+        /* SEE All button - exact game tile dimensions */
         .home-casino-slider .slider-tile.see-all-button,
         .home-jackpot-slider .slider-tile.see-all-button {
           min-width: 140px !important;
           width: 140px !important;
-          height: 220px !important;
+          height: 196px !important;
+          flex-shrink: 0 !important;
           overflow: hidden !important;
+          box-sizing: border-box !important;
+        }
+        .home-casino-slider .slider-tile.see-all-button > a,
+        .home-jackpot-slider .slider-tile.see-all-button > a {
+          height: 100% !important;
+          width: 100% !important;
+          display: flex !important;
+          flex-direction: column !important;
+          align-items: center !important;
+          justify-content: center !important;
+          padding: 6px !important;
+          box-sizing: border-box !important;
         }
         .home-casino-slider .slider-tile.see-all-button img,
         .home-jackpot-slider .slider-tile.see-all-button img {
-          max-width: 60px !important;
-          max-height: 60px !important;
+          max-width: 50% !important;
+          max-height: 40% !important;
           width: auto !important;
           height: auto !important;
         }
         .home-casino-slider .slider-tile.see-all-button p,
         .home-jackpot-slider .slider-tile.see-all-button p {
-          font-size: 16px !important;
-          margin-top: 8px !important;
+          font-size: 14px !important;
+          margin-top: 4px !important;
+          line-height: 1.2 !important;
+          text-align: center !important;
         }
       }
 
@@ -482,6 +497,41 @@
           display: none !important;
         }
       }
+      /* SEE All button - desktop base (exact game tile image size) */
+      .home-casino-slider .slider-tile.see-all-button,
+      .home-jackpot-slider .slider-tile.see-all-button {
+        min-width: 157.667px !important;
+        width: 157.667px !important;
+        height: 220.822px !important;
+        flex-shrink: 0 !important;
+        overflow: hidden !important;
+        box-sizing: border-box !important;
+      }
+      .home-casino-slider .slider-tile.see-all-button > a,
+      .home-jackpot-slider .slider-tile.see-all-button > a {
+        height: 100% !important;
+        width: 100% !important;
+        display: flex !important;
+        flex-direction: column !important;
+        align-items: center !important;
+        justify-content: center !important;
+        padding: 8px !important;
+        box-sizing: border-box !important;
+      }
+      .home-casino-slider .slider-tile.see-all-button img,
+      .home-jackpot-slider .slider-tile.see-all-button img {
+        max-width: 45% !important;
+        max-height: 35% !important;
+        width: auto !important;
+        height: auto !important;
+      }
+      .home-casino-slider .slider-tile.see-all-button p,
+      .home-jackpot-slider .slider-tile.see-all-button p {
+        font-size: 16px !important;
+        margin-top: 4px !important;
+        line-height: 1.2 !important;
+        text-align: center !important;
+      }
       /* Game Categories horizontal scroll fix */
       #h_navigator::-webkit-scrollbar {
         display: none;
@@ -503,7 +553,7 @@
         .max-w-\[1200px\] { max-width: 1350px !important; }
         .slider-tile, .slider-tile img { min-width: 175px !important; width: 175px !important; }
         .home-casino-slider .slider-tile.see-all-button,
-        .home-jackpot-slider .slider-tile.see-all-button { height: 220px !important; }
+        .home-jackpot-slider .slider-tile.see-all-button { min-width: 175px !important; width: 175px !important; height: 245px !important; }
       }
       @media (min-width: 1920px) {
         .max-w-\[1200px\] { max-width: 1700px !important; }
@@ -511,7 +561,7 @@
         .home-casino-slider .slider-tile, .home-jackpot-slider .slider-tile { min-width: 195px !important; width: 195px !important; }
         .home-casino-slider .slider-tile img, .home-jackpot-slider .slider-tile img { width: 195px !important; height: auto !important; }
         .home-casino-slider .slider-tile.see-all-button,
-        .home-jackpot-slider .slider-tile.see-all-button { height: 220px !important; }
+        .home-jackpot-slider .slider-tile.see-all-button { min-width: 195px !important; width: 195px !important; height: 273px !important; }
       }
       @media (min-width: 2560px) {
         .max-w-\[1200px\] { max-width: 2200px !important; }
@@ -519,7 +569,7 @@
         .home-casino-slider .slider-tile, .home-jackpot-slider .slider-tile { min-width: 220px !important; width: 220px !important; }
         .home-casino-slider .slider-tile img, .home-jackpot-slider .slider-tile img { width: 220px !important; height: auto !important; }
         .home-casino-slider .slider-tile.see-all-button,
-        .home-jackpot-slider .slider-tile.see-all-button { height: 220px !important; }
+        .home-jackpot-slider .slider-tile.see-all-button { min-width: 220px !important; width: 220px !important; height: 308px !important; }
       }
     </style>
 <script src="https://cdn.tailwindcss.com"></script>
