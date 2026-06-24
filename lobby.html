@@ -131,6 +131,9 @@
         body {
           touch-action: pan-y;
         }
+        #home_slider.swiper {
+          touch-action: pan-y !important;
+        }
         #home_slider.swiper,
         #home_slider .swiper-wrapper,
         #home_slider .swiper-slide {
@@ -2166,17 +2169,21 @@ function toggleSportDropdown(el) {
   }
 
   function onTouchStart(e) {
-    e.stopPropagation();
+    // Only respond if touch started on the slider or its children
+    if (!slider.contains(e.target)) return;
     startX = e.touches[0].clientX;
     isDragging = true;
     stopAutoAdvance();
   }
 
   function onTouchEnd(e) {
-    e.stopPropagation();
     if (!isDragging) return;
     isDragging = false;
-    var diff = e.changedTouches[0].clientX - startX;
+    var touch = e.changedTouches[0];
+    // Only respond if touch ended on the slider or its children
+    var elem = document.elementFromPoint(touch.clientX, touch.clientY);
+    if (!elem || !slider.contains(elem)) return;
+    var diff = touch.clientX - startX;
     if (Math.abs(diff) > 40) {
       if (diff > 0) goToSlide(currentSlide - 1);
       else goToSlide(currentSlide + 1);
@@ -2216,13 +2223,35 @@ function toggleSportDropdown(el) {
   }
 
   if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', initPromoBanner);
+    document.addEventListener('DOMContentLoaded', function() {
+      initPromoBanner();
+      initGameRowIsolation();
+    });
   } else {
     initPromoBanner();
+    initGameRowIsolation();
   }
   window.addEventListener('load', function() {
-    setTimeout(initPromoBanner, 100);
+    setTimeout(function() {
+      initPromoBanner();
+      initGameRowIsolation();
+    }, 100);
   });
+
+  // Isolate game row touch events from promo banner
+  function initGameRowIsolation() {
+    document.querySelectorAll('.home-casino-slider').forEach(function(row) {
+      row.addEventListener('touchstart', function(e) {
+        e.stopPropagation();
+      }, {passive: true, capture: true});
+      row.addEventListener('touchmove', function(e) {
+        e.stopPropagation();
+      }, {passive: true, capture: true});
+      row.addEventListener('touchend', function(e) {
+        e.stopPropagation();
+      }, {passive: true, capture: true});
+    });
+  }
 })();
 </script>
 </body></html>
