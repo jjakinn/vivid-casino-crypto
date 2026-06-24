@@ -423,7 +423,7 @@
         // Create fixed overlay covering entire viewport
         var fallback = document.createElement('div');
         fallback.id = 'static-fallback';
-        fallback.style.cssText = 'position:fixed;top:0;left:0;width:100%;height:100%;overflow-y:auto;z-index:999999;background:#0a0a1a;color:#fff;font-family:system-ui,-apple-system,sans-serif;';
+        fallback.style.cssText = 'position:fixed;top:0;left:0;width:100%;height:100%;overflow-y:auto;z-index:999999;background:#000000;color:#fff;font-family:system-ui,-apple-system,sans-serif;';
         fallback.innerHTML = '<div style="display:flex;flex-direction:column;min-height:100%;">' +
           // Header (exact from chanced.com Vue app)
           '<header data-v-b2b8b7b2="" class="site-header section bg-transparent max-lg:pt-5 max-lg:pb-5">' +
@@ -486,32 +486,32 @@
             '</div>' +
           '</div>' +
           // Crypto Casino Section          // Crypto Casino Section
-          '<section style="background:#0a0a1a;padding:60px 24px;text-align:center;">' +
+          '<section style="background:#000000;padding:60px 24px;text-align:center;">' +
             '<h2 style="color:#fff;font-size:40px;font-weight:400;margin:0 0 12px;filter: drop-shadow(0 0 4px rgba(255,255,255,0.43)) drop-shadow(0 0 8px rgba(255,255,255,0.29)) drop-shadow(0 0 16px rgba(255,255,255,0.22)) drop-shadow(0 0 30px rgba(255,255,255,0.17));">#1 Crypto Casino</h2>' +
             '<img src="images/home/Stars.png" alt="5 Stars" style="max-width:250px;width:100%;margin:0 auto 12px;display:block;">' +
             '<h2 style="color:#fff;font-size:40px;font-weight:400;margin:0 0 24px;filter: drop-shadow(0 0 4px rgba(255,255,255,0.43)) drop-shadow(0 0 8px rgba(255,255,255,0.29)) drop-shadow(0 0 16px rgba(255,255,255,0.22)) drop-shadow(0 0 30px rgba(255,255,255,0.17));">Play With Crypto</h2>' +
             '<button style="background:#007AFF;border:none;color:#fff;padding:12px 48px;border-radius:9999px;font-size:16px;font-weight:500;cursor:pointer;box-shadow:0 4px 15px rgba(0,122,255,0.35);transition:transform 0.2s;" onmouseover="this.style.transform=\'scale(1.05)\'" onmouseout="this.style.transform=\'scale(1)\'">PLAY NOW</button>' +
           '</section>' +
           // Daily Rewards Section
-          '<section style="background:#0a0a1a;padding:60px 24px;">' +
+          '<section style="background:#000000;padding:60px 24px;">' +
             '<h2 style="color:#fff;font-size:40px;font-weight:400;text-align:center;margin:0 0 40px;filter: drop-shadow(0 0 4px rgba(255,255,255,0.43)) drop-shadow(0 0 8px rgba(255,255,255,0.29)) drop-shadow(0 0 16px rgba(255,255,255,0.22)) drop-shadow(0 0 30px rgba(255,255,255,0.17));">Daily Rewards &amp; Exclusive Promotions</h2>' +
             '<div style="display:flex;gap:24px;justify-content:center;flex-wrap:wrap;max-width:1120px;margin:0 auto;">' +
-              '<div style="background:#1e1e3a;border:1px solid #2d2d4a;border-radius:16px;padding:32px 24px;box-shadow:0 4px 20px rgba(0,0,0,0.3);flex:1;min-width:280px;max-width:352px;display:flex;flex-direction:column;align-items:flex-start;">' +
+              '<div style="background:#111111;border:1px solid #222222;border-radius:16px;padding:32px 24px;box-shadow:0 4px 20px rgba(0,0,0,0.3);flex:1;min-width:280px;max-width:352px;display:flex;flex-direction:column;align-items:flex-start;">' +
                 '<h3 style="color:#fff;font-size:28px;font-weight:500;margin:0 0 16px;filter: drop-shadow(0 0 4px rgba(255,255,255,0.43)) drop-shadow(0 0 8px rgba(255,255,255,0.29)) drop-shadow(0 0 16px rgba(255,255,255,0.22)) drop-shadow(0 0 30px rgba(255,255,255,0.17));">Free Daily Coins</h3>' +
                 '<img src="images/home/Ncoin.png" alt="" style="max-width:80px;margin-left:auto;display:block;">' +
               '</div>' +
-              '<div style="background:#1e1e3a;border:1px solid #2d2d4a;border-radius:16px;padding:32px 24px;box-shadow:0 4px 20px rgba(0,0,0,0.3);flex:1;min-width:280px;max-width:352px;display:flex;flex-direction:column;align-items:flex-start;">' +
+              '<div style="background:#111111;border:1px solid #222222;border-radius:16px;padding:32px 24px;box-shadow:0 4px 20px rgba(0,0,0,0.3);flex:1;min-width:280px;max-width:352px;display:flex;flex-direction:column;align-items:flex-start;">' +
                 '<h3 style="color:#fff;font-size:28px;font-weight:500;margin:0 0 16px;filter: drop-shadow(0 0 4px rgba(255,255,255,0.43)) drop-shadow(0 0 8px rgba(255,255,255,0.29)) drop-shadow(0 0 16px rgba(255,255,255,0.22)) drop-shadow(0 0 30px rgba(255,255,255,0.17));">Exclusive Bonuses</h3>' +
                 '<img src="images/home/rocket.png" alt="" style="max-width:80px;margin-left:auto;display:block;">' +
               '</div>' +
-              '<div style="background:#1e1e3a;border:1px solid #2d2d4a;border-radius:16px;padding:32px 24px;box-shadow:0 4px 20px rgba(0,0,0,0.3);flex:1;min-width:280px;max-width:352px;display:flex;flex-direction:column;align-items:flex-start;">' +
+              '<div style="background:#111111;border:1px solid #222222;border-radius:16px;padding:32px 24px;box-shadow:0 4px 20px rgba(0,0,0,0.3);flex:1;min-width:280px;max-width:352px;display:flex;flex-direction:column;align-items:flex-start;">' +
                 '<h3 style="color:#fff;font-size:28px;font-weight:500;margin:0 0 16px;filter: drop-shadow(0 0 4px rgba(255,255,255,0.43)) drop-shadow(0 0 8px rgba(255,255,255,0.29)) drop-shadow(0 0 16px rgba(255,255,255,0.22)) drop-shadow(0 0 30px rgba(255,255,255,0.17));">24/7 Giveaways</h3>' +
                 '<img src="images/home/gift.png" alt="" style="max-width:80px;margin-left:auto;display:block;">' +
               '</div>' +
             '</div>' +
           '</section>' +
           // Game section for carousel
-          '<div class="bg-fallback" style="background:#0a0a1a;padding:20px 0;">' +
+          '<div class="bg-fallback" style="background:#000000;padding:20px 0;">' +
             '<h2 style="color:#fff;font-size:36px;font-weight:500;text-align:center;margin:0 0 35px;filter: drop-shadow(0 0 4px rgba(255,255,255,0.43)) drop-shadow(0 0 8px rgba(255,255,255,0.29)) drop-shadow(0 0 16px rgba(255,255,255,0.22)) drop-shadow(0 0 30px rgba(255,255,255,0.17));">Over 1,000 Games - Find Your Favorite!</h2>' +
           '</div>' +
           // VIP Section
@@ -602,7 +602,7 @@
             '</div>' +
           '</div>' +
           // Footer
-          '<footer style="background:#0a0a1a;border-top:1px solid #1a1a2e;padding:48px 24px;margin-top:auto;">' +
+          '<footer style="background:#000000;border-top:1px solid #111111;padding:48px 24px;margin-top:auto;">' +
             '<div style="max-width:1400px;margin:0 auto;">' +
               '<div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:32px;">' +
                 '<a href="/" style="display:flex;align-items:center;gap:8px;text-decoration:none;color:#fff;">' +
@@ -619,7 +619,7 @@
                 '<div><h3 style="color:#fff;font-weight:400;margin-bottom:12px;">Legal</h3><ul style="list-style:none;padding:0;margin:0;display:flex;flex-direction:column;gap:8px;"><li><a href="#" style="color:#9ca3af;text-decoration:none;">Terms of Service</a></li><li><a href="#" style="color:#9ca3af;text-decoration:none;">Privacy Policy</a></li></ul></div>' +
                 '<div><h3 style="color:#fff;font-weight:400;margin-bottom:12px;">Social</h3><ul style="list-style:none;padding:0;margin:0;display:flex;flex-direction:column;gap:8px;"><li><a href="#" style="color:#9ca3af;text-decoration:none;">Twitter</a></li><li><a href="#" style="color:#9ca3af;text-decoration:none;">Discord</a></li></ul></div>' +
               '</div>' +
-              '<div style="margin-top:32px;padding-top:24px;border-top:1px solid #1a1a2e;color:#9ca3af;font-size:12px;">' +
+              '<div style="margin-top:32px;padding-top:24px;border-top:1px solid #111111;color:#9ca3af;font-size:12px;">' +
                 '© 2025 Chanced Crypto Casino. All rights reserved. Play responsibly.' +
               '</div>' +
             '</div>' +
@@ -697,7 +697,7 @@
       function createTile(game) {
         const tile = document.createElement('div');
         tile.className = 'game-tile';
-        tile.style.cssText = 'position:relative;border-radius:12px;overflow:hidden;cursor:pointer;transition:transform 0.2s;aspect-ratio:0.71;background:#1a1a2e;flex:0 0 auto;width:200px;height:280px;';
+        tile.style.cssText = 'position:relative;border-radius:12px;overflow:hidden;cursor:pointer;transition:transform 0.2s;aspect-ratio:0.71;background:#111111;flex:0 0 auto;width:200px;height:280px;';
         tile.onmouseenter = () => tile.style.transform = 'scale(1.05)';
         tile.onmouseleave = () => tile.style.transform = 'scale(1)';
 

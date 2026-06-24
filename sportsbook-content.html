@@ -1,12 +1,12 @@
 <div class="flex flex-col gap-6" id="sportsbook-content">
   <style>
-    .sportsbook-card { background: #0f172a; border: 1px solid #1e293b; border-radius: 8px; overflow: hidden; }
-    .sportsbook-card:hover { border-color: #334155; }
-    .bet-box { background: #020617; border: 1px solid #1e293b; border-radius: 6px; padding: 8px 12px; cursor: pointer; transition: all 0.2s; text-align: center; }
-    .bet-box:hover { background: #1e293b; border-color: #475569; }
+    .sportsbook-card { background: #000000; border: 1px solid #222222; border-radius: 8px; overflow: hidden; }
+    .sportsbook-card:hover { border-color: #333333; }
+    .bet-box { background: #020617; border: 1px solid #222222; border-radius: 6px; padding: 8px 12px; cursor: pointer; transition: all 0.2s; text-align: center; }
+    .bet-box:hover { background: #222222; border-color: #475569; }
     .bet-box .odds { color: #3b82f6; font-weight: 700; font-size: 14px; }
     .live-badge { background: #dc2626; color: white; font-size: 10px; font-weight: 700; padding: 2px 8px; border-radius: 4px; text-transform: uppercase; }
-    .time-badge { background: #1e293b; color: #94a3b8; font-size: 11px; padding: 2px 8px; border-radius: 4px; }
+    .time-badge { background: #222222; color: #94a3b8; font-size: 11px; padding: 2px 8px; border-radius: 4px; }
     .gallery-scroll { display: grid; grid-auto-flow: column; grid-auto-columns: calc((100% - 16px) / 3); gap: 8px; overflow-x: auto; scroll-snap-type: x mandatory; }
     .gallery-scroll::-webkit-scrollbar { display: none; }
     .sport-card-img { width: 100%; height: auto; max-height: 120px; object-fit: cover; display: block; }
@@ -204,43 +204,43 @@
       <a href="/sports/all" class="text-sm text-blue-400 hover:text-white transition-colors">View All</a>
     </div>
     <div class="flex flex-row gap-4 overflow-x-auto pb-2" style="scrollbar-width: none;">
-      <a href="/sports/soccer" class="block flex-shrink-0 hover:opacity-80 transition-opacity" style="width: 130px; height: 182px; border-radius: 12px; overflow: hidden; background: #1a1a2e; position: relative;">
+      <a href="/sports/soccer" class="block flex-shrink-0 hover:opacity-80 transition-opacity" style="width: 130px; height: 182px; border-radius: 12px; overflow: hidden; background: #111111; position: relative;">
         <img src="https://mediumrare.imgix.net/soccer-en.png?w=400&h=560&fit=crop&auto=format" alt="Soccer" style="width: 100%; height: 100%; object-fit: cover; display: block;"/>
         <div style="position: absolute; bottom: 0; left: 0; right: 0; padding: 12px; background: linear-gradient(to top, rgba(0,0,0,0.8), transparent);">
           <p class="text-sm font-bold text-white">Soccer</p>
         </div>
       </a>
-      <a href="/sports/basketball" class="block flex-shrink-0 hover:opacity-80 transition-opacity" style="width: 130px; height: 182px; border-radius: 12px; overflow: hidden; background: #1a1a2e; position: relative;">
+      <a href="/sports/basketball" class="block flex-shrink-0 hover:opacity-80 transition-opacity" style="width: 130px; height: 182px; border-radius: 12px; overflow: hidden; background: #111111; position: relative;">
         <img src="https://mediumrare.imgix.net/basketball-en.png?w=400&h=560&fit=crop&auto=format" alt="Basketball" style="width: 100%; height: 100%; object-fit: cover; display: block;"/>
         <div style="position: absolute; bottom: 0; left: 0; right: 0; padding: 12px; background: linear-gradient(to top, rgba(0,0,0,0.8), transparent);">
           <p class="text-sm font-bold text-white">Basketball</p>
         </div>
       </a>
-      <a href="/sports/tennis" class="block flex-shrink-0 hover:opacity-80 transition-opacity" style="width: 130px; height: 182px; border-radius: 12px; overflow: hidden; background: #1a1a2e; position: relative;">
+      <a href="/sports/tennis" class="block flex-shrink-0 hover:opacity-80 transition-opacity" style="width: 130px; height: 182px; border-radius: 12px; overflow: hidden; background: #111111; position: relative;">
         <img src="https://mediumrare.imgix.net/tennis-en.png?w=400&h=560&fit=crop&auto=format" alt="Tennis" style="width: 100%; height: 100%; object-fit: cover; display: block;"/>
         <div style="position: absolute; bottom: 0; left: 0; right: 0; padding: 12px; background: linear-gradient(to top, rgba(0,0,0,0.8), transparent);">
           <p class="text-sm font-bold text-white">Tennis</p>
         </div>
       </a>
-      <a href="/sports/baseball" class="block flex-shrink-0 hover:opacity-80 transition-opacity" style="width: 130px; height: 182px; border-radius: 12px; overflow: hidden; background: #1a1a2e; position: relative;">
+      <a href="/sports/baseball" class="block flex-shrink-0 hover:opacity-80 transition-opacity" style="width: 130px; height: 182px; border-radius: 12px; overflow: hidden; background: #111111; position: relative;">
         <img src="https://mediumrare.imgix.net/baseball-en.png?w=400&h=560&fit=crop&auto=format" alt="Baseball" style="width: 100%; height: 100%; object-fit: cover; display: block;"/>
         <div style="position: absolute; bottom: 0; left: 0; right: 0; padding: 12px; background: linear-gradient(to top, rgba(0,0,0,0.8), transparent);">
           <p class="text-sm font-bold text-white">Baseball</p>
         </div>
       </a>
-      <a href="/sports/ice-hockey" class="block flex-shrink-0 hover:opacity-80 transition-opacity" style="width: 130px; height: 182px; border-radius: 12px; overflow: hidden; background: #1a1a2e; position: relative;">
+      <a href="/sports/ice-hockey" class="block flex-shrink-0 hover:opacity-80 transition-opacity" style="width: 130px; height: 182px; border-radius: 12px; overflow: hidden; background: #111111; position: relative;">
         <img src="https://mediumrare.imgix.net/ice-hockey-en.png?w=400&h=560&fit=crop&auto=format" alt="Ice Hockey" style="width: 100%; height: 100%; object-fit: cover; display: block;"/>
         <div style="position: absolute; bottom: 0; left: 0; right: 0; padding: 12px; background: linear-gradient(to top, rgba(0,0,0,0.8), transparent);">
           <p class="text-sm font-bold text-white">Ice Hockey</p>
         </div>
       </a>
-      <a href="/sports/counter-strike" class="block flex-shrink-0 hover:opacity-80 transition-opacity" style="width: 130px; height: 182px; border-radius: 12px; overflow: hidden; background: #1a1a2e; position: relative;">
+      <a href="/sports/counter-strike" class="block flex-shrink-0 hover:opacity-80 transition-opacity" style="width: 130px; height: 182px; border-radius: 12px; overflow: hidden; background: #111111; position: relative;">
         <img src="https://mediumrare.imgix.net/counter-strike-en.png?w=400&h=560&fit=crop&auto=format" alt="CS2" style="width: 100%; height: 100%; object-fit: cover; display: block;"/>
         <div style="position: absolute; bottom: 0; left: 0; right: 0; padding: 12px; background: linear-gradient(to top, rgba(0,0,0,0.8), transparent);">
           <p class="text-sm font-bold text-white">CS2</p>
         </div>
       </a>
-      <a href="/sports/cricket" class="block flex-shrink-0 hover:opacity-80 transition-opacity" style="width: 130px; height: 182px; border-radius: 12px; overflow: hidden; background: #1a1a2e; position: relative;">
+      <a href="/sports/cricket" class="block flex-shrink-0 hover:opacity-80 transition-opacity" style="width: 130px; height: 182px; border-radius: 12px; overflow: hidden; background: #111111; position: relative;">
         <img src="https://mediumrare.imgix.net/cricket-en.png?w=400&h=560&fit=crop&auto=format" alt="Cricket" style="width: 100%; height: 100%; object-fit: cover; display: block;"/>
         <div style="position: absolute; bottom: 0; left: 0; right: 0; padding: 12px; background: linear-gradient(to top, rgba(0,0,0,0.8), transparent);">
           <p class="text-sm font-bold text-white">Cricket</p>
