@@ -2261,6 +2261,11 @@ function toggleSportDropdown(el) {
         e.stopPropagation();
       }, {passive: true, capture: true});
     });
+    document.querySelectorAll('#h_navigator').forEach(function(row) {
+      row.addEventListener('touchstart', function(e) {
+        e.stopPropagation();
+      }, {passive: true, capture: true});
+    });
   }
 })();
 </script>
