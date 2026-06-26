@@ -622,23 +622,28 @@
       /* === LARGE SCREEN SCALING FIXES === */
       @media (min-width: 1440px) {
         .max-w-\[1200px\] { max-width: 1350px !important; }
-        .slider-tile, .slider-tile img { min-width: 175px !important; width: 175px !important; }
+        .home-casino-slider .slider-tile,
+        .home-jackpot-slider .slider-tile,
+        .home-casino-slider .slider-tile img,
+        .home-jackpot-slider .slider-tile img { min-width: 175px !important; width: 175px !important; height: 245px !important; }
         .home-casino-slider .slider-tile.see-all-button,
         .home-jackpot-slider .slider-tile.see-all-button { min-width: 175px !important; width: 175px !important; height: 245px !important; }
       }
       @media (min-width: 1920px) {
         .max-w-\[1200px\] { max-width: 1700px !important; }
-        .slider-tile, .slider-tile img { min-width: 195px !important; width: 195px !important; }
-        .home-casino-slider .slider-tile, .home-jackpot-slider .slider-tile { min-width: 195px !important; width: 195px !important; }
-        .home-casino-slider .slider-tile img, .home-jackpot-slider .slider-tile img { width: 195px !important; height: auto !important; }
+        .home-casino-slider .slider-tile,
+        .home-jackpot-slider .slider-tile,
+        .home-casino-slider .slider-tile img,
+        .home-jackpot-slider .slider-tile img { min-width: 195px !important; width: 195px !important; height: 273px !important; }
         .home-casino-slider .slider-tile.see-all-button,
         .home-jackpot-slider .slider-tile.see-all-button { min-width: 195px !important; width: 195px !important; height: 273px !important; }
       }
       @media (min-width: 2560px) {
         .max-w-\[1200px\] { max-width: 2200px !important; }
-        .slider-tile, .slider-tile img { min-width: 220px !important; width: 220px !important; }
-        .home-casino-slider .slider-tile, .home-jackpot-slider .slider-tile { min-width: 220px !important; width: 220px !important; }
-        .home-casino-slider .slider-tile img, .home-jackpot-slider .slider-tile img { width: 220px !important; height: auto !important; }
+        .home-casino-slider .slider-tile,
+        .home-jackpot-slider .slider-tile,
+        .home-casino-slider .slider-tile img,
+        .home-jackpot-slider .slider-tile img { min-width: 220px !important; width: 220px !important; height: 308px !important; }
         .home-casino-slider .slider-tile.see-all-button,
         .home-jackpot-slider .slider-tile.see-all-button { min-width: 220px !important; width: 220px !important; height: 308px !important; }
       }
@@ -655,6 +660,15 @@
           transform: none !important;
           opacity: 1 !important;
         }
+      }
+      /* Fix: game tile border-radius — match view-all.html */
+      .slider-tile.relative > a {
+        border-radius: 10px;
+        overflow: hidden;
+      }
+      .slider-tile.relative img {
+        border-radius: 10px !important;
+        display: block !important;
       }
     </style>
 <script src="https://cdn.tailwindcss.com"></script>
@@ -2237,4 +2251,24 @@ function toggleSportDropdown(el) {
   }
 })();
 </script>
+<style>
+  /* === LARGE SCREEN GAME TILE FIX === */
+  /* Override the line-1820 object-fit:contain rule at 1440px+ */
+  @media (min-width: 1440px) {
+    .home-casino-slider .slider-tile > a,
+    .home-jackpot-slider .slider-tile > a,
+    .home-casino-slider .slider-tile > a > div.relative,
+    .home-jackpot-slider .slider-tile > a > div.relative {
+      height: 100% !important;
+    }
+    .home-casino-slider .slider-tile img[alt="Game Tile"],
+    .home-jackpot-slider .slider-tile img[alt="Game Tile"] {
+      width: 100% !important;
+      height: 100% !important;
+      max-height: none !important;
+      object-fit: contain !important;
+      border-radius: 10px !important;
+    }
+  }
+</style>
 </body></html>
