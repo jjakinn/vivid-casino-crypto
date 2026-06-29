@@ -192,6 +192,19 @@
       z-index: 99990 !important;
       pointer-events: auto !important;
     }
+    /* Mobile: center Casino/Sports tabs in sidebar header */
+    #sidebar-desktop.mobile-open .flex.justify-between.items-center.px-2 {
+      justify-content: center !important;
+      position: relative;
+    }
+    #sidebar-desktop.mobile-open #sidebar-toggle-btn {
+      display: none !important;
+    }
+    #sidebar-desktop.mobile-open #sidebar-mode-toggle {
+      flex: 0 0 auto !important;
+      width: 180px !important;
+      max-width: 180px !important;
+    }
     #sidebar-desktop.mobile-open {
       position: fixed !important;
     }
