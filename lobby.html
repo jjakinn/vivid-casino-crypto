@@ -820,6 +820,10 @@ function switchSidebarMode(mode) {
     if (casinoMain) casinoMain.style.display = 'none';
     if (sportsMain) sportsMain.style.display = '';
   }
+  // On mobile, close the sidebar after switching
+  if (window.innerWidth < 768) {
+    closeMobileSidebar();
+  }
 }
 function toggleSportDropdown(el) {
   const content = el.nextElementSibling;
