@@ -424,9 +424,9 @@
     <script>
     (function() {
       function showFallback() {
-        // Hide Vue's broken app
+        // Nuke Vue's app entirely — Safari can leak hidden elements through compositor
         var app = document.getElementById('app');
-        if (app) app.style.display = 'none';
+        if (app) app.remove();
 
         // Remove any existing fallback
         var existing = document.getElementById('static-fallback');
@@ -876,7 +876,7 @@
       function createTile(game) {
         const tile = document.createElement('div');
         tile.className = 'game-tile';
-        tile.style.cssText = 'position:relative;border-radius:12px;overflow:hidden;cursor:pointer;transition:transform 0.2s;aspect-ratio:0.71;background:#111111;flex:0 0 auto;width:160px;height:224px;';
+        tile.style.cssText = 'position:relative;display:inline-block;border-radius:12px;overflow:hidden;cursor:pointer;transition:transform 0.2s;width:160px;height:224px;vertical-align:top;background:#111111;';
         tile.onmouseenter = () => tile.style.transform = 'scale(1.05)';
         tile.onmouseleave = () => tile.style.transform = 'scale(1)';
 
@@ -907,6 +907,7 @@
 
         const track = document.createElement('div');
         track.className = 'conveyor-track';
+        track.style.cssText = 'white-space:nowrap;display:block;height:224px;';
         track.style.animation = `conveyor-${direction} 30s linear infinite`;
 
         allGames.forEach(game => {
@@ -915,6 +916,7 @@
 
         const wrapper = document.createElement('div');
         wrapper.className = 'conveyor-wrapper';
+        wrapper.style.cssText = 'overflow:hidden;width:100%;height:224px;padding:10px 0;position:relative;';
         wrapper.appendChild(track);
 
         return wrapper;
@@ -950,36 +952,33 @@
           style.id = 'conveyor-css';
           style.textContent = `
             @keyframes conveyor-left {
-              0% { -webkit-transform: translateX(0); transform: translateX(0); }
-              100% { -webkit-transform: translateX(-50%); transform: translateX(-50%); }
+              0% { transform: translateX(0); }
+              100% { transform: translateX(-50%); }
             }
             @keyframes conveyor-right {
-              0% { -webkit-transform: translateX(-50%); transform: translateX(-50%); }
-              100% { -webkit-transform: translateX(0); transform: translateX(0); }
+              0% { transform: translateX(-50%); }
+              100% { transform: translateX(0); }
             }
             .conveyor-wrapper {
               overflow: hidden;
               width: 100%;
+              height: 224px;
               padding: 10px 0;
-              height: 244px;
-              -webkit-transform: translateZ(0);
-              transform: translateZ(0);
             }
             .conveyor-track {
-              display: -webkit-box;
-              display: flex;
-              -webkit-box-orient: horizontal;
-              -webkit-box-direction: normal;
-              flex-direction: row;
-              -webkit-flex-wrap: nowrap;
-              flex-wrap: nowrap;
-              gap: 16px;
-              width: -webkit-max-content;
-              width: max-content;
+              display: block;
+              white-space: nowrap;
               height: 224px;
             }
+            .game-tile {
+              display: inline-block;
+              margin-right: 16px;
+              vertical-align: top;
+            }
+            .game-tile:last-child {
+              margin-right: 0;
+            }
             .conveyor-wrapper:hover .conveyor-track {
-              -webkit-animation-play-state: paused;
               animation-play-state: paused;
             }
           `;
