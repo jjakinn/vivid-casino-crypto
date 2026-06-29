@@ -428,6 +428,10 @@
         var app = document.getElementById('app');
         if (app) app.remove();
 
+        // Nuke the original game_app container — it's outside #app and survives removal
+        var gameApp = document.querySelector('.game_app');
+        if (gameApp) gameApp.remove();
+
         // Remove any existing fallback
         var existing = document.getElementById('static-fallback');
         if (existing) existing.remove();
