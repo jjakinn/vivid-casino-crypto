@@ -950,28 +950,36 @@
           style.id = 'conveyor-css';
           style.textContent = `
             @keyframes conveyor-left {
-              0% { transform: translateX(0); }
-              100% { transform: translateX(-50%); }
+              0% { -webkit-transform: translateX(0); transform: translateX(0); }
+              100% { -webkit-transform: translateX(-50%); transform: translateX(-50%); }
             }
             @keyframes conveyor-right {
-              0% { transform: translateX(-50%); }
-              100% { transform: translateX(0); }
+              0% { -webkit-transform: translateX(-50%); transform: translateX(-50%); }
+              100% { -webkit-transform: translateX(0); transform: translateX(0); }
             }
             .conveyor-wrapper {
               overflow: hidden;
               width: 100%;
               padding: 10px 0;
+              height: 244px;
+              -webkit-transform: translateZ(0);
               transform: translateZ(0);
-              contain: layout paint;
             }
             .conveyor-track {
+              display: -webkit-box;
               display: flex;
+              -webkit-box-orient: horizontal;
+              -webkit-box-direction: normal;
+              flex-direction: row;
+              -webkit-flex-wrap: nowrap;
+              flex-wrap: nowrap;
               gap: 16px;
+              width: -webkit-max-content;
               width: max-content;
-              will-change: transform;
-              backface-visibility: hidden;
+              height: 224px;
             }
             .conveyor-wrapper:hover .conveyor-track {
+              -webkit-animation-play-state: paused;
               animation-play-state: paused;
             }
           `;
