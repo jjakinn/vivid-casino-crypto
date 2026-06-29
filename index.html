@@ -876,7 +876,8 @@
       function createTile(game) {
         const tile = document.createElement('div');
         tile.className = 'game-tile';
-        tile.style.cssText = 'position:relative;display:inline-block;border-radius:12px;overflow:hidden;cursor:pointer;transition:transform 0.2s;width:160px;height:224px;vertical-align:top;background:#111111;';
+        // Safari: use flex-basis instead of inline-block. No vertical-align, no margin-right.
+        tile.style.cssText = 'position:relative;flex:0 0 160px;width:160px;height:224px;border-radius:12px;overflow:hidden;cursor:pointer;transition:transform 0.2s;background:#111111;';
         tile.onmouseenter = () => tile.style.transform = 'scale(1.05)';
         tile.onmouseleave = () => tile.style.transform = 'scale(1)';
 
@@ -907,7 +908,9 @@
 
         const track = document.createElement('div');
         track.className = 'conveyor-track';
-        track.style.cssText = 'white-space:nowrap;display:block;height:224px;';
+        // Safari-safe: flexbox with explicit track width. No white-space, no inline-block.
+        const trackWidth = allGames.length * 176; // 160px tile + 16px gap
+        track.style.cssText = `display:-webkit-flex;display:flex;-webkit-flex-wrap:nowrap;flex-wrap:nowrap;gap:16px;width:${trackWidth}px;height:224px;`;
         track.style.animation = `conveyor-${direction} 30s linear infinite`;
 
         allGames.forEach(game => {
@@ -916,7 +919,7 @@
 
         const wrapper = document.createElement('div');
         wrapper.className = 'conveyor-wrapper';
-        wrapper.style.cssText = 'overflow:hidden;width:100%;height:224px;padding:10px 0;position:relative;';
+        wrapper.style.cssText = 'overflow:hidden;width:100%;height:244px;padding:10px 0;position:relative;';
         wrapper.appendChild(track);
 
         return wrapper;
@@ -973,21 +976,18 @@
               box-sizing: border-box !important;
             }
             .conveyor-track {
-              display: block !important;
-              white-space: nowrap !important;
+              display: -webkit-flex !important;
+              display: flex !important;
+              -webkit-flex-wrap: nowrap !important;
+              flex-wrap: nowrap !important;
+              gap: 16px !important;
               height: 224px !important;
-              font-size: 0 !important;
             }
             .game-tile {
-              display: inline-block !important;
-              margin-right: 16px !important;
-              vertical-align: top !important;
-              height: 224px !important;
+              -webkit-flex: 0 0 160px !important;
+              flex: 0 0 160px !important;
               width: 160px !important;
-              font-size: 16px !important;
-            }
-            .game-tile:last-child {
-              margin-right: 0 !important;
+              height: 224px !important;
             }
             .conveyor-wrapper:hover .conveyor-track {
               animation-play-state: paused;
