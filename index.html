@@ -927,24 +927,30 @@
         if (window.__vividGamesInjected) return;
         window.__vividGamesInjected = true;
 
-        const headings = document.querySelectorAll('h2');
-        let target = null;
-        for (const h of headings) {
-          if (h.textContent.includes('Games') || h.textContent.includes('Favorite')) {
-            target = h.closest('div[class*="bg-"]') || h.closest('div') || h.parentElement;
-            break;
+        // Find target explicitly by class, then fall back to heading search
+        let target = document.querySelector('.bg-fallback');
+        if (!target) {
+          const headings = document.querySelectorAll('h2');
+          for (const h of headings) {
+            if (h.textContent.includes('Games') || h.textContent.includes('Favorite')) {
+              target = h.closest('div[class*="bg-"]') || h.closest('div') || h.parentElement;
+              break;
+            }
           }
         }
         if (!target) return;
 
         // Nuke every child of target except the h2 heading itself
-        // This wipes all stale Vue loading rows and any previous injections
+        // Also nuke any stray conveyor wrappers anywhere in the document (Safari paranoia)
         const children = Array.from(target.children);
         for (const child of children) {
           if (child.tagName !== 'H2') {
             child.remove();
           }
         }
+        document.querySelectorAll('.conveyor-wrapper').forEach(w => {
+          if (w.parentElement !== target) w.remove();
+        });
 
         // Inject CSS animation keyframes once
         if (!document.getElementById('conveyor-css')) {
@@ -960,23 +966,28 @@
               100% { transform: translateX(0); }
             }
             .conveyor-wrapper {
-              overflow: hidden;
-              width: 100%;
-              height: 224px;
-              padding: 10px 0;
+              overflow: hidden !important;
+              width: 100% !important;
+              height: 244px !important;
+              padding: 10px 0 !important;
+              box-sizing: border-box !important;
             }
             .conveyor-track {
-              display: block;
-              white-space: nowrap;
-              height: 224px;
+              display: block !important;
+              white-space: nowrap !important;
+              height: 224px !important;
+              font-size: 0 !important;
             }
             .game-tile {
-              display: inline-block;
-              margin-right: 16px;
-              vertical-align: top;
+              display: inline-block !important;
+              margin-right: 16px !important;
+              vertical-align: top !important;
+              height: 224px !important;
+              width: 160px !important;
+              font-size: 16px !important;
             }
             .game-tile:last-child {
-              margin-right: 0;
+              margin-right: 0 !important;
             }
             .conveyor-wrapper:hover .conveyor-track {
               animation-play-state: paused;
