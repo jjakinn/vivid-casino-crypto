@@ -907,7 +907,7 @@
 
         const track = document.createElement('div');
         track.className = 'conveyor-track';
-        track.style.cssText = `display:flex;gap:16px;width:max-content;animation:conveyor-${direction} 30s linear infinite;`;
+        track.style.animation = `conveyor-${direction} 30s linear infinite`;
 
         allGames.forEach(game => {
           track.appendChild(createTile(game));
@@ -915,13 +915,16 @@
 
         const wrapper = document.createElement('div');
         wrapper.className = 'conveyor-wrapper';
-        wrapper.style.cssText = 'overflow:hidden;width:100%;padding:10px 0;';
         wrapper.appendChild(track);
 
         return wrapper;
       }
 
       function inject() {
+        // Guard: prevent double injection
+        if (window.__vividGamesInjected) return;
+        window.__vividGamesInjected = true;
+
         const headings = document.querySelectorAll('h2');
         let target = null;
         for (const h of headings) {
@@ -954,6 +957,20 @@
               0% { transform: translateX(-50%); }
               100% { transform: translateX(0); }
             }
+            .conveyor-wrapper {
+              overflow: hidden;
+              width: 100%;
+              padding: 10px 0;
+              transform: translateZ(0);
+              contain: layout paint;
+            }
+            .conveyor-track {
+              display: flex;
+              gap: 16px;
+              width: max-content;
+              will-change: transform;
+              backface-visibility: hidden;
+            }
             .conveyor-wrapper:hover .conveyor-track {
               animation-play-state: paused;
             }
@@ -973,7 +990,8 @@
       } else {
         setTimeout(inject, 2000);
       }
-      setTimeout(inject, 5000);
+      // Fallback: only run if primary injection hasn't fired
+      setTimeout(() => { if (!window.__vividGamesInjected) inject(); }, 5000);
     })();
     </script>
     <noscript
