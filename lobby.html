@@ -2068,76 +2068,99 @@ function goHome() {
 
 <script>
 (function() {
-  // Crypto dropdown functionality
-  var currencyButton = document.getElementById('headlessui-popover-button-v-1-0');
-  var dropdownPanel = document.getElementById('crypto-dropdown-panel');
-  var chevron = currencyButton ? currencyButton.querySelector('.lucide-chevron-down') : null;
+  var DROPDOWN_ID = 'crypto-dropdown-panel';
+  var BUTTON_ID = 'headlessui-popover-button-v-1-0';
+  var dropdownPanel = document.getElementById(DROPDOWN_ID);
   
-  if (!currencyButton || !dropdownPanel) return;
+  if (!dropdownPanel) return;
   
-  // Toggle dropdown on button click
-  currencyButton.addEventListener('click', function(e) {
+  // Use event delegation on body for button clicks (survives Vue re-renders)
+  document.body.addEventListener('click', function(e) {
+    var btn = e.target.closest('#' + BUTTON_ID);
+    if (!btn) return;
+    
     e.stopPropagation();
+    var chevron = btn.querySelector('.lucide-chevron-down');
     var isHidden = dropdownPanel.style.display === 'none' || !dropdownPanel.style.display || dropdownPanel.classList.contains('hidden');
+    
     if (isHidden) {
       dropdownPanel.style.display = 'block';
       dropdownPanel.classList.remove('hidden');
       if (chevron) chevron.style.transform = 'rotate(180deg)';
-      currencyButton.setAttribute('aria-expanded', 'true');
+      btn.setAttribute('aria-expanded', 'true');
     } else {
       dropdownPanel.style.display = 'none';
       dropdownPanel.classList.add('hidden');
       if (chevron) chevron.style.transform = 'rotate(0deg)';
-      currencyButton.setAttribute('aria-expanded', 'false');
+      btn.setAttribute('aria-expanded', 'false');
     }
   });
   
   // Close on click outside
   document.addEventListener('click', function(e) {
-    if (!dropdownPanel.contains(e.target) && !currencyButton.contains(e.target)) {
+    var btn = document.getElementById(BUTTON_ID);
+    if (!btn) return;
+    if (!dropdownPanel.contains(e.target) && !btn.contains(e.target)) {
       dropdownPanel.style.display = 'none';
       dropdownPanel.classList.add('hidden');
+      var chevron = btn.querySelector('.lucide-chevron-down');
       if (chevron) chevron.style.transform = 'rotate(0deg)';
-      currencyButton.setAttribute('aria-expanded', 'false');
+      btn.setAttribute('aria-expanded', 'false');
     }
   });
   
-  // Handle currency selection
-  var options = dropdownPanel.querySelectorAll('.crypto-option');
-  options.forEach(function(opt) {
-    opt.addEventListener('click', function() {
-      var currency = opt.getAttribute('data-currency').toUpperCase();
-      var balance = opt.getAttribute('data-balance');
-      var iconSrc = opt.querySelector('img').getAttribute('src');
-      
-      // Update button display
-      var iconImg = currencyButton.querySelector('img[alt="BTC"], img[alt="ETH"], img[alt="USDT"], img[alt="LTC"], img[alt="DOGE"], img[alt="SOL"]') || currencyButton.querySelector('img');
-      var labelSpan = currencyButton.querySelector('span.font-semibold');
-      var balanceSpan = currencyButton.querySelector('span:not(.font-semibold)');
-      
-      if (iconImg) iconImg.setAttribute('src', iconSrc);
-      if (iconImg) iconImg.setAttribute('alt', currency);
-      if (labelSpan) labelSpan.textContent = currency;
-      if (balanceSpan) balanceSpan.textContent = balance;
-      
-      // Close dropdown
-      dropdownPanel.style.display = 'none';
-      dropdownPanel.classList.add('hidden');
-      if (chevron) chevron.style.transform = 'rotate(0deg)';
-      currencyButton.setAttribute('aria-expanded', 'false');
-      
-      // Save to localStorage
-      localStorage.setItem('vivid-selected-currency', currency);
-    });
+  // Handle currency selection via delegation on panel
+  dropdownPanel.addEventListener('click', function(e) {
+    var opt = e.target.closest('.crypto-option');
+    if (!opt) return;
+    
+    var currency = opt.getAttribute('data-currency').toUpperCase();
+    var balance = opt.getAttribute('data-balance');
+    var iconSrc = opt.querySelector('img').getAttribute('src');
+    
+    var btn = document.getElementById(BUTTON_ID);
+    if (!btn) return;
+    
+    var iconImg = btn.querySelector('img[alt="BTC"], img[alt="ETH"], img[alt="USDT"], img[alt="LTC"], img[alt="DOGE"], img[alt="SOL"]') || btn.querySelector('img');
+    var labelSpan = btn.querySelector('span.font-semibold');
+    var balanceSpan = btn.querySelector('span:not(.font-semibold)');
+    
+    if (iconImg) iconImg.setAttribute('src', iconSrc);
+    if (iconImg) iconImg.setAttribute('alt', currency);
+    if (labelSpan) labelSpan.textContent = currency;
+    if (balanceSpan) balanceSpan.textContent = balance;
+    
+    dropdownPanel.style.display = 'none';
+    dropdownPanel.classList.add('hidden');
+    var chevron = btn.querySelector('.lucide-chevron-down');
+    if (chevron) chevron.style.transform = 'rotate(0deg)';
+    btn.setAttribute('aria-expanded', 'false');
+    
+    localStorage.setItem('vivid-selected-currency', currency);
   });
   
   // Load saved currency on page load
   var saved = localStorage.getItem('vivid-selected-currency');
   if (saved) {
     var savedOpt = dropdownPanel.querySelector('[data-currency="' + saved.toLowerCase() + '"]');
-    if (savedOpt) savedOpt.click();
+    if (savedOpt) {
+      var currency = savedOpt.getAttribute('data-currency').toUpperCase();
+      var balance = savedOpt.getAttribute('data-balance');
+      var iconSrc = savedOpt.querySelector('img').getAttribute('src');
+      var btn = document.getElementById(BUTTON_ID);
+      if (btn) {
+        var iconImg = btn.querySelector('img[alt="BTC"], img[alt="ETH"], img[alt="USDT"], img[alt="LTC"], img[alt="DOGE"], img[alt="SOL"]') || btn.querySelector('img');
+        var labelSpan = btn.querySelector('span.font-semibold');
+        var balanceSpan = btn.querySelector('span:not(.font-semibold)');
+        if (iconImg) iconImg.setAttribute('src', iconSrc);
+        if (iconImg) iconImg.setAttribute('alt', currency);
+        if (labelSpan) labelSpan.textContent = currency;
+        if (balanceSpan) balanceSpan.textContent = balance;
+      }
+    }
   }
 })();
+</script>
 <script>
   // Banner initialization complete
 </script>
