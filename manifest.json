@@ -1,0 +1,25 @@
+{
+  "name": "Vivid - The #1 Crypto Casino",
+  "short_name": "Vivid",
+  "description": "The ultimate crypto casino! Play with BTC, ETH, USDT and more. 2000+ thrilling games, instant deposits, and fast withdrawals.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#000000",
+  "theme_color": "#000000",
+  "orientation": "portrait",
+  "icons": [
+    {
+      "src": "images/favicon/vivid-casino-icon.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "images/favicon/vivid-casino-icon.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ],
+  "categories": ["games", "entertainment"]
+}
