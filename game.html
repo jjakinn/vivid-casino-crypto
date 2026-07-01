@@ -1369,7 +1369,29 @@ function toggleSportDropdown(el) {
 </script>
 
 <!-- Geo-Restriction Modal - Extracted from lucky-rollers.io -->
-<script src="js/geo-restriction-modal.js?v=1" defer></script>
+<script src="js/geo-restriction-modal.js?v=2" defer></script>
+<script>
+// Protect direct access to game pages - check geo-restriction on load
+(async function() {
+  // Skip check if coming from lobby (referrer check)
+  const referrer = document.referrer || '';
+  if (referrer.includes('lobby.html') || referrer.includes('view-all.html')) {
+    return; // Allow - user clicked through lobby which already checked
+  }
+  
+  // Check if restricted
+  const isRestricted = await GeoRestriction.check();
+  if (isRestricted) {
+    GeoRestriction.showModal();
+    // Optionally redirect back to lobby after modal closes
+    const originalHide = GeoRestriction.hideModal;
+    GeoRestriction.hideModal = function() {
+      originalHide();
+      window.location.href = 'lobby.html';
+    };
+  }
+})();
+</script>
 
 </body>
 </html>

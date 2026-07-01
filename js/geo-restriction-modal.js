@@ -10,8 +10,10 @@
 
     // ============ CONFIGURATION ============
     // Demo mode: Add ?geo_demo=1 to URL to always show modal (for testing)
+    // Override: Add ?geo_allow=1 to bypass all restrictions
     const urlParams = new URLSearchParams(window.location.search);
     const DEMO_MODE = urlParams.get('geo_demo') === '1' || urlParams.get('geo_restrict') === '1';
+    const ALLOW_OVERRIDE = urlParams.get('geo_allow') === '1';
     
     // Countries where games are BLOCKED (show modal)
     // Add country codes here as needed
@@ -149,6 +151,13 @@
         // If already detected, return cached result
         if (isRestricted !== null) return isRestricted;
         
+        // Override parameter to bypass all restrictions
+        if (ALLOW_OVERRIDE) {
+            console.log('[GeoRestriction] OVERRIDE: geo_allow=1 detected, allowing access');
+            isRestricted = false;
+            return false;
+        }
+        
         // Demo mode always blocks
         if (DEMO_MODE) {
             console.log('[GeoRestriction] DEMO MODE: Always blocking');
@@ -156,40 +165,78 @@
             return true;
         }
         
-        try {
-            // Try ipapi.co first (free, no key needed for basic info)
-            const response = await fetch('https://ipapi.co/json/');
-            if (!response.ok) throw new Error('ipapi failed');
-            
-            const data = await response.json();
-            userCountry = data.country_code;
-            console.log('[GeoRestriction] Detected country:', userCountry);
-            
-            // Check if country is in allowed list
-            if (ALLOWED_COUNTRIES.includes(userCountry)) {
-                console.log('[GeoRestriction] Country ALLOWED:', userCountry);
+        // Try multiple IP detection services with fallback
+        const ipServices = [
+            {
+                url: 'https://ipapi.co/json/',
+                extract: (data) => data.country_code
+            },
+            {
+                url: 'https://ipinfo.io/json',
+                extract: (data) => data.country
+            },
+            {
+                url: 'https://ip-api.com/json/?fields=countryCode',
+                extract: (data) => data.countryCode
+            }
+        ];
+        
+        for (const service of ipServices) {
+            try {
+                console.log('[GeoRestriction] Trying IP service:', service.url);
+                const response = await fetch(service.url, { 
+                    method: 'GET',
+                    // Prevent caching
+                    cache: 'no-store'
+                });
+                
+                if (!response.ok) {
+                    console.warn('[GeoRestriction] Service failed:', service.url, response.status);
+                    continue;
+                }
+                
+                const data = await response.json();
+                userCountry = service.extract(data);
+                console.log('[GeoRestriction] Detected country via', service.url, ':', userCountry);
+                
+                if (!userCountry) {
+                    console.warn('[GeoRestriction] No country code returned from', service.url);
+                    continue;
+                }
+                
+                userCountry = userCountry.toUpperCase();
+                
+                // Check if country is in allowed list
+                if (ALLOWED_COUNTRIES.includes(userCountry)) {
+                    console.log('[GeoRestriction] Country ALLOWED:', userCountry);
+                    isRestricted = false;
+                    return false;
+                }
+                
+                // Check if country is in blocked list
+                if (BLOCKED_COUNTRIES.includes(userCountry)) {
+                    console.log('[GeoRestriction] Country BLOCKED:', userCountry);
+                    isRestricted = true;
+                    return true;
+                }
+                
+                // Default: allow if not explicitly blocked
+                console.log('[GeoRestriction] Country not in lists, allowing:', userCountry);
                 isRestricted = false;
                 return false;
+                
+            } catch (err) {
+                console.warn('[GeoRestriction] Service error:', service.url, err.message);
+                // Continue to next service
             }
-            
-            // Check if country is in blocked list
-            if (BLOCKED_COUNTRIES.includes(userCountry)) {
-                console.log('[GeoRestriction] Country BLOCKED:', userCountry);
-                isRestricted = true;
-                return true;
-            }
-            
-            // Default: allow if not explicitly blocked
-            console.log('[GeoRestriction] Country not in lists, allowing:', userCountry);
-            isRestricted = false;
-            return false;
-            
-        } catch (err) {
-            console.warn('[GeoRestriction] Could not detect location:', err);
-            // If we can't detect, assume blocked for safety
-            isRestricted = true;
-            return true;
         }
+        
+        // All services failed — default to ALLOWING (not blocking)
+        // False positive (blocking a real user) is worse than false negative
+        console.warn('[GeoRestriction] All IP detection services failed. Defaulting to ALLOW for safety.');
+        console.warn('[GeoRestriction] If you expected a block, check your network/VPN connection.');
+        isRestricted = false;
+        return false;
     }
 
     // ============ MODAL FUNCTIONS ============
