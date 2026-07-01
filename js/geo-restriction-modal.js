@@ -120,14 +120,10 @@
 
     // Get user's region based on IP (simulated - in production this would come from backend)
     function getUserRegion() {
-        // In production, this would be determined by server-side IP geolocation
-        // For now, we'll use a default region
-        // You can override this by setting window.USER_REGION before loading this script
         if (window.USER_REGION) {
             return window.USER_REGION;
         }
         
-        // Try to detect from browser locale
         const locale = navigator.language || navigator.userLanguage || 'en';
         if (locale.startsWith('es')) return 'americas';
         if (locale.startsWith('de')) return 'emea';
@@ -570,6 +566,9 @@
     // Initialize geo-restriction on game elements
     // Uses event delegation for dynamically created game tiles
     function initGeoRestriction() {
+        console.log('[GeoRestriction] Initializing...');
+        console.log('[GeoRestriction] Demo mode:', window.GEO_RESTRICT_DEMO);
+        
         // Main click interceptor - catches ALL clicks and checks if they're on game elements
         function clickInterceptor(e) {
             // Check if click is on a game tile or game link
@@ -577,8 +576,11 @@
             
             if (!gameElement) return;
             
+            console.log('[GeoRestriction] Clicked game element:', gameElement.tagName, gameElement.className, gameElement.getAttribute('href'));
+            
             // Check if restricted
             if (isGameRestricted('game')) {
+                console.log('[GeoRestriction] Game is restricted, showing modal');
                 e.preventDefault();
                 e.stopImmediatePropagation();
                 e.stopPropagation();
@@ -589,14 +591,20 @@
         
         // Attach to document with capture to intercept before other handlers
         document.addEventListener('click', clickInterceptor, true);
+        console.log('[GeoRestriction] Click interceptor attached');
         
         // Also intercept on touch devices
         document.addEventListener('touchend', clickInterceptor, true);
         
-        // Override all game links that navigate to game.html
+        // Override all game links that navigate to game.html or /casino/
         function overrideGameLinks() {
-            document.querySelectorAll('a[href*="game.html"]').forEach(function(link) {
+            document.querySelectorAll('a[href*="game.html"], a[href*="/casino/"]').forEach(function(link) {
+                // Skip if already processed
+                if (link.getAttribute('data-geo-processed')) return;
+                link.setAttribute('data-geo-processed', 'true');
+                
                 link.addEventListener('click', function(e) {
+                    console.log('[GeoRestriction] Direct link click:', this.getAttribute('href'));
                     if (isGameRestricted('game')) {
                         e.preventDefault();
                         e.stopImmediatePropagation();
@@ -607,10 +615,8 @@
             });
         }
         
-        // Run immediately
+        // Run immediately and periodically
         overrideGameLinks();
-        
-        // Re-run periodically for dynamically added content
         setInterval(overrideGameLinks, 2000);
         
         // Also use MutationObserver for dynamically added content
@@ -622,6 +628,8 @@
             childList: true,
             subtree: true
         });
+        
+        console.log('[GeoRestriction] Initialization complete');
     }
 
     // Expose API
@@ -638,15 +646,5 @@
     } else {
         initGeoRestriction();
     }
-
-    // Also initialize when new content is loaded (for SPAs)
-    const observer = new MutationObserver(function(mutations) {
-        initGeoRestriction();
-    });
-    
-    observer.observe(document.body, {
-        childList: true,
-        subtree: true
-    });
 
 })();
