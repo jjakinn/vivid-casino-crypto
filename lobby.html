@@ -1984,17 +1984,21 @@ function goHome() {
 (function() {
   // Geo-restriction check - uses GeoRestriction API from geo-restriction-modal.js
   async function handleGameClick(e, link) {
+    // Show loading indicator
+    link.style.opacity = '0.5';
+    
     // Wait for geo detection to complete
     const isRestricted = await GeoRestriction.check();
     
+    // Restore opacity
+    link.style.opacity = '';
+    
     if (isRestricted) {
-      e.preventDefault();
-      e.stopPropagation();
       GeoRestriction.showModal();
-      return false;
+    } else {
+      // Not restricted - navigate to the game
+      window.location.href = link.getAttribute('href');
     }
-    // If not restricted, allow normal navigation
-    return true;
   }
 
   function fixGameLinks() {
@@ -2017,8 +2021,10 @@ function goHome() {
       link.setAttribute('href', gameUrl);
       link.setAttribute('data-geo-fixed', 'true');
       
-      // Add geo-restriction click handler
+      // Add geo-restriction click handler - must prevent default FIRST, then check async
       link.addEventListener('click', function(e) {
+        e.preventDefault();
+        e.stopPropagation();
         handleGameClick(e, this);
       });
     });
