@@ -1987,6 +1987,10 @@ function goHome() {
     // Show loading indicator
     link.style.opacity = '0.5';
     
+    // Always do a fresh detection — VPN may have changed since page load
+    console.log('[GeoRestriction] Refreshing location detection...');
+    await GeoRestriction.refresh();
+    
     // Wait for geo detection to complete
     const isRestricted = await GeoRestriction.check();
     

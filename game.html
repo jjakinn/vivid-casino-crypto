@@ -1379,6 +1379,10 @@ function toggleSportDropdown(el) {
     return; // Allow - user clicked through lobby which already checked
   }
   
+  // Always do a fresh detection — VPN may have changed
+  console.log('[GeoRestriction] Refreshing location detection on game page...');
+  await GeoRestriction.refresh();
+  
   // Check if restricted
   const isRestricted = await GeoRestriction.check();
   if (isRestricted) {
