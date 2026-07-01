@@ -1982,6 +1982,27 @@ function goHome() {
 
 <script>
 (function() {
+  // Geo-restriction check - mirrors js/geo-restriction-modal.js logic
+  function isGeoRestricted() {
+    // Demo mode: show modal for all games
+    if (window.GEO_RESTRICT_DEMO === true) return true;
+    // Check URL param
+    const params = new URLSearchParams(window.location.search);
+    if (params.get('geo_demo') === '1') return true;
+    // Production: would check IP country here
+    return false;
+  }
+  
+  // Show geo-restriction modal (fallback if main script hasn't loaded)
+  function showGeoModal() {
+    if (typeof GeoRestrictionModal !== 'undefined' && GeoRestrictionModal.show) {
+      GeoRestrictionModal.show();
+    } else {
+      // Fallback: redirect to game page with geo_demo param
+      alert('This game is not available in your region. Please use a VPN.');
+    }
+  }
+
   function fixGameLinks() {
     // Fix game tile links (in slider-tile containers, excluding see-all buttons)
     document.querySelectorAll('.slider-tile:not(.see-all-button) a[href^="/"]').forEach(function(link) {
@@ -2004,7 +2025,18 @@ function goHome() {
       var title = gameId.replace(/-/g, ' ').replace(/_/g, ' ').replace(/\b\w/g, function(c) { return c.toUpperCase(); });
 
       // Point to local game page
-      link.setAttribute('href', 'game.html?game=' + encodeURIComponent(gameId) + '&provider=' + encodeURIComponent(provider) + '&title=' + encodeURIComponent(title) + '&src=' + encodeURIComponent(src));
+      var gameUrl = 'game.html?game=' + encodeURIComponent(gameId) + '&provider=' + encodeURIComponent(provider) + '&title=' + encodeURIComponent(title) + '&src=' + encodeURIComponent(src);
+      link.setAttribute('href', gameUrl);
+      
+      // Add geo-restriction click handler
+      link.addEventListener('click', function(e) {
+        if (isGeoRestricted()) {
+          e.preventDefault();
+          e.stopPropagation();
+          showGeoModal();
+          return false;
+        }
+      });
     });
   }
 
@@ -2013,6 +2045,9 @@ function goHome() {
   } else {
     fixGameLinks();
   }
+  
+  // Re-run periodically to catch dynamically added tiles
+  setInterval(fixGameLinks, 2000);
 })();
 </script>
 
