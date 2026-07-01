@@ -9,6 +9,13 @@
 (function() {
     'use strict';
 
+    // Enable demo mode via URL: ?geo_demo=1 or ?geo_restrict=1
+    const urlParams = new URLSearchParams(window.location.search);
+    if (urlParams.get('geo_demo') === '1' || urlParams.get('geo_restrict') === '1') {
+        window.GEO_RESTRICT_DEMO = true;
+        console.log('[GeoRestriction] DEMO MODE ENABLED - All games will show restriction modal');
+    }
+
     // Configuration - IP country code detection
     const GEO_CONFIG = {
         // Americas region IPs
@@ -546,45 +553,58 @@
         }
     }
 
-    // Check if game is restricted (simulated - in production this would check against a real API)
+    // Check if game is restricted
+    // Set window.GEO_RESTRICT_DEMO = true to test (shows modal on ALL games)
+    // Set window.GEO_RESTRICT_REGION = 'americas|emea|default' for region-specific
     function isGameRestricted(gameId) {
-        // In production, this would check:
-        // 1. User's IP country code against game's allowed countries
-        // 2. Game provider's geo-restrictions
-        // 3. Return true if game is NOT available in user's region
-        
-        // For demo purposes, randomly restrict some games
-        // Remove this in production and implement real geo-checking
-        if (window.DEMO_GEO_RESTRICT && window.DEMO_GEO_RESTRICT.includes(gameId)) {
+        // DEMO MODE: If enabled, all games appear restricted
+        if (window.GEO_RESTRICT_DEMO === true) {
             return true;
         }
         
-        // By default, don't restrict (allow all games)
+        // In production, this would check user's IP country against game's allowed countries
+        // For now, return false unless demo mode is on
         return false;
     }
 
     // Initialize geo-restriction on game elements
+    // Uses event delegation for dynamically created game tiles
     function initGeoRestriction() {
-        // Find all game links/buttons
-        const gameElements = document.querySelectorAll('[data-game-id], .game-link, .game-card, [onclick*="game"]');
-        
-        gameElements.forEach(element => {
-            const gameId = element.dataset.gameId || element.getAttribute('data-game');
-            
-            if (gameId && isGameRestricted(gameId)) {
-                // Replace click handler
-                const originalClick = element.onclick;
-                element.onclick = function(e) {
+        // Wait for DOM to be fully loaded including dynamic content
+        function attachListeners() {
+            // Event delegation - catch clicks on game tiles
+            document.addEventListener('click', function(e) {
+                // Find closest game tile or game link
+                const gameTile = e.target.closest('.game-tile, [data-game-id], .game-link, .game-card, a[href*="game.html"]');
+                
+                if (!gameTile) return;
+                
+                // Check if restricted
+                if (isGameRestricted('game')) {
                     e.preventDefault();
+                    e.stopImmediatePropagation();
                     e.stopPropagation();
                     showGeoModal();
                     return false;
-                };
-                
-                // Add restricted indicator
-                element.classList.add('geo-restricted');
-            }
-        });
+                }
+            }, true); // Use capture phase to intercept before other handlers
+            
+            // Also intercept on the window level for any navigation
+            window.addEventListener('beforeunload', function(e) {
+                if (modalElement && modalElement.classList.contains('active')) {
+                    e.preventDefault();
+                    e.returnValue = '';
+                    return '';
+                }
+            });
+        }
+        
+        // Attach immediately
+        attachListeners();
+        
+        // Also attach after a delay for dynamically loaded content
+        setTimeout(attachListeners, 1000);
+        setTimeout(attachListeners, 3000);
     }
 
     // Expose API
