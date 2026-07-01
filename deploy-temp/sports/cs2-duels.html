@@ -1,0 +1,466 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+    <title>CS2 Duels Betting - VIVID Sports</title>
+    <meta name="theme-color" content="#000000">
+    <link rel="icon" type="image/png" sizes="16x16" href="../images/favicon/favicon-16x16.png?v=5">
+    <link rel="icon" type="image/png" sizes="32x32" href="../images/favicon/favicon-32x32.png?v=5">
+    <link rel="apple-touch-icon" sizes="180x180" href="../images/favicon/apple-touch-icon.png?v=5">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background-color: #0a0a0a;
+            color: #ffffff;
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+        a { text-decoration: none; color: inherit; }
+        
+        /* Header */
+        .header {
+            position: fixed;
+            top: 0; left: 0; right: 0;
+            height: 56px;
+            background: #111;
+            border-bottom: 1px solid #222;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 16px;
+            z-index: 100;
+        }
+        .header-left { display: flex; align-items: center; gap: 12px; }
+        .back-btn { background: none; border: none; color: #fff; font-size: 20px; cursor: pointer; padding: 8px; }
+        .breadcrumb { display: flex; align-items: center; gap: 8px; font-size: 14px; color: #999; }
+        .breadcrumb a { color: #999; }
+        .breadcrumb a:hover { color: #fff; }
+        .breadcrumb .active { color: #fff; font-weight: 500; }
+        .header-right { display: flex; align-items: center; gap: 8px; }
+        .wallet-btn {
+            background: #7c3aed;
+            border: none;
+            color: #fff;
+            padding: 8px 16px;
+            border-radius: 8px;
+            font-size: 13px;
+            font-weight: 500;
+            cursor: pointer;
+        }
+        
+        /* Main Content */
+        .main-content {
+            padding-top: 56px;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding-left: 16px;
+            padding-right: 16px;
+        }
+        
+        /* Sport Header */
+        .sport-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 20px 0;
+            border-bottom: 1px solid #222;
+        }
+        .sport-title {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-size: 24px;
+            font-weight: 600;
+        }
+        .sport-icon {
+            width: 32px; height: 32px;
+            background: #222;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 18px;
+        }
+        .sport-toolbar {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .filter-btn {
+            background: #1a1a1a;
+            border: 1px solid #333;
+            color: #ccc;
+            padding: 8px 16px;
+            border-radius: 8px;
+            font-size: 13px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+        .filter-btn:hover { border-color: #555; }
+        
+        /* Tabs */
+        .tabs {
+            display: flex;
+            gap: 4px;
+            padding: 16px 0;
+            border-bottom: 1px solid #222;
+            overflow-x: auto;
+        }
+        .tab {
+            padding: 8px 16px;
+            border-radius: 8px;
+            font-size: 14px;
+            color: #999;
+            cursor: pointer;
+            white-space: nowrap;
+            transition: all 0.2s;
+        }
+        .tab:hover { color: #fff; }
+        .tab.active {
+            background: #1a1a1a;
+            color: #fff;
+            font-weight: 500;
+        }
+        .tab .counter {
+            margin-left: 4px;
+            font-size: 11px;
+            color: #666;
+        }
+        .tab .live-counter {
+            background: #ef4444;
+            color: #fff;
+            padding: 2px 6px;
+            border-radius: 10px;
+            font-size: 10px;
+            margin-left: 4px;
+        }
+        
+        /* League Section */
+        .league-section {
+            margin-bottom: 16px;
+            border: 1px solid #222;
+            border-radius: 12px;
+            overflow: hidden;
+        }
+        .league-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 12px 16px;
+            background: #111;
+            cursor: pointer;
+        }
+        .league-title {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 14px;
+            font-weight: 500;
+        }
+        .league-title .flag {
+            width: 20px; height: 20px;
+            border-radius: 50%;
+            background: #333;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 10px;
+        }
+        .league-title .separator { color: #666; }
+        .league-title .league-name { color: #fff; }
+        .chevron { color: #666; font-size: 12px; }
+        
+        .league-body { padding: 0 16px 16px; }
+        .market-label {
+            font-size: 12px;
+            color: #666;
+            padding: 12px 0 8px;
+            text-align: right;
+        }
+        
+        /* Match Card */
+        .match-card {
+            background: #0f0f0f;
+            border: 1px solid #222;
+            border-radius: 10px;
+            margin-bottom: 8px;
+            overflow: hidden;
+        }
+        .match-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 8px 12px;
+            border-bottom: 1px solid #1a1a1a;
+        }
+        .match-info {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .tag-live {
+            background: #ef4444;
+            color: #fff;
+            padding: 2px 8px;
+            border-radius: 4px;
+            font-size: 11px;
+            font-weight: 600;
+        }
+        .match-phase {
+            font-size: 13px;
+            color: #888;
+        }
+        .market-count {
+            font-size: 12px;
+            color: #a855f7;
+            font-weight: 500;
+        }
+        .match-actions {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .match-body {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 12px;
+        }
+        .teams {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+            flex: 1;
+        }
+        .team {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 14px;
+        }
+        .team-icon {
+            width: 20px; height: 20px;
+            border-radius: 50%;
+            background: #333;
+        }
+        .scores {
+            display: flex;
+            flex-direction: column;
+            gap: 2px;
+            margin-left: auto;
+            margin-right: 16px;
+        }
+        .score-row {
+            display: flex;
+            gap: 4px;
+            font-size: 13px;
+            color: #fff;
+        }
+        .odds {
+            display: flex;
+            gap: 8px;
+        }
+        .odds-button {
+            background: #1a1a1a;
+            border: 1px solid #333;
+            border-radius: 8px;
+            padding: 10px 16px;
+            min-width: 100px;
+            cursor: pointer;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 4px;
+            transition: all 0.2s;
+        }
+        .odds-button:hover {
+            border-color: #7c3aed;
+            background: #1f1f1f;
+        }
+        .odd-name {
+            font-size: 12px;
+            color: #999;
+        }
+        .odd-value {
+            font-size: 15px;
+            font-weight: 600;
+            color: #fff;
+        }
+        
+        .load-more {
+            width: 100%;
+            padding: 12px;
+            background: transparent;
+            border: none;
+            color: #888;
+            font-size: 14px;
+            cursor: pointer;
+            text-align: center;
+            margin-top: 8px;
+        }
+        .load-more:hover { color: #fff; }
+        
+        /* All Sport Section */
+        .all-section {
+            margin-top: 24px;
+            padding-bottom: 32px;
+        }
+        .all-header {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 18px;
+            font-weight: 600;
+            margin-bottom: 16px;
+        }
+        .region-row {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 12px 16px;
+            background: #111;
+            border: 1px solid #222;
+            border-radius: 8px;
+            margin-bottom: 8px;
+            cursor: pointer;
+        }
+        .region-row:hover { background: #1a1a1a; }
+        .region-name { font-size: 14px; }
+        .region-count {
+            font-size: 12px;
+            color: #666;
+            background: #222;
+            padding: 2px 8px;
+            border-radius: 10px;
+        }
+        
+        /* Footer */
+        .footer {
+            padding: 32px 16px;
+            border-top: 1px solid #222;
+            margin-top: 32px;
+            text-align: center;
+            color: #666;
+            font-size: 12px;
+        }
+        
+        /* Mobile */
+        @media (max-width: 768px) {
+            .match-body { flex-direction: column; gap: 12px; align-items: stretch; }
+            .odds { justify-content: stretch; }
+            .odds-button { flex: 1; }
+            .sport-header { flex-direction: column; gap: 12px; align-items: flex-start; }
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <div class="header-left">
+            <button class="back-btn" onclick="history.back()">←</button>
+            <div class="breadcrumb">
+                <a href="/">Home</a>
+                <span>›</span>
+                <span class="active">CS2 Duels</span>
+            </div>
+        </div>
+        <div class="header-right">
+            <button class="wallet-btn">Wallet</button>
+        </div>
+    </header>
+    
+    <main class="main-content">
+        <div class="sport-header">
+            <div class="sport-title">
+                <div class="sport-icon">🏆</div>
+                <span>CS2 Duels</span>
+            </div>
+            <div class="sport-toolbar">
+                <button class="filter-btn">Winner (incl. extra) ▼</button>
+                <button class="filter-btn">Filter by Region ▼</button>
+            </div>
+        </div>
+        
+        <div class="tabs">
+            <div class="tab active">Featured</div>
+            <div class="tab">Upcoming</div>
+            <div class="tab">Bet Live <span class="live-counter">2</span></div>
+            <div class="tab">Outrights <span class="counter">4</span></div>
+            <div class="tab">All CS2 Duels</div>
+        </div>
+        
+        
+        <div class="league-section">
+            <div class="league-header">
+                <div class="league-title">
+                    <span class="flag">International</span>
+                    <span class="separator">/</span>
+                    <span class="league-name">Duel Championship</span>
+                </div>
+                <span class="chevron">▼</span>
+            </div>
+            <div class="league-body">
+                <div class="market-label">Match Winner - Twoway</div>
+                
+            <div class="match-card">
+                <div class="match-header">
+                    <div class="match-info">
+                        
+                        <span class="match-phase">Jul 30, 8:00 PM</span>
+                    </div>
+                    <div class="match-actions">
+                        <span class="market-count">+4</span>
+                    </div>
+                </div>
+                <div class="match-body">
+                    <div class="teams">
+                        <div class="team">
+                            <div class="team-icon"></div>
+                            <span>Player A</span>
+                        </div>
+                        <div class="team">
+                            <div class="team-icon"></div>
+                            <span>Player B</span>
+                        </div>
+                        
+                    </div>
+                    <div class="odds">
+                        
+                <button class="odds-button">
+                    <span class="odd-name">Player A</span>
+                    <span class="odd-value">1.50</span>
+                </button>
+                <button class="odds-button">
+                    <span class="odd-name">Player B</span>
+                    <span class="odd-value">2.50</span>
+                </button>
+                    </div>
+                </div>
+            </div>
+                <button class="load-more">Load more</button>
+            </div>
+        </div>
+        
+        <div class="all-section">
+            <div class="all-header">
+                <span>🏆</span>
+                <span>All CS2 Duels</span>
+            </div>
+            
+        <div class="region-row">
+            <span class="region-name">International</span>
+            <span class="region-count">4</span>
+            <span class="chevron">▶</span>
+        </div>
+        </div>
+    </main>
+    
+    <footer class="footer">
+        <p>VIVID - The #1 Crypto Casino</p>
+        <p style="margin-top:8px;">© 2026 VividBetting.com | All Rights Reserved</p>
+    </footer>
+</body>
+</html>
