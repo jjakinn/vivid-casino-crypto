@@ -1982,60 +1982,44 @@ function goHome() {
 
 <script>
 (function() {
-  // Geo-restriction check - mirrors js/geo-restriction-modal.js logic
-  function isGeoRestricted() {
-    // Demo mode: show modal for all games
-    if (window.GEO_RESTRICT_DEMO === true) return true;
-    // Check URL param
-    const params = new URLSearchParams(window.location.search);
-    if (params.get('geo_demo') === '1') return true;
-    // Production: would check IP country here
-    return false;
-  }
-  
-  // Show geo-restriction modal (fallback if main script hasn't loaded)
-  function showGeoModal() {
-    if (typeof GeoRestrictionModal !== 'undefined' && GeoRestrictionModal.show) {
-      GeoRestrictionModal.show();
-    } else {
-      // Fallback: redirect to game page with geo_demo param
-      alert('This game is not available in your region. Please use a VPN.');
+  // Geo-restriction check - uses GeoRestriction API from geo-restriction-modal.js
+  async function handleGameClick(e, link) {
+    // Wait for geo detection to complete
+    const isRestricted = await GeoRestriction.check();
+    
+    if (isRestricted) {
+      e.preventDefault();
+      e.stopPropagation();
+      GeoRestriction.showModal();
+      return false;
     }
+    // If not restricted, allow normal navigation
+    return true;
   }
 
   function fixGameLinks() {
-    // Fix game tile links (in slider-tile containers, excluding see-all buttons)
     document.querySelectorAll('.slider-tile:not(.see-all-button) a[href^="/"]').forEach(function(link) {
       var href = link.getAttribute('href');
-      // Skip category links
       if (href.includes('/casino/group/')) return;
       if (href.includes('/promo-race/')) return;
       if (href.includes('/search')) return;
-      // Skip already-absolute URLs
       if (href.startsWith('http')) return;
+      if (link.getAttribute('data-geo-fixed')) return; // Skip already processed
 
-      // Extract game info from href like /provider/casino/games/gameid
       var parts = href.replace(/^\//, '').split('/');
       var provider = parts[0] || 'unknown';
       var gameId = parts[parts.length - 1] || 'game';
-      // Get image URL from the tile
       var img = link.querySelector('img[alt="Game Tile"]');
       var src = img ? img.getAttribute('src') : '';
-      // Get title from alt or parse from ID
       var title = gameId.replace(/-/g, ' ').replace(/_/g, ' ').replace(/\b\w/g, function(c) { return c.toUpperCase(); });
 
-      // Point to local game page
       var gameUrl = 'game.html?game=' + encodeURIComponent(gameId) + '&provider=' + encodeURIComponent(provider) + '&title=' + encodeURIComponent(title) + '&src=' + encodeURIComponent(src);
       link.setAttribute('href', gameUrl);
+      link.setAttribute('data-geo-fixed', 'true');
       
       // Add geo-restriction click handler
       link.addEventListener('click', function(e) {
-        if (isGeoRestricted()) {
-          e.preventDefault();
-          e.stopPropagation();
-          showGeoModal();
-          return false;
-        }
+        handleGameClick(e, this);
       });
     });
   }
@@ -2046,7 +2030,6 @@ function goHome() {
     fixGameLinks();
   }
   
-  // Re-run periodically to catch dynamically added tiles
   setInterval(fixGameLinks, 2000);
 })();
 </script>
