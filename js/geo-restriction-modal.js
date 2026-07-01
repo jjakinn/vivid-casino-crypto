@@ -570,41 +570,58 @@
     // Initialize geo-restriction on game elements
     // Uses event delegation for dynamically created game tiles
     function initGeoRestriction() {
-        // Wait for DOM to be fully loaded including dynamic content
-        function attachListeners() {
-            // Event delegation - catch clicks on game tiles
-            document.addEventListener('click', function(e) {
-                // Find closest game tile or game link
-                const gameTile = e.target.closest('.game-tile, [data-game-id], .game-link, .game-card, a[href*="game.html"]');
-                
-                if (!gameTile) return;
-                
-                // Check if restricted
-                if (isGameRestricted('game')) {
-                    e.preventDefault();
-                    e.stopImmediatePropagation();
-                    e.stopPropagation();
-                    showGeoModal();
-                    return false;
-                }
-            }, true); // Use capture phase to intercept before other handlers
+        // Main click interceptor - catches ALL clicks and checks if they're on game elements
+        function clickInterceptor(e) {
+            // Check if click is on a game tile or game link
+            const gameElement = e.target.closest('.game-tile, .slider-tile, [data-game-id], .game-link, .game-card, a[href*="game.html"], a[href*="/casino/"]');
             
-            // Also intercept on the window level for any navigation
-            window.addEventListener('beforeunload', function(e) {
-                if (modalElement && modalElement.classList.contains('active')) {
-                    e.preventDefault();
-                    e.returnValue = '';
-                    return '';
-                }
+            if (!gameElement) return;
+            
+            // Check if restricted
+            if (isGameRestricted('game')) {
+                e.preventDefault();
+                e.stopImmediatePropagation();
+                e.stopPropagation();
+                showGeoModal();
+                return false;
+            }
+        }
+        
+        // Attach to document with capture to intercept before other handlers
+        document.addEventListener('click', clickInterceptor, true);
+        
+        // Also intercept on touch devices
+        document.addEventListener('touchend', clickInterceptor, true);
+        
+        // Override all game links that navigate to game.html
+        function overrideGameLinks() {
+            document.querySelectorAll('a[href*="game.html"]').forEach(function(link) {
+                link.addEventListener('click', function(e) {
+                    if (isGameRestricted('game')) {
+                        e.preventDefault();
+                        e.stopImmediatePropagation();
+                        showGeoModal();
+                        return false;
+                    }
+                }, true);
             });
         }
         
-        // Attach immediately
-        attachListeners();
+        // Run immediately
+        overrideGameLinks();
         
-        // Also attach after a delay for dynamically loaded content
-        setTimeout(attachListeners, 1000);
-        setTimeout(attachListeners, 3000);
+        // Re-run periodically for dynamically added content
+        setInterval(overrideGameLinks, 2000);
+        
+        // Also use MutationObserver for dynamically added content
+        const observer = new MutationObserver(function(mutations) {
+            overrideGameLinks();
+        });
+        
+        observer.observe(document.body, {
+            childList: true,
+            subtree: true
+        });
     }
 
     // Expose API
